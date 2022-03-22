@@ -29,7 +29,8 @@ const UserSchema = new mongoose.Schema({
         return /(?=^.{8,}$)(?=.*\d)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/g.test(v)
       },
       error: 'Password not strong enough'
-    }
+    },
+    select: false
   }
 })
 
