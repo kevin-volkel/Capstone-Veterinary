@@ -42,7 +42,10 @@ const createUser = async (req, res) => {
     name,
     email,
     role,
-    password
+    password,
+    campus,
+    session,
+    year
   } = req.body;
 
   if(!isEmail(email)) return res.status(401).send('Email already in use')
@@ -56,7 +59,12 @@ const createUser = async (req, res) => {
       name,
       email,
       role,
-      password
+      password,
+      class: {
+        campus,
+        session,
+        year
+      }
     })
 
     user.password = await bcrypt.hash(password, 10)

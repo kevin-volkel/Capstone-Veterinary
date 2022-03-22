@@ -31,6 +31,20 @@ const UserSchema = new mongoose.Schema({
       error: 'Password not strong enough'
     },
     select: false
+  },
+  class: {
+    type: {
+      campus: {
+        type: String
+      },
+      session: {
+        type: String
+      },
+      year: {
+        type: Number
+      }
+    },
+    required: [true, "Must include your class"]
   }
 })
 
