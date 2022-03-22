@@ -27,15 +27,18 @@ const nextApp = next({ dev });
 const handler = nextApp.getRequestHandler();
 
 //! Middlewares
-const { authMiddleware } = require('./server/middleware/auth')
+// const { authMiddleware } = require('./server/middleware/auth')
 
 app.use(express.json())
 app.use(fileUpload({ useTempFiles: true }))
 
 //! ROUTERS
 const userRoute = require('./server/routes/userRoute')
+const authRoute = require('./server/routes/authRoute')
 
 app.use('/api/v1/user', userRoute)
+app.use('/api/v1/auth', authRoute)
+
 
 
 connectDB();
