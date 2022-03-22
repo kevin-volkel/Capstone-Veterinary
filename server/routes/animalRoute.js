@@ -1,5 +1,5 @@
 const router = require('next/router')
-const {getAnimal, getAnimals, addAnimal, deleteAnimal, editAnimal} = require('../controllers/animalCont')
+const {getAnimal, getAnimals, addAnimal, deleteAnimal, editAnimal} = require('../controllers/animalCon')
 const authMiddleware = require('../middleware/auth')
 
 router.route('/')
