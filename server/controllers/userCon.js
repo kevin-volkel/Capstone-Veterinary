@@ -20,7 +20,7 @@ const postUserLogin = async (req, res) => {
 
     if(!isPassword) return res.status(401).send('Invalid Credentials')
 
-    const payload = { userId: user._id }
+    const payload = { userId: user._id, role: user.role }
     jwt.sign(
       payload,
       process.env.JWT_SECRET,
@@ -62,7 +62,7 @@ const createUser = async (req, res) => {
     user.password = await bcrypt.hash(password, 10)
     user = await user.save();
 
-    const payload = { userId: user._id }
+    const payload = { userId: user._id, role }
     jwt.sign(
       payload,
       process.env.JWT_SECRET,
