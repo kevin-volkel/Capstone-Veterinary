@@ -1,13 +1,14 @@
 const router = require('next/router')
 const {getAnimal, getAnimals, addAnimal, deleteAnimal, editAnimal} = require('../controllers/animalCont')
+const authMiddleware = require('../middleware/auth')
 
 router.route('/')
     .get(getAnimals)
-    .post(addAnimal)
+    .post(authMiddleware, addAnimal)
 
 router.route('/:id')
-    .get(getAnimal)
-    .delete(deleteAnimal)
-    .put(editAnimal)
+    .get(authMiddleware, getAnimal)
+    .delete(authMiddleware, deleteAnimal)
+    .put(authMiddleware, editAnimal)
 
 module.exports = router
