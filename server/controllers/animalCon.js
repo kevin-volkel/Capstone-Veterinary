@@ -13,7 +13,8 @@ const addAnimal = async (req, res) => {
         
         const animal = await AnimalModel(newAnimal).save()
     } catch (error) {
-        
+        res.status(500).send("error at addAnimal...")
+        console.log(error);
     }
 }
 
@@ -31,12 +32,35 @@ const getAnimals = async (req, res) => {
 
 //? gets one animal, id required
 const getAnimal = async (req, res) => {
-    return res.send("get animal (one)");
+    try {
+        const animal = await AnimalModel.findById(req.params.id);
+
+        if(!animal){
+            res.status(403).send("animal not found")
+        }
+
+        return res.status(200).json(animal);
+    } catch (error) {
+        res.status(500).send("error at getAnimal")
+        console.log(error);
+    }
 }
 
 //? deletes an animal, id required
 const deleteAnimal = async (req, res) => {
-    return res.send("delete animal");
+    try {
+        const animal = await AnimalModel.findById(req.params.id);
+
+        if(!animal){
+            res.status(403).send("animal not found")
+        }
+
+        await animal.remove();
+        return res.status(200).send("animal succesfully removed")
+    } catch (error) {
+        res.status(500).send("error at deleteAnimal");
+        console.log(error);
+    }
 }
 
 //? update an animals info
