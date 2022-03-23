@@ -1,21 +1,8 @@
-
-const AnimalModel = require('../models/Animal')
-
-//! /
-
-//? gets all animals, no params
-const getAnimals = async (req, res) => {
-    try {
-        const animals = await AnimalModel.find()
-        res.status(200).json(animals)  
-    } catch (error) {
-        res.status(500).send("Error at getAnimals")
-    }
-}
+const AnimalModel = require('../models/AnimalModel');
 
 //? adds an animal, no params
 const addAnimal = async (req, res) => {
-    
+
     //! adding more later just laying this out
     const {name} = req.body;
     
@@ -30,6 +17,15 @@ const addAnimal = async (req, res) => {
     }
 }
 
+//? gets all animals, no params
+const getAnimals = async (req, res) => {
+    try {
+        const animals = await AnimalModel.find()
+        res.status(200).json(animals)  
+    } catch (error) {
+        res.status(500).send("Error at getAnimals")
+    }
+}
 
 //! /:id
 
