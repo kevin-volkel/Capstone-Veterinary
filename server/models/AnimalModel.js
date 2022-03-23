@@ -22,12 +22,12 @@ const AnimalSchema = new Schema({
     },
 
     needs: {
-        type: Array, //* STRINGS
+        type: [String], 
         default: ["Food", "PLUS THIS TEST THING OOGA BOOGA"]
     },
 
     details: {
-        type: Array, //* STRINGS
+        type: [String], //* STRINGS
     },
 
     description: {
@@ -35,7 +35,7 @@ const AnimalSchema = new Schema({
     },
 
     vaccinations: {
-        type: Array, //* STRINGS
+        type: [String], 
         default: []
     },
 
@@ -44,11 +44,11 @@ const AnimalSchema = new Schema({
     },
 
     pictures: {
-        type: Array, //* URLS
+        type: [String], //* URLS
     },
 
     videos: {
-        type: Array, //* URLS
+        type: [String], //* URLS
     },
 
     user: {
