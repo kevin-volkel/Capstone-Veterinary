@@ -33,19 +33,22 @@ const UserSchema = new mongoose.Schema({
     select: false
   },
   class: {
-    type: {
-      campus: {
-        type: String
-      },
-      session: {
-        type: String
-      },
-      year: {
-        type: Number
-      }
+    campus: {
+      type: String,
+      enum: ['northeast', 'northwest', 'southwest'],
+      required: [true, "Must include your campus"]
     },
-    required: [true, "Must include your class"]
-  }
+    session: {
+      type: String,
+      enum: ['session 1', 'session 2'],
+      //? wouldn't be required because of teachers. they teach both sessions
+    },
+    year: {
+      type: String,
+      enum: ['year 1', 'year 2'],
+      required: [true, "Must include your year"]
+    }
+  },
 })
 
 module.exports = mongoose.models.User || mongoose.model('User', UserSchema);

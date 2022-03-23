@@ -1,4 +1,4 @@
-const router = require('next/router')
+const router = require("express").Router();
 const {getAnimal, getAnimals, addAnimal, deleteAnimal, editAnimal} = require('../controllers/animalCon')
 const authMiddleware = require('../middleware/auth')
 

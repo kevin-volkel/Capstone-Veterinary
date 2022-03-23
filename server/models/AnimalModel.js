@@ -1,66 +1,52 @@
-const mongoose = require('mongoose')
-const Schema = new mongoose.Schema;
+const mongoose = require("mongoose");
+const Schema = new mongoose.Schema();
 
-const AnimalSchema = new Schema({
+const AnimalSchema = new Schema(
+  {
     name: {
-        type: String,
-        required: [true, "Please enter an animal name..."],
+      type: String,
+      required: [true, "Please enter an animal name..."],
     },
-
     type: {
-        type: String,
-        required: [true, "Please enter an animal type..."]
+      type: String,
+      required: [true, "Please enter an animal type..."],
     },
-
     breed: {
-        type: String,
-        default: "Unspecified"
+      type: String,
+      default: "Unspecified",
     },
-
     colors: {
-        type: String
+      type: String,
     },
-
     needs: {
-        type: Array, //* STRINGS
-        default: ["Food", "PLUS THIS TEST THING OOGA BOOGA"]
+      type: [NeedSchema],
+      default: ["food"],
     },
-
-    details: {
-        type: Array, //* STRINGS
+    details: [String],
+    desc: {
+      type: String,
     },
-
-    description: {
-        type: String,
+    vacc: {
+      type: [NeedSchema],
+			required: [true, "vaccinations must be provided"]
     },
-
-    vaccinations: {
-        type: Array, //* STRINGS
-        default: []
+    neutered: { //! spade is only for female animals. i think neutered is more gender neutral
+      type: Boolean,
+      require: [true, "Must answer if the animal is neutered"],
     },
-
-    spade: {
-        type: Boolean,
-    },
-
-    pictures: {
-        type: Array, //* URLS
-    },
-
-    videos: {
-        type: Array, //* URLS
-    },
-
+    picURLs: [String],
+    vidURLs: [String],
     user: {
-        type: Schema.Types.ObjectId,
-        ref: "User",
+      type: Schema.Types.ObjectId,
+      ref: "User",
     },
-
     location: {
-        type: String,
-    }
-},
-{ timestamps: true }
-)
+      type: String,
+			enum: ['northeast', 'northwest', 'southwest'],
+			required: [true, "Must provide a location"]
+    },
+  },
+  { timestamps: true }
+);
 
-module.exports = mongoose.model("Animal", AnimalSchema)
+module.exports = mongoose.model("Animal", AnimalSchema);
