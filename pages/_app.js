@@ -1,10 +1,12 @@
 import '../styles/globals.css';
+import React, { useEffect, useState } from 'react';
 import { destoryCookie, parseCookies } from 'nookies';
 import { redirectUser, baseURL } from './util/auth';
 import axios from 'axios';
 import Layout from './components/layout/Layout';
 
 function MyApp({ Component, pageProps }) {
+
   return (
     <Layout user={pageProps.user}>
       <Component {...pageProps} />
