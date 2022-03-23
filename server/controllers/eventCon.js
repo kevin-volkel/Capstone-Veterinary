@@ -1,6 +1,8 @@
 const EventModel = require("../models/EventModel");
 
-const getAllEvents = async (req, res) => {};
+const getAllEvents = async (req, res) => {
+  
+};
 
 const getEvent = async (req, res) => {};
 

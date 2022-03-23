@@ -42,7 +42,7 @@ const UserSchema = new mongoose.Schema({
       },
       year: {
         type: Number
-      }
+      },
     },
     required: [true, "Must include your class"]
   }
