@@ -3,6 +3,8 @@ const AnimalModel = require("../models/AnimalModel");
 //? adds an animal, no params
 const addAnimal = async (req, res) => {
   // console.log(req.body);
+  const { userId } = req.user;
+
   const {
     name,
     type,
@@ -36,6 +38,7 @@ const addAnimal = async (req, res) => {
 		if(vaccs) newAnimal.vacc = vaccs;
 		if(picURLs) newAnimal.picURLs = picURLs;
 		if(vidURLs) newAnimal.vidURLs = vidURLs;
+    newAnimal.user = userId;
 
     const animal = await new AnimalModel(newAnimal).save();
 		const animalCreated = await AnimalModel.findOne(animal._id).populate("user");

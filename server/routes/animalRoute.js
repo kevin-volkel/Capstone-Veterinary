@@ -1,3 +1,5 @@
+const { authMiddleware } = require('../middleware/auth')
+
 const router = require("express").Router();
 const {
   getAnimal,
@@ -7,7 +9,7 @@ const {
   editAnimal,
 } = require("../controllers/animalCon");
 
-router.route("/").get(getAllAnimals).post(addAnimal);
+router.route("/").get(getAllAnimals).post(authMiddleware, addAnimal);
 
 router
   .route("/:id")

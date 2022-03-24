@@ -26,7 +26,7 @@ const UserSchema = new mongoose.Schema({
     minLength: [8, 'Password must be at least 8 characters'],
     validate: {
       validator: (v) => {
-        return /(?=^.{8,}$)(?=.*\d)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/g.test(v)
+        return /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/g.test(v)
       },
       error: 'Password not strong enough'
     },
