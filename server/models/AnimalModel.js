@@ -1,8 +1,9 @@
 const mongoose = require("mongoose");
-const Schema = new mongoose.Schema();
+const Schema = mongoose.Schema;
 
 const AnimalSchema = new Schema(
   {
+    user: {type: Schema.Types.ObjectId, ref: "User"},
     name: {
       type: String,
       required: [true, "Please enter an animal name..."],
@@ -15,21 +16,19 @@ const AnimalSchema = new Schema(
       type: String,
       default: "Unspecified",
     },
+    gender: {
+      type: String,
+      required: [true, "Please enter the animal's gender"]
+    },
     colors: {
       type: String,
     },
-    needs: {
-      type: [NeedSchema],
-      default: ["food"],
-    },
+    needs: [String], //! idk if theres a way to make arrays required or give them defaults but if someone does know pls update these
     details: [String],
     desc: {
       type: String,
     },
-    vacc: {
-      type: [NeedSchema],
-			required: [true, "vaccinations must be provided"]
-    },
+    vaccs: [String],
     neutered: { //! spade is only for female animals. i think neutered is more gender neutral
       type: Boolean,
       require: [true, "Must answer if the animal is neutered"],
@@ -49,4 +48,4 @@ const AnimalSchema = new Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("Animal", AnimalSchema);
+module.exports = mongoose.models.Animal || mongoose.model("Animal", AnimalSchema);

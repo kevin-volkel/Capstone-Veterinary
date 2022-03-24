@@ -1,14 +1,18 @@
 const router = require("express").Router();
-const {getAnimal, getAnimals, addAnimal, deleteAnimal, editAnimal} = require('../controllers/animalCon')
-const authMiddleware = require('../middleware/auth')
+const {
+  getAnimal,
+  getAllAnimals,
+  addAnimal,
+  deleteAnimal,
+  editAnimal,
+} = require("../controllers/animalCon");
 
-router.route('/')
-    .get(getAnimals)
-    .post(authMiddleware, addAnimal)
+router.route("/").get(getAllAnimals).post(addAnimal);
 
-router.route('/:id')
-    .get(authMiddleware, getAnimal)
-    .delete(authMiddleware, deleteAnimal)
-    .put(authMiddleware, editAnimal)
+router
+  .route("/:id")
+  .get(getAnimal)
+  .delete(deleteAnimal)
+  .put(editAnimal);
 
-module.exports = router
+module.exports = router;

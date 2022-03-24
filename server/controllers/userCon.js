@@ -9,7 +9,7 @@ const postUserLogin = async (req, res) => {
   const { email, password } = req.body;
 
   if(!isEmail(email)) return res.status(401).send('Invalid email')
-  if(!passwordReg.test(password)) return res.status(401).send('Invalid password')
+  if(!passwordReg.test(password)) return res.status(401).send("Invalid password")
   try{
     const user = await UserModel
       .findOne({email: email.toLowerCase()})
@@ -37,7 +37,6 @@ const postUserLogin = async (req, res) => {
 }
 
 const createUser = async (req, res) => {
-
   const {
     name,
     email,
@@ -48,7 +47,8 @@ const createUser = async (req, res) => {
     year
   } = req.body;
 
-  if(!isEmail(email)) return res.status(401).send('Email already in use')
+  if(!isEmail(email)) return res.status(401).send('Invalid Email')
+  if(!passwordReg.test(password)) return res.status(401).send('Password must have eight characters including one uppercase letter, one lowercase letter, and one number or special character.')
   
   try {
     let user;
@@ -57,7 +57,7 @@ const createUser = async (req, res) => {
 
     user = new UserModel({
       name,
-      email,
+      email: email.toLowerCase(),
       role,
       password,
       class: {
