@@ -8,6 +8,19 @@ const RegisterForm = ({ user, handleChange, setIsLogin }) => {
   const [errorMsg, setErrorMsg] = useState(null);
   const [showPassword, setshowPassword] = useState(false);
 
+  const roleOptions = [
+    {
+      text: 'Student',
+      value: 'student',
+      key: 0
+    },
+    {
+      text: 'Teacher',
+      value: 'teacher',
+      key: 1
+    },
+  ]
+
   const handleSubmit = () => {};
 
   return (
@@ -55,7 +68,7 @@ const RegisterForm = ({ user, handleChange, setIsLogin }) => {
           <Divider />
           <Form.Group widths="equal">
             <Form.Input 
-              label="FirstName"
+              label="First Name"
               required
               placeholder="First"
               value={firstName}
@@ -64,7 +77,7 @@ const RegisterForm = ({ user, handleChange, setIsLogin }) => {
               type="text"
             />
             <Form.Input 
-              label="LastName"
+              label="Last Name"
               required
               placeholder="Last"
               value={lastName}
@@ -73,8 +86,16 @@ const RegisterForm = ({ user, handleChange, setIsLogin }) => {
               type="text"
             />
           </Form.Group>
+          <Form.Group widths="equal">
+            <Form.Select 
+              options={roleOptions}
+              value={role}
+              onChange={handleChange}
+              name='role'
+            />
+          </Form.Group>
           <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <Button style={{ marginBottom: '1rem' }} content="Login" />
+            <Button style={{ marginBottom: '1rem' }} content="Register" />
           </div>
           <h5
             style={{

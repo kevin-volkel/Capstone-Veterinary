@@ -9,7 +9,7 @@ const login = ({}) => {
     lastName: '',
     email: '',
     password: '',
-    role: '',
+    role: 'student',
     classCode: '',
   });
 
