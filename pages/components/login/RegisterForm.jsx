@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { Form, Segment, Message, Divider, Button } from 'semantic-ui-react';
 
-const LoginForm = ({ user: { email, password }, handleChange, setIsLogin }) => {
+const RegisterForm = ({ user, handleChange, setIsLogin }) => {
+  const { firstName, lastName, email, password, role, classCode } = user;
+
   const [formLoading, setFormLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState(null);
-  const [showPassword, setShowPassword] = useState(false);
+  const [showPassword, setshowPassword] = useState(false);
 
-  const handleSubmit = () => {
-
-  }
+  const handleSubmit = () => {};
 
   return (
     <>
@@ -47,12 +47,32 @@ const LoginForm = ({ user: { email, password }, handleChange, setIsLogin }) => {
               name: showPassword ? 'eye slash' : 'eye',
               circular: true,
               link: true,
-              onClick: () => setShowPassword(!showPassword)
+              onClick: () => setShowPassword(!showPassword),
             }}
             iconPosition="left"
             type={showPassword ? 'text' : 'password'}
           />
           <Divider />
+          <Form.Group widths="equal">
+            <Form.Input 
+              label="FirstName"
+              required
+              placeholder="First"
+              value={firstName}
+              name="firstName"
+              onChange={handleChange}
+              type="text"
+            />
+            <Form.Input 
+              label="LastName"
+              required
+              placeholder="Last"
+              value={lastName}
+              name="lastName"
+              onChange={handleChange}
+              type="text"
+            />
+          </Form.Group>
           <div style={{ display: 'flex', justifyContent: 'center' }}>
             <Button style={{ marginBottom: '1rem' }} content="Login" />
           </div>
@@ -63,9 +83,9 @@ const LoginForm = ({ user: { email, password }, handleChange, setIsLogin }) => {
               margin: '0 auto',
               cursor: 'pointer',
             }}
-            onClick={() => setIsLogin(false)}
+            onClick={() => setIsLogin(true)}
           >
-            Need to make an account?
+            Already have an account?
           </h5>
         </Segment>
       </Form>
@@ -73,4 +93,4 @@ const LoginForm = ({ user: { email, password }, handleChange, setIsLogin }) => {
   );
 };
 
-export default LoginForm;
+export default RegisterForm;

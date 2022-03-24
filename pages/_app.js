@@ -24,7 +24,6 @@ MyApp.getInitialProps = async ({ ctx, Component }) => {
   const isProtectedRoute = protectedRoutes.includes(ctx.pathname);
 
   if (!token) {
-    console.log('No token found');
     isProtectedRoute && redirectUser(ctx, '/login');
   } else {
     if (Component.getInitialProps) {
@@ -40,7 +39,6 @@ MyApp.getInitialProps = async ({ ctx, Component }) => {
       const { user } = res.data;
 
       pageProps.user = user;
-      console.log(`Hello ${user.name}`);
     } catch (err) {
       console.log(err);
       destoryCookie(ctx, 'token');

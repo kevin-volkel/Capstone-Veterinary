@@ -1,8 +1,7 @@
-const codes = {
+export const classCodes = {
     northwest: {
         y1s1: 495119,
         y1s2: 336072, 
-
         y2: 809365
     },
 
