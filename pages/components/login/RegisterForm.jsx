@@ -1,14 +1,27 @@
 import React, { useState } from 'react';
 import { Form, Segment, Message, Divider, Button } from 'semantic-ui-react';
 
-const LoginForm = ({ user: { email, password }, handleChange, setIsLogin }) => {
+const RegisterForm = ({ user, handleChange, setIsLogin }) => {
+  const { firstName, lastName, email, password, role, classCode } = user;
+
   const [formLoading, setFormLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState(null);
-  const [showPassword, setShowPassword] = useState(false);
+  const [showPassword, setshowPassword] = useState(false);
 
-  const handleSubmit = () => {
+  const roleOptions = [
+    {
+      text: 'Student',
+      value: 'student',
+      key: 0
+    },
+    {
+      text: 'Teacher',
+      value: 'teacher',
+      key: 1
+    },
+  ]
 
-  }
+  const handleSubmit = () => {};
 
   return (
     <>
@@ -47,14 +60,42 @@ const LoginForm = ({ user: { email, password }, handleChange, setIsLogin }) => {
               name: showPassword ? 'eye slash' : 'eye',
               circular: true,
               link: true,
-              onClick: () => setShowPassword(!showPassword)
+              onClick: () => setShowPassword(!showPassword),
             }}
             iconPosition="left"
             type={showPassword ? 'text' : 'password'}
           />
           <Divider />
+          <Form.Group widths="equal">
+            <Form.Input 
+              label="First Name"
+              required
+              placeholder="First"
+              value={firstName}
+              name="firstName"
+              onChange={handleChange}
+              type="text"
+            />
+            <Form.Input 
+              label="Last Name"
+              required
+              placeholder="Last"
+              value={lastName}
+              name="lastName"
+              onChange={handleChange}
+              type="text"
+            />
+          </Form.Group>
+          <Form.Group widths="equal">
+            <Form.Select 
+              options={roleOptions}
+              value={role}
+              onChange={handleChange}
+              name='role'
+            />
+          </Form.Group>
           <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <Button style={{ marginBottom: '1rem' }} content="Login" />
+            <Button style={{ marginBottom: '1rem' }} content="Register" />
           </div>
           <h5
             style={{
@@ -63,9 +104,9 @@ const LoginForm = ({ user: { email, password }, handleChange, setIsLogin }) => {
               margin: '0 auto',
               cursor: 'pointer',
             }}
-            onClick={() => setIsLogin(false)}
+            onClick={() => setIsLogin(true)}
           >
-            Need to make an account?
+            Already have an account?
           </h5>
         </Segment>
       </Form>
@@ -73,4 +114,4 @@ const LoginForm = ({ user: { email, password }, handleChange, setIsLogin }) => {
   );
 };
 
-export default LoginForm;
+export default RegisterForm;
