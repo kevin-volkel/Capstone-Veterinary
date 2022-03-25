@@ -10,6 +10,7 @@ const AnimalSchema = new Schema(
     },
     type: {
       type: String,
+      enum: ["dog", "cat"],
       required: [true, "Please enter an animal type..."],
     },
     breed: {
@@ -18,6 +19,7 @@ const AnimalSchema = new Schema(
     },
     gender: {
       type: String,
+      enum: ["male", "female"],
       required: [true, "Please enter the animal's gender"]
     },
     colors: {
@@ -35,10 +37,6 @@ const AnimalSchema = new Schema(
     },
     picURLs: [String],
     vidURLs: [String],
-    user: {
-      type: Schema.Types.ObjectId,
-      ref: "User",
-    },
     location: {
       type: String,
 			enum: ['northeast', 'northwest', 'southwest'],
