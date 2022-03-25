@@ -13,28 +13,39 @@ const login = ({}) => {
     classCode: '',
   });
 
-  const handleChange = (e) => {
+  const handleChange = (e, data) => {
     const { name, value } = e.target;
-    setUser((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+
+    if(!name) {
+      setUser((prev) => ({
+        ...prev,
+        'role': data.value
+      }))
+    } else {
+      setUser((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
+    }
   };
+
+  const width = '80vw'
 
   return (
     <>
-      <h1 style={{ textAlign: 'center' }}>{isLogin ? 'Login' : 'Register'}</h1>
       {isLogin ? (
         <LoginForm
           user={user}
           handleChange={handleChange}
           setIsLogin={setIsLogin}
+          width={width}
         />
       ) : (
         <RegisterForm
           user={user}
           handleChange={handleChange}
           setIsLogin={setIsLogin}
+          width={width}
         />
       )}
     </>

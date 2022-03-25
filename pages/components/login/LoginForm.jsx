@@ -1,21 +1,19 @@
 import React, { useState } from 'react';
 import { Form, Segment, Message, Divider, Button } from 'semantic-ui-react';
 
-const LoginForm = ({ user: { email, password }, handleChange, setIsLogin }) => {
+const LoginForm = ({ user: { email, password }, handleChange, setIsLogin, width }) => {
   const [formLoading, setFormLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleSubmit = () => {
-
-  }
+  const handleSubmit = () => {};
 
   return (
     <>
       <Form
         loading={formLoading}
         error={errorMsg !== null}
-        style={{ margin: '0 auto', width: '90vw' }}
+        style={{ margin: '0 auto', width }}
         onSubmit={handleSubmit}
       >
         <Message
@@ -25,6 +23,7 @@ const LoginForm = ({ user: { email, password }, handleChange, setIsLogin }) => {
           onDismiss={() => setErrorMsg(null)}
         />
         <Segment>
+          <h1> Login </h1>
           <Form.Input
             label="Email"
             required
@@ -47,14 +46,23 @@ const LoginForm = ({ user: { email, password }, handleChange, setIsLogin }) => {
               name: showPassword ? 'eye slash' : 'eye',
               circular: true,
               link: true,
-              onClick: () => setShowPassword(!showPassword)
+              onClick: () => setShowPassword(!showPassword),
             }}
             iconPosition="left"
             type={showPassword ? 'text' : 'password'}
           />
           <Divider />
           <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <Button style={{ marginBottom: '1rem' }} content="Login" />
+            <Button
+              style={{
+                marginBottom: '1rem',
+                padding: '10px',
+                fontSize: '1.4rem',
+              }}
+              content="Log In"
+              color="yellow"
+              fluid
+            />
           </div>
           <h5
             style={{

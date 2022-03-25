@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Form, Segment, Message, Divider, Button } from 'semantic-ui-react';
 
-const RegisterForm = ({ user, handleChange, setIsLogin }) => {
+const RegisterForm = ({ user, handleChange, setIsLogin, width }) => {
   const { firstName, lastName, email, password, role, classCode } = user;
+  const [teacherCode, setTeacherCode] = useState('');
 
   const [formLoading, setFormLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState(null);
@@ -12,14 +13,14 @@ const RegisterForm = ({ user, handleChange, setIsLogin }) => {
     {
       text: 'Student',
       value: 'student',
-      key: 0
+      key: 0,
     },
     {
       text: 'Teacher',
       value: 'teacher',
-      key: 1
+      key: 1,
     },
-  ]
+  ];
 
   const handleSubmit = () => {};
 
@@ -28,7 +29,7 @@ const RegisterForm = ({ user, handleChange, setIsLogin }) => {
       <Form
         loading={formLoading}
         error={errorMsg !== null}
-        style={{ margin: '0 auto', width: '90vw' }}
+        style={{ margin: '0 auto', width: width }}
         onSubmit={handleSubmit}
       >
         <Message
@@ -38,6 +39,7 @@ const RegisterForm = ({ user, handleChange, setIsLogin }) => {
           onDismiss={() => setErrorMsg(null)}
         />
         <Segment>
+          <h1> Register </h1>
           <Form.Input
             label="Email"
             required
@@ -65,9 +67,9 @@ const RegisterForm = ({ user, handleChange, setIsLogin }) => {
             iconPosition="left"
             type={showPassword ? 'text' : 'password'}
           />
-          <Divider />
+          <Divider hidden/>
           <Form.Group widths="equal">
-            <Form.Input 
+            <Form.Input
               label="First Name"
               required
               placeholder="First"
@@ -76,7 +78,7 @@ const RegisterForm = ({ user, handleChange, setIsLogin }) => {
               onChange={handleChange}
               type="text"
             />
-            <Form.Input 
+            <Form.Input
               label="Last Name"
               required
               placeholder="Last"
@@ -86,16 +88,50 @@ const RegisterForm = ({ user, handleChange, setIsLogin }) => {
               type="text"
             />
           </Form.Group>
+          <Divider hidden/>
           <Form.Group widths="equal">
-            <Form.Select 
+            <Form.Select
               options={roleOptions}
               value={role}
               onChange={handleChange}
-              name='role'
+              name="role"
+              label="Student or Teacher?"
             />
+            {role == 'teacher' ? (
+              <Form.Input
+                type="text"
+                label="Teacher Code"
+                name="teacherCode"
+                value={teacherCode}
+                onChange={(e) => {
+                  if (e.target.value.length > 6) return;
+                  setTeacherCode(e.target.value);
+                }}
+                placeholder="123456"
+              />
+            ) : <Form.Input 
+                type="text"
+                label="Class Code"
+                name='classCode'
+                value={classCode}
+                onChange={ (e) => {
+                  if (e.target.value.length > 6) return;
+                  handleChange(e)
+                }}
+                placeholder="123456"
+            />}
           </Form.Group>
           <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <Button style={{ marginBottom: '1rem' }} content="Register" />
+            <Button
+              style={{
+                marginBottom: '1rem',
+                padding: '10px',
+                fontSize: '1.4rem',
+              }}
+              content="Register"
+              color="yellow"
+              fluid
+            />
           </div>
           <h5
             style={{
