@@ -104,10 +104,10 @@ const RegisterForm = ({ user, handleChange, setIsLogin, width }) => {
                 name="teacherCode"
                 value={teacherCode}
                 onChange={(e) => {
-                  if (e.target.value.length > 6) return;
+                  if (e.target.value.length > 8) return;
                   setTeacherCode(e.target.value);
                 }}
-                placeholder="123456"
+                placeholder="12345678"
               />
             ) : <Form.Input 
                 type="text"

@@ -27,7 +27,7 @@ const postUserLogin = async (req, res) => {
       { expiresIn: '2d' },
       (err, token) => {
         if(err) throw err
-        res.status(200).json(token)
+        res.status(200).json({token})
       }
     )
   } catch (err) {
@@ -79,7 +79,7 @@ const createUser = async (req, res) => {
       { expiresIn: '2d' },
       (err, token) => {
         if(err) throw err
-        res.status(200).json(token)
+        res.status(200).json({token})
       }
     )
   } catch (err) {
