@@ -76,6 +76,7 @@ const getAllAnimals = async (req, res) => {
     res.status(200).json(animals);
   } catch (error) {
     res.status(500).send("Error at getAnimals");
+    console.log(error);
   }
 };
 
