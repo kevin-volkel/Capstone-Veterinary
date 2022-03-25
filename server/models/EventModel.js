@@ -2,18 +2,20 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const EventSchema = new Schema(
   {
+    user: { type: Schema.Types.ObjectId, ref: "User" },
     title: {
       type: String,
-      required: true,
+      required: [true, "must provided a title"],
     },
     desc: {
       type: String,
-      required: true,
+      required: [true, "must provided a description"],
     },
     date: {
       type: Date,
+      required: [true, "must provided the event's date"]
     },
-    purpose: {
+    type: {
       type: String,
     },
     featured: {
@@ -22,8 +24,8 @@ const EventSchema = new Schema(
     },
     location: {
       type: String,
+			required: [true, "Must provide a location"]
     },
-    user: { type: Schema.Types.ObjectId, ref: "User" },
   },
   { timestamps: true }
 );

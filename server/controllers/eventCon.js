@@ -1,21 +1,43 @@
 const EventModel = require("../models/EventModel");
+const UserModel = require("../models/UserModel");
 
-const getAllEvents = async (req, res) => {};
+const addEvent = async (req, res) => {
+  return res.status(200).send("addEvent")
+};
 
-const getEvent = async (req, res) => {};
+const getAllEvents = async (req, res) => {
+  return res.status(200).send("getAllEvents")
+};
 
-const deleteEvent = async (req, res) => {};
+const deleteAllEvents = async (req, res) => {
+  return res.status(200).send("deleteAllEvents")
+};
 
-const addEvent = async (req, res) => {};
+//! /:id
 
-const deleteAllEvents = async (req, res) => {};
+const getEvent = async (req, res) => {
+  return res.status(200).send("getEvent")
+};
 
-const getFeaturedEvents = async (req, res) => {};
+const deleteEvent = async (req, res) => {
+  return res.status(200).send("deleteEvent")
+};
+
+const editEvent = async (req, res) => {
+  return res.status(200).send("editEvent")
+}
+
+//! /featured
+
+const getFeaturedEvents = async (req, res) => {
+  return res.status(200).send("getFeaturedEvents")
+};
 
 module.exports = {
   getAllEvents,
   getEvent,
   deleteEvent,
+  editEvent,
   addEvent,
   deleteAllEvents,
   getFeaturedEvents,
