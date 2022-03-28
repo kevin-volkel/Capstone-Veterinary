@@ -36,14 +36,14 @@ app.use(fileUpload({ useTempFiles: true }))
 const userRoute = require('./server/routes/userRoute')
 const authRoute = require('./server/routes/authRoute')
 const animalRoute = require('./server/routes/animalRoute')
-const eventRoute = require('./server/routes/eventRoute')
-const uploadRoute = require('./server/routes/uploadPicRoute')
+const eventRoute = require('./server/routes/eventRoute');
+const uploadRoute = require('./server/routes/uploadRoutes')
 
-app.use('/api/v1/user', userRoute)
-app.use('/api/v1/auth', authMiddleware, authRoute)
-app.use('/api/v1/animal', authMiddleware, animalRoute)
-app.use('/api/v1/event', authMiddleware, eventRoute)
-app.use('/api/v1/upload', uploadRoute)
+app.use('/api/v1/user', userRoute);
+app.use('/api/v1/auth', authMiddleware, authRoute);
+app.use('/api/v1/animal', authMiddleware, animalRoute);
+app.use('/api/v1/event', authMiddleware, eventRoute);
+app.use('/api/v1/upload', uploadRoute);
 
 connectDB();
 
