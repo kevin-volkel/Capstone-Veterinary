@@ -9,6 +9,9 @@ import {
   Header,
   Icon,
 } from 'semantic-ui-react';
+import axios from 'axios';
+import { setToken } from '../../util/auth'
+import { classCodes } from '../../util/classCodes'
 
 const defaultProfilePic =
   'https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg';
@@ -26,7 +29,7 @@ const RegisterForm = ({ user, handleChange, setIsLogin, width, mediaPreview, med
 
   const [formLoading, setFormLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState(null);
-  const [showPassword, setshowPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const inputRef = useRef(null);
 
@@ -43,7 +46,52 @@ const RegisterForm = ({ user, handleChange, setIsLogin, width, mediaPreview, med
     },
   ];
 
-  const handleSubmit = () => {};
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setFormLoading(true)
+
+    let profilePicURL;
+
+    if(media !== null) {
+      const formData = new FormData();
+      formData.append('image', media, {
+        headers: {
+          "Content-Type": "multipart/form-data"
+        }
+      })
+      const res = await axios.post('/api/v1/upload', formData)
+      profilePicURL = res.data.src;
+    }
+
+    if(media !== null && !profilePicURL) {
+      setFormLoading(false)
+      return res.status(500).send('Image upload error')
+    }
+
+    if(media === null) {
+      profilePicURL = defaultProfilePic;
+    }
+
+    try {
+      const submittedClass = classCodes[classCode]
+      if(!submittedClass) return res.status(401).send('Invalid Class Code')
+
+      const res = await axios.post('/api/v1/user/signup', {
+        name: `${firstName} ${lastName}`,
+        email,
+        password,
+        role,
+        class: submittedClass,
+        profilePicURL
+      })
+
+      setToken(res.data.token)
+    } catch (err) {
+      console.log(err)
+    }
+
+    setFormLoading(false)
+  };
 
   return (
     <>

@@ -39,13 +39,13 @@ const UserSchema = new mongoose.Schema({
       required: [true, "Must include your campus"]
     },
     session: {
-      type: String,
-      enum: ['session 1', 'session 2'],
+      type: Number,
+      enum: [1, 2],
       //? wouldn't be required because of teachers. they teach both sessions
     },
     year: {
-      type: String,
-      enum: ['year 1', 'year 2'],
+      type: Number,
+      enum: [1, 2],
       required: [true, "Must include your year"]
     }
   },

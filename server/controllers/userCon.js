@@ -46,7 +46,8 @@ const createUser = async (req, res) => {
       campus,
       session,
       year
-    }
+    },
+    profilePicURL
   } = req.body;
 
   if(!isEmail(email)) return res.status(401).send('Invalid Email')
@@ -66,7 +67,8 @@ const createUser = async (req, res) => {
         campus,
         session,
         year
-      }
+      },
+      profilePicURL
     })
 
     user.password = await bcrypt.hash(password, 10)

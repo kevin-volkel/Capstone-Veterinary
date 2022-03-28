@@ -1,12 +1,29 @@
 import React, { useState } from 'react';
 import { Form, Segment, Message, Divider, Button } from 'semantic-ui-react';
+import { setToken } from '../../util/auth'
+import axios from 'axios'
 
-const LoginForm = ({ user: { email, password }, handleChange, setIsLogin, width }) => {
+const LoginForm = ({ user, handleChange, setIsLogin, width }) => {
   const [formLoading, setFormLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleSubmit = () => {};
+  const { email, password } = user;
+  
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setFormLoading(true)
+
+    try{
+      const res = await axios.post('/api/v1/user/login', {email, password})
+      setToken(res.data.token)
+    } catch (err) {
+      console.log(err)
+      setErrorMsg(err.message)
+    }
+
+    setFormLoading(false)
+  };
 
   return (
     <>
