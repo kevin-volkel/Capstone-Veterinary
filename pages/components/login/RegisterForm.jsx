@@ -1,13 +1,34 @@
-import React, { useState } from 'react';
-import { Form, Segment, Message, Divider, Button } from 'semantic-ui-react';
+import React, { useState, useRef } from 'react';
+import {
+  Form,
+  Segment,
+  Message,
+  Divider,
+  Button,
+  Image,
+  Header,
+  Icon,
+} from 'semantic-ui-react';
 
-const RegisterForm = ({ user, handleChange, setIsLogin, width }) => {
-  const { firstName, lastName, email, password, role, classCode } = user;
-  const [teacherCode, setTeacherCode] = useState('');
+const defaultProfilePic =
+  'https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg';
+
+const RegisterForm = ({ user, handleChange, setIsLogin, width, mediaPreview, media }) => {
+  const {
+    firstName,
+    lastName,
+    email,
+    password,
+    role,
+    classCode,
+    teacherCode,
+  } = user;
 
   const [formLoading, setFormLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState(null);
   const [showPassword, setshowPassword] = useState(false);
+
+  const inputRef = useRef(null);
 
   const roleOptions = [
     {
@@ -39,7 +60,55 @@ const RegisterForm = ({ user, handleChange, setIsLogin, width }) => {
           onDismiss={() => setErrorMsg(null)}
         />
         <Segment>
-          <h1> Register </h1>
+          <div
+            className="upload-image"
+            style={{ display: 'flex', justifyContent: 'space-between' }}
+          >
+            <h1> Register </h1>
+
+            <div
+              style={{
+                width: '70px',
+                height: '70px',
+                borderRadius: '35px',
+                position: 'absolute',
+                right: '15px',
+                top: '10px'
+              }}
+            >
+              <Image 
+                src={(mediaPreview === null) ? defaultProfilePic : mediaPreview} 
+                style={{ borderRadius: '50%', height: '70px', width: '70px' }}
+              />
+
+              <div className="edit">
+                <input
+                  style={{ display: 'none' }}
+                  type="file"
+                  accept="image/*"
+                  onChange={handleChange}
+                  name="media"
+                  ref={inputRef}
+                />
+                <Button
+                  onClick={(e) => inputRef.current.click()}
+                  style={{
+                    width: '25px',
+                    height: '25px',
+                    borderRadius: '50%',
+                    padding: '0',
+                    margin: '0',
+                    position: 'relative',
+                    bottom: '20px',
+                    left: '45px'
+                  }}
+                  // content={<Icon name="edit outline" />}
+                  icon="pencil"
+                  color="blue"
+                />
+              </div>
+            </div>
+          </div>
           <Form.Input
             label="Email"
             required
@@ -67,7 +136,7 @@ const RegisterForm = ({ user, handleChange, setIsLogin, width }) => {
             iconPosition="left"
             type={showPassword ? 'text' : 'password'}
           />
-          <Divider hidden/>
+          <Divider hidden />
           <Form.Group widths="equal">
             <Form.Input
               label="First Name"
@@ -88,7 +157,7 @@ const RegisterForm = ({ user, handleChange, setIsLogin, width }) => {
               type="text"
             />
           </Form.Group>
-          <Divider hidden/>
+          <Divider hidden />
           <Form.Group widths="equal">
             <Form.Select
               options={roleOptions}
@@ -103,23 +172,22 @@ const RegisterForm = ({ user, handleChange, setIsLogin, width }) => {
                 label="Teacher Code"
                 name="teacherCode"
                 value={teacherCode}
-                onChange={(e) => {
-                  if (e.target.value.length > 8) return;
-                  setTeacherCode(e.target.value);
-                }}
+                onChange={handleChange}
                 placeholder="12345678"
               />
-            ) : <Form.Input 
+            ) : (
+              <Form.Input
                 type="text"
                 label="Class Code"
-                name='classCode'
+                name="classCode"
                 value={classCode}
-                onChange={ (e) => {
+                onChange={(e) => {
                   if (e.target.value.length > 6) return;
-                  handleChange(e)
+                  handleChange(e);
                 }}
                 placeholder="123456"
-            />}
+              />
+            )}
           </Form.Group>
           <div style={{ display: 'flex', justifyContent: 'center' }}>
             <Button
