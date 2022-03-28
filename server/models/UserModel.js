@@ -49,6 +49,9 @@ const UserSchema = new mongoose.Schema({
       required: [true, "Must include your year"]
     }
   },
+  profilePicURL: {
+    type: String
+  }
 })
 
 
