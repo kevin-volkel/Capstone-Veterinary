@@ -11,16 +11,24 @@ const login = ({}) => {
     password: '',
     role: 'student',
     classCode: '',
-  });
+    teacherCode: '',
+    profilePicURL: '',
+  }); 
+
+  const [mediaPreview, setMediaPreview] = useState(null);
+  const [media, setMedia] = useState(null);
 
   const handleChange = (e, data) => {
-    const { name, value } = e.target;
+    const { name, value, files } = e.target;
 
-    if(!name) {
+    if (!name) {
       setUser((prev) => ({
         ...prev,
-        'role': data.value
-      }))
+        role: data.value,
+      }));
+    } else if (name == 'media' && files.length) {
+      setMedia(() => files[0]);
+      setMediaPreview(() => URL.createObjectURL(files[0]));
     } else {
       setUser((prev) => ({
         ...prev,
@@ -29,7 +37,7 @@ const login = ({}) => {
     }
   };
 
-  const width = '80vw'
+  const width = '80vw';
 
   return (
     <>
@@ -46,6 +54,8 @@ const login = ({}) => {
           handleChange={handleChange}
           setIsLogin={setIsLogin}
           width={width}
+          media={media}
+          mediaPreview={mediaPreview}
         />
       )}
     </>

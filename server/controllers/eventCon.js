@@ -2,66 +2,79 @@ const EventModel = require("../models/EventModel");
 const UserModel = require("../models/UserModel");
 
 const addEvent = async (req, res) => {
+  const { userId } = req.user;
+  const { title, desc, date, type, featured, location } = req.body;
+
   try {
-    const {user, desc, date, type, featured, location,} = req.body;
+    const newEvent = {
+      title,
+      desc,
+      date,
+      location,
+      user: userId,
+    };
+    if (type) newEvent.type = type;
+    if (featured) newEvent.featured = featured;
 
-    
+    const event = await new EventModel(newEvent).save();
+    const eventCreated = await EventModel.findOne(event._id).populate("user");
 
-
+    return res.status(200).json(eventCreated);
   } catch (error) {
     console.log(error);
-    res.status(500).send("error at addEvent")
+    res.status(500).send("error at addEvent");
   }
 };
 
 const getAllEvents = async (req, res) => {
   try {
-    const events = await EventModel.find("")
+    const events = await EventModel.find()
+      .sort({ createdAt: -1 })
+      .populate("user");
 
-    if(!events) res.status(403).send("No events found...")
+    if (!events.length) return res.status(404).send("No events found...");
 
-    res.status(200).json(events);
-
+    return res.status(200).json(events);
   } catch (error) {
     console.log(error);
-    res.status(500).send("error at getAllEvents")
+    res.status(500).send("error at getAllEvents");
   }
 };
 
 const deleteAllEvents = async (req, res) => {
   try {
-    await EventModel.find("").remove(); //? not sure if this will work but dont have a way of testing rn
+    await EventModel.deleteMany();
 
+    return res.status(200).send("all events removed");
   } catch (error) {
     console.log(error);
-    res.status(500).send("error at deleteAllEvents")
+    res.status(500).send("error at deleteAllEvents");
   }
 };
 
 //! /:id
 
 const getEvent = async (req, res) => {
+  const { id: eventId } = req.params;
   try {
-    const { id } = req.params;
+    const event = await EventModel.findById(eventId).populate("user");
 
-    const event = await EventModel.findById(id);
-
-    if(!event) res.status(403).send("event not found");
+    if (!event) res.status(404).send("event not found");
 
     res.status(200).json(event);
   } catch (error) {
     console.log(error);
-    res.status(500).send("error at getEvent")
+    res.status(500).send("error at getEvent");
   }
 };
 
 const deleteEvent = async (req, res) => {
   try {
     const userId = req.user.userId;
-    const {id: eventId} = req.params
+    const { id: eventId } = req.params;
 
     const event = await EventModel.findById(eventId);
-    if (!event) res.status(403).send("event not found");
+    if (!event) res.status(404).send("event not found");
 
     const user = await UserModel.findById(userId);
 
@@ -74,33 +87,47 @@ const deleteEvent = async (req, res) => {
       }
     }
     await event.remove();
+    return res.status(200).send("event succesfully removed");
   } catch (error) {
     console.log(error);
-    res.status(500).send("error at deleteEvent")
+    res.status(500).send("error at deleteEvent");
   }
 };
 
 const editEvent = async (req, res) => {
+  const { userId } = req.user;
+  const { id: eventId } = req.params;
+
   try {
-    
+    const event = await EventModel.findByIdAndUpdate(
+      { _id: eventId, createdBy: userId },
+      req.body,
+      { new: true, runValidators: true }
+    ).populate("user");
+
+    if (!event) return res.status(404).send("event not found");
+
+    return res.status(200).json(event);
   } catch (error) {
     console.log(error);
-    res.status(500).send("error at editEvent")
+    res.status(500).send("error at editEvent");
   }
-}
+};
 
 //! /featured
 
 const getFeaturedEvents = async (req, res) => {
   try {
-    const featuredEvents = await EventModel.find({ featured: true });
+    const featuredEvents = await EventModel.find({ featured: true })
+      .sort({ date: 1 }) //? sooner events to later events
+      .populate("user");
 
-    if(!featuredEvents) res.status(403).send("No featured events found...");
+    if (!featuredEvents.length) return res.status(403).send("No featured events found...");
 
-    res.status(200).json(featuredEvents);
+    return res.status(200).json(featuredEvents);
   } catch (error) {
     console.log(error);
-    res.status(500).send("error at getFeaturedEvents")
+    res.status(500).send("error at getFeaturedEvents");
   }
 };
 

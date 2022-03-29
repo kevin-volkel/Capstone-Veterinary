@@ -15,7 +15,7 @@ const UserSchema = new mongoose.Schema({
     required: [true, 'Must include an email'],
     validate: {
       validator: (v) => {
-        /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g.test(v)
+        /^[a-z0-9](\.?[a-z0-9]){3,}@west-mec\.(edu|org)$/gi.test(v);
       },
       error: 'Invalid email'
     }
@@ -39,16 +39,19 @@ const UserSchema = new mongoose.Schema({
       required: [true, "Must include your campus"]
     },
     session: {
-      type: String,
-      enum: ['session 1', 'session 2'],
+      type: Number,
+      enum: [1, 2],
       //? wouldn't be required because of teachers. they teach both sessions
     },
     year: {
-      type: String,
-      enum: ['year 1', 'year 2'],
+      type: Number,
+      enum: [1, 2],
       required: [true, "Must include your year"]
     }
   },
+  profilePicURL: {
+    type: String
+  }
 })
 
 

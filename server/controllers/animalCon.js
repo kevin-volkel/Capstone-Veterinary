@@ -74,7 +74,7 @@ const getAllAnimals = async (req, res) => {
         .populate("user");
     }
 
-    res.status(200).json(animals);
+    return res.status(200).json(animals);
   } catch (error) {
     console.log(error);
     res.status(500).send("Error at getAnimals");
@@ -90,7 +90,7 @@ const getAnimal = async (req, res) => {
   try {
     const animal = await AnimalModel.findById(animalId).populate("user");
 
-    if (!animal) res.status(403).send("animal not found");
+    if (!animal) return res.status(404).send("animal not found");
 
     return res.status(200).json(animal);
   } catch (error) {
@@ -106,7 +106,7 @@ const deleteAnimal = async (req, res) => {
     const {id: animalId} = req.body
 
     const animal = await AnimalModel.findById(animalId);
-    if (!animal) res.status(403).send("animal not found");
+    if (!animal) return res.status(404).send("animal not found");
 
     const user = await UserModel.findById(userId);
 
@@ -136,7 +136,7 @@ const editAnimal = async (req, res) => {
       { _id: animalId, createdBy: userId },
       req.body,
       { new: true, runValidators: true }
-    );
+    ).populate("user");
   
     if(!animal) return res.status(404).send("animal not found");
 

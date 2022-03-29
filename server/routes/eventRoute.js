@@ -12,8 +12,8 @@ const {
 
 router.route("/").get(getAllEvents).post(addEvent).delete(deleteAllEvents);
 
-router.route("/:id").get(getEvent).delete(deleteEvent).put(editEvent)
-
 router.route("/featured").get(getFeaturedEvents);
+
+router.route("/:id").get(getEvent).delete(deleteEvent).put(editEvent)
 
 module.exports = router;
