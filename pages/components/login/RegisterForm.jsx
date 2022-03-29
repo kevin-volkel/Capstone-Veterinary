@@ -10,22 +10,25 @@ import {
   Icon,
 } from 'semantic-ui-react';
 import axios from 'axios';
-import { setToken } from '../../util/auth'
-import { classCodes } from '../../util/classCodes'
+import { setToken } from '../../util/auth';
+import { classCodes, teacherCodes } from '../../util/classCodes';
+import catchErrors from '../../util/catchErrors';
+import { passwordReg, emailReg } from '../../util/regi';
+import isEmail from 'validator/lib/isEmail';
 
-const defaultProfilePic =
-  'https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg';
+const RegisterForm = ({
+  user,
+  handleChange,
+  setIsLogin,
+  width,
+  mediaPreview,
+  media,
+}) => {
+  const { firstName, lastName, email, password, role, classCode, teacherCode } =
+    user;
 
-const RegisterForm = ({ user, handleChange, setIsLogin, width, mediaPreview, media }) => {
-  const {
-    firstName,
-    lastName,
-    email,
-    password,
-    role,
-    classCode,
-    teacherCode,
-  } = user;
+  const defaultProfilePic =
+    'https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg';
 
   const [formLoading, setFormLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState(null);
@@ -46,35 +49,56 @@ const RegisterForm = ({ user, handleChange, setIsLogin, width, mediaPreview, med
     },
   ];
 
+  const testEmail = () => {
+    return new Promise( function(myResolve, myReject) {
+    if(emailReg.test(email)) myResolve(true)
+    else myReject(false)}).then( (value) => {return value}, (reason) => {return reason})
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setFormLoading(true)
+    setFormLoading(true);
 
     let profilePicURL;
 
-    if(media !== null) {
-      const formData = new FormData();
-      formData.append('image', media, {
-        headers: {
-          "Content-Type": "multipart/form-data"
-        }
-      })
-      const res = await axios.post('/api/v1/upload', formData)
-      profilePicURL = res.data.src;
-    }
-
-    if(media !== null && !profilePicURL) {
-      setFormLoading(false)
-      return res.status(500).send('Image upload error')
-    }
-
-    if(media === null) {
-      profilePicURL = defaultProfilePic;
-    }
-
     try {
-      const submittedClass = classCodes[classCode]
-      if(!submittedClass) return res.status(401).send('Invalid Class Code')
+      let isValidEmail = await testEmail();
+      console.log(isValidEmail)
+      if (!isValidEmail) {
+        console.log(email)
+        throw new Error('Invaid Email');
+      }
+
+      let isValidPassword = passwordReg.test(password);
+      if (!isValidPassword || !passwordReg.test(password)) {
+        console.log(password)
+        throw new Error(
+          'Password should be at least 8 characters and include 1 number or special character'
+        );
+      }
+      if (media !== null) {
+        const formData = new FormData();
+        formData.append('image', media, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        });
+        const res = await axios.post('/api/v1/upload', formData);
+        profilePicURL = res.data.src;
+      } else {
+        profilePicURL = defaultProfilePic;
+      }
+
+      if (media !== null && !profilePicURL) throw new Error('Cloudinary Error');
+
+      let submittedClass = null;
+      if (role === 'teacher') {
+        submittedClass = teacherCodes[teacherCode];
+      } else {
+        submittedClass = classCodes[classCode];
+      }
+
+      if (!submittedClass) throw new Error('Invalid class code');
 
       const res = await axios.post('/api/v1/user/signup', {
         name: `${firstName} ${lastName}`,
@@ -82,15 +106,17 @@ const RegisterForm = ({ user, handleChange, setIsLogin, width, mediaPreview, med
         password,
         role,
         class: submittedClass,
-        profilePicURL
-      })
+        profilePicURL,
+      });
 
-      setToken(res.data.token)
+      setToken(res.data.token);
     } catch (err) {
       console.log(err)
+      let caughtErr = catchErrors(err);
+      setErrorMsg(caughtErr);
     }
 
-    setFormLoading(false)
+    setFormLoading(false);
   };
 
   return (
@@ -121,11 +147,11 @@ const RegisterForm = ({ user, handleChange, setIsLogin, width, mediaPreview, med
                 borderRadius: '35px',
                 position: 'absolute',
                 right: '15px',
-                top: '10px'
+                top: '10px',
               }}
             >
-              <Image 
-                src={(mediaPreview === null) ? defaultProfilePic : mediaPreview} 
+              <Image
+                src={mediaPreview === null ? defaultProfilePic : mediaPreview}
                 style={{ borderRadius: '50%', height: '70px', width: '70px' }}
               />
 
@@ -148,7 +174,7 @@ const RegisterForm = ({ user, handleChange, setIsLogin, width, mediaPreview, med
                     margin: '0',
                     position: 'relative',
                     bottom: '20px',
-                    left: '45px'
+                    left: '45px',
                   }}
                   // content={<Icon name="edit outline" />}
                   icon="pencil"
@@ -220,7 +246,10 @@ const RegisterForm = ({ user, handleChange, setIsLogin, width, mediaPreview, med
                 label="Teacher Code"
                 name="teacherCode"
                 value={teacherCode}
-                onChange={handleChange}
+                onChange={(e) => {
+                  if (e.target.value.length > 8) return;
+                  handleChange(e);
+                }}
                 placeholder="12345678"
               />
             ) : (
@@ -243,9 +272,10 @@ const RegisterForm = ({ user, handleChange, setIsLogin, width, mediaPreview, med
                 marginBottom: '1rem',
                 padding: '10px',
                 fontSize: '1.4rem',
+                color: 'white',
+                background: '#F7931D',
               }}
               content="Register"
-              color="yellow"
               fluid
             />
           </div>

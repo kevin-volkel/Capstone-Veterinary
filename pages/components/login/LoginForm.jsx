@@ -75,9 +75,10 @@ const LoginForm = ({ user, handleChange, setIsLogin, width }) => {
                 marginBottom: '1rem',
                 padding: '10px',
                 fontSize: '1.4rem',
+                color: 'white',
+                background: '#F7931D'
               }}
               content="Log In"
-              color="yellow"
               fluid
             />
           </div>

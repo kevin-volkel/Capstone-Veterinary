@@ -1,21 +1,3 @@
-// export const classCodes = {
-//     northwest: {
-//         y1s1: 495119,
-//         y1s2: 336072, 
-//         y2: 809365
-//     },
-
-//     southwest: {
-//         y1: 998669,
-//         y2: 227460
-//     },
-
-//     northeast: {
-//         y1: 601177,
-//         y2: 399214
-//     }
-// }
-
 export const classCodes = {
   495119: {
     campus: 'northwest',
@@ -47,6 +29,16 @@ export const classCodes = {
     campus: 'northeast',
     year: 2
   },
-  
+}
 
+export const teacherCodes = {
+  74396793: {
+    campus: 'northwest'
+  },
+  14750323: {
+    campus: 'northeast'
+  },
+  46485971: {
+    campus: 'southwest'
+  }
 }

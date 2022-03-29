@@ -3,7 +3,7 @@ import LoginForm from './components/login/LoginForm';
 import RegisterForm from './components/login/RegisterForm';
 
 const login = ({}) => {
-  const [isLogin, setIsLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(true);
   const [user, setUser] = useState({
     firstName: '',
     lastName: '',

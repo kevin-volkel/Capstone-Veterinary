@@ -15,7 +15,7 @@ const UserSchema = new mongoose.Schema({
     required: [true, 'Must include an email'],
     validate: {
       validator: (v) => {
-        /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g.test(v)
+        /^[a-z0-9](\.?[a-z0-9]){3,}@west-mec\.(edu|org)$/gi.test(v);
       },
       error: 'Invalid email'
     }
