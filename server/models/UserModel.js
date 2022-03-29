@@ -26,26 +26,29 @@ const UserSchema = new mongoose.Schema({
     minLength: [8, 'Password must be at least 8 characters'],
     validate: {
       validator: (v) => {
-        return /(?=^.{8,}$)(?=.*\d)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/g.test(v)
+        return /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/g.test(v)
       },
       error: 'Password not strong enough'
     },
     select: false
   },
   class: {
-    type: {
-      campus: {
-        type: String
-      },
-      session: {
-        type: String
-      },
-      year: {
-        type: Number
-      },
+    campus: {
+      type: String,
+      enum: ['northeast', 'northwest', 'southwest'],
+      required: [true, "Must include your campus"]
     },
-    required: [true, "Must include your class"]
-  }
+    session: {
+      type: String,
+      enum: ['session 1', 'session 2'],
+      //? wouldn't be required because of teachers. they teach both sessions
+    },
+    year: {
+      type: String,
+      enum: ['year 1', 'year 2'],
+      required: [true, "Must include your year"]
+    }
+  },
 })
 
 

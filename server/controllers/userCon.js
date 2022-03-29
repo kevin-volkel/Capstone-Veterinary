@@ -1,4 +1,4 @@
-const passwordReg = /(?=^.{8,}$)(?=.*\d)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/g
+const passwordReg = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/g
 const UserModel = require('../models/UserModel')
 
 const jwt = require('jsonwebtoken')
@@ -9,7 +9,7 @@ const postUserLogin = async (req, res) => {
   const { email, password } = req.body;
 
   if(!isEmail(email)) return res.status(401).send('Invalid email')
-  if(!passwordReg.test(password)) return res.status(401).send('Invalid password')
+  if(!passwordReg.test(password)) return res.status(401).send("Invalid password")
   try{
     const user = await UserModel
       .findOne({email: email.toLowerCase()})
@@ -27,7 +27,7 @@ const postUserLogin = async (req, res) => {
       { expiresIn: '2d' },
       (err, token) => {
         if(err) throw err
-        res.status(200).json(token)
+        res.status(200).json({token})
       }
     )
   } catch (err) {
@@ -37,18 +37,20 @@ const postUserLogin = async (req, res) => {
 }
 
 const createUser = async (req, res) => {
-
   const {
     name,
     email,
     role,
     password,
-    campus,
-    session,
-    year
+    class : {
+      campus,
+      session,
+      year
+    }
   } = req.body;
 
-  if(!isEmail(email)) return res.status(401).send('Email already in use')
+  if(!isEmail(email)) return res.status(401).send('Invalid Email')
+  if(!passwordReg.test(password)) return res.status(401).send('Password must have eight characters including one uppercase letter, one lowercase letter, and one number or special character.')
   
   try {
     let user;
@@ -57,7 +59,7 @@ const createUser = async (req, res) => {
 
     user = new UserModel({
       name,
-      email,
+      email: email.toLowerCase(),
       role,
       password,
       class: {
@@ -77,7 +79,7 @@ const createUser = async (req, res) => {
       { expiresIn: '2d' },
       (err, token) => {
         if(err) throw err
-        res.status(200).json(token)
+        res.status(200).json({token})
       }
     )
   } catch (err) {

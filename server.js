@@ -27,7 +27,7 @@ const nextApp = next({ dev });
 const handler = nextApp.getRequestHandler();
 
 //! Middlewares
-// const { authMiddleware } = require('./server/middleware/auth')
+const { authMiddleware } = require('./server/middleware/auth')
 
 app.use(express.json())
 app.use(fileUpload({ useTempFiles: true }))
@@ -35,11 +35,13 @@ app.use(fileUpload({ useTempFiles: true }))
 //! ROUTERS
 const userRoute = require('./server/routes/userRoute')
 const authRoute = require('./server/routes/authRoute')
+const animalRoute = require('./server/routes/animalRoute')
+const eventRoute = require('./server/routes/eventRoute');
 
 app.use('/api/v1/user', userRoute)
-app.use('/api/v1/auth', authRoute)
-
-
+app.use('/api/v1/auth', authMiddleware, authRoute)
+app.use('/api/v1/animal', authMiddleware, animalRoute)
+app.use('/api/v1/event', authMiddleware, eventRoute)
 
 connectDB();
 

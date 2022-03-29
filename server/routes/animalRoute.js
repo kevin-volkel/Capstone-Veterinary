@@ -1,14 +1,15 @@
-const router = require('next/router')
-const {getAnimal, getAnimals, addAnimal, deleteAnimal, editAnimal} = require('../controllers/animalCon')
-const authMiddleware = require('../middleware/auth')
+const router = require("express").Router();
 
-router.route('/')
-    .get(getAnimals)
-    .post(authMiddleware, addAnimal)
+const {
+  getAnimal,
+  getAllAnimals,
+  addAnimal,
+  deleteAnimal,
+  editAnimal,
+} = require("../controllers/animalCon");
 
-router.route('/:id')
-    .get(authMiddleware, getAnimal)
-    .delete(authMiddleware, deleteAnimal)
-    .put(authMiddleware, editAnimal)
+router.route("/").get(getAllAnimals).post(addAnimal);
 
-module.exports = router
+router.route("/:id").get(getAnimal).delete(deleteAnimal).put(editAnimal);
+
+module.exports = router;

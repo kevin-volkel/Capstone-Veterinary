@@ -1,66 +1,49 @@
-const mongoose = require('mongoose')
-const Schema = new mongoose.Schema;
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-const AnimalSchema = new Schema({
+const AnimalSchema = new Schema(
+  {
+    user: {type: Schema.Types.ObjectId, ref: "User"},
     name: {
-        type: String,
-        required: [true, "Please enter an animal name..."],
+      type: String,
+      required: [true, "Please enter an animal name..."],
     },
-
     type: {
-        type: String,
-        required: [true, "Please enter an animal type..."]
+      type: String,
+      enum: ["dog", "cat"],
+      required: [true, "Please enter an animal type..."],
     },
-
     breed: {
-        type: String,
-        default: "Unspecified"
+      type: String,
+      default: "Unspecified",
     },
-
+    gender: {
+      type: String,
+      enum: ["male", "female"],
+      required: [true, "Please enter the animal's gender"]
+    },
     colors: {
-        type: String
+      type: String,
     },
-
-    needs: {
-        type: [String], 
-        default: ["Food", "PLUS THIS TEST THING OOGA BOOGA"]
+    needs: [String], //! idk if theres a way to make arrays required or give them defaults but if someone does know pls update these
+    details: [String],
+    desc: {
+      type: String,
     },
-
-    details: {
-        type: [String], //* STRINGS
+    vaccs: [String],
+    neutered: { //! spade is only for female animals. i think neutered is more gender neutral
+      type: Boolean,
+      require: [true, "Must answer if the animal is neutered"],
     },
-
-    description: {
-        type: String,
-    },
-
-    vaccinations: {
-        type: [String], 
-        default: []
-    },
-
-    spade: {
-        type: Boolean,
-    },
-
-    pictures: {
-        type: [String], //* URLS
-    },
-
-    videos: {
-        type: [String], //* URLS
-    },
-
-    user: {
-        type: Schema.Types.ObjectId,
-        ref: "User",
-    },
-
+    picURLs: [String],
+    vidURLs: [String],
     location: {
-        type: String,
-    }
-},
-{ timestamps: true }
-)
+      type: String,
+			enum: ['northeast', 'northwest', 'southwest'],
+			required: [true, "Must provide a location"]
+    },
+  },
+  { timestamps: true }
+);
 
-module.exports = mongoose.model("Animal", AnimalSchema)
+module.exports = mongoose.models.Animal || mongoose.model("Animal", AnimalSchema);
