@@ -1,4 +1,4 @@
-const passwordReg = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/g
+const passwordReg = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/g;
 const UserModel = require('../models/UserModel')
 
 const jwt = require('jsonwebtoken')
@@ -42,12 +42,12 @@ const createUser = async (req, res) => {
     email,
     role,
     password,
-    class : {
+    class: {
       campus,
       session,
       year
     },
-    profilePicURL
+    profilePicURL,
   } = req.body;
 
   if(!isEmail(email)) return res.status(401).send('Invalid Email')
@@ -64,12 +64,13 @@ const createUser = async (req, res) => {
       role,
       password,
       class: {
-        campus,
-        session,
-        year
+        campus
       },
       profilePicURL
     })
+
+    if(session) user.class.session = session;
+    if(year) user.class.year = year;
 
     user.password = await bcrypt.hash(password, 10)
     user = await user.save();
