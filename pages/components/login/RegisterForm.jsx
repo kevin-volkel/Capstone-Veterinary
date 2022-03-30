@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import {
   Form,
   Segment,
@@ -34,8 +34,6 @@ const RegisterForm = ({
   const [formLoading, setFormLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
-
-  const inputRef = useRef(null);
 
   const roleOptions = [
     {
@@ -82,7 +80,7 @@ const RegisterForm = ({
       if (!submittedClass) throw new Error('Invalid class code');
 
       const res = await axios.post('/api/v1/user/signup', {
-        name: `${firstName} ${lastName}`,
+        name: `${firstName.trim()} ${lastName.trim()}`,
         email,
         password,
         role,
@@ -125,7 +123,6 @@ const RegisterForm = ({
               mediaPreview={mediaPreview}
               defaultProfilePic={defaultProfilePic}
               handleChange={handleChange}
-              inputRef={inputRef}
             />
           </div>
           <Form.Input

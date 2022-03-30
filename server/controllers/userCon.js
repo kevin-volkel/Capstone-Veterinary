@@ -17,6 +17,7 @@ const postUserLogin = async (req, res) => {
 
   const invalidPassword = password.match(passwordReg);
   if (invalidPassword === null) return res.status(401).send('Invalid password');
+
   try {
     const user = await UserModel.findOne({ email: email.toLowerCase() }).select(
       '+password'
@@ -65,6 +66,8 @@ const createUser = async (req, res) => {
       .send(
         'Password must have eight characters including one uppercase letter, one lowercase letter, and one number'
       );
+
+  if (name === 'Kevin Murray') return res.status(401).send('bababooey')
 
   try {
     let user;

@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Image, Button } from 'semantic-ui-react'
 
 
-const PhotoUpload = ({ mediaPreview, defaultProfilePic, handleChange, inputRef}) => {
+const PhotoUpload = ({ mediaPreview, defaultProfilePic, handleChange}) => {
+
+  const inputRef = useRef(null);
+
   return (
     <div
       style={{
@@ -39,6 +42,7 @@ const PhotoUpload = ({ mediaPreview, defaultProfilePic, handleChange, inputRef})
             position: 'relative',
             bottom: '20px',
             left: '45px',
+            cursor: 'pointer'
           }}
           // content={<Icon name="edit outline" />}
           icon="pencil"
