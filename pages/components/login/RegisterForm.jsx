@@ -90,7 +90,7 @@ const RegisterForm = ({
 
       setToken(res.data.token);
     } catch (err) {
-      console.log(err)
+      console.log(err);
       let caughtErr = catchErrors(err);
       setErrorMsg(caughtErr);
     }
@@ -119,7 +119,7 @@ const RegisterForm = ({
           >
             <h1> Register </h1>
 
-            <PhotoUpload 
+            <PhotoUpload
               mediaPreview={mediaPreview}
               defaultProfilePic={defaultProfilePic}
               handleChange={handleChange}

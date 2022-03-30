@@ -1,4 +1,4 @@
-import 'semantic-ui-css/semantic.min.css'
+import 'semantic-ui-css/semantic.min.css';
 import '../styles/globals.css';
 import React, { useEffect, useState } from 'react';
 import { destroyCookie, parseCookies } from 'nookies';
@@ -7,7 +7,7 @@ import axios from 'axios';
 import Layout from './components/layout/Layout';
 
 function MyApp({ Component, pageProps }) {
-
+  
   return (
     <Layout user={pageProps.user}>
       <Component {...pageProps} />
@@ -30,7 +30,7 @@ MyApp.getInitialProps = async ({ ctx, Component }) => {
   if (!token) {
     isProtectedRoute && redirectUser(ctx, '/login');
   } else if (ctx.pathname === '/login') {
-    // redirectUser(ctx, '/')
+    redirectUser(ctx, '/');
   } else {
     if (Component.getInitialProps) {
       pageProps = await Component.getInitialProps(ctx);

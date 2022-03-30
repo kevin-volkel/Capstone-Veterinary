@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import LoginForm from './components/login/LoginForm';
 import RegisterForm from './components/login/RegisterForm';
 
@@ -14,6 +14,8 @@ const login = ({}) => {
     teacherCode: '',
     profilePicURL: '',
   }); 
+
+  
 
   const [mediaPreview, setMediaPreview] = useState(null);
   const [media, setMedia] = useState(null);
