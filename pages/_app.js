@@ -1,13 +1,13 @@
-import 'semantic-ui-css/semantic.min.css'
+import 'semantic-ui-css/semantic.min.css';
 import '../styles/globals.css';
 import React, { useEffect, useState } from 'react';
-import { destoryCookie, parseCookies } from 'nookies';
+import { destroyCookie, parseCookies } from 'nookies';
 import { redirectUser, baseURL } from './util/auth';
 import axios from 'axios';
 import Layout from './components/layout/Layout';
 
 function MyApp({ Component, pageProps }) {
-
+  
   return (
     <Layout user={pageProps.user}>
       <Component {...pageProps} />
@@ -19,6 +19,10 @@ MyApp.getInitialProps = async ({ ctx, Component }) => {
   const { token } = parseCookies(ctx);
   let pageProps = {};
 
+  if (Component.getInitialProps) {
+    pageProps = await Component.getInitialProps(ctx);
+  }
+
   const protectedRoutes = ['/admin'];
 
   const isProtectedRoute = protectedRoutes.includes(ctx.pathname);
@@ -26,7 +30,7 @@ MyApp.getInitialProps = async ({ ctx, Component }) => {
   if (!token) {
     isProtectedRoute && redirectUser(ctx, '/login');
   } else if (ctx.pathname === '/login') {
-    redirectUser(ctx, '/')
+    redirectUser(ctx, '/');
   } else {
     if (Component.getInitialProps) {
       pageProps = await Component.getInitialProps(ctx);
@@ -43,7 +47,7 @@ MyApp.getInitialProps = async ({ ctx, Component }) => {
       pageProps.user = user;
     } catch (err) {
       console.log(err);
-      destoryCookie(ctx, 'token');
+      destroyCookie(ctx, 'token');
       redirectUser(ctx, '/');
     }
   }

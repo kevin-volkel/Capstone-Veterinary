@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import {
   Form,
   Segment,
@@ -13,8 +13,9 @@ import axios from 'axios';
 import { setToken } from '../../util/auth';
 import { classCodes, teacherCodes } from '../../util/classCodes';
 import catchErrors from '../../util/catchErrors';
-import { passwordReg, emailReg } from '../../util/regi';
-import isEmail from 'validator/lib/isEmail';
+import PhotoUpload from '../layout/PhotoUpload';
+// import { passwordReg, emailReg } from '../../util/regi';
+// import isEmail from 'validator/lib/isEmail';
 
 const RegisterForm = ({
   user,
@@ -34,8 +35,6 @@ const RegisterForm = ({
   const [errorMsg, setErrorMsg] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
 
-  const inputRef = useRef(null);
-
   const roleOptions = [
     {
       text: 'Student',
@@ -49,12 +48,6 @@ const RegisterForm = ({
     },
   ];
 
-  const testEmail = () => {
-    return new Promise( function(myResolve, myReject) {
-    if(emailReg.test(email)) myResolve(true)
-    else myReject(false)}).then( (value) => {return value}, (reason) => {return reason})
-  }
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setFormLoading(true);
@@ -62,20 +55,6 @@ const RegisterForm = ({
     let profilePicURL;
 
     try {
-      let isValidEmail = await testEmail();
-      console.log(isValidEmail)
-      if (!isValidEmail) {
-        console.log(email)
-        throw new Error('Invaid Email');
-      }
-
-      let isValidPassword = passwordReg.test(password);
-      if (!isValidPassword || !passwordReg.test(password)) {
-        console.log(password)
-        throw new Error(
-          'Password should be at least 8 characters and include 1 number or special character'
-        );
-      }
       if (media !== null) {
         const formData = new FormData();
         formData.append('image', media, {
@@ -101,7 +80,7 @@ const RegisterForm = ({
       if (!submittedClass) throw new Error('Invalid class code');
 
       const res = await axios.post('/api/v1/user/signup', {
-        name: `${firstName} ${lastName}`,
+        name: `${firstName.trim()} ${lastName.trim()}`,
         email,
         password,
         role,
@@ -111,7 +90,7 @@ const RegisterForm = ({
 
       setToken(res.data.token);
     } catch (err) {
-      console.log(err)
+      console.log(err);
       let caughtErr = catchErrors(err);
       setErrorMsg(caughtErr);
     }
@@ -140,48 +119,11 @@ const RegisterForm = ({
           >
             <h1> Register </h1>
 
-            <div
-              style={{
-                width: '70px',
-                height: '70px',
-                borderRadius: '35px',
-                position: 'absolute',
-                right: '15px',
-                top: '10px',
-              }}
-            >
-              <Image
-                src={mediaPreview === null ? defaultProfilePic : mediaPreview}
-                style={{ borderRadius: '50%', height: '70px', width: '70px' }}
-              />
-
-              <div className="edit">
-                <input
-                  style={{ display: 'none' }}
-                  type="file"
-                  accept="image/*"
-                  onChange={handleChange}
-                  name="media"
-                  ref={inputRef}
-                />
-                <Button
-                  onClick={(e) => inputRef.current.click()}
-                  style={{
-                    width: '25px',
-                    height: '25px',
-                    borderRadius: '50%',
-                    padding: '0',
-                    margin: '0',
-                    position: 'relative',
-                    bottom: '20px',
-                    left: '45px',
-                  }}
-                  // content={<Icon name="edit outline" />}
-                  icon="pencil"
-                  color="blue"
-                />
-              </div>
-            </div>
+            <PhotoUpload
+              mediaPreview={mediaPreview}
+              defaultProfilePic={defaultProfilePic}
+              handleChange={handleChange}
+            />
           </div>
           <Form.Input
             label="Email"

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Form, Segment, Message, Divider, Button } from 'semantic-ui-react';
 import { setToken } from '../../util/auth'
 import axios from 'axios'
+import catchErrors from '../../util/catchErrors';
 
 const LoginForm = ({ user, handleChange, setIsLogin, width }) => {
   const [formLoading, setFormLoading] = useState(false);
@@ -19,7 +20,8 @@ const LoginForm = ({ user, handleChange, setIsLogin, width }) => {
       setToken(res.data.token)
     } catch (err) {
       console.log(err)
-      setErrorMsg(err.message)
+      const caughtError = catchErrors(err)
+      setErrorMsg(caughtError)
     }
 
     setFormLoading(false)
