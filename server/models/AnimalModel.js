@@ -8,6 +8,10 @@ const AnimalSchema = new Schema(
       type: String,
       required: [true, "Please enter an animal name..."],
     },
+    age: {
+      type: String,
+      required: [true, "Please enter the animal's age"],
+    },
     type: {
       type: String,
       enum: ["dog", "cat"],

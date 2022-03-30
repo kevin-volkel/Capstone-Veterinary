@@ -13,8 +13,8 @@ import axios from 'axios';
 import { setToken } from '../../util/auth';
 import { classCodes, teacherCodes } from '../../util/classCodes';
 import catchErrors from '../../util/catchErrors';
-import { passwordReg, emailReg } from '../../util/regi';
-import isEmail from 'validator/lib/isEmail';
+// import { passwordReg, emailReg } from '../../util/regi';
+// import isEmail from 'validator/lib/isEmail';
 
 const RegisterForm = ({
   user,
@@ -49,11 +49,11 @@ const RegisterForm = ({
     },
   ];
 
-  const testEmail = () => {
-    return new Promise( function(myResolve, myReject) {
-    if(emailReg.test(email)) myResolve(true)
-    else myReject(false)}).then( (value) => {return value}, (reason) => {return reason})
-  }
+  // const testEmail = () => {
+  //   return new Promise( function(myResolve, myReject) {
+  //   if(emailReg.test(email)) myResolve(true)
+  //   else myReject(false)}).then( (value) => {return value}, (reason) => {return reason})
+  // }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -62,20 +62,20 @@ const RegisterForm = ({
     let profilePicURL;
 
     try {
-      let isValidEmail = await testEmail();
-      console.log(isValidEmail)
-      if (!isValidEmail) {
-        console.log(email)
-        throw new Error('Invaid Email');
-      }
+      // let isValidEmail = await testEmail();
+      // console.log(isValidEmail)
+      // if (!isValidEmail) {
+      //   console.log(email)
+      //   throw new Error('Invaid Email');
+      // }
 
-      let isValidPassword = passwordReg.test(password);
-      if (!isValidPassword || !passwordReg.test(password)) {
-        console.log(password)
-        throw new Error(
-          'Password should be at least 8 characters and include 1 number or special character'
-        );
-      }
+      // let isValidPassword = passwordReg.test(password);
+      // if (!isValidPassword || !passwordReg.test(password)) {
+      //   console.log(password)
+      //   throw new Error(
+      //     'Password should be at least 8 characters and include 1 number or special character'
+      //   );
+      // }
       if (media !== null) {
         const formData = new FormData();
         formData.append('image', media, {
