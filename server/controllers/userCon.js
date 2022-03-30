@@ -91,7 +91,7 @@ const createUser = async (req, res) => {
     user.password = await bcrypt.hash(password, 10);
     user = await user.save();
 
-    const payload = { userId: user._id, role };
+    const payload = { userId: user._id, role: user.role };
     jwt.sign(
       payload,
       process.env.JWT_SECRET,
@@ -101,7 +101,6 @@ const createUser = async (req, res) => {
         res.status(200).json({ token });
       }
     );
-    return res.send('testing');
   } catch (err) {
     console.log(err);
     return res.status(500).send('Server Error @ createUser');
