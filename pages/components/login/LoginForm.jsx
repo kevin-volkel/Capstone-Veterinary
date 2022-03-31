@@ -1,30 +1,30 @@
-import React, { useState } from 'react';
-import { Form, Segment, Message, Divider, Button } from 'semantic-ui-react';
-import { setToken } from '../../util/auth'
-import axios from 'axios'
-import catchErrors from '../../util/catchErrors';
+import React, { useState } from "react";
+import { Form, Segment, Message, Divider, Button } from "semantic-ui-react";
+import { setToken } from "../../util/auth";
+import axios from "axios";
+import catchErrors from "../../util/catchErrors";
 
-const LoginForm = ({ user, handleChange, setIsLogin, width }) => {
+const LoginForm = ({ user, handleChange, setIsLogin }) => {
   const [formLoading, setFormLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
 
   const { email, password } = user;
-  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setFormLoading(true)
+    setFormLoading(true);
 
-    try{
-      const res = await axios.post('/api/v1/user/login', {email, password})
-      setToken(res.data.token)
+    try {
+      const res = await axios.post("/api/v1/user/login", { email, password });
+      setToken(res.data.token);
     } catch (err) {
-      console.log(err)
-      const caughtError = catchErrors(err)
-      setErrorMsg(caughtError)
+      console.log(err);
+      const caughtError = catchErrors(err);
+      setErrorMsg(caughtError);
     }
 
-    setFormLoading(false)
+    setFormLoading(false);
   };
 
   return (
@@ -32,8 +32,8 @@ const LoginForm = ({ user, handleChange, setIsLogin, width }) => {
       <Form
         loading={formLoading}
         error={errorMsg !== null}
-        style={{ margin: '0 auto', width }}
         onSubmit={handleSubmit}
+        id="login"
       >
         <Message
           error
@@ -62,35 +62,20 @@ const LoginForm = ({ user, handleChange, setIsLogin, width }) => {
             name="password"
             onChange={handleChange}
             icon={{
-              name: showPassword ? 'eye slash' : 'eye',
+              name: showPassword ? "eye slash" : "eye",
               circular: true,
               link: true,
               onClick: () => setShowPassword(!showPassword),
             }}
             iconPosition="left"
-            type={showPassword ? 'text' : 'password'}
+            type={showPassword ? "text" : "password"}
           />
           <Divider />
-          <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <Button
-              style={{
-                marginBottom: '1rem',
-                padding: '10px',
-                fontSize: '1.4rem',
-                color: 'white',
-                background: '#F7931D'
-              }}
-              content="Log In"
-              fluid
-            />
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <Button id="login-btn" content="Log In" fluid />
           </div>
           <h5
-            style={{
-              textAlign: 'center',
-              width: '50vw',
-              margin: '0 auto',
-              cursor: 'pointer',
-            }}
+            className="form-link"
             onClick={() => setIsLogin(false)}
           >
             Need to make an account?

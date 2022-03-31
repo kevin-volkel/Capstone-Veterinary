@@ -21,7 +21,6 @@ const RegisterForm = ({
   user,
   handleChange,
   setIsLogin,
-  width,
   mediaPreview,
   media,
 }) => {
@@ -103,8 +102,8 @@ const RegisterForm = ({
       <Form
         loading={formLoading}
         error={errorMsg !== null}
-        style={{ margin: '0 auto', width: width }}
         onSubmit={handleSubmit}
+        id="register"
       >
         <Message
           error
@@ -210,24 +209,13 @@ const RegisterForm = ({
           </Form.Group>
           <div style={{ display: 'flex', justifyContent: 'center' }}>
             <Button
-              style={{
-                marginBottom: '1rem',
-                padding: '10px',
-                fontSize: '1.4rem',
-                color: 'white',
-                background: '#F7931D',
-              }}
+              id="register-btn"
               content="Register"
               fluid
             />
           </div>
           <h5
-            style={{
-              textAlign: 'center',
-              width: '50vw',
-              margin: '0 auto',
-              cursor: 'pointer',
-            }}
+            className='form-link'
             onClick={() => setIsLogin(true)}
           >
             Already have an account?

@@ -8,9 +8,8 @@ const PhotoUpload = ({ mediaPreview, defaultProfilePic, handleChange}) => {
 
   return (
     <div
+      id="photo-upload"
       style={{
-        width: '70px',
-        height: '70px',
         borderRadius: '35px',
         position: 'absolute',
         right: '15px',
@@ -19,7 +18,7 @@ const PhotoUpload = ({ mediaPreview, defaultProfilePic, handleChange}) => {
     >
       <Image
         src={mediaPreview === null ? defaultProfilePic : mediaPreview}
-        style={{ borderRadius: '50%', height: '70px', width: '70px' }}
+        style={{ borderRadius: '50%' }}
       />
 
       <div className="edit">
@@ -34,8 +33,6 @@ const PhotoUpload = ({ mediaPreview, defaultProfilePic, handleChange}) => {
         <Button
           onClick={(e) => inputRef.current.click()}
           style={{
-            width: '25px',
-            height: '25px',
             borderRadius: '50%',
             padding: '0',
             margin: '0',

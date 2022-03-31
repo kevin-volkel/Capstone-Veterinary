@@ -30,7 +30,7 @@ MyApp.getInitialProps = async ({ ctx, Component }) => {
   if (!token) {
     isProtectedRoute && redirectUser(ctx, '/login');
   } else if (ctx.pathname === '/login') {
-    redirectUser(ctx, '/');
+    // redirectUser(ctx, '/');
   } else {
     if (Component.getInitialProps) {
       pageProps = await Component.getInitialProps(ctx);

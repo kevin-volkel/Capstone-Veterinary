@@ -39,7 +39,7 @@ const login = ({}) => {
     }
   };
 
-  const width = '80vw';
+  // const width = '80vw';
 
   return (
     <>
@@ -48,14 +48,12 @@ const login = ({}) => {
           user={user}
           handleChange={handleChange}
           setIsLogin={setIsLogin}
-          width={width}
         />
       ) : (
         <RegisterForm
           user={user}
           handleChange={handleChange}
           setIsLogin={setIsLogin}
-          width={width}
           media={media}
           mediaPreview={mediaPreview}
         />
