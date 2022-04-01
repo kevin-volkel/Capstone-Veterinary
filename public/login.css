@@ -1,11 +1,12 @@
 /* LOGIN & REGISTER FORM CSS */
+
 form#login,
 form#register {
   margin: 1rem auto;
   width: 80vw;
 }
 
-.ui-segment{
+.ui-segment {
   margin: 0;
 }
 
@@ -14,14 +15,17 @@ form#register {
   width: 70px;
   height: 70px;
 }
+
 #photo-upload img {
   width: 70px;
   height: 70px;
 }
+
 div.edit button {
   width: 25px;
   height: 25px;
 }
+
 .upload-image {
   margin-bottom: 1.1rem;
 }
@@ -30,6 +34,7 @@ div.edit button {
 div.field {
   font-size: 1.2rem;
 }
+
 div.visible.menu span {
   font-size: 1.2rem;
 }
@@ -43,6 +48,7 @@ div.visible.menu span {
   color: white;
   background: #f7931d;
 }
+
 .form-link {
   text-align: center;
   width: 50vw;
@@ -50,7 +56,7 @@ div.visible.menu span {
   cursor: pointer;
 }
 
-/* @media only screen and (min-height: 800px) {
+@media only screen and (min-height: 750px) and (min-width: 350px) {
   form#login,
   form#register {
     margin: 0;
@@ -59,48 +65,50 @@ div.visible.menu span {
     left: 50%;
     transform: translate(-50%, -50%);
   }
-} */
+}
 
 
 /* TABLET STYLES */
 @media only screen and (min-width: 768px) {
+
   form#login,
   form#register {
     width: 85vw;
-    margin: 0;
-    position: absolute;
-    top: 48%;
-    left: 50%;
-    transform: translate(-50%, -50%);
   }
 
   /* form top */
   .ui.segment h1 {
     font-size: 3rem;
   }
+
   .upload-image {
     margin-bottom: 2rem;
   }
+
   #photo-upload {
     width: 90px;
     height: 90px;
   }
+
   #photo-upload img {
     width: 90px;
     height: 90px;
   }
+
   div.edit button {
     width: 35px;
     height: 35px;
   }
+
   i.pencil.icon {
     font-size: 1.3rem;
   }
 
   /* form fields */
-  div.field {
+  div.field{
     font-size: 1.5rem;
   }
+
   div.visible.menu span {
     font-size: 1.4rem;
   }
@@ -111,6 +119,7 @@ div.visible.menu span {
     padding: 13px;
     font-size: 1.9rem;
   }
+
   .form-link {
     font-size: 1.3rem;
   }
@@ -119,6 +128,7 @@ div.visible.menu span {
 /* LARGE & DESKTOP STYLES */
 /* 1024px | 1280px */
 @media only screen and (min-width: 1024px) {
+
   form#login,
   form#register {
     width: 65vw;
@@ -129,19 +139,12 @@ div.visible.menu span {
     left: 50%;
     transform: translate(-50%, -50%); */
   }
-
-  div.ui.segment {
-    /* background-color: lightblue; */
-  }
 }
 
 @media only screen and (min-width: 1280px) {
+
   form#login,
   form#register {
     width: 55vw;
-  }
-
-  div.ui.segment {
-    background-color: lightcoral;
   }
 }

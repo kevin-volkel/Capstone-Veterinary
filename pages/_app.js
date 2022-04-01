@@ -1,5 +1,4 @@
 import 'semantic-ui-css/semantic.min.css';
-import '../styles/globals.css';
 import React, { useEffect, useState } from 'react';
 import { destroyCookie, parseCookies } from 'nookies';
 import { redirectUser, baseURL } from './util/auth';
