@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import { Button, Segment } from "semantic-ui-react";
-//import styles from "../styles/Home.module.css";
+// import styles from "../styles/Home.module.css";
 // import "../styles/index.css"
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
@@ -10,6 +10,10 @@ import tutu from "../tutu.jpg";
 export default function Home() {
   return (
     <div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 89471c3cc516c6558a8ae4acac6a3293c9715828
       <div>
         <Image
           src={tutu}
@@ -33,7 +37,10 @@ export default function Home() {
         </div>
         <Button color="orange" content="Ready To Adopt" />
       </Segment>
+<<<<<<< HEAD
       <Footer />
+=======
+>>>>>>> 89471c3cc516c6558a8ae4acac6a3293c9715828
     </div>
   );
 }
