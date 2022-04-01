@@ -10,8 +10,6 @@ import tutu from "../tutu.jpg";
 export default function Home() {
   return (
     <div>
-      <Navbar />
-
       <div>
         <Image
           src={tutu}
@@ -35,7 +33,7 @@ export default function Home() {
         </div>
         <Button color="orange" content="Ready To Adopt" />
       </Segment>
-      <Footer/>
+      <Footer />
     </div>
   );
 }

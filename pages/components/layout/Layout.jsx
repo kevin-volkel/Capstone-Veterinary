@@ -1,7 +1,8 @@
-import React from 'react';
-import HeadTag from './HeadTag';
-import nprogress from 'nprogress';
-import Router from 'next/router';
+import React from "react";
+import HeadTag from "./HeadTag";
+import nprogress from "nprogress";
+import Router from "next/router";
+import Navbar from "./Navbar";
 
 const Layout = ({ children, user }) => {
   Router.onRouteChangeStart = () => nprogress.start();
@@ -11,7 +12,7 @@ const Layout = ({ children, user }) => {
   return (
     <>
       <HeadTag />
-      {/* Navbar here */}
+      <Navbar />
       {children}
       {/* Footer Here */}
     </>
