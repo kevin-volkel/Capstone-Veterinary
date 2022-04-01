@@ -2,6 +2,8 @@ import React from 'react';
 import HeadTag from './HeadTag';
 import nprogress from 'nprogress';
 import Router from 'next/router';
+import Navbar from './Navbar';
+import Footer from './Footer';
 
 const Layout = ({ children, user }) => {
   Router.onRouteChangeStart = () => nprogress.start();
@@ -11,9 +13,9 @@ const Layout = ({ children, user }) => {
   return (
     <>
       <HeadTag />
-      {/* Navbar here */}
+      <Navbar />
       {children}
-      {/* Footer Here */}
+      <Footer />
     </>
   );
 };

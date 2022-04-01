@@ -139,6 +139,34 @@ div.visible.menu span {
     left: 50%;
     transform: translate(-50%, -50%); */
   }
+  #form-group{
+    width: 30vw
+  }
+  .upload-image{
+    justify-content: center!important;
+  }
+  .login-title{
+    text-align: center;
+  }
+  #photo-upload{
+    width: 10rem;
+    height: 10rem;
+    top: 10rem!important;
+    right: 8rem!important;
+  }
+  #photo-upload img {
+    width: 10rem;
+    height: 10rem;
+  }
+  #photo-upload .edit {
+    position: relative;
+    left: 45px;
+    bottom: 10px;
+  }
+  #photo-upload .edit button{
+    height: 35px;
+    width: 35px;
+  }
 }
 
 @media only screen and (min-width: 1280px) {
