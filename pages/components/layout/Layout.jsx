@@ -13,7 +13,7 @@ const Layout = ({ children, user }) => {
   return (
     <>
       <HeadTag />
-      <Navbar />
+      <Navbar user={user}/>
       {children}
       <Footer />
     </>

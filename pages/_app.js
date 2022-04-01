@@ -51,6 +51,7 @@ MyApp.getInitialProps = async ({ ctx, Component }) => {
       redirectUser(ctx, '/');
     }
   }
+  if(!pageProps.user) pageProps.user = null;
   return { pageProps };
 };
 
