@@ -10,10 +10,6 @@ import tutu from "../tutu.jpg";
 export default function Home() {
   return (
     <div>
-<<<<<<< HEAD
-=======
-
->>>>>>> 89471c3cc516c6558a8ae4acac6a3293c9715828
       <div>
         <Image
           src={tutu}
@@ -37,10 +33,6 @@ export default function Home() {
         </div>
         <Button color="orange" content="Ready To Adopt" />
       </Segment>
-<<<<<<< HEAD
-      <Footer />
-=======
->>>>>>> 89471c3cc516c6558a8ae4acac6a3293c9715828
     </div>
   );
 }
