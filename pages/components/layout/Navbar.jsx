@@ -1,16 +1,26 @@
 import React from "react";
 import { Menu } from "semantic-ui-react";
+import Link from "next/link";
 
-const Navbar = () => {
+const Navbar = ({ user }) => {
   return (
     <Menu>
-      <Menu.Item name="home">Home</Menu.Item>
+      <Menu.Item name="home">
+        <Link href="/">Home</Link>
+      </Menu.Item>
 
-      <Menu.Item name="adoption">Adoption</Menu.Item>
+      <Menu.Item name="adoption">
+        <Link href="/adoption">Adoption</Link>
+      </Menu.Item>
 
-      <Menu.Item name="upcomingEvents">Upcoming Events</Menu.Item>
-
-      <Menu.Item name="admin">Admin</Menu.Item>
+      {user !== null && (
+        <>
+          <Menu.Item name="admin">
+            <Link href="/admin">Admin</Link>
+          </Menu.Item>
+          <Menu.Item name="admin">Logout</Menu.Item>
+        </>
+      )}
     </Menu>
   );
 };
