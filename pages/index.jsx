@@ -6,6 +6,7 @@ import { Button, Segment } from "semantic-ui-react";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 import tutu from "../tutu.jpg";
+import "../../styles/home.css";
 
 export default function Home() {
   return (
@@ -19,6 +20,10 @@ export default function Home() {
           height={3000}
           width={2100}
         />
+        <div className="backForth">
+          <Button></Button>
+          <Button></Button>
+        </div>
       </div>
 
       <Segment className="new-friend-section">
@@ -29,7 +34,7 @@ export default function Home() {
             blanditiis praesentium voluptatum deleniti atque corrupti quosi
             dolores et quas molestias excepturi sint occaecati cupidi non.
           </p>
-          <Image src={tutu} position="relative" height={300} width={180} />
+          <Image src={tutu} position="relative" height={300} width={700} />
         </div>
         <Button color="orange" content="Ready To Adopt" />
       </Segment>
