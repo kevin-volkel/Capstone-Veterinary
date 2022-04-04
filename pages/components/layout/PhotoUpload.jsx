@@ -1,9 +1,7 @@
 import React, { useRef } from 'react';
-import { Image, Button } from 'semantic-ui-react'
+import { Image, Button } from 'semantic-ui-react';
 
-
-const PhotoUpload = ({ mediaPreview, defaultProfilePic, handleChange}) => {
-
+const PhotoUpload = ({ mediaPreview, defaultProfilePic, handleChange }) => {
   const inputRef = useRef(null);
 
   return (
@@ -18,7 +16,8 @@ const PhotoUpload = ({ mediaPreview, defaultProfilePic, handleChange}) => {
     >
       <Image
         src={mediaPreview === null ? defaultProfilePic : mediaPreview}
-        style={{ borderRadius: '50%' }}
+        circular
+        style={{objectFit: 'cover'}}
       />
 
       <div className="edit">
@@ -39,7 +38,7 @@ const PhotoUpload = ({ mediaPreview, defaultProfilePic, handleChange}) => {
             position: 'relative',
             bottom: '20px',
             left: '45px',
-            cursor: 'pointer'
+            cursor: 'pointer',
           }}
           // content={<Icon name="edit outline" />}
           icon="pencil"

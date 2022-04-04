@@ -121,36 +121,39 @@ const RegisterForm = ({
             <PhotoUpload
               mediaPreview={mediaPreview}
               defaultProfilePic={defaultProfilePic}
-              handleChange={handleChange}
+              handleChange={handleChange} 
             />
           </div>
-          <Form.Input
-            label="Email"
-            required
-            placeholder="Email"
-            value={email}
-            name="email"
-            onChange={handleChange}
-            icon="envelope"
-            iconPosition="left"
-            type="email"
-          />
-          <Form.Input
-            label="Password"
-            required
-            placeholder="Password"
-            value={password}
-            name="password"
-            onChange={handleChange}
-            icon={{
-              name: showPassword ? 'eye slash' : 'eye',
-              circular: true,
-              link: true,
-              onClick: () => setShowPassword(!showPassword),
-            }}
-            iconPosition="left"
-            type={showPassword ? 'text' : 'password'}
-          />
+          <div id="form-group">
+            <Form.Input
+              label="Email"
+              required
+              placeholder="Email"
+              value={email}
+              name="email"
+              onChange={handleChange}
+              icon="envelope"
+              iconPosition="left"
+              type="email"
+              // width={window.innerWidth > 1024 ? 8 : 16}
+            />
+            <Form.Input
+              label="Password"
+              required
+              placeholder="Password"
+              value={password}
+              name="password"
+              onChange={handleChange}
+              icon={{
+                name: showPassword ? 'eye slash' : 'eye',
+                circular: true,
+                link: true,
+                onClick: () => setShowPassword(!showPassword),
+              }}
+              iconPosition="left"
+              type={showPassword ? 'text' : 'password'}
+            />
+          </div>
           <Divider hidden />
           <Form.Group widths="equal">
             <Form.Input
@@ -208,16 +211,9 @@ const RegisterForm = ({
             )}
           </Form.Group>
           <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <Button
-              id="register-btn"
-              content="Register"
-              fluid
-            />
+            <Button id="register-btn" content="Register" fluid />
           </div>
-          <h5
-            className='form-link'
-            onClick={() => setIsLogin(true)}
-          >
+          <h5 className="form-link" onClick={() => setIsLogin(true)}>
             Already have an account?
           </h5>
         </Segment>
