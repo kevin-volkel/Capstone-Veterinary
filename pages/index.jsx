@@ -18,7 +18,7 @@ export default function Home() {
           alt="tutu dog"
           priority="true"
           position="relative"
-          height={4500}
+          height={3000}
           width={2100}
         />
       </div>
