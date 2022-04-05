@@ -33,6 +33,7 @@ const AnimalSchema = new Schema(
     details: [String],
     desc: {
       type: String,
+      required: [true, "Please include a brief description"]
     },
     vaccs: [String],
     neutered: { //! spade is only for female animals. i think neutered is more gender neutral
