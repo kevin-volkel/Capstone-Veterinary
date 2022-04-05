@@ -1,0 +1,18 @@
+#admin{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.header{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin: 1rem 0;
+}
+
+h1.ui.header{
+  margin: 0;
+  cursor: pointer;
+}
