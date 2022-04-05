@@ -1,8 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
 import { Button, Segment } from "semantic-ui-react";
-// import styles from "../styles/Home.module.css";
-// import "../styles/index.css"
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 import tutu from "../tutu.jpg";
@@ -33,6 +31,8 @@ export default function Home() {
         </div>
         <Button color="orange" content="Ready To Adopt" />
       </Segment>
+
+      <Footer/>
     </div>
   );
 }

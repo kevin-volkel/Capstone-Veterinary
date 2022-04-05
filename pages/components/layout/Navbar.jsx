@@ -1,6 +1,7 @@
 import React from "react";
 import { Menu } from "semantic-ui-react";
 import Link from "next/link";
+import { logoutUser } from "../../util/auth";
 
 const Navbar = ({ user }) => {
   return (
@@ -10,7 +11,7 @@ const Navbar = ({ user }) => {
       </Menu.Item>
 
       <Menu.Item name="adoption">
-        <Link href="/adoption">Adoption</Link>
+        <Link href="/animals">Adoption</Link>
       </Menu.Item>
 
       {user !== null && (
@@ -18,8 +19,16 @@ const Navbar = ({ user }) => {
           <Menu.Item name="admin">
             <Link href="/admin">Admin</Link>
           </Menu.Item>
-          <Menu.Item name="admin">Logout</Menu.Item>
+          <Menu.Item name="admin" onClick={() => logoutUser(user.email)}>
+            Logout
+          </Menu.Item>
         </>
+      )}
+
+      {user == null && (
+        <Menu.Item name="adoption">
+          <Link href="/login">Login</Link>
+        </Menu.Item>
       )}
     </Menu>
   );

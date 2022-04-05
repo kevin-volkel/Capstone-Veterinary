@@ -8,8 +8,8 @@ const HeadTag = () => {
 
       <link rel="icon" href="./favicon.ico" sizes="16*16" type="image/png"/>
       <link rel="stylesheet" href="/globals.css" />
-      <link rel="stylesheet" href="/login.css" />
       <link rel="stylesheet" href="/home.css" />
+      <link rel="stylesheet" href="/login.css" />
       <link rel="stylesheet" href="/nprogress.css" />
 
       <title>West-Mec Veterinary</title>
