@@ -2,6 +2,12 @@
   padding: 0 2rem;
 }
 
+.ui.menu {
+  display: flex;
+  height: 4rem;
+  background-color: #f6f7f8;
+}
+
 .main {
   min-height: 100vh;
   padding: 4rem 0;

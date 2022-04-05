@@ -5,7 +5,7 @@ import { Button, Segment } from "semantic-ui-react";
 // import "../styles/index.css"
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
-import tutu from "../tutu.jpg";
+import tutu from "../public/media/tutu.jpg";
 
 export default function Home() {
   return (
