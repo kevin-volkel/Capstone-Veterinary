@@ -5,7 +5,7 @@ import { logoutUser } from "../../util/auth";
 
 const Navbar = ({ user }) => {
   return (
-    <Menu>
+    <Menu style={{margin: 0}}>
       <Menu.Item name="home">
         <Link href="/">Home</Link>
       </Menu.Item>

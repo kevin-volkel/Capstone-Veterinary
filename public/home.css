@@ -2,6 +2,10 @@
   padding: 0 2rem;
 }
 
+.everything{
+  overflow-x: hidden;
+}
+
 .main {
   min-height: 100vh;
   padding: 4rem 0;
@@ -138,21 +142,61 @@
   padding: 2% 5% 2% 5%;
 }
 
-.Img-btn-left{
-  position: absolute;
+.img-btn-left{
   left: 0;
-  top: 50%;
+  margin-left: 5rem!important;
+  clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
 }
 
-.Img-btn-right{
-  position: fixed;
+.img-btn-right{
   right: 0;
-  top: 50%;
+  margin-right: 5rem!important;
+  clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
 }
 
-@media (max-width: 600px) {
+.arrow{
+  position: relative;
+  top: 50%;
+  height: 30px;
+  width: 40px;
+}
+
+.img-container{
+  margin: 0;
+  height: 100%;
+  object-fit: contain;
+  margin: auto;
+  display: flex;
+  background: rgb(75, 75, 75);
+  align-items: center;
+  justify-content: space-between;
+}
+.curr-img{
+  margin: auto;
+}
+
+@media only screen and (min-width: 768px) {
   .grid {
     width: 100%;
     flex-direction: column;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .arrow{
+    position: relative;
+    top: 50%;
+    height: 30px;
+    width: 40px;
+  }
+  .img-container{
+    margin: 0;
+    height: 100%;
+    object-fit: contain;
+    margin: auto;
+    display: flex;
+    background: rgb(75, 75, 75);
+    align-items: center;
+    justify-content: space-between;
   }
 }
