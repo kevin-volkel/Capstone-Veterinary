@@ -29,13 +29,13 @@ const Animals = ({ user }) => {
   return (
     <Segment
       id="admin-animals"
-      style={{ width: "70vw", margin: "0 auto", padding: "2rem 0" }}
+      style={{ width: "70vw", margin: "1rem auto 2rem", padding: "2rem 0", textTransform: "capitalize" }}
       loading={loading}
     >
       <Button
         disabled={loading}
         style={{
-          width: "95%",
+          width: "80%",
           height: "60px",
           fontSize: "1.5rem",
           backgroundColor: "#F7931D",
@@ -52,15 +52,20 @@ const Animals = ({ user }) => {
           textAlign="center"
           className="animal-list"
           style={{
+            width: "80%",
             display: "flex",
             margin: "2rem 0",
-            justifyContent: "spaceEvenly",
+            justifyContent: "center",
           }}
         >
           <Grid
-            columns="2"
+            columns="3"
             centered
             relaxed
+            style={{
+              display: "flex",
+              justifyContent: "space-around",
+            }}
           >
             {animals.map((animal) => {
               // console.log(animal);
