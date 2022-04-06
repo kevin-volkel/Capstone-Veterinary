@@ -8,10 +8,10 @@ import Animals from "./components/animals/Animals";
 import Events from "./components/events/Events";
 
 const admin = ({ user }) => {
-  const [showEvents, setShowEvents] = useState(true)
+  const [showEvents, setShowEvents] = useState(false)
 
   return <div id="admin">
-    <div className="header">
+    <div className="header" style={{ margin: "3rem 0 2rem" }}>
       <Header as='h1' onClick={() => setShowEvents(true)}>Events</Header>
       <Header as="h1" onClick={() => setShowEvents(false)}>Animals</Header>
     </div>

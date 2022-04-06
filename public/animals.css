@@ -1,0 +1,25 @@
+.animal-header{
+    font-size: x-large;
+    color: #f2711c;
+    font-weight: bold;
+}
+
+.animal-card-info{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    /* grid-gap: 5%; */
+}
+
+.gender-animal{
+    border: solid rgba(221, 221, 221, 0.933);
+    padding: 0 2% 0 2%;
+}
+.age-animal{
+    border: solid rgba(221, 221, 221, 0.933);
+    padding: 0 2% 0 2%;
+}
+.type-animal{
+    border: 0 0 0 0 solid rgba(221, 221, 221, 0.933);
+    padding: 0 2% 0 2%;
+}
