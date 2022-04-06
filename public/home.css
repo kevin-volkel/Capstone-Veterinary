@@ -119,15 +119,24 @@
   color: #f2711c;
 }
 
-.nf-sect{
+.nf-wholeSect{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
+.nf-sect{
+  /* display: flex; */
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
 .adopt-image{
   padding: 10%;
+  box-shadow: 2px 2px 5px #aaaaaa;
 }
 
 .nf-description{
@@ -136,10 +145,10 @@
     margin-left: 2%;
 }
 
-.nf-adopt-btn{
-  display: flex;
-  justify-content: center;
-  padding: 2% 5% 2% 5%;
+.ui.orange.button{
+  margin-top: 2%;
+  padding: 2% 2.75%;
+  box-shadow: 2px 2px 5px #aaaaaa;
 }
 
 .img-btn-left{

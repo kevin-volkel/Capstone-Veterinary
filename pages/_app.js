@@ -1,5 +1,6 @@
 import 'semantic-ui-css/semantic.min.css';
 import '../public/home.css'
+import '../public/animals.css'
 import React, { useEffect, useState } from 'react';
 import { destroyCookie, parseCookies } from 'nookies';
 import { redirectUser, baseURL } from './util/auth';
