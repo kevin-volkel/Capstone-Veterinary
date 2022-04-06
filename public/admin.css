@@ -12,7 +12,7 @@
   margin: 1rem 0;
 }
 
-h1.ui.header{
+h1.ui.header, h1.ui.header:first-child, h1.ui.header:last-child{
   margin: 0;
   cursor: pointer;
 }

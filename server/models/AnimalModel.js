@@ -29,14 +29,14 @@ const AnimalSchema = new Schema(
     colors: {
       type: String,
     },
-    needs: [String], //! idk if theres a way to make arrays required or give them defaults but if someone does know pls update these
+    needs: [String],
     details: [String],
     desc: {
       type: String,
-      required: [true, "Please include a brief description"]
+      // required: [true, "Please include a brief description"]
     },
     vaccs: [String],
-    neutered: { //! spade is only for female animals. i think neutered is more gender neutral
+    neutered: {
       type: Boolean,
       require: [true, "Must answer if the animal is neutered"],
     },

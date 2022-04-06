@@ -1,9 +1,95 @@
-import React from 'react'
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { Button, Icon, Segment, Container, Grid } from "semantic-ui-react";
+import { baseURL } from "../../util/auth";
+import Cookies from "js-cookie";
+import AnimalCard from "./AnimalCard";
 
-const Animals = ({user}) => {
+const Animals = ({ user }) => {
+  const [loading, setLoading] = useState(false);
+  const [animals, setAnimals] = useState([]);
+  const [page, setPage] = useState(1);
+
+  useEffect(() => {
+    const getAnimals = async () => {
+      setLoading(true);
+      try {
+        const res = await axios.get(`${baseURL}/api/v1/animal`, {
+          headers: { Authorization: `Bearer ${Cookies.get("token")}` },
+        });
+        setAnimals(res.data);
+      } catch (error) {
+        console.log("error loading posts");
+      }
+      setLoading(false);
+    };
+    getAnimals();
+  }, []);
+
   return (
-    <div>Animals</div>
-  )
-}
+    <Segment
+      id="admin-animals"
+      style={{ width: "70vw", margin: "0 auto", padding: "2rem 0" }}
+      loading={loading}
+    >
+      <Button
+        disabled={loading}
+        style={{
+          width: "95%",
+          height: "60px",
+          fontSize: "1.5rem",
+          backgroundColor: "#F7931D",
+          color: "#FFFFFF",
+          marginBottom: "2rem",
+        }}
+      >
+        <Icon name="plus" color="white" style={{ opacity: 1 }} />
+        Add Animal
+      </Button>
+      {animals.length ? (
+        <Container
+          fluid
+          textAlign="center"
+          className="animal-list"
+          style={{
+            display: "flex",
+            margin: "2rem 0",
+            justifyContent: "spaceEvenly",
+          }}
+        >
+          <Grid
+            columns="2"
+            centered
+            relaxed
+          >
+            {animals.map((animal) => {
+              // console.log(animal);
+              const { name, age, type, gender, picURLs, desc, _id } = animal;
+              // const color = gender === 'male' ? 'blue' : 'pink'
 
-export default Animals
+              return (
+                <AnimalCard
+                  name={name}
+                  age={age}
+                  type={type}
+                  picURLs={picURLs}
+                  desc={desc}
+                  id={_id}
+                />
+              );
+            })}
+          </Grid>
+        </Container>
+      ) : (
+        <div
+          className="no-animals"
+          style={{ fontSize: "1.5rem", fontWeight: "bold" }}
+        >
+          There are no animals. Start by adding one.
+        </div>
+      )}
+    </Segment>
+  );
+};
+
+export default Animals;

@@ -1,24 +1,24 @@
-import React from 'react'
-import {Card, Icon, Image, Button} from 'semantic-ui-react'
+import React from "react";
+import { Card, Image, Button } from "semantic-ui-react";
+import Router from 'next/router'
+import { baseURL } from "../../util/auth";
 
-const AnimalCard = ({name, description, type, createdAt}) => {
+const AnimalCard = ({ name, age, type, picURLs, desc, id }) => {
   return (
     <>
-        <Card>
-            <Image src='/images/avatar/large/daniel.jpg' float="left" size="small" wrapped ui={false} />
-            <Card.Content>
-                <Card.Header>Doug</Card.Header>
-                <Card.Meta>Posted 2-2-22</Card.Meta>
-                <Card.Description>
-                    they is an aminal lamo
-                </Card.Description>
-            </Card.Content>
-    <Card.Content extra>
-      <Button>Adopt Me!</Button>
-    </Card.Content>
-  </Card>
+      <Card key={id} style={{ marginTop: "0", cursor: "pointer", textAlign: "center" }} onClick={() => Router.push(`${baseURL}/${id}`)}>
+        <Image
+          src={picURLs[0]}
+        />
+        <Card.Content>
+          <Card.Header style={{fontSize: "2rem", marginBottom: ".8rem"}} content={name}/>
+          <Card.Meta content={type} />
+          <Card.Meta content={age} />
+          {desc && <Card.Meta content={desc} />}
+        </Card.Content>
+      </Card>
     </>
-  )
-}
+  );
+};
 
-export default AnimalCard
+export default AnimalCard;
