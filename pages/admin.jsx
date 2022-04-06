@@ -8,7 +8,7 @@ import Animals from "./components/animals/Animals";
 import Events from "./components/events/Events";
 
 const admin = ({ user }) => {
-  const [showEvents, setShowEvents] = useState(true)
+  const [showEvents, setShowEvents] = useState(false)
 
   return <div id="admin">
     <div className="header">

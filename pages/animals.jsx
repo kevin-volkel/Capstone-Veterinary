@@ -6,7 +6,7 @@ import Router from 'next/router'
 
 const animals = ({ animals }) => {
   return (
-    <>
+    <div className='animal-list' style={{display: "flex", margin: "2rem 0"}}>
       {animals.map((animal) => {
         console.log(animal);
         const { name, age, type, gender, picURLs, desc } = animal;
@@ -21,12 +21,12 @@ const animals = ({ animals }) => {
             <Card.Header content={name} />
             <Card.Meta content={age} />
             <Card.Meta content={type} />
-            <Card.Description content={desc} />
-            <Button content="More info" onClick={() => Router.push(`/${animal._id}`)}/>
+            <Card.Meta content={desc} />
+            <Button content="More info" onClick={() => Router.push(`${baseURL}/${animal._id}`)}/>
           </Card>
         );
       })}
-    </>
+    </div>
   );
 };
 
