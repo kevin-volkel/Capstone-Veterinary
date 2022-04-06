@@ -43,7 +43,7 @@ const Animals = ({ user }) => {
           marginBottom: "2rem",
         }}
       >
-        <Icon name="plus" color="white" style={{ opacity: 1 }} />
+        <Icon name="plus" style={{ opacity: 1 }} />
         Add Animal
       </Button>
       {animals.length ? (
