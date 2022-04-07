@@ -2,7 +2,12 @@
   padding: 0 2rem;
 }
 
-.everything{
+.ui.menu {
+  display: flex;
+  height: 4rem;
+  background-color: #f6f7f8;
+}
+.everything {
   overflow-x: hidden;
 }
 
@@ -112,7 +117,7 @@
   margin-left: 0.5rem;
 }
 
-.nf-title{
+.nf-title {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -134,15 +139,15 @@
   justify-content: space-evenly;
 }
 
-.adopt-image{
+.adopt-image {
   padding: 10%;
   box-shadow: 2px 2px 5px #aaaaaa;
 }
 
-.nf-description{
+.nf-description {
   width: 100%;
-    margin-right: 4%;
-    margin-left: 2%;
+  margin-right: 4%;
+  margin-left: 2%;
 }
 
 .ui.orange.button{
@@ -151,26 +156,42 @@
   box-shadow: 2px 2px 5px #aaaaaa;
 }
 
-.img-btn-left{
+.img-btn-left {
   left: 0;
-  margin-left: 5rem!important;
-  clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
+  margin-left: 5rem !important;
+  clip-path: polygon(
+    40% 0%,
+    40% 20%,
+    100% 20%,
+    100% 80%,
+    40% 80%,
+    40% 100%,
+    0% 50%
+  );
 }
 
-.img-btn-right{
+.img-btn-right {
   right: 0;
-  margin-right: 5rem!important;
-  clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
+  margin-right: 5rem !important;
+  clip-path: polygon(
+    0% 20%,
+    60% 20%,
+    60% 0%,
+    100% 50%,
+    60% 100%,
+    60% 80%,
+    0% 80%
+  );
 }
 
-.arrow{
+.arrow {
   position: relative;
   top: 50%;
   height: 30px;
   width: 40px;
 }
 
-.img-container{
+.img-container {
   margin: 0;
   height: 100%;
   object-fit: contain;
@@ -180,7 +201,7 @@
   align-items: center;
   justify-content: space-between;
 }
-.curr-img{
+.curr-img {
   margin: auto;
 }
 
@@ -192,13 +213,13 @@
 }
 
 @media only screen and (min-width: 1024px) {
-  .arrow{
+  .arrow {
     position: relative;
     top: 50%;
     height: 30px;
     width: 40px;
   }
-  .img-container{
+  .img-container {
     margin: 0;
     height: 100%;
     object-fit: contain;
