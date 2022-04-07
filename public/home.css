@@ -176,7 +176,7 @@
   object-fit: contain;
   margin: auto;
   display: flex;
-  background: rgb(75, 75, 75);
+  background: rgb(27, 27, 27);
   align-items: center;
   justify-content: space-between;
 }
@@ -204,7 +204,6 @@
     object-fit: contain;
     margin: auto;
     display: flex;
-    background: rgb(75, 75, 75);
     align-items: center;
     justify-content: space-between;
   }
