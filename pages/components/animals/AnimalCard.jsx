@@ -1,23 +1,38 @@
 import React from "react";
 import { Card, Image, Button } from "semantic-ui-react";
-import Router from 'next/router'
+import Router from "next/router";
 import { baseURL } from "../../util/auth";
 
-const AnimalCard = ({ name, age, type, picURLs, desc, id }) => {
+const AnimalCard = ({ name, age, type, picURLs, id, gender, color }) => {
   return (
-    <>
-      <Card key={id} style={{ marginTop: "0", cursor: "pointer", textAlign: "center" }} onClick={() => Router.push(`${baseURL}/${id}`)}>
-        <Image
-          src={picURLs[0]}
+    <Card
+      key={id}
+      className="animal-card"
+      style={{
+        marginTop: "0",
+        cursor: "pointer",
+        textAlign: "center",
+        maxWidth: "250px",
+        textTransform: "uppercase",
+      }}
+      // color={color}
+      onClick={() => Router.push(`${baseURL}/${id}`)}
+    >
+      <Image
+        src={picURLs[0]}
+        style={{ width: "100%", height: "150px", objectFit: "cover" }}
+      />
+      <Card.Content>
+        <Card.Header
+          className="animal-header"
+          style={{ fontSize: "2rem", marginBottom: ".8rem" }}
+          content={name}
         />
-        <Card.Content>
-          <Card.Header style={{fontSize: "2rem", marginBottom: ".8rem"}} content={name}/>
-          <Card.Meta content={type} />
-          <Card.Meta content={age} />
-          {desc && <Card.Meta content={desc} />}
-        </Card.Content>
-      </Card>
-    </>
+        <Card.Meta className="card-type" content={type} />
+        <Card.Meta className="card-gender" content={gender} />
+        <Card.Meta className="card-age" content={age} />
+      </Card.Content>
+    </Card>
   );
 };
 

@@ -1,35 +1,58 @@
 import React from "react";
 import axios from "axios";
-import { baseURL, redirectUser } from "./util/auth";
-import { Button, Card, Image } from "semantic-ui-react";
-import Router from "next/router";
+import { baseURL } from "./util/auth";
+import {
+  Button,
+  Card,
+  Container,
+  Grid,
+  Header,
+  Image,
+  Segment,
+} from "semantic-ui-react";
+import AnimalCard from "./components/animals/AnimalCard";
 
 const animals = ({ animals }) => {
   return (
-    <div className='animal-list' style={{display: "flex", margin: "2rem 0"}}>
-      {animals.map((animal) => {
-        console.log(animal);
-        const { name, age, type, gender, picURLs, desc } = animal;
-        const color = gender === "male" ? "blue" : "pink";
+    <div id="adoption">
+      <Header as="h1">Adopt A Pet Today!</Header>
+      {animals.length ? (
+        <Container
+          fluid
+          textAlign="center"
+          className="animal-list"
+          style={{
+            width: "80%",
+            display: "flex",
+            margin: "2rem 0",
+            justifyContent: "center",
+          }}
+        >
+          <Grid columns="3" centered relaxed>
+            {animals.map((animal) => {
+              // console.log(animal);
+              const { name, age, type, gender, picURLs, _id } = animal;
+              const color = gender === "male" ? "blue" : "pink";
 
-        return (
-          <Card
-            key={animal._id}
-            style={{ marginLeft: "3rem", cursor: "pointer" }}
-            className="animal-card"
-          >
-            <Image src={picURLs[0]} />
-            <Card.Header content={name} className="animal-header" />
-            <div className="animal-card-info">
-              <Card.Meta content={gender} className="gender-animal" />
-              <Card.Meta content={age} className="age-animal" />
-              <Card.Meta content={type} className="type-animal" />
-            </div>
-            {/* <Card.Description content={desc} /> */}
-            <Button content="More info" onClick={() => Router.push(`${baseURL}/${animal._id}`)}/>
-          </Card>
-        );
-      })}
+              return (
+                <AnimalCard
+                  name={name}
+                  age={age}
+                  type={type}
+                  picURLs={picURLs}
+                  id={_id}
+                  gender={gender}
+                  color={color}
+                />
+              );
+            })}
+          </Grid>
+        </Container>
+      ) : (
+        <div className="no-animals">
+          There are currently no animal adoptions posted. Come back later.
+        </div>
+      )}
     </div>
   );
 };

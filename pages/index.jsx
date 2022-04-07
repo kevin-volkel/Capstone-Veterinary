@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Button, Segment } from "semantic-ui-react";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
-import tutu from "../tutu.jpg";
+import tutu from  '../public/media/tutu.jpg'
 //import "../styles/home.css";
 
 export default function Home() {
