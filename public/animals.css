@@ -1,25 +1,37 @@
-.animal-list {
+/* .animal-list {
     width: 80%;
-    display: flex;
     margin: 2rem 0;
-    justify-content: center;
-}
+} */
 
 #adoption {
-    width: 80%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    background-color: aliceblue;
-    margin: 1rem auto 2rem;
-    padding: 2rem 0;
+    margin: 3rem 0 2rem;
+    /* padding: 2rem 0; */
 }
 
 #adoption h1 {
     font-weight: bold;
     color: #F7931D;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
+}
+
+#adoption .ui.container{
+    width: 80%;
+    display: flex;
+    margin: 2rem 0px;
+    justify-content: center;
+    text-align: center;
+}
+
+#adoption .ui.grid {
+    justify-content: center;
+}
+
+#adoption .ui.card{
+    margin: 2rem;
 }
 
 /* .animal-header{
@@ -46,3 +58,24 @@
     border: 0 0 0 0 solid rgba(221, 221, 221, 0.933);
     padding: 0 2% 0 2%;
 } */
+
+@media only screen and (min-width: 768px) {
+    #adoption .ui.container {
+        width: 90%;
+    }
+    #adoption .ui.grid{
+        justify-content: space-evenly;
+    }
+}
+
+@media only screen and (min-width: 900px) {
+    #adoption .ui.container {
+        width: 80%;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    #adoption .ui.card{
+        margin: 1rem;
+    }
+}

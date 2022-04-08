@@ -11,6 +11,10 @@
   overflow-x: hidden;
 }
 
+.ui.segment{
+  margin: 0;
+}
+
 .main {
   min-height: 100vh;
   padding: 4rem 0;
@@ -199,7 +203,7 @@
   display: flex;
   background: rgb(75, 75, 75);
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 }
 .curr-img {
   margin: auto;
@@ -212,6 +216,12 @@
   }
 }
 
+@media only screen and (min-width: 768px) {
+  .img-container {
+    max-height: 30vw;
+  }
+}
+
 @media only screen and (min-width: 1024px) {
   .arrow {
     position: relative;
@@ -220,13 +230,7 @@
     width: 40px;
   }
   .img-container {
-    margin: 0;
-    height: 100%;
-    object-fit: contain;
-    margin: auto;
-    display: flex;
-    background: rgb(75, 75, 75);
-    align-items: center;
-    justify-content: space-between;
+    overflow: hidden;
+    max-height: 25vw;
   }
 }

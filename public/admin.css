@@ -45,6 +45,14 @@ h1.ui.header, h1.ui.header:first-child, h1.ui.header:last-child{
   opacity: 1;
 }
 
+/* #admin-animals .animal-list{
+  text-align: center;
+  width: 80%;
+  display: flex;
+  margin: 2rem 0;
+  justify-content: center;
+} */
+
 #admin-animals .ui.grid {
   display: flex;
   justify-content: space-around;
