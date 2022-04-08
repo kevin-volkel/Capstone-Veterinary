@@ -74,11 +74,15 @@ div.visible.menu span {
 @media only screen and (min-height: 750px) and (min-width: 350px) {
   form#login,
   form#register {
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    // margin: 0;
+    // position: absolute;
+    // top: 50%;
+    // left: 50%;
+    // transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    // height: calc(100%);
+    // margin-top: 1.5rem;
   }
 
   form#register {
