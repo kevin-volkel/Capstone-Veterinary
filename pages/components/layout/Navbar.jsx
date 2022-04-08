@@ -1,11 +1,18 @@
 import React from "react";
 import { Menu } from "semantic-ui-react";
 import Link from "next/link";
+import Image from "next/image";
 import { logoutUser } from "../../util/auth";
+import WMlogo from "../../../public/media/WMlogo.png";
 
 const Navbar = ({ user }) => {
   return (
     <Menu style={{ margin: 0 }} className="navbar">
+      <div className="wmLogo-wrapper">
+        <Image src={WMlogo} alt="west mec logo" />
+      </div>
+
+      {/* page tabs */}
       <Menu.Item name="home">
         <Link href="/">Home</Link>
       </Menu.Item>

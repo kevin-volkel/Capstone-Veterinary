@@ -1,3 +1,17 @@
+.navbar{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
 .ui.menu{
     box-shadow: 2px 2px 5px #aaaaaa;
+}
+
+
+.wmLogo-wrapper{
+    /* width: 35%; */
+    width: 60%;
+    height: 50%;
 }
