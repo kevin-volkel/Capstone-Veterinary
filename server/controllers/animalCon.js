@@ -7,6 +7,7 @@ const addAnimal = async (req, res) => {
 
   const {
     name,
+    age,
     type,
     breed,
     gender,
@@ -28,6 +29,7 @@ const addAnimal = async (req, res) => {
       gender,
       neutered,
       location,
+      age,
       user: userId,
     };
     if (breed) newAnimal.breed = breed;
@@ -103,7 +105,7 @@ const getAnimal = async (req, res) => {
 const deleteAnimal = async (req, res) => {
   try {
     const userId = req.user.userId;
-    const {id: animalId} = req.body
+    const { id: animalId } = req.params
 
     const animal = await AnimalModel.findById(animalId);
     if (!animal) return res.status(404).send("animal not found");

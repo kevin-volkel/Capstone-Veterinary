@@ -5,7 +5,7 @@ import { logoutUser } from "../../util/auth";
 
 const Navbar = ({ user }) => {
   return (
-    <Menu>
+    <Menu style={{ margin: 0 }} className="navbar">
       <Menu.Item name="home">
         <Link href="/">Home</Link>
       </Menu.Item>
@@ -31,6 +31,15 @@ const Navbar = ({ user }) => {
         </Menu.Item>
       )}
     </Menu>
+
+    // {user !== null && (
+    //   <>
+    //     <Menu.Item name="admin">
+    //       <Link href="/admin">Admin</Link>
+    //     </Menu.Item>
+    //     <Menu.Item name="admin">Logout</Menu.Item>
+    //   </>
+    // )}
   );
 };
 

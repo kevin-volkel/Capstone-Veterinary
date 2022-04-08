@@ -1,0 +1,48 @@
+.animal-list {
+    width: 80%;
+    display: flex;
+    margin: 2rem 0;
+    justify-content: center;
+}
+
+#adoption {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    background-color: aliceblue;
+    margin: 1rem auto 2rem;
+    padding: 2rem 0;
+}
+
+#adoption h1 {
+    font-weight: bold;
+    color: #F7931D;
+    margin-bottom: 3rem;
+}
+
+/* .animal-header{
+    font-size: x-large;
+    color: #f2711c;
+    font-weight: bold;
+}
+
+.animal-card-info{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+} */
+
+/* .card-type{
+    border: solid rgba(221, 221, 221, 0.933);
+    padding: 0 2% 0 2%;
+}
+.card-gender{
+    border: solid rgba(221, 221, 221, 0.933);
+    padding: 0 2% 0 2%;
+}
+.card-age{
+    border: 0 0 0 0 solid rgba(221, 221, 221, 0.933);
+    padding: 0 2% 0 2%;
+} */

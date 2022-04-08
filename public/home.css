@@ -2,6 +2,15 @@
   padding: 0 2rem;
 }
 
+.ui.menu {
+  display: flex;
+  height: 4rem;
+  background-color: #f6f7f8;
+}
+.everything {
+  overflow-x: hidden;
+}
+
 .main {
   min-height: 100vh;
   padding: 4rem 0;
@@ -108,51 +117,115 @@
   margin-left: 0.5rem;
 }
 
-.nf-title{
+.nf-title {
   display: flex;
   justify-content: center;
   align-items: center;
   color: #f2711c;
 }
 
-.nf-sect{
+.nf-wholeSect{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.adopt-image{
-  padding: 10%;
-}
-
-.nf-description{
-  width: 100%;
-    margin-right: 4%;
-    margin-left: 2%;
-}
-
-.nf-adopt-btn{
-  display: flex;
+.nf-sect{
+  /* display: flex; */
+  flex-direction: row;
   justify-content: center;
-  padding: 2% 5% 2% 5%;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
-.Img-btn-left{
-  position: absolute;
+.adopt-image {
+  padding: 10%;
+  box-shadow: 2px 2px 5px #aaaaaa;
+}
+
+.nf-description {
+  width: 100%;
+  margin-right: 4%;
+  margin-left: 2%;
+}
+
+.ui.orange.button{
+  margin-top: 2%;
+  padding: 2% 2.75%;
+  box-shadow: 2px 2px 5px #aaaaaa;
+}
+
+.img-btn-left {
   left: 0;
-  top: 50%;
+  margin-left: 5rem !important;
+  clip-path: polygon(
+    40% 0%,
+    40% 20%,
+    100% 20%,
+    100% 80%,
+    40% 80%,
+    40% 100%,
+    0% 50%
+  );
 }
 
-.Img-btn-right{
-  position: fixed;
+.img-btn-right {
   right: 0;
-  top: 50%;
+  margin-right: 5rem !important;
+  clip-path: polygon(
+    0% 20%,
+    60% 20%,
+    60% 0%,
+    100% 50%,
+    60% 100%,
+    60% 80%,
+    0% 80%
+  );
 }
 
-@media (max-width: 600px) {
+.arrow {
+  position: relative;
+  top: 50%;
+  height: 30px;
+  width: 40px;
+}
+
+.img-container {
+  margin: 0;
+  height: 100%;
+  object-fit: contain;
+  margin: auto;
+  display: flex;
+  background: rgb(27, 27, 27);
+  align-items: center;
+  justify-content: space-between;
+}
+.curr-img {
+  margin: auto;
+}
+
+@media only screen and (min-width: 768px) {
   .grid {
     width: 100%;
     flex-direction: column;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .arrow {
+    position: relative;
+    top: 50%;
+    height: 30px;
+    width: 40px;
+  }
+  .img-container {
+    margin: 0;
+    height: 100%;
+    object-fit: contain;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 }
