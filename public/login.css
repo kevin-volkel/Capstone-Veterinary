@@ -2,22 +2,33 @@
 
 form#login,
 form#register {
-  margin: 1rem auto;
-  width: 80vw;
+  margin: none;
+  width: 90%;
+  position: relative;
 }
 
-form#register{
-  margin-top: .5rem; 
+div.ui.segment {
+  margin-top: 0;
 }
 
-.ui-segment {
-  margin: 0;
+.form-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+form#register {
+  margin-top: 0.5rem;
 }
 
 /* FORM TOP */
 #photo-upload {
   width: 70px;
   height: 70px;
+}
+
+body {
+  background-color: #f6f7f8;
+  height: auto;
 }
 
 #photo-upload img {
@@ -60,7 +71,6 @@ div.visible.menu span {
   cursor: pointer;
 }
 
-
 @media only screen and (min-height: 750px) and (min-width: 350px) {
   form#login,
   form#register {
@@ -71,15 +81,13 @@ div.visible.menu span {
     transform: translate(-50%, -50%);
   }
 
-  form#register{
-    margin-top: .5rem;
+  form#register {
+    margin-top: 0.5rem;
   }
 }
 
-
 /* TABLET STYLES */
 @media only screen and (min-width: 768px) {
-
   form#login,
   form#register {
     width: 85vw;
@@ -114,7 +122,7 @@ div.visible.menu span {
   }
 
   /* form fields */
-  div.field{
+  div.field {
     font-size: 1.5rem;
   }
 
@@ -137,25 +145,24 @@ div.visible.menu span {
 /* LARGE & DESKTOP STYLES */
 /* 1024px | 1280px */
 @media only screen and (min-width: 1024px) {
-
   form#login,
   form#register {
     width: 65vw;
   }
-  #form-group{
-    width: 30vw
+  #form-group {
+    width: 30vw;
   }
-  .upload-image{
-    justify-content: center!important;
+  .upload-image {
+    justify-content: center !important;
   }
-  .login-title{
+  .login-title {
     text-align: center;
   }
-  #photo-upload{
+  #photo-upload {
     width: 10rem;
     height: 10rem;
-    top: 10rem!important;
-    right: 8rem!important;
+    top: 10rem !important;
+    right: 8rem !important;
   }
   #photo-upload img {
     width: 10rem;
@@ -166,14 +173,13 @@ div.visible.menu span {
     left: 45px;
     bottom: 10px;
   }
-  #photo-upload .edit button{
+  #photo-upload .edit button {
     height: 35px;
     width: 35px;
   }
 }
 
 @media only screen and (min-width: 1280px) {
-
   form#login,
   form#register {
     width: 55vw;
