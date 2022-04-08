@@ -1,4 +1,4 @@
-.navbar {
+.navbar{
   width: 100%;
   height: 2.5rem;
   display: flex;
@@ -10,58 +10,53 @@
   border-bottom: 3px solid orange;
 }
 
-.wm-logo {
+.wm-logo{
   width: 40%;
 }
-
-.vet-logo {
+.vet-logo{
   width: 15%;
 }
-
-.hamburger {
-  width: 15%;
+.hamburger{
+  width:15%;
 }
-
-.menu-item {
+.menu-item{
   display: none;
 }
-
-.menu-item a {
+.menu-item a{
   color: grey;
 }
-
-.menu-item.active a {
+.menu-item.active a{
+  color: rgb(69, 69, 69);
+}
+.menu-item:hover a{
   color: rgb(69, 69, 69);
 }
 
-.menu-item:hover a {
-  color: rgb(69, 69, 69);
-}
 
 @media only screen and (min-width: 1024px) {
-  .navbar {
+  .navbar{
     height: 4rem;
     justify-content: left;
   }
 
-  .vet-logo {
+  .vet-logo{
     width: 5%;
     margin-right: 5%;
   }
 
-  .wm-logo {
+  .wm-logo{
     width: 25%;
     margin-right: 37%;
   }
-
-  .hamburger {
-    display: none !important;
+  
+  .hamburger{
+    display: none!important;
   }
 
-  .menu-item {
+  .menu-item{
     margin-right: 30px;
     font-size: 2rem;
     color: grey;
     display: block;
   }
-}/*# sourceMappingURL=navbar.css.map */
+}

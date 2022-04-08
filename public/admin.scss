@@ -1,11 +1,11 @@
-#admin {
+#admin{
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
 }
 
-#header {
+#header{
   display: flex;
   width: 80vw;
   margin: 3rem auto;
@@ -13,23 +13,23 @@
   justify-content: space-evenly;
 }
 
-#admin h1 {
+#admin h1{
   font-weight: bold;
 }
 
-h1.ui.header, h1.ui.header:first-child, h1.ui.header:last-child {
+h1.ui.header, h1.ui.header:first-child, h1.ui.header:last-child{
   margin: 0;
   cursor: pointer;
   font-size: 4rem;
 }
 
-#admin-animals {
+#admin-animals{
   width: 70vw;
   margin: 1rem auto 2rem;
   padding: 2rem 0;
 }
 
-#admin-animals .button {
+#admin-animals .button{
   width: 75%;
   height: 60px;
   font-size: 1.5rem;
@@ -37,13 +37,11 @@ h1.ui.header, h1.ui.header:first-child, h1.ui.header:last-child {
   color: #FFFFFF;
   margin-bottom: 2rem;
 }
-
-#admin-animals .button:hover {
+#admin-animals .button:hover{
   background-color: #F68C13;
   color: #FFFFFF;
 }
-
-.ui.button > .icon:not(.button) {
+.ui.button>.icon:not(.button) {
   opacity: 1;
 }
 
@@ -55,4 +53,4 @@ h1.ui.header, h1.ui.header:first-child, h1.ui.header:last-child {
 #admin-animals .no-animals {
   font-size: 1.5rem;
   font-weight: bold;
-}/*# sourceMappingURL=admin.css.map */
+}
