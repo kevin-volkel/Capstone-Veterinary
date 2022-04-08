@@ -201,7 +201,7 @@
   object-fit: contain;
   margin: auto;
   display: flex;
-  background: rgb(75, 75, 75);
+  background: rgb(27, 27, 27);
   align-items: center;
   justify-content: center;
 }
@@ -232,5 +232,13 @@
   .img-container {
     overflow: hidden;
     max-height: 25vw;
+
+    /* margin: 0;
+    height: 100%;
+    object-fit: contain;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; */
   }
 }
