@@ -14,6 +14,7 @@ const AnimalCard = ({ name, age, type, picURLs, id, gender, color }) => {
         textAlign: "center",
         maxWidth: "250px",
         textTransform: "uppercase",
+        background: color
       }}
       // color={color}
       onClick={() => Router.push(`${baseURL}/${id}`)}

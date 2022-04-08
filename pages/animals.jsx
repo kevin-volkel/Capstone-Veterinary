@@ -32,7 +32,7 @@ const animals = ({ animals }) => {
             {animals.map((animal) => {
               // console.log(animal);
               const { name, age, type, gender, picURLs, _id } = animal;
-              const color = gender === "male" ? "blue" : "pink";
+              const color = gender === "male" ? "#9AC7FF" : "#FA7091";
 
               return (
                 <AnimalCard
