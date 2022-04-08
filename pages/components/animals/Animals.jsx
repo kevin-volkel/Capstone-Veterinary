@@ -70,6 +70,7 @@ const Animals = () => {
                   id={_id}
                   gender={gender}
                   color={color}
+                  key={_id}
                 />
               );
             })}
