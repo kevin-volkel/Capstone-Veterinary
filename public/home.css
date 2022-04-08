@@ -11,6 +11,12 @@
   overflow-x: hidden;
 }
 
+.nf-div {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
 .main {
   min-height: 100vh;
   padding: 4rem 0;
@@ -82,6 +88,9 @@
   max-width: 800px;
 }
 
+.slideshow {
+  margin-top: 1rem;
+}
 .card {
   margin: 1rem;
   padding: 1.5rem;
@@ -124,14 +133,14 @@
   color: #f2711c;
 }
 
-.nf-wholeSect{
+.nf-wholeSect {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.nf-sect{
+.nf-sect {
   /* display: flex; */
   flex-direction: row;
   justify-content: center;
@@ -150,7 +159,7 @@
   margin-left: 2%;
 }
 
-.ui.orange.button{
+.ui.orange.button {
   margin-top: 2%;
   padding: 2% 2.75%;
   box-shadow: 2px 2px 5px #aaaaaa;
@@ -203,6 +212,13 @@
 }
 .curr-img {
   margin: auto;
+}
+
+.ui.segment {
+  border: 1px solid rgba(0, 0, 0, 0.119);
+  border-radius: 4px;
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
+  width: 90%;
 }
 
 @media only screen and (min-width: 768px) {
