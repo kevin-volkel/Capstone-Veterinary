@@ -37,8 +37,18 @@ body {
   .animal-list {
     width: 80%;
     display: flex;
-    margin: 2rem 0;
+    margin: 3.5rem 0;
     justify-content: center;
+  }
+
+  .grid{
+    justify-content: space-between;
+    .ui.card{
+      font-size: 1.2rem;
+      &:last-child{
+        margin: 1em 0;
+      }
+    }
   }
 }
 

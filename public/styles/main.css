@@ -64,6 +64,12 @@ a {
   display: flex;
   justify-content: space-around;
 }
+#admin-animals .ui.card {
+  font-size: 1.2rem;
+}
+#admin-animals .ui.card:last-child {
+  margin: 1em 0;
+}
 #admin-animals .no-animals {
   font-size: 1.5rem;
   font-weight: bold;
@@ -108,8 +114,17 @@ body {
 #adoption .animal-list {
   width: 80%;
   display: flex;
-  margin: 2rem 0;
+  margin: 3.5rem 0;
   justify-content: center;
+}
+#adoption .grid {
+  justify-content: space-between;
+}
+#adoption .grid .ui.card {
+  font-size: 1.2rem;
+}
+#adoption .grid .ui.card:last-child {
+  margin: 1em 0;
 }
 
 /* .animal-header{
@@ -316,14 +331,15 @@ body {
 
 .img-container {
   margin: 0;
-  height: 100%;
+  height: 40vw;
   -o-object-fit: contain;
      object-fit: contain;
+  overflow: hidden;
   margin: auto;
   display: flex;
   background: rgb(27, 27, 27);
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .curr-img {
@@ -344,33 +360,8 @@ body {
   }
 }
 @media only screen and (min-width: 1024px) {
-  .arrow {
-    position: relative;
-    top: 50%;
-    height: 30px;
-    width: 40px;
-  }
-
   .img-container {
-    margin: 0;
-    height: 100%;
-    -o-object-fit: contain;
-       object-fit: contain;
-    margin: auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .adopt-image {
-    padding: 10%;
-    box-shadow: 2px 2px 2px 5px #aaaaaa;
-  }
-
-  .ui.orange.button {
-    margin-top: 2%;
-    padding: 2% 2.75%;
-    box-shadow: 2px 2px 5px #aaaaaa;
+    height: 28vw;
   }
 }
 /* LOGIN & REGISTER FORM CSS */
@@ -453,52 +444,54 @@ form#register {
   form#login,
 form#register {
     width: 85vw;
+    /* form top */
+    /* form fields */
+    /* form bottom */
   }
-
-  /* form top */
-  .ui.segment h1 {
+  form#login .ui.segment h1,
+form#register .ui.segment h1 {
     font-size: 3rem;
   }
-
-  .upload-image {
+  form#login .upload-image,
+form#register .upload-image {
     margin-bottom: 2rem;
   }
-
-  #photo-upload {
+  form#login #photo-upload,
+form#register #photo-upload {
     width: 90px;
     height: 90px;
   }
-  #photo-upload img {
+  form#login #photo-upload img,
+form#register #photo-upload img {
     width: 90px;
     height: 90px;
   }
-
-  div.edit button {
+  form#login div.edit button,
+form#register div.edit button {
     width: 35px;
     height: 35px;
   }
-
-  i.pencil.icon {
+  form#login i.pencil.icon,
+form#register i.pencil.icon {
     font-size: 1.3rem;
   }
-
-  /* form fields */
-  div.field {
+  form#login div.field,
+form#register div.field {
     font-size: 1.5rem;
   }
-
-  div.visible.menu span {
+  form#login div.visible.menu span,
+form#register div.visible.menu span {
     font-size: 1.4rem;
   }
-
-  /* form bottom */
-  #login-btn,
-#register-btn {
+  form#login #login-btn,
+form#login #register-btn,
+form#register #login-btn,
+form#register #register-btn {
     padding: 13px;
     font-size: 1.9rem;
   }
-
-  .form-link {
+  form#login .form-link,
+form#register .form-link {
     font-size: 1.3rem;
   }
 }
@@ -508,44 +501,6 @@ form#register {
   form#login,
 form#register {
     width: 65vw;
-  }
-
-  #form-group {
-    width: 30vw;
-  }
-
-  .upload-image {
-    justify-content: center !important;
-  }
-
-  .login-title {
-    text-align: center;
-  }
-
-  #photo-upload {
-    width: 10rem;
-    height: 10rem;
-    top: 10rem !important;
-    right: 8rem !important;
-  }
-  #photo-upload img {
-    width: 10rem;
-    height: 10rem;
-  }
-  #photo-upload .edit {
-    position: relative;
-    left: 45px;
-    bottom: 10px;
-  }
-  #photo-upload .edit button {
-    height: 35px;
-    width: 35px;
-  }
-}
-@media only screen and (min-width: 1280px) {
-  form#login,
-form#register {
-    width: 55vw;
   }
 }
 .navbar {

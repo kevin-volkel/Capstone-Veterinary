@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Image, Button } from "semantic-ui-react";
+import { Card, Image, Button, Icon } from "semantic-ui-react";
 import Router from "next/router";
 import { baseURL } from "../../util/auth";
 
@@ -13,7 +13,7 @@ const AnimalCard = ({ name, age, type, picURLs, id, gender, color }) => {
         cursor: "pointer",
         textAlign: "center",
         maxWidth: "250px",
-        maxHeight: "280px",
+        // maxHeight: "280px",
         textTransform: "uppercase",
         background: color
       }}
@@ -31,7 +31,11 @@ const AnimalCard = ({ name, age, type, picURLs, id, gender, color }) => {
           content={name}
         />
         <Card.Meta className="card-type" content={type} />
-        <Card.Meta className="card-gender" content={gender} />
+        {/* <Card.Meta className="card-gender" content={gender} /> */}
+        <Card.Meta className="card-gender">
+          {gender}
+          <Icon name={gender === "male" ? "man" : "woman"} />
+        </Card.Meta>
         <Card.Meta className="card-age" content={age} />
       </Card.Content>
     </Card>

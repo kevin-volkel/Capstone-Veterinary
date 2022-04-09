@@ -47,6 +47,12 @@
     display: flex;
     justify-content: space-around;
   }
+  .ui.card{
+    font-size: 1.2rem;
+    &:last-child{
+      margin: 1em 0;
+    }
+  }
 
   .no-animals {
     font-size: 1.5rem;

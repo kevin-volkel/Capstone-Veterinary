@@ -17,7 +17,6 @@ div.ui.segment {
   justify-content: center;
 }
 
-
 /* FORM TOP */
 #photo-upload {
   width: 70px;
@@ -82,54 +81,54 @@ div.visible.menu span {
   form#login,
   form#register {
     width: 85vw;
-  }
 
-  /* form top */
-  .ui.segment h1 {
-    font-size: 3rem;
-  }
+    /* form top */
+    .ui.segment h1 {
+      font-size: 3rem;
+    }
 
-  .upload-image {
-    margin-bottom: 2rem;
-  }
+    .upload-image {
+      margin-bottom: 2rem;
+    }
 
-  #photo-upload {
-    width: 90px;
-    height: 90px;
-
-    img {
+    #photo-upload {
       width: 90px;
       height: 90px;
+
+      img {
+        width: 90px;
+        height: 90px;
+      }
     }
-  }
 
-  div.edit button {
-    width: 35px;
-    height: 35px;
-  }
+    div.edit button {
+      width: 35px;
+      height: 35px;
+    }
 
-  i.pencil.icon {
-    font-size: 1.3rem;
-  }
+    i.pencil.icon {
+      font-size: 1.3rem;
+    }
 
-  /* form fields */
-  div.field {
-    font-size: 1.5rem;
-  }
+    /* form fields */
+    div.field {
+      font-size: 1.5rem;
+    }
 
-  div.visible.menu span {
-    font-size: 1.4rem;
-  }
+    div.visible.menu span {
+      font-size: 1.4rem;
+    }
 
-  /* form bottom */
-  #login-btn,
-  #register-btn {
-    padding: 13px;
-    font-size: 1.9rem;
-  }
+    /* form bottom */
+    #login-btn,
+    #register-btn {
+      padding: 13px;
+      font-size: 1.9rem;
+    }
 
-  .form-link {
-    font-size: 1.3rem;
+    .form-link {
+      font-size: 1.3rem;
+    }
   }
 }
 
@@ -139,43 +138,44 @@ div.visible.menu span {
   form#login,
   form#register {
     width: 65vw;
-  }
-  #form-group {
-    width: 30vw;
-  }
-  .upload-image {
-    justify-content: center !important;
-  }
-  .login-title {
-    text-align: center;
-  }
-  #photo-upload {
-    width: 10rem;
-    height: 10rem;
-    top: 10rem !important;
-    right: 8rem !important;
 
-    img {
-      width: 10rem;
-      height: 10rem;
-    }
+    // #form-group {
+    //   width: 30vw;
+    // }
+    // .upload-image {
+    //   justify-content: center !important;
+    // }
+    // .login-title {
+    //   text-align: center;
+    // }
+    // #photo-upload {
+    //   width: 10rem;
+    //   height: 10rem;
+    //   top: 10rem !important;
+    //   right: 8rem !important;
 
-    .edit {
-      position: relative;
-      left: 45px;
-      bottom: 10px;
+    //   img {
+    //     width: 10rem;
+    //     height: 10rem;
+    //   }
 
-      button {
-        height: 35px;
-        width: 35px;
-      }
-    }
+    //   .edit {
+    //     position: relative;
+    //     left: 45px;
+    //     bottom: 10px;
+
+    //     button {
+    //       height: 35px;
+    //       width: 35px;
+    //     }
+    //   }
+    // }
   }
 }
 
-@media only screen and (min-width: 1280px) {
-  form#login,
-  form#register {
-    width: 55vw;
-  }
-}
+// @media only screen and (min-width: 1280px) {
+//   form#login,
+//   form#register {
+//     width: 55vw;
+//   }
+// }
