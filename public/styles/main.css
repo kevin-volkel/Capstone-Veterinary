@@ -297,14 +297,14 @@ body {
 }
 
 .nf-description {
-  width: 100%;
+  width: 60%;
   margin-right: 4%;
   margin-left: 2%;
 }
 
 .ui.orange.button {
   margin-top: 2%;
-  padding: 2% 2.75%;
+  padding: 5% 3.75%;
   box-shadow: 2px 2px 5px #aaaaaa;
 }
 
@@ -350,7 +350,7 @@ body {
   border: 1px solid rgba(0, 0, 0, 0.119);
   border-radius: 4px;
   box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
-  width: 90%;
+  width: 97%;
 }
 
 @media only screen and (min-width: 768px) {
