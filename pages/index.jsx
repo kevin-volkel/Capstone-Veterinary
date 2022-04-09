@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Button, Segment } from "semantic-ui-react";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
-import tutu from "../public/media/tutu.jpg";
+import adopt from "../public/media/adopt-img.png";
 //import "../styles/home.css";
 import bannerPic from "../public/media/home-page-banner.jpg";
 
@@ -38,7 +38,7 @@ export default function Home() {
               vero eos et accus et iusto odio dignissimos ducimus qui blanditiis
             </p>
             {/* a reccomended 255 character limit */}
-            <Image src={tutu} position="relative" className="adopt-image" objectFit="contain"/>
+            <Image src={adopt} position="relative" className="adopt-image" objectFit="contain"/>
           </div>
           <Button
             color="orange"
