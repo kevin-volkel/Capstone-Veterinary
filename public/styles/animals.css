@@ -1,0 +1,71 @@
+.animal-list {
+  width: 80%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 2rem 0;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+body {
+  background-color: #f6f7f8;
+  height: auto;
+  padding-bottom: 2rem;
+  overflow-x: hidden;
+}
+
+#adoption {
+  width: 90%;
+  border: 1px solid rgba(0, 0, 0, 0.119);
+  border-radius: 4px;
+  -webkit-box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  background-color: white;
+  margin: 1rem auto 2rem;
+  margin-bottom: 2rem;
+  padding: 2rem 0;
+}
+
+#adoption h1 {
+  font-weight: bold;
+  color: #f7931d;
+  margin-bottom: 3rem;
+}
+
+/* .animal-header{
+    font-size: x-large;
+    color: #f2711c;
+    font-weight: bold;
+}
+
+.animal-card-info{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+} */
+/* .card-type{
+    border: solid rgba(221, 221, 221, 0.933);
+    padding: 0 2% 0 2%;
+}
+.card-gender{
+    border: solid rgba(221, 221, 221, 0.933);
+    padding: 0 2% 0 2%;
+}
+.card-age{
+    border: 0 0 0 0 solid rgba(221, 221, 221, 0.933);
+    padding: 0 2% 0 2%;
+} */
+/*# sourceMappingURL=animals.css.map */

@@ -24,6 +24,7 @@ export default function Home() {
         </div>
       </div>
 
+    <div className="nf-div">
       <Segment className="new-friend-section">
         <h1 className="nf-title">Find a New Friend!</h1>
         <div className="nf-wholeSect">
@@ -33,21 +34,19 @@ export default function Home() {
               blanditiis praesentium voluptatum deleniti atque corrupti quosi
               dolores et quas molestias excepturi sint occaecati cupidi non. At
               vero eos et accus et iusto odio dignissimos ducimus qui blanditiis
-              praesentium voluptatum deleniti atque corrupti quosi dolores et
-              quas molestias excepturi sint occaecati cupidi non. At vero eos et
-              accus et iusto odio dignissimos ducimus qui blanditiis praesentium
-              voluptatum deleniti atque corrupti quosi dolores et quas molestias
-              excepturi sint occaecati cupidi non.
             </p>
-            <Image src={tutu} position="relative" className="adopt-image" />
+            {/* a reccomended 255 character limit */}
+            <Image src={tutu} position="relative" className="adopt-image" objectFit="contain"/>
           </div>
           <Button
             color="orange"
             content="Ready To Adopt"
             className="nf-adopt-btn"
+            onClick=""
           />
         </div>
       </Segment>
+      </div>
 
       <Footer />
     </div>

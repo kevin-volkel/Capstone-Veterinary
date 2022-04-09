@@ -1,4 +1,5 @@
 /* LOGIN & REGISTER FORM CSS */
+
 form#login,
 form#register {
   margin: none;
@@ -11,12 +12,8 @@ div.ui.segment {
 }
 
 .form-wrap {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
 }
 
 form#register {
@@ -77,13 +74,17 @@ div.visible.menu span {
 @media only screen and (min-height: 750px) and (min-width: 350px) {
   form#login,
   form#register {
-    display: -webkit-box;
-    display: -ms-flexbox;
+    // margin: 0;
+    // position: absolute;
+    // top: 50%;
+    // left: 50%;
+    // transform: translate(-50%, -50%);
     display: flex;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    justify-content: center;
+    // height: calc(100%);
+    // margin-top: 1.5rem;
   }
+
   form#register {
     margin-top: 0.5rem;
   }
@@ -95,41 +96,51 @@ div.visible.menu span {
   form#register {
     width: 85vw;
   }
+
   /* form top */
   .ui.segment h1 {
     font-size: 3rem;
   }
+
   .upload-image {
     margin-bottom: 2rem;
   }
+
   #photo-upload {
     width: 90px;
     height: 90px;
   }
+
   #photo-upload img {
     width: 90px;
     height: 90px;
   }
+
   div.edit button {
     width: 35px;
     height: 35px;
   }
+
   i.pencil.icon {
     font-size: 1.3rem;
   }
+
   /* form fields */
   div.field {
     font-size: 1.5rem;
   }
+
   div.visible.menu span {
     font-size: 1.4rem;
   }
+
   /* form bottom */
   #login-btn,
   #register-btn {
     padding: 13px;
     font-size: 1.9rem;
   }
+
   .form-link {
     font-size: 1.3rem;
   }
@@ -146,9 +157,7 @@ div.visible.menu span {
     width: 30vw;
   }
   .upload-image {
-    -webkit-box-pack: center !important;
-        -ms-flex-pack: center !important;
-            justify-content: center !important;
+    justify-content: center !important;
   }
   .login-title {
     text-align: center;
@@ -180,4 +189,3 @@ div.visible.menu span {
     width: 55vw;
   }
 }
-/*# sourceMappingURL=login.css.map */

@@ -1,0 +1,258 @@
+.container {
+  padding: 0 2rem;
+}
+
+.ui.menu {
+  display: flex;
+  height: 4rem;
+  background-color: #f6f7f8;
+}
+.everything {
+  overflow-x: hidden;
+}
+
+.nf-div {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.main {
+  min-height: 100vh;
+  padding: 4rem 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer {
+  display: flex;
+  flex: 1;
+  padding: 2rem 0;
+  border-top: 1px solid #eaeaea;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.title a {
+  color: #0070f3;
+  text-decoration: none;
+}
+
+.title a:hover,
+.title a:focus,
+.title a:active {
+  text-decoration: underline;
+}
+
+.title {
+  margin: 0;
+  line-height: 1.15;
+  font-size: 4rem;
+}
+
+.title,
+.description {
+  text-align: center;
+}
+
+.description {
+  margin: 4rem 0;
+  line-height: 1.5;
+  font-size: 1.5rem;
+}
+
+.code {
+  background: #fafafa;
+  border-radius: 5px;
+  padding: 0.75rem;
+  font-size: 1.1rem;
+  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
+    Bitstream Vera Sans Mono, Courier New, monospace;
+}
+
+.grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 800px;
+}
+
+.slideshow {
+  margin-top: 1rem;
+}
+.card {
+  margin: 1rem;
+  padding: 1.5rem;
+  text-align: left;
+  color: inherit;
+  text-decoration: none;
+  border: 1px solid #eaeaea;
+  border-radius: 10px;
+  transition: color 0.15s ease, border-color 0.15s ease;
+  max-width: 300px;
+}
+
+.card:hover,
+.card:focus,
+.card:active {
+  color: #0070f3;
+  border-color: #0070f3;
+}
+
+.card h2 {
+  margin: 0 0 1rem 0;
+  font-size: 1.5rem;
+}
+
+.card p {
+  margin: 0;
+  font-size: 1.25rem;
+  line-height: 1.5;
+}
+
+.logo {
+  height: 1em;
+  margin-left: 0.5rem;
+}
+
+.nf-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #f2711c;
+}
+
+.nf-wholeSect {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.nf-sect {
+  /* display: flex; */
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.adopt-image {
+  padding: 10%;
+  box-shadow: 2px 2px 5px #aaaaaa;
+}
+
+.nf-description {
+  width: 60%;
+  margin-right: 4%;
+  margin-left: 2%;
+}
+
+.ui.orange.button {
+  margin-top: 2%;
+  padding: 5% 3.75%;
+  box-shadow: 2px 2px 5px #aaaaaa;
+}
+
+.img-btn-left {
+  left: 0;
+  margin-left: 5rem !important;
+  clip-path: polygon(
+    40% 0%,
+    40% 20%,
+    100% 20%,
+    100% 80%,
+    40% 80%,
+    40% 100%,
+    0% 50%
+  );
+}
+
+.img-btn-right {
+  right: 0;
+  margin-right: 5rem !important;
+  clip-path: polygon(
+    0% 20%,
+    60% 20%,
+    60% 0%,
+    100% 50%,
+    60% 100%,
+    60% 80%,
+    0% 80%
+  );
+}
+
+.arrow {
+  position: relative;
+  top: 50%;
+  height: 30px;
+  width: 40px;
+}
+
+.img-container {
+  margin: 0;
+  height: 100%;
+  object-fit: contain;
+  margin: auto;
+  display: flex;
+  background: rgb(27, 27, 27);
+  align-items: center;
+  justify-content: space-between;
+}
+.curr-img {
+  margin: auto;
+}
+
+.ui.segment {
+  border: 1px solid rgba(0, 0, 0, 0.119);
+  border-radius: 4px;
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
+  width: 97%;
+}
+
+@media only screen and (min-width: 768px) {
+  .grid {
+    width: 100%;
+    flex-direction: column;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .arrow {
+    position: relative;
+    top: 50%;
+    height: 30px;
+    width: 40px;
+  }
+  .img-container {
+    margin: 0;
+    height: 100%;
+    object-fit: contain;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .adopt-image {
+    padding: 10%;
+    box-shadow: 2px 2px 5px #aaaaaa;
+  }
+
+  .ui.orange.button {
+    margin-top: 2%;
+    padding: 2% 2.75%;
+    box-shadow: 2px 2px 5px #aaaaaa;
+  }
+}

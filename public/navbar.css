@@ -1,17 +1,75 @@
-.navbar{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+.navbar {
+  width: 100%;
+  height: 2.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 3px solid orange;
 }
 
-.ui.menu{
-    box-shadow: 2px 2px 5px #aaaaaa;
+.wm-logo {
+  width: 40%;
 }
 
-
-.wmLogo-wrapper{
-    /* width: 35%; */
-    width: 60%;
-    height: 50%;
+.vet-logo {
+  width: 15%;
 }
+
+.hamburger {
+  width: 15%;
+}
+
+.menu-item {
+  display: none;
+}
+
+.menu-item a {
+  color: grey;
+}
+
+.menu-item.active a {
+  color: #454545;
+}
+
+.menu-item:hover a {
+  color: #454545;
+}
+
+@media only screen and (min-width: 1024px) {
+  .navbar {
+    height: 4rem;
+    -webkit-box-pack: left;
+        -ms-flex-pack: left;
+            justify-content: left;
+  }
+  .vet-logo {
+    width: 5%;
+    margin-right: 5%;
+  }
+  .wm-logo {
+    width: 25%;
+    margin-right: 37%;
+  }
+  .hamburger {
+    display: none !important;
+  }
+  .menu-item {
+    margin-right: 30px;
+    font-size: 2rem;
+    color: grey;
+    display: block;
+  }
+}
+/*# sourceMappingURL=navbar.css.map */
