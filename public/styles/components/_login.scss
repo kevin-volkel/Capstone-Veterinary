@@ -1,28 +1,37 @@
 /* LOGIN & REGISTER FORM CSS */
 
-form#login,
-form#register {
-  margin: 1rem auto;
-  width: 80vw;
+#login,
+#register {
+  margin: none;
+  width: 90%;
+  position: relative;
+  margin-top: 1.5rem;
 }
 
-form#register{
-  margin-top: .5rem; 
+div.ui.segment {
+  margin-top: 0;
 }
 
-.ui-segment {
-  margin: 0;
+.form-wrap {
+  display: flex;
+  justify-content: center;
 }
+
 
 /* FORM TOP */
 #photo-upload {
   width: 70px;
   height: 70px;
+
+  img {
+    width: 70px;
+    height: 70px;
+  }
 }
 
-#photo-upload img {
-  width: 70px;
-  height: 70px;
+body {
+  background-color: #f6f7f8;
+  height: auto;
 }
 
 div.edit button {
@@ -60,26 +69,16 @@ div.visible.menu span {
   cursor: pointer;
 }
 
-
 @media only screen and (min-height: 750px) and (min-width: 350px) {
   form#login,
   form#register {
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-  form#register{
-    margin-top: .5rem;
+    display: flex;
+    justify-content: center;
   }
 }
 
-
 /* TABLET STYLES */
 @media only screen and (min-width: 768px) {
-
   form#login,
   form#register {
     width: 85vw;
@@ -97,11 +96,11 @@ div.visible.menu span {
   #photo-upload {
     width: 90px;
     height: 90px;
-  }
 
-  #photo-upload img {
-    width: 90px;
-    height: 90px;
+    img {
+      width: 90px;
+      height: 90px;
+    }
   }
 
   div.edit button {
@@ -114,7 +113,7 @@ div.visible.menu span {
   }
 
   /* form fields */
-  div.field{
+  div.field {
     font-size: 1.5rem;
   }
 
@@ -137,43 +136,44 @@ div.visible.menu span {
 /* LARGE & DESKTOP STYLES */
 /* 1024px | 1280px */
 @media only screen and (min-width: 1024px) {
-
   form#login,
   form#register {
     width: 65vw;
   }
-  #form-group{
-    width: 30vw
+  #form-group {
+    width: 30vw;
   }
-  .upload-image{
-    justify-content: center!important;
+  .upload-image {
+    justify-content: center !important;
   }
-  .login-title{
+  .login-title {
     text-align: center;
   }
-  #photo-upload{
+  #photo-upload {
     width: 10rem;
     height: 10rem;
-    top: 10rem!important;
-    right: 8rem!important;
-  }
-  #photo-upload img {
-    width: 10rem;
-    height: 10rem;
-  }
-  #photo-upload .edit {
-    position: relative;
-    left: 45px;
-    bottom: 10px;
-  }
-  #photo-upload .edit button{
-    height: 35px;
-    width: 35px;
+    top: 10rem !important;
+    right: 8rem !important;
+
+    img {
+      width: 10rem;
+      height: 10rem;
+    }
+
+    .edit {
+      position: relative;
+      left: 45px;
+      bottom: 10px;
+
+      button {
+        height: 35px;
+        width: 35px;
+      }
+    }
   }
 }
 
 @media only screen and (min-width: 1280px) {
-
   form#login,
   form#register {
     width: 55vw;

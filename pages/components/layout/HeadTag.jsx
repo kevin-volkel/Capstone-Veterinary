@@ -12,6 +12,7 @@ const HeadTag = () => {
       <link rel="stylesheet" href="/login.css" />
       <link rel="stylesheet" href="/home.css" />
       <link rel="stylesheet" href="/admin.css" />
+      <link rel="stylesheet" href="/navbar.css" />
       <title>West-Mec Veterinary</title>
     </Head>
   );

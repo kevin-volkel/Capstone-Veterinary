@@ -26,6 +26,7 @@ export default function Home() {
         </div>
       </div>
 
+    <div className="nf-div">
       <Segment className="new-friend-section">
         <h1 className="nf-title">Find a New Friend!</h1>
         <div className="nf-wholeSect">
@@ -50,6 +51,7 @@ export default function Home() {
           />
         </div>
       </Segment>
+      </div>
 
       <Footer />
     </div>

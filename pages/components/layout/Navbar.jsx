@@ -1,45 +1,71 @@
-import React from "react";
-import { Menu } from "semantic-ui-react";
-import Link from "next/link";
-import { logoutUser } from "../../util/auth";
+import React, { useState, useEffect } from 'react';
+import { Icon } from 'semantic-ui-react';
+import Link from 'next/link';
+import Image from 'next/image';
+import wmLogo from '../../../public/media/WMlogo.png';
+import vetLogo from '../../../public/media/vetLogo.png';
+import { logoutUser } from '../../util/auth';
+import { useRouter } from 'next/router';
 
 const Navbar = ({ user }) => {
+  const router = useRouter();
+
+  const isActive = (route) => router.pathname === route;
+
+  const [showNavbar, setShowNavbar] = useState(false);
+
   return (
-    <Menu style={{ margin: 0 }} className="navbar">
-      <Menu.Item name="home">
-        <Link href="/">Home</Link>
-      </Menu.Item>
+    <>
+      <div className="navbar">
+        <div className="vet-logo">
+          <Image src={vetLogo} objectFit="contain" />
+        </div>
+        <div className="wm-logo">
+          <Image src={wmLogo} objectFit="contain" />
+        </div>
 
-      <Menu.Item name="adoption">
-        <Link href="/animals">Adoption</Link>
-      </Menu.Item>
+        <Icon
+          name="bars"
+          color="black"
+          className="hamburger"
+          size="large"
+          onClick={() => setShowNavbar((prev) => !prev)}
+        />
 
-      {user !== null && (
-        <>
-          <Menu.Item name="admin">
-            <Link href="/admin">Admin</Link>
-          </Menu.Item>
-          <Menu.Item name="admin" onClick={() => logoutUser(user.email)}>
-            Logout
-          </Menu.Item>
-        </>
-      )}
-
-      {user == null && (
-        <Menu.Item name="adoption">
-          <Link href="/login">Login</Link>
-        </Menu.Item>
-      )}
-    </Menu>
-
-    // {user !== null && (
-    //   <>
-    //     <Menu.Item name="admin">
-    //       <Link href="/admin">Admin</Link>
-    //     </Menu.Item>
-    //     <Menu.Item name="admin">Logout</Menu.Item>
-    //   </>
-    // )}
+        <div
+          className={`menu-item ${isActive('/') ? 'active' : ''} ${
+            showNavbar ? 'show' : ''
+          }`}
+        >
+          <Link href="/">Home</Link>
+        </div>
+        <div
+          className={`menu-item ${isActive('/animals') ? 'active' : ''} ${
+            showNavbar ? 'show' : ''
+          }`}
+        >
+          <Link href="/animals">Adoption</Link>
+        </div>
+        {user !== null && (
+          <>
+            <div
+              className={`menu-item ${isActive('/admin') ? 'active' : ''} ${
+                showNavbar ? 'show' : ''
+              }`}
+            >
+              <Link href="/admin">Admin</Link>
+            </div>
+            <div
+              className="menu-item ${showNavbar ? 'show' : ''}"
+              style={{ cursor: 'pointer' }}
+              onClick={logoutUser}
+            >
+              Logout
+            </div>
+          </>
+        )}
+      </div>
+    </>
   );
 };
 

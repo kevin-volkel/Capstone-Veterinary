@@ -9,10 +9,13 @@ const AnimalCard = ({ name, age, type, picURLs, id, gender, color }) => {
       key={id}
       className="animal-card"
       style={{
+        marginTop: "0",
         cursor: "pointer",
         textAlign: "center",
         maxWidth: "250px",
+        maxHeight: "280px",
         textTransform: "uppercase",
+        background: color
       }}
       // color={color}
       onClick={() => Router.push(`${baseURL}/${id}`)}
