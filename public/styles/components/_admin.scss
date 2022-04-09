@@ -1,0 +1,59 @@
+#admin {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  h1 {
+    font-weight: bold;
+
+    &.ui.header,
+    &.ui.header:first-child,
+    &.ui.header:last-child {
+      margin: 0;
+      cursor: pointer;
+      font-size: 4rem;
+    }
+  }
+
+  #header {
+    display: flex;
+    width: 80vw;
+    margin: 3rem auto;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+}
+
+
+#admin-animals {
+  width: 70vw;
+  margin: 1rem auto 2rem;
+  padding: 2rem 0;
+
+  .button {
+    width: 75%;
+    height: 60px;
+    font-size: 1.5rem;
+    background-color: #f7931d;
+    color: #ffffff;
+    margin-bottom: 2rem;
+    &:hover {
+      background-color: #f68c13;
+      color: #ffffff;
+    }
+  }
+
+  .ui.grid {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .no-animals {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+}
+
+.ui.button > .icon:not(.button) {
+  opacity: 1;
+}

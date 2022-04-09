@@ -1,9 +1,11 @@
 /* LOGIN & REGISTER FORM CSS */
-form#login,
-form#register {
+
+#login,
+#register {
   margin: none;
   width: 90%;
   position: relative;
+  margin-top: 1.5rem;
 }
 
 div.ui.segment {
@@ -19,24 +21,21 @@ div.ui.segment {
           justify-content: center;
 }
 
-form#register {
-  margin-top: 0.5rem;
-}
 
 /* FORM TOP */
 #photo-upload {
   width: 70px;
   height: 70px;
+
+  img {
+    width: 70px;
+    height: 70px;
+  }
 }
 
 body {
   background-color: #f6f7f8;
   height: auto;
-}
-
-#photo-upload img {
-  width: 70px;
-  height: 70px;
 }
 
 div.edit button {
@@ -77,15 +76,10 @@ div.visible.menu span {
 @media only screen and (min-height: 750px) and (min-width: 350px) {
   form#login,
   form#register {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
-  }
-  form#register {
-    margin-top: 0.5rem;
   }
 }
 
@@ -105,10 +99,11 @@ div.visible.menu span {
   #photo-upload {
     width: 90px;
     height: 90px;
-  }
-  #photo-upload img {
-    width: 90px;
-    height: 90px;
+
+    img {
+      width: 90px;
+      height: 90px;
+    }
   }
   div.edit button {
     width: 35px;
@@ -158,19 +153,22 @@ div.visible.menu span {
     height: 10rem;
     top: 10rem !important;
     right: 8rem !important;
-  }
-  #photo-upload img {
-    width: 10rem;
-    height: 10rem;
-  }
-  #photo-upload .edit {
-    position: relative;
-    left: 45px;
-    bottom: 10px;
-  }
-  #photo-upload .edit button {
-    height: 35px;
-    width: 35px;
+
+    img {
+      width: 10rem;
+      height: 10rem;
+    }
+
+    .edit {
+      position: relative;
+      left: 45px;
+      bottom: 10px;
+
+      button {
+        height: 35px;
+        width: 35px;
+      }
+    }
   }
 }
 
@@ -180,4 +178,3 @@ div.visible.menu span {
     width: 55vw;
   }
 }
-/*# sourceMappingURL=login.css.map */

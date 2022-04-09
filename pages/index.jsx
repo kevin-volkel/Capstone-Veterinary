@@ -3,24 +3,26 @@ import Image from "next/image";
 import { Button, Segment } from "semantic-ui-react";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
-import tutu from  '../public/media/tutu.jpg'
+import tutu from "../public/media/tutu.jpg";
 //import "../styles/home.css";
+import bannerPic from "../public/media/home-page-banner.jpg";
 
 export default function Home() {
   return (
     <div className="everything">
       <div className="slideshow">
         <div className="img-container">
-          <Button className="img-btn-left arrow" color="orange"></Button>
+          {/* are we still planning on having a slideshow or just a banner image? */}
+          {/* <Button className="img-btn-left arrow" color="orange"></Button> */}
           <Image
-            src={tutu}
-            alt="tutu dog"
+            src={bannerPic}
+            alt="dog being held"
             priority="true"
             position="relative"
             className="curr-img"
             objectFit="contain"
           />
-          <Button className="img-btn-right arrow" color="orange"></Button>
+          {/* <Button className="img-btn-right arrow" color="orange"></Button> */}
         </div>
       </div>
 

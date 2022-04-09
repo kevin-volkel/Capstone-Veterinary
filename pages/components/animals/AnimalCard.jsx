@@ -13,6 +13,7 @@ const AnimalCard = ({ name, age, type, picURLs, id, gender, color }) => {
         cursor: "pointer",
         textAlign: "center",
         maxWidth: "250px",
+        maxHeight: "280px",
         textTransform: "uppercase",
         background: color
       }}

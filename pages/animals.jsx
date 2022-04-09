@@ -19,14 +19,7 @@ const animals = ({ animals }) => {
       {animals.length ? (
         <Container
           fluid
-          textAlign="center"
           className="animal-list"
-          style={{
-            width: "80%",
-            display: "flex",
-            margin: "2rem 0",
-            justifyContent: "center",
-          }}
         >
           <Grid columns="3" centered relaxed>
             {animals.map((animal) => {

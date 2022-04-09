@@ -28,7 +28,6 @@ const LoginForm = ({ user, handleChange, setIsLogin }) => {
   };
 
   return (
-    <>
       <div className="form-wrap">
         <Form
           loading={formLoading}
@@ -83,7 +82,6 @@ const LoginForm = ({ user, handleChange, setIsLogin }) => {
           </Segment>
         </Form>
       </div>
-    </>
   );
 };
 

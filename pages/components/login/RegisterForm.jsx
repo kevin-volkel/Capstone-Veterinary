@@ -98,7 +98,7 @@ const RegisterForm = ({
   };
 
   return (
-    <>
+    <div className="form-wrap">
       <Form
         loading={formLoading}
         error={errorMsg !== null}
@@ -218,7 +218,7 @@ const RegisterForm = ({
           </h5>
         </Segment>
       </Form>
-    </>
+    </div>
   );
 };
 
