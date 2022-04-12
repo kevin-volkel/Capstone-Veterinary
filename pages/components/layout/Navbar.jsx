@@ -32,38 +32,40 @@ const Navbar = ({ user }) => {
           onClick={() => setShowNavbar((prev) => !prev)}
         />
 
-        <div
-          className={`menu-item ${isActive('/') ? 'active' : ''} ${
-            showNavbar ? 'show' : ''
-          }`}
-        >
-          <Link href="/">Home</Link>
+        <div className="items">
+          <div
+            className={`menu-item ${isActive('/') ? 'active' : ''} ${
+              showNavbar ? 'show' : ''
+            }`}
+          >
+            <Link href="/">Home</Link>
+          </div>
+          <div
+            className={`menu-item ${isActive('/animals') ? 'active' : ''} ${
+              showNavbar ? 'show' : ''
+            }`}
+          >
+            <Link href="/animals">Adoption</Link>
+          </div>
+          {user !== null && (
+            <>
+              <div
+                className={`menu-item ${isActive('/admin') ? 'active' : ''} ${
+                  showNavbar ? 'show' : ''
+                }`}
+              >
+                <Link href="/admin">Admin</Link>
+              </div>
+              <div
+                className={`menu-item ${showNavbar ? 'show' : ''}`}
+                style={{ cursor: 'pointer' }}
+                onClick={logoutUser}
+              >
+                Logout
+              </div>
+            </>
+          )}
         </div>
-        <div
-          className={`menu-item ${isActive('/animals') ? 'active' : ''} ${
-            showNavbar ? 'show' : ''
-          }`}
-        >
-          <Link href="/animals">Adoption</Link>
-        </div>
-        {user !== null && (
-          <>
-            <div
-              className={`menu-item ${isActive('/admin') ? 'active' : ''} ${
-                showNavbar ? 'show' : ''
-              }`}
-            >
-              <Link href="/admin">Admin</Link>
-            </div>
-            <div
-              className="menu-item ${showNavbar ? 'show' : ''}"
-              style={{ cursor: 'pointer' }}
-              onClick={logoutUser}
-            >
-              Logout
-            </div>
-          </>
-        )}
       </div>
     </>
   );

@@ -23,20 +23,17 @@
   display: none;
 }
 .menu-item a{
-  color: grey;
+  color: black;
 }
-.menu-item.active a{
-  color: rgb(69, 69, 69);
-}
-.menu-item:hover a{
-  color: rgb(69, 69, 69);
+.items{
+  display: none;
 }
 
 
 @media only screen and (min-width: 1024px) {
   .navbar{
     height: 4rem;
-    justify-content: left;
+    justify-content: space-between;
   }
 
   .vet-logo{
@@ -46,7 +43,8 @@
 
   .wm-logo{
     width: 25%;
-    margin-right: 37%;
+    display: flex;
+    justify-content: center;
   }
   
   .hamburger{
@@ -56,7 +54,32 @@
   .menu-item{
     margin-right: 30px;
     font-size: 2rem;
-    color: grey;
-    display: block;
+    color: black;
+    display: inline-block;
+    position: relative;
+    margin-top: 10px;
+    padding-bottom: 10px;
+    &::after{
+      content: '';
+      position: absolute;
+      width: 100%;
+      transform: scaleX(0);
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: #F7931D;
+      transform-origin: bottom right;
+      transition: transform 0.25s ease-out;
+    }
+    &:hover::after, &.active::after{
+      transform: scaleX(1);
+      transform-origin: bottom left;
+    }
+  }
+
+  .items{
+    display: flex;
+    justify-content: space-between;
+    justify-content: flex-end;
   }
 }

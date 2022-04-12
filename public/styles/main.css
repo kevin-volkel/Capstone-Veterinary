@@ -311,15 +311,13 @@ body {
 .img-btn-left {
   left: 0;
   margin-left: 5rem !important;
-  -webkit-clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
-          clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
+  clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
 }
 
 .img-btn-right {
   right: 0;
   margin-right: 5rem !important;
-  -webkit-clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
-          clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
+  clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
 }
 
 .arrow {
@@ -332,8 +330,7 @@ body {
 .img-container {
   margin: 0;
   height: 40vw;
-  -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
   overflow: hidden;
   margin: auto;
   display: flex;
@@ -378,7 +375,11 @@ div.ui.segment {
 }
 
 .form-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
 }
 
@@ -436,6 +437,8 @@ div.visible.menu span {
   form#login,
 form#register {
     display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
   }
 }
@@ -532,21 +535,17 @@ form#register {
 }
 
 .menu-item a {
-  color: grey;
+  color: black;
 }
 
-.menu-item.active a {
-  color: rgb(69, 69, 69);
-}
-
-.menu-item:hover a {
-  color: rgb(69, 69, 69);
+.items {
+  display: none;
 }
 
 @media only screen and (min-width: 1024px) {
   .navbar {
     height: 4rem;
-    justify-content: left;
+    justify-content: space-between;
   }
 
   .vet-logo {
@@ -556,7 +555,8 @@ form#register {
 
   .wm-logo {
     width: 25%;
-    margin-right: 37%;
+    display: flex;
+    justify-content: center;
   }
 
   .hamburger {
@@ -566,7 +566,32 @@ form#register {
   .menu-item {
     margin-right: 30px;
     font-size: 2rem;
-    color: grey;
-    display: block;
+    color: black;
+    display: inline-block;
+    position: relative;
+    margin-top: 10px;
+    padding-bottom: 10px;
+  }
+  .menu-item::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #F7931D;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+  }
+  .menu-item:hover::after, .menu-item.active::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+
+  .items {
+    display: flex;
+    justify-content: space-between;
+    justify-content: flex-end;
   }
 }/*# sourceMappingURL=main.css.map */
