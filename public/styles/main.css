@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=ABeeZee&display=swap");
 html,
 body {
   height: 100vh;
@@ -515,7 +516,7 @@ form#register {
   align-items: center;
   margin-top: 1rem;
   padding-bottom: 0.75rem;
-  border-bottom: 3px solid orange;
+  border-bottom: 3px solid #F7931D;
 }
 
 .wm-logo {
@@ -530,16 +531,27 @@ form#register {
   width: 15%;
 }
 
-.menu-item {
-  display: none;
-}
-
-.menu-item a {
-  color: black;
-}
-
 .items {
   display: none;
+  font-family: "ABeeZee", sans-serif;
+}
+
+.items.show {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  width: 100%;
+  top: 3.25rem;
+  height: auto;
+  background: #F6F7F8;
+  z-index: 9;
+  gap: 15x;
+  border-bottom: solid 3px #F7931D;
+  text-align: center;
+}
+.items.show .menu-item a {
+  font-size: 1.5rem;
+  line-height: 3rem;
 }
 
 @media only screen and (min-width: 1024px) {

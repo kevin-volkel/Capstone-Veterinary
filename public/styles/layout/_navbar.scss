@@ -1,3 +1,6 @@
+@use '../themes/defaultTheme' as *;
+
+
 .navbar{
   width: 100%;
   height: 2.5rem;
@@ -7,7 +10,7 @@
   align-items: center;
   margin-top: 1rem;
   padding-bottom: 0.75rem;
-  border-bottom: 3px solid orange;
+  border-bottom: 3px solid $clr-orange;
 }
 
 .wm-logo{
@@ -19,14 +22,28 @@
 .hamburger{
   width:15%;
 }
-.menu-item{
-  display: none;
-}
-.menu-item a{
-  color: black;
-}
 .items{
   display: none;
+  font-family: $custom-font-1;
+}
+
+.items.show{
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  width: 100%;
+  top: 3.25rem;
+  height: auto;
+  background: $clr-white-1;;
+  z-index: 9;
+  gap: 15x;
+  border-bottom: solid 3px $clr-orange;
+  text-align: center;
+  
+  .menu-item a{
+    font-size: 1.5rem;
+    line-height: 3rem;
+  }
 }
 
 

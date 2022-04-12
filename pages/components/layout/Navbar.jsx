@@ -32,7 +32,7 @@ const Navbar = ({ user }) => {
           onClick={() => setShowNavbar((prev) => !prev)}
         />
 
-        <div className="items">
+        <div className={`items ${showNavbar ? 'show' : ''}`}>
           <div
             className={`menu-item ${isActive('/') ? 'active' : ''} ${
               showNavbar ? 'show' : ''
@@ -41,27 +41,23 @@ const Navbar = ({ user }) => {
             <Link href="/">Home</Link>
           </div>
           <div
-            className={`menu-item ${isActive('/animals') ? 'active' : ''} ${
-              showNavbar ? 'show' : ''
-            }`}
+            className={`menu-item ${isActive('/animals') ? 'active' : ''}`}
           >
             <Link href="/animals">Adoption</Link>
           </div>
           {user !== null && (
             <>
               <div
-                className={`menu-item ${isActive('/admin') ? 'active' : ''} ${
-                  showNavbar ? 'show' : ''
-                }`}
+                className={`menu-item ${isActive('/admin') ? 'active' : ''}`}
               >
                 <Link href="/admin">Admin</Link>
               </div>
               <div
-                className={`menu-item ${showNavbar ? 'show' : ''}`}
+                className={`menu-item`}
                 style={{ cursor: 'pointer' }}
                 onClick={logoutUser}
               >
-                Logout
+                <a href="#">Logout</a>
               </div>
             </>
           )}
