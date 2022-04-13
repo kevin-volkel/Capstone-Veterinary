@@ -312,13 +312,15 @@ body {
 .img-btn-left {
   left: 0;
   margin-left: 5rem !important;
-  clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
+  -webkit-clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
+          clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
 }
 
 .img-btn-right {
   right: 0;
   margin-right: 5rem !important;
-  clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
+  -webkit-clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
+          clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
 }
 
 .arrow {
@@ -331,7 +333,8 @@ body {
 .img-container {
   margin: 0;
   height: 40vw;
-  object-fit: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
   overflow: hidden;
   margin: auto;
   display: flex;
@@ -376,11 +379,7 @@ div.ui.segment {
 }
 
 .form-wrap {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
   justify-content: center;
 }
 
@@ -438,8 +437,6 @@ div.visible.menu span {
   form#login,
 form#register {
     display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
     justify-content: center;
   }
 }
@@ -553,6 +550,9 @@ form#register {
   font-size: 1.5rem;
   line-height: 3rem;
 }
+.items.show .menu-item a:hover {
+  color: black;
+}
 
 @media only screen and (min-width: 1024px) {
   .navbar {
@@ -584,6 +584,9 @@ form#register {
     margin-top: 10px;
     padding-bottom: 10px;
   }
+  .menu-item a:hover {
+    color: black;
+  }
   .menu-item::after {
     content: "";
     position: absolute;
@@ -592,7 +595,7 @@ form#register {
     height: 2px;
     bottom: 0;
     left: 0;
-    background-color: #F7931D;
+    background-color: #f7931d;
     transform-origin: bottom right;
     transition: transform 0.25s ease-out;
   }

@@ -6,7 +6,7 @@ import { baseURL } from "../../util/auth";
 const AnimalCard = ({ name, age, type, picURLs, id, gender, color }) => {
   return (
     <Card
-      key={id}
+      // key={id}
       className="animal-card"
       style={{
         marginTop: "0",

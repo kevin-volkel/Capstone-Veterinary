@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import { baseURL } from './util/auth';
+import React, { useState } from "react";
+import axios from "axios";
+import { baseURL } from "./util/auth";
 import {
   Button,
   Card,
@@ -10,88 +10,85 @@ import {
   Header,
   Image,
   Segment,
-} from 'semantic-ui-react';
-import AnimalCard from './components/animals/AnimalCard';
+} from "semantic-ui-react";
+import AnimalCard from "./components/animals/AnimalCard";
 
 const animals = ({ animals }) => {
   const typeOptions = [
     {
-      text: 'Any Type',
-      value: 'any',
+      text: "Any Type",
+      value: "any",
     },
     {
-      text: 'Dog',
-      value: 'dog',
+      text: "Dog",
+      value: "dog",
     },
     {
-      text: 'Cat',
-      value: 'cat',
+      text: "Cat",
+      value: "cat",
     },
   ];
 
   const ageOptions = [
     {
-      text: 'Any Age',
-      value: 'any',
+      text: "Any Age",
+      value: "any",
     },
     {
-      text: 'Puppy',
-      value: 'puppy',
+      text: "Puppy",
+      value: "puppy",
     },
     {
-      text: 'Young',
-      value: 'young',
+      text: "Young",
+      value: "young",
     },
     {
-      text: 'Adult',
-      value: 'adult',
+      text: "Adult",
+      value: "adult",
     },
     {
-      text: 'Senior',
-      value: 'senior',
+      text: "Senior",
+      value: "senior",
     },
   ];
 
   const genderOptions = [
     {
-      text: 'Any Gender',
-      value: 'any',
+      text: "Any Gender",
+      value: "any",
     },
     {
-      text: 'Male',
-      value: 'male',
+      text: "Male",
+      value: "male",
     },
     {
-      text: 'Female',
-      value: 'female',
+      text: "Female",
+      value: "female",
     },
   ];
 
   const [filterObj, setFilterObj] = useState({
-    type: 'any',
-    age: 'any',
-    gender: 'any',
+    type: "any",
+    age: "any",
+    gender: "any",
   });
-
+  const [filteredAnimals, setFilteredAnimals] = useState(animals);
 
   const filterResults = (_, data) => {
     const { name, value } = data;
-    setFilterObj((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    setFilterObj((prev) => ({ ...prev, [name]: value }));
+
+    console.log(filterObj);
 
     setFilteredAnimals(animals);
 
     const { type, age, gender } = filterObj;
-    if (type !== 'any') {
+    if (type !== "any") {
       setFilteredAnimals((prev) =>
         prev.filter((animal) => animal.type === type)
       );
     }
   };
-
-  const [filteredAnimals, setFilteredAnimals] = useState(animals);
 
   return (
     <div id="adoption">
@@ -128,7 +125,7 @@ const animals = ({ animals }) => {
             {filteredAnimals.map((animal) => {
               // console.log(animal);
               const { name, age, type, gender, picURLs, _id } = animal;
-              const color = gender === 'male' ? '#9AC7FF' : '#FA7091';
+              const color = gender === "male" ? "#9AC7FF" : "#FA7091";
 
               return (
                 <AnimalCard
@@ -139,6 +136,7 @@ const animals = ({ animals }) => {
                   id={_id}
                   gender={gender}
                   color={color}
+                  key={_id}
                 />
               );
             })}
