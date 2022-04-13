@@ -13,10 +13,12 @@ const Navbar = ({ user }) => {
   const isActive = (route) => router.pathname === route;
 
   const [showNavbar, setShowNavbar] = useState(false);
+  const [showBorder, setShowBorder] = useState(true)
+
 
   return (
     <>
-      <div className="navbar">
+      <div className={`navbar ${showNavbar ? 'showing' : ''}`}>
         <div className="vet-logo">
           <Image src={vetLogo} objectFit="contain" />
         </div>
@@ -32,6 +34,7 @@ const Navbar = ({ user }) => {
           onClick={() => setShowNavbar((prev) => !prev)}
         />
 
+      </div>
         <div className={`items ${showNavbar ? 'show' : ''}`}>
           <div
             className={`menu-item ${isActive('/') ? 'active' : ''} ${
@@ -62,7 +65,6 @@ const Navbar = ({ user }) => {
             </>
           )}
         </div>
-      </div>
     </>
   );
 };

@@ -35,12 +35,12 @@ const animals = ({ animals }) => {
       value: "any",
     },
     {
-      text: "Puppy",
-      value: "puppy",
-    },
-    {
       text: "Young",
       value: "young",
+    },
+    {
+      text: "Mid",
+      value: "mid",
     },
     {
       text: "Adult",
@@ -51,6 +51,13 @@ const animals = ({ animals }) => {
       value: "senior",
     },
   ];
+
+  const ageRanges = {
+    young: [0, 2],
+    mid: [2, 5],
+    adult: [5, 10],
+    senior: [10, 999],
+  }
 
   const genderOptions = [
     {
@@ -74,19 +81,29 @@ const animals = ({ animals }) => {
   });
   const [filteredAnimals, setFilteredAnimals] = useState(animals);
 
-  const filterResults = (_, data) => {
+  const handleChange = (_, data) => {
     const { name, value } = data;
-    setFilterObj((prev) => ({ ...prev, [name]: value }));
+    const newFilterObj = {...filterObj, [name]: value}
+    setFilterObj(newFilterObj);
+    filterResults(newFilterObj)
+  }
 
-    console.log(filterObj);
-
+  const filterResults = (obj) => {
     setFilteredAnimals(animals);
 
-    const { type, age, gender } = filterObj;
+    const { type, gender, age } = obj;
     if (type !== "any") {
       setFilteredAnimals((prev) =>
         prev.filter((animal) => animal.type === type)
       );
+    }
+    if( gender !== "any") {
+      setFilteredAnimals((prev) => 
+        prev.filter( (animal) => animal.gender === gender)
+      )
+    }
+    if (age !== "any") {
+      
     }
   };
 
@@ -99,7 +116,7 @@ const animals = ({ animals }) => {
           name="type"
           selection
           options={typeOptions}
-          onChange={filterResults}
+          onChange={handleChange}
           value={filterObj.type}
         />
         <Dropdown
@@ -107,7 +124,7 @@ const animals = ({ animals }) => {
           name="gender"
           selection
           options={genderOptions}
-          onChange={filterResults}
+          onChange={handleChange}
           value={filterObj.gender}
         />
         <Dropdown
@@ -115,7 +132,7 @@ const animals = ({ animals }) => {
           name="age"
           selection
           options={ageOptions}
-          onChange={filterResults}
+          onChange={handleChange}
           value={filterObj.age}
         />
       </div>

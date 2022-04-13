@@ -1,7 +1,5 @@
-import Head from "next/head";
 import Image from "next/image";
 import { Button, Segment } from "semantic-ui-react";
-import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 import adopt from "../public/media/adoption.png";
 //import "../styles/home.css";
