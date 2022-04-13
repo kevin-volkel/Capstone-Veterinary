@@ -42,7 +42,7 @@ body {
   }
 
   .grid{
-    justify-content: space-between;
+    justify-content: space-evenly;
     .ui.card{
       font-size: 1.2rem;
       &:last-child{

@@ -155,5 +155,5 @@ module.exports = {
   getAnimal,
   addAnimal,
   deleteAnimal,
-  editAnimal,
+  editAnimal
 };

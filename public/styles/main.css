@@ -119,7 +119,7 @@ body {
   justify-content: center;
 }
 #adoption .grid {
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 #adoption .grid .ui.card {
   font-size: 1.2rem;
@@ -312,15 +312,13 @@ body {
 .img-btn-left {
   left: 0;
   margin-left: 5rem !important;
-  -webkit-clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
-          clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
+  clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
 }
 
 .img-btn-right {
   right: 0;
   margin-right: 5rem !important;
-  -webkit-clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
-          clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
+  clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
 }
 
 .arrow {
@@ -333,8 +331,7 @@ body {
 .img-container {
   margin: 0;
   height: 40vw;
-  -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
   overflow: hidden;
   margin: auto;
   display: flex;
@@ -379,7 +376,11 @@ div.ui.segment {
 }
 
 .form-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
 }
 
@@ -437,6 +438,8 @@ div.visible.menu span {
   form#login,
 form#register {
     display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
   }
 }
@@ -505,15 +508,20 @@ form#register {
   }
 }
 .navbar {
+  position: relative;
   width: 100%;
-  height: 2.5rem;
+  z-index: 100;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-top: 1rem;
-  padding-bottom: 0.75rem;
+  padding-top: 0.5rem;
   border-bottom: 3px solid #F7931D;
+  background: #F6F7F8;
+  transition: border 0.1s linear;
+}
+.navbar.showing {
+  border-bottom: 3px solid transparent;
 }
 
 .wm-logo {
@@ -529,29 +537,32 @@ form#register {
 }
 
 .items {
-  display: none;
-  font-family: "ABeeZee", sans-serif;
-}
-
-.items.show {
   display: flex;
+  font-family: "ABeeZee", sans-serif;
+  transform: translateY(-16rem);
+  transition: all 1s ease-in;
+  height: 0;
   flex-direction: column;
-  position: absolute;
+  gap: 15x;
   width: 100%;
-  top: 3.25rem;
-  height: auto;
+  text-align: center;
   background: #F6F7F8;
   z-index: 9;
-  gap: 15x;
   border-bottom: solid 3px #F7931D;
-  text-align: center;
+  position: absolute;
 }
-.items.show .menu-item a {
+.items .menu-item a {
   font-size: 1.5rem;
   line-height: 3rem;
 }
-.items.show .menu-item a:hover {
+.items .menu-item a:hover {
   color: black;
+}
+
+.items.show {
+  height: auto;
+  display: flex;
+  transform: translateY(0);
 }
 
 @media only screen and (min-width: 1024px) {
@@ -605,8 +616,12 @@ form#register {
   }
 
   .items {
+    z-index: 10;
+    transform: translateY(0);
+    position: absolute;
+    top: 0;
+    right: 20vw;
     display: flex;
     justify-content: space-between;
-    justify-content: flex-end;
   }
 }/*# sourceMappingURL=main.css.map */
