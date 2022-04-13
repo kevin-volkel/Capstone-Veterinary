@@ -285,16 +285,16 @@ body {
 }
 
 .nf-sect {
-  /* display: flex; */
-  flex-direction: row;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   justify-content: space-evenly;
+  padding-bottom: 4%;
 }
 
 .adopt-image {
-  padding: 10%;
-  box-shadow: 2px 2px 5px #aaaaaa;
+  width: 100%;
 }
 
 .nf-description {
