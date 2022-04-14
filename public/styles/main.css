@@ -312,13 +312,15 @@ body {
 .img-btn-left {
   left: 0;
   margin-left: 5rem !important;
-  clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
+  -webkit-clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
+          clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
 }
 
 .img-btn-right {
   right: 0;
   margin-right: 5rem !important;
-  clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
+  -webkit-clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
+          clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
 }
 
 .arrow {
@@ -331,7 +333,8 @@ body {
 .img-container {
   margin: 0;
   height: 40vw;
-  object-fit: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
   overflow: hidden;
   margin: auto;
   display: flex;
@@ -376,11 +379,7 @@ div.ui.segment {
 }
 
 .form-wrap {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
   justify-content: center;
 }
 
@@ -438,8 +437,6 @@ div.visible.menu span {
   form#login,
 form#register {
     display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
     justify-content: center;
   }
 }
@@ -523,27 +520,23 @@ form#register {
 .navbar.showing {
   border-bottom: 3px solid transparent;
 }
-
-.wm-logo {
+.navbar .wm-logo {
   width: 40%;
 }
-
-.vet-logo {
+.navbar .vet-logo {
+  width: 15%;
+}
+.navbar .hamburger {
   width: 15%;
 }
 
-.hamburger {
-  width: 15%;
-}
-
-.items {
+.hamburger.items {
   display: flex;
   font-family: "ABeeZee", sans-serif;
-  transform: translateY(-16rem);
+  transform: translateY(-17rem);
   transition: all 1s ease-in;
   height: 0;
   flex-direction: column;
-  gap: 15x;
   width: 100%;
   text-align: center;
   background: #F6F7F8;
@@ -551,42 +544,62 @@ form#register {
   border-bottom: solid 3px #F7931D;
   position: absolute;
 }
-.items .menu-item a {
+.hamburger.items .menu-item a {
   font-size: 1.5rem;
   line-height: 3rem;
 }
-.items .menu-item a:hover {
+.hamburger.items .menu-item a:hover {
   color: black;
 }
 
-.items.show {
+.hamburger.items.hide .menu-item a {
+  display: none;
+}
+
+.hamburger.items.show {
   height: auto;
-  display: flex;
   transform: translateY(0);
+  transition: all 1s ease-out;
+}
+
+.navbar2 {
+  display: none;
 }
 
 @media only screen and (min-width: 1024px) {
   .navbar {
-    height: 4rem;
-    justify-content: space-between;
+    display: none;
   }
 
-  .vet-logo {
+  .navbar2 {
+    width: 100%;
+    height: 4rem;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 3px solid #F7931D;
+  }
+  .navbar2 .vet-logo {
     width: 5%;
     margin-right: 5%;
   }
-
-  .wm-logo {
+  .navbar2 .wm-logo {
     width: 25%;
     display: flex;
     justify-content: center;
   }
-
-  .hamburger {
+  .navbar2 .hamburger {
     display: none !important;
   }
-
-  .menu-item {
+  .navbar2 .items {
+    display: flex;
+    justify-content: space-between;
+    justify-content: flex-end;
+  }
+  .navbar2 .menu-item {
     margin-right: 30px;
     font-size: 2rem;
     color: black;
@@ -595,10 +608,10 @@ form#register {
     margin-top: 10px;
     padding-bottom: 10px;
   }
-  .menu-item a:hover {
+  .navbar2 .menu-item a:hover {
     color: black;
   }
-  .menu-item::after {
+  .navbar2 .menu-item::after {
     content: "";
     position: absolute;
     width: 100%;
@@ -610,18 +623,8 @@ form#register {
     transform-origin: bottom right;
     transition: transform 0.25s ease-out;
   }
-  .menu-item:hover::after, .menu-item.active::after {
+  .navbar2 .menu-item:hover::after, .navbar2 .menu-item.active::after {
     transform: scaleX(1);
     transform-origin: bottom left;
-  }
-
-  .items {
-    z-index: 10;
-    transform: translateY(0);
-    position: absolute;
-    top: 0;
-    right: 20vw;
-    display: flex;
-    justify-content: space-between;
   }
 }/*# sourceMappingURL=main.css.map */
