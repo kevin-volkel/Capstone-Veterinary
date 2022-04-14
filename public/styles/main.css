@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=ABeeZee&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Oxygen&display=swap");
 html,
 body {
   height: 100vh;
@@ -35,6 +36,10 @@ a {
   margin: 0;
   cursor: pointer;
   font-size: 4rem;
+  font-family: "Oxygen", sans-serif;
+}
+#admin h1.ui.header:hover, #admin h1.ui.header:first-child:hover, #admin h1.ui.header:last-child:hover {
+  color: #F7931D;
 }
 #admin #header {
   display: flex;
@@ -57,9 +62,17 @@ a {
   color: #ffffff;
   margin-bottom: 2rem;
 }
-#admin-animals .button:hover {
-  background-color: #f68c13;
-  color: #ffffff;
+#admin-animals .button::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: rgb(255, 164, 29);
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
 }
 #admin-animals .ui.grid {
   display: flex;
@@ -243,7 +256,8 @@ body {
 
 .img-container {
   margin: 0;
-  object-fit: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
   overflow: hidden;
   margin: auto;
   display: flex;
@@ -330,13 +344,15 @@ body {
 .img-btn-left {
   left: 0;
   margin-left: 5rem !important;
-  clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
+  -webkit-clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
+          clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
 }
 
 .img-btn-right {
   right: 0;
   margin-right: 5rem !important;
-  clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
+  -webkit-clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
+          clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
 }
 
 .arrow {
@@ -378,11 +394,7 @@ div.ui.segment {
 }
 
 .form-wrap {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
   justify-content: center;
 }
 
@@ -440,8 +452,6 @@ div.visible.menu span {
   form#login,
 form#register {
     display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
     justify-content: center;
   }
 }
@@ -509,6 +519,16 @@ form#register {
     width: 65vw;
   }
 }
+div.animal-wrap {
+  margin-top: 1rem;
+  width: 90%;
+  border-radius: 4px;
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.105);
+  display: flex;
+  justify-items: center;
+}
+
 .navbar {
   position: relative;
   width: 100%;
