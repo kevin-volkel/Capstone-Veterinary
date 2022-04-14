@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import axios from "axios";
-import { baseURL } from "./util/auth";
+import React, { useState } from 'react';
+import axios from 'axios';
+import { baseURL } from './util/auth';
 import {
   Button,
   Card,
@@ -11,47 +11,47 @@ import {
   Image,
   Pagination,
   Segment,
-} from "semantic-ui-react";
-import AnimalCard from "./components/animals/AnimalCard";
+} from 'semantic-ui-react';
+import AnimalCard from './components/animals/AnimalCard';
+import Animals from './components/animals/Animals';
 
 const animals = ({ animals }) => {
-  const [page, setPage] = useState(1);
-  
+
   const typeOptions = [
     {
-      text: "Any Type",
-      value: "any",
+      text: 'Any Type',
+      value: 'any',
     },
     {
-      text: "Dog",
-      value: "dog",
+      text: 'Dog',
+      value: 'dog',
     },
     {
-      text: "Cat",
-      value: "cat",
+      text: 'Cat',
+      value: 'cat',
     },
   ];
 
   const ageOptions = [
     {
-      text: "Any Age",
-      value: "any",
+      text: 'Any Age',
+      value: 'any',
     },
     {
-      text: "Young",
-      value: "young",
+      text: 'Young',
+      value: 'young',
     },
     {
-      text: "Mid",
-      value: "mid",
+      text: 'Mid',
+      value: 'mid',
     },
     {
-      text: "Adult",
-      value: "adult",
+      text: 'Adult',
+      value: 'adult',
     },
     {
-      text: "Senior",
-      value: "senior",
+      text: 'Senior',
+      value: 'senior',
     },
   ];
 
@@ -64,23 +64,23 @@ const animals = ({ animals }) => {
 
   const genderOptions = [
     {
-      text: "Any Gender",
-      value: "any",
+      text: 'Any Gender',
+      value: 'any',
     },
     {
-      text: "Male",
-      value: "male",
+      text: 'Male',
+      value: 'male',
     },
     {
-      text: "Female",
-      value: "female",
+      text: 'Female',
+      value: 'female',
     },
   ];
 
   const [filterObj, setFilterObj] = useState({
-    type: "any",
-    age: "any",
-    gender: "any",
+    type: 'any',
+    age: 'any',
+    gender: 'any',
   });
 
   const [filteredAnimals, setFilteredAnimals] = useState(animals);
@@ -96,17 +96,17 @@ const animals = ({ animals }) => {
     setFilteredAnimals(animals);
 
     const { type, gender, age } = obj;
-    if (type !== "any") {
+    if (type !== 'any') {
       setFilteredAnimals((prev) =>
         prev.filter((animal) => animal.type === type)
       );
     }
-    if (gender !== "any") {
+    if (gender !== 'any') {
       setFilteredAnimals((prev) =>
         prev.filter((animal) => animal.gender === gender)
       );
     }
-    if (age !== "any") {
+    if (age !== 'any') {
       setFilteredAnimals((prev) => prev.filter((animal) => animal.age === age));
     }
   };
@@ -140,39 +140,7 @@ const animals = ({ animals }) => {
           value={filterObj.age}
         />
       </div>
-      {filteredAnimals.length ? (
-        <Container fluid className="animal-list">
-          <Grid columns="3" centered relaxed>
-            {filteredAnimals.map((animal) => {
-              // console.log(animal);
-              const { name, age, type, gender, picURLs, _id } = animal;
-              const color = gender === "male" ? "#9AC7FF" : "#FA7091";
-
-              return (
-                <AnimalCard
-                  name={name}
-                  age={age}
-                  type={type}
-                  picURLs={picURLs}
-                  id={_id}
-                  gender={gender}
-                  color={color}
-                  key={_id}
-                />
-              );
-            })}
-          </Grid>
-        </Container>
-      ) : (
-        <div className="no-animals">
-          There are currently no animal adoptions posted. Come back later.
-        </div>
-      )}
-      <Pagination
-        onPageChange={() => {}}
-        defaultActivePage={1}
-        totalPages={5}
-      />
+      <Animals isAdmin={false} animals={filteredAnimals} />
     </div>
   );
 };

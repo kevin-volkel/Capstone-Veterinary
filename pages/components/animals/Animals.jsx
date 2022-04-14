@@ -1,62 +1,40 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { Button, Icon, Segment, Container, Grid, Pagination } from "semantic-ui-react";
-import { baseURL } from "../../util/auth";
-import Cookies from "js-cookie";
-import AnimalCard from "./AnimalCard";
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import {
+  Button,
+  Icon,
+  Segment,
+  Container,
+  Grid,
+  Pagination,
+} from 'semantic-ui-react';
+import { baseURL } from '../../util/auth';
+import Cookies from 'js-cookie';
+import AnimalCard from './AnimalCard';
 
-const Animals = () => {
-  const [loading, setLoading] = useState(false);
-  const [animals, setAnimals] = useState([]);
-  const [page, setPage] = useState(1);
+const Animals = ({ animals, isAdmin }) => {
+  const [currPage, setCurrPage] = useState(1)
+  const [loading, setLoading] = useState(false)
 
-  useEffect(() => {
-    const getAnimals = async () => {
-      setLoading(true);
-      try {
-        const res = await axios.get(`${baseURL}/api/v1/animal`, {
-          headers: { Authorization: `Bearer ${Cookies.get("token")}` },
-        });
-        setAnimals(res.data);
-      } catch (error) {
-        console.log("error loading posts");
-      }
-      setLoading(false);
-    };
-    getAnimals();
-  }, []);
+  const handlePageChange = (e, data) => {
+    setCurrPage(data.activePage);
+  };
 
   return (
-    <Segment
-      id="admin-animals"
-      loading={loading}
-    >
-      <Button
-        disabled={loading}
-      >
-        <Icon
-          name="plus"
-        />
-        Add Animal
-      </Button>
+    <>
+      {isAdmin && (
+        <Button disabled={loading}>
+          <Icon name="plus" />
+          Add Animal
+        </Button>
+      )}
+
       {animals.length ? (
-        <Container
-          fluid
-          textAlign="center"
-          className="animal-list"
-          style={{
-            width: "80%",
-            display: "flex",
-            margin: "2rem 0",
-            justifyContent: "center",
-          }}
-        >
-          <Grid
-            columns="3"
-            centered
-            relaxed
-          >
-            {animals.map((animal) => {
+        <Container fluid className="animal-list">
+          <Grid columns="3" centered relaxed>
+            {animals
+              .slice((currPage - 1) * 6, currPage * 6)
+              .map((animal) => {
               // console.log(animal);
               const { name, age, type, gender, picURLs, _id } = animal;
               const color = gender === "male" ? "#9AC7FF" : "#FA7091";
@@ -77,20 +55,17 @@ const Animals = () => {
           </Grid>
         </Container>
       ) : (
-        <div
-          className="no-animals"
-        >
-          There are no animals. Start by adding one.
+        <div className="no-animals">
+          There are currently no animal adoptions posted. {isAdmin ? "Start by adding one" : "Come back later." }
         </div>
       )}
       <Pagination
-        defaultActivePage={1}
-        totalPages={5}
-        onPageChange={() => {}}
+        onPageChange={handlePageChange}
+        activePage={currPage}
+        totalPages={Math.ceil(animals.length / 6)}
       />
-    </Segment>
+    </>
   );
 };
-
 
 export default Animals;

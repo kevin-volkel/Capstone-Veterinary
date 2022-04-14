@@ -3,11 +3,11 @@ import { destroyCookie, parseCookies } from "nookies";
 import { redirectUser, baseURL } from "./util/auth";
 import axios from "axios";
 // import Footer from "./components/layout/Footer";
-import { Header } from "semantic-ui-react";
+import { Header, Segment } from "semantic-ui-react";
 import Animals from "./components/animals/Animals";
 import Events from "./components/events/Events";
 
-const admin = ({user}) => {
+const admin = ({user, animals}) => {
   const [showEvents, setShowEvents] = useState(false);
 
   return (
@@ -35,10 +35,27 @@ const admin = ({user}) => {
 
       </div>
       {showEvents && <Events user={user} />}
-      {!showEvents && <Animals />}
-      {/* <Footer /> */}
+      <Segment id="admin-animals">
+        {!showEvents && <Animals isAdmin={true} animals={animals}/>}
+      </Segment>
     </div>
   );
 };
+
+admin.getInitialProps = async ({ ctx }) => {
+  let pageProps = {};
+  try {
+    const animalRes = await axios.get(`${baseURL}/api/v1/animal`);
+    pageProps.animals = animalRes.data;
+    // const eventsRes = await axios.get(`${baseURL}/api/v1/events`)
+    // pageProps.events = eventsRes.data;
+  } catch (err) {
+    console.error(err);
+    pageProps.errorLoading = err;
+  }
+  return pageProps;
+};
+
+
 
 export default admin;
