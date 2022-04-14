@@ -70,6 +70,10 @@
   display: none;
 }
 
+.styling-case{
+  display: none;
+}
+
 @media only screen and (min-width: 768px){
   .navbar{
     height: 7.5rem;
@@ -92,6 +96,14 @@
 @media only screen and (min-width: 1024px) {
   .navbar {
     display: none;
+  }
+
+  .styling-case{
+    display: flex !important;
+    margin-top: 1%;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
   }
   .hamburger.items{
     display: none;

@@ -82,12 +82,8 @@ const Navbar = ({ user }) => {
           onClick={() => setShowNavbar((prev) => !prev)}
         />
 
-        {/* for desktop navbar */}
-        <div className="desktop-items">
-          <Link href="/">Home</Link>
-          <Link href="/">Adoption</Link>
-        </div>
       </div>
+
     </>
   );
 };

@@ -240,6 +240,22 @@ body {
   margin-top: 1rem;
 }
 
+.img-container {
+  margin: 0;
+  -o-object-fit: contain;
+     object-fit: contain;
+  overflow: hidden;
+  margin: auto;
+  display: flex;
+  background: rgb(27, 27, 27);
+  align-items: center;
+  justify-content: center;
+}
+
+.curr-img {
+  margin: auto;
+}
+
 .card {
   margin: 1rem;
   padding: 1.5rem;
@@ -282,6 +298,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  grid-gap: 1.5rem;
 }
 
 .nf-sect {
@@ -291,6 +308,8 @@ body {
   align-items: center;
   justify-content: space-evenly;
   padding-bottom: 4%;
+  padding-left: 3%;
+  padding-right: 3%;
 }
 
 .adopt-image {
@@ -327,23 +346,6 @@ body {
   top: 50%;
   height: 30px;
   width: 40px;
-}
-
-.img-container {
-  margin: 0;
-  height: 40vw;
-  -o-object-fit: contain;
-     object-fit: contain;
-  overflow: hidden;
-  margin: auto;
-  display: flex;
-  background: rgb(27, 27, 27);
-  align-items: center;
-  justify-content: center;
-}
-
-.curr-img {
-  margin: auto;
 }
 
 .ui.segment {
@@ -566,6 +568,10 @@ form#register {
   display: none;
 }
 
+.styling-case {
+  display: none;
+}
+
 @media only screen and (min-width: 768px) {
   .navbar {
     height: 7.5rem;
@@ -585,6 +591,14 @@ form#register {
 @media only screen and (min-width: 1024px) {
   .navbar {
     display: none;
+  }
+
+  .styling-case {
+    display: flex !important;
+    margin-top: 1%;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
   }
 
   .hamburger.items {

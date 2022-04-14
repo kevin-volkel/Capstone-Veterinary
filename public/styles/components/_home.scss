@@ -91,6 +91,22 @@
 .slideshow {
   margin-top: 1rem;
 }
+
+.img-container {
+  margin: 0;
+  object-fit: contain;
+  overflow: hidden;
+  margin: auto;
+  display: flex;
+  background: rgb(27, 27, 27);
+  align-items: center;
+  justify-content: center;
+}
+.curr-img {
+  margin: auto;
+}
+
+
 .card {
   margin: 1rem;
   padding: 1.5rem;
@@ -138,6 +154,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  grid-gap: 1.5rem;
 }
 
 .nf-sect {
@@ -147,6 +164,8 @@
   align-items: center;
   justify-content: space-evenly;
   padding-bottom: 4%;
+  padding-left: 3%;
+  padding-right: 3%;
 }
 
 .adopt-image {
@@ -198,21 +217,6 @@
   top: 50%;
   height: 30px;
   width: 40px;
-}
-
-.img-container {
-  margin: 0;
-  height: 40vw;
-  object-fit: contain;
-  overflow: hidden;
-  margin: auto;
-  display: flex;
-  background: rgb(27, 27, 27);
-  align-items: center;
-  justify-content: center;
-}
-.curr-img {
-  margin: auto;
 }
 
 .ui.segment {
