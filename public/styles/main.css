@@ -243,8 +243,7 @@ body {
 
 .img-container {
   margin: 0;
-  -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
   overflow: hidden;
   margin: auto;
   display: flex;
@@ -331,15 +330,13 @@ body {
 .img-btn-left {
   left: 0;
   margin-left: 5rem !important;
-  -webkit-clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
-          clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
+  clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
 }
 
 .img-btn-right {
   right: 0;
   margin-right: 5rem !important;
-  -webkit-clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
-          clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
+  clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
 }
 
 .arrow {
@@ -381,7 +378,11 @@ div.ui.segment {
 }
 
 .form-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
 }
 
@@ -439,6 +440,8 @@ div.visible.menu span {
   form#login,
 form#register {
     display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
   }
 }
@@ -515,7 +518,6 @@ form#register {
   justify-content: space-between;
   align-items: center;
   padding-top: 0.5rem;
-  border-bottom: 3px solid #F7931D;
   background: #F6F7F8;
   transition: border 0.1s linear;
 }
@@ -536,9 +538,7 @@ form#register {
 .hamburger.items {
   display: flex;
   font-family: "ABeeZee", sans-serif;
-  transform: translateY(-17rem);
-  transition: all 1s ease-in;
-  height: 0;
+  transition: all 1s ease-out;
   flex-direction: column;
   width: 100%;
   text-align: center;
@@ -546,6 +546,7 @@ form#register {
   z-index: 9;
   border-bottom: solid 3px #F7931D;
   position: absolute;
+  height: auto;
 }
 .hamburger.items .menu-item a {
   font-size: 1.5rem;
@@ -554,13 +555,14 @@ form#register {
 .hamburger.items .menu-item a:hover {
   color: #F7931D;
 }
-
-.hamburger.items.hide .menu-item a {
-  display: none;
+.hamburger.items.tall {
+  transform: translateY(-12rem);
+}
+.hamburger.items.short {
+  transform: translateY(-6rem);
 }
 
 .hamburger.items.show {
-  height: auto;
   transform: translateY(0);
   transition: all 1s ease-out;
 }
@@ -588,6 +590,12 @@ form#register {
     font-size: 1.8rem;
     line-height: 4rem;
   }
+  .hamburger.items.hide.tall {
+    transform: translateY(-16rem);
+  }
+  .hamburger.items.hide.short {
+    transform: translateY(-8rem);
+  }
 }
 @media only screen and (min-width: 1024px) {
   .navbar {
@@ -609,13 +617,28 @@ form#register {
   .navbar2 {
     width: 100%;
     height: 5.5rem;
-    justify-content: space-between;
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-content: center;
     align-items: center;
     padding: 0.1%;
+    border-bottom: 2px solid #F7931D;
+  }
+  .navbar2 .img-container {
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 5.5rem;
+    width: 35%;
+    background: inherit;
+  }
+  .navbar2 .img-container .vet-logo {
+    width: 18%;
+  }
+  .navbar2 .img-container .wm-logo {
+    width: 75%;
   }
 
   .vet-logo {
@@ -626,15 +649,6 @@ form#register {
   .wm-logo {
     width: 25%;
     display: flex;
-  }
-
-  .hamburger {
-    display: none !important;
-  }
-
-  .desktop-items {
-    display: inline !important;
-    position: relative;
   }
 
   .menu-item {
@@ -657,21 +671,12 @@ form#register {
     height: 2px;
     bottom: 0;
     left: 0;
-    background-color: #f7931d;
+    background-color: rgb(255, 164, 29);
     transform-origin: bottom right;
     transition: transform 0.25s ease-out;
   }
   .menu-item:hover::after, .menu-item.active::after {
     transform: scaleX(1);
     transform-origin: bottom left;
-  }
-
-  .items {
-    transform: translateY(0);
-    position: absolute;
-    top: 0;
-    right: 20vw;
-    display: flex;
-    justify-content: space-between;
   }
 }/*# sourceMappingURL=main.css.map */
