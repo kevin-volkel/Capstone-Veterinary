@@ -9,11 +9,14 @@ import {
   Grid,
   Header,
   Image,
+  Pagination,
   Segment,
 } from "semantic-ui-react";
 import AnimalCard from "./components/animals/AnimalCard";
 
 const animals = ({ animals }) => {
+  const [page, setPage] = useState(1);
+  
   const typeOptions = [
     {
       text: "Any Type",
@@ -57,7 +60,7 @@ const animals = ({ animals }) => {
     mid: [2, 5],
     adult: [5, 10],
     senior: [10, 999],
-  }
+  };
 
   const genderOptions = [
     {
@@ -79,14 +82,15 @@ const animals = ({ animals }) => {
     age: "any",
     gender: "any",
   });
+
   const [filteredAnimals, setFilteredAnimals] = useState(animals);
 
   const handleChange = (_, data) => {
     const { name, value } = data;
-    const newFilterObj = {...filterObj, [name]: value}
+    const newFilterObj = { ...filterObj, [name]: value };
     setFilterObj(newFilterObj);
-    filterResults(newFilterObj)
-  }
+    filterResults(newFilterObj);
+  };
 
   const filterResults = (obj) => {
     setFilteredAnimals(animals);
@@ -97,13 +101,13 @@ const animals = ({ animals }) => {
         prev.filter((animal) => animal.type === type)
       );
     }
-    if( gender !== "any") {
-      setFilteredAnimals((prev) => 
-        prev.filter( (animal) => animal.gender === gender)
-      )
+    if (gender !== "any") {
+      setFilteredAnimals((prev) =>
+        prev.filter((animal) => animal.gender === gender)
+      );
     }
     if (age !== "any") {
-      
+      setFilteredAnimals((prev) => prev.filter((animal) => animal.age === age));
     }
   };
 
@@ -164,6 +168,11 @@ const animals = ({ animals }) => {
           There are currently no animal adoptions posted. Come back later.
         </div>
       )}
+      <Pagination
+        onPageChange={() => {}}
+        defaultActivePage={1}
+        totalPages={5}
+      />
     </div>
   );
 };

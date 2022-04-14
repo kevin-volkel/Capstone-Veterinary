@@ -95,6 +95,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   text-align: center;
   background-color: white;
   margin: 1rem auto 2rem;

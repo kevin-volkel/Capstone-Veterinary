@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Button, Icon, Segment, Container, Grid } from "semantic-ui-react";
+import { Button, Icon, Segment, Container, Grid, Pagination } from "semantic-ui-react";
 import { baseURL } from "../../util/auth";
 import Cookies from "js-cookie";
 import AnimalCard from "./AnimalCard";
@@ -83,6 +83,11 @@ const Animals = () => {
           There are no animals. Start by adding one.
         </div>
       )}
+      <Pagination
+        defaultActivePage={1}
+        totalPages={5}
+        onPageChange={() => {}}
+      />
     </Segment>
   );
 };
