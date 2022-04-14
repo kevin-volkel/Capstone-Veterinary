@@ -241,6 +241,22 @@ body {
   margin-top: 1rem;
 }
 
+.img-container {
+  margin: 0;
+  -o-object-fit: contain;
+     object-fit: contain;
+  overflow: hidden;
+  margin: auto;
+  display: flex;
+  background: rgb(27, 27, 27);
+  align-items: center;
+  justify-content: center;
+}
+
+.curr-img {
+  margin: auto;
+}
+
 .card {
   margin: 1rem;
   padding: 1.5rem;
@@ -283,6 +299,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  grid-gap: 1.5rem;
 }
 
 .nf-sect {
@@ -292,6 +309,8 @@ body {
   align-items: center;
   justify-content: space-evenly;
   padding-bottom: 4%;
+  padding-left: 3%;
+  padding-right: 3%;
 }
 
 .adopt-image {
@@ -301,7 +320,6 @@ body {
 .nf-description {
   width: 60%;
   margin-right: 4%;
-  margin-left: 2%;
 }
 
 .ui.orange.button {
@@ -329,23 +347,6 @@ body {
   top: 50%;
   height: 30px;
   width: 40px;
-}
-
-.img-container {
-  margin: 0;
-  height: 40vw;
-  -o-object-fit: contain;
-     object-fit: contain;
-  overflow: hidden;
-  margin: auto;
-  display: flex;
-  background: rgb(27, 27, 27);
-  align-items: center;
-  justify-content: center;
-}
-
-.curr-img {
-  margin: auto;
 }
 
 .ui.segment {
@@ -568,6 +569,10 @@ form#register {
   display: none;
 }
 
+.styling-case {
+  display: none;
+}
+
 @media only screen and (min-width: 768px) {
   .navbar {
     height: 7.5rem;
@@ -589,6 +594,14 @@ form#register {
     display: none;
   }
 
+  .styling-case {
+    display: flex !important;
+    margin-top: 1%;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
+
   .hamburger.items {
     display: none;
   }
@@ -599,29 +612,32 @@ form#register {
     justify-content: space-between;
     display: flex;
     flex-direction: row;
+    justify-content: flex-start;
+    align-content: center;
     align-items: center;
-    margin-top: 1rem;
-    padding-bottom: 0.75rem;
-    border-bottom: 3px solid #F7931D;
+    padding: 0.1%;
   }
-  .navbar2 .vet-logo {
-    width: 5%;
-    margin-right: 5%;
+
+  .vet-logo {
+    width: 8%;
+    margin: 0 2%;
   }
-  .navbar2 .wm-logo {
+
+  .wm-logo {
     width: 25%;
     display: flex;
-    justify-content: center;
   }
-  .navbar2 .hamburger {
+
+  .hamburger {
     display: none !important;
   }
-  .navbar2 .items {
-    display: flex;
-    justify-content: space-between;
-    justify-content: flex-end;
+
+  .desktop-items {
+    display: inline !important;
+    position: relative;
   }
-  .navbar2 .menu-item {
+
+  .menu-item {
     margin-right: 30px;
     font-size: 2rem;
     color: black;
@@ -630,10 +646,10 @@ form#register {
     margin-top: 10px;
     padding-bottom: 10px;
   }
-  .navbar2 .menu-item a:hover {
+  .menu-item a:hover {
     color: black;
   }
-  .navbar2 .menu-item::after {
+  .menu-item::after {
     content: "";
     position: absolute;
     width: 100%;
@@ -645,8 +661,17 @@ form#register {
     transform-origin: bottom right;
     transition: transform 0.25s ease-out;
   }
-  .navbar2 .menu-item:hover::after, .navbar2 .menu-item.active::after {
+  .menu-item:hover::after, .menu-item.active::after {
     transform: scaleX(1);
     transform-origin: bottom left;
+  }
+
+  .items {
+    transform: translateY(0);
+    position: absolute;
+    top: 0;
+    right: 20vw;
+    display: flex;
+    justify-content: space-between;
   }
 }/*# sourceMappingURL=main.css.map */

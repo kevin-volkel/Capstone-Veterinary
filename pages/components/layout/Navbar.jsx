@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { Icon } from 'semantic-ui-react';
-import Link from 'next/link';
-import Image from 'next/image';
-import wmLogo from '../../../public/media/WMlogo.png';
-import vetLogo from '../../../public/media/vetLogo.png';
-import { logoutUser } from '../../util/auth';
-import { useRouter } from 'next/router';
+import React, { useState, useEffect } from "react";
+import { Icon } from "semantic-ui-react";
+import Link from "next/link";
+import Image from "next/image";
+import wmLogo from "../../../public/media/WMlogo.png";
+import vetLogo from "../../../public/media/vetLogo.png";
+import { logoutUser } from "../../util/auth";
+import { useRouter } from "next/router";
 
 const Navbar = ({ user }) => {
   const router = useRouter();
@@ -82,37 +82,8 @@ const Navbar = ({ user }) => {
           onClick={() => setShowNavbar((prev) => !prev)}
         />
 
-        <div className={`items ${showNavbar ? 'show' : ''}`}>
-          <div
-            className={`menu-item ${isActive('/') ? 'active' : ''} ${
-              showNavbar ? 'show' : ''
-            }`}
-          >
-            <Link href="/">Home</Link>
-          </div>
-          <div
-            className={`menu-item ${isActive('/animals') ? 'active' : ''}`}
-          >
-            <Link href="/animals">Adoption</Link>
-          </div>
-          {user !== null && (
-            <>
-              <div
-                className={`menu-item ${isActive('/admin') ? 'active' : ''}`}
-              >
-                <Link href="/admin">Admin</Link>
-              </div>
-              <div
-                className={`menu-item`}
-                style={{ cursor: 'pointer' }}
-                onClick={logoutUser}
-              >
-                <a href="#">Logout</a>
-              </div>
-            </>
-          )}
-        </div>
       </div>
+
     </>
   );
 };

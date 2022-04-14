@@ -13,6 +13,7 @@
   border-bottom: 3px solid $clr-orange;
   background: $clr-white-1;
   transition: border 0.1s linear;
+
   &.showing {
     border-bottom: 3px solid transparent;
   }
@@ -42,10 +43,12 @@
   z-index: 9;
   border-bottom: solid 3px $clr-orange;
   position: absolute;
+
   .menu-item a {
     // font-weight: ;
     font-size: 1.5rem;
     line-height: 3rem;
+
     &:hover {
       color: $clr-orange;
     }
@@ -64,6 +67,10 @@
 }
 
 .navbar2 {
+  display: none;
+}
+
+.styling-case{
   display: none;
 }
 
@@ -90,6 +97,14 @@
   .navbar {
     display: none;
   }
+
+  .styling-case{
+    display: flex !important;
+    margin-top: 1%;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
   .hamburger.items{
     display: none;
   }
@@ -99,57 +114,70 @@
     justify-content: space-between;
     display: flex;
     flex-direction: row;
+    justify-content: flex-start;
+    align-content: center;
     align-items: center;
-    margin-top: 1rem;
-    padding-bottom: 0.75rem;
-    border-bottom: 3px solid $clr-orange;
+    padding: 0.1%;
+  }
 
-    .vet-logo {
-      width: 5%;
-      margin-right: 5%;
-    }
-    .wm-logo {
-      width: 25%;
-      display: flex;
-      justify-content: center;
-    }
-    .hamburger {
-      display: none !important;
-    }
-    .items {
-      display: flex;
-      justify-content: space-between;
-      justify-content: flex-end;
-    }
+  .vet-logo {
+    width: 8%;
+    margin: 0 2%;
+  }
 
-    .menu-item {
-      margin-right: 30px;
-      font-size: 2rem;
-      color: black;
-      display: inline-block;
-      position: relative;
-      margin-top: 10px;
-      padding-bottom: 10px;
-      a:hover {
-        color: black;
-      }
-      &::after {
-        content: "";
-        position: absolute;
-        width: 100%;
-        transform: scaleX(0);
-        height: 2px;
-        bottom: 0;
-        left: 0;
-        background-color: #f7931d;
-        transform-origin: bottom right;
-        transition: transform 0.25s ease-out;
-      }
-      &:hover::after,
-      &.active::after {
-        transform: scaleX(1);
-        transform-origin: bottom left;
-      }
-    }
+  .wm-logo {
+    width: 25%;
+    display: flex;
+    //justify-content: center;
+  }
+
+  .hamburger {
+    display: none !important;
+  }
+
+  .desktop-items{
+    display: inline !important;
+    position: relative;
+
+  }
+
+  .menu-item {
+   margin-right: 30px;
+   font-size: 2rem;
+   color: black;
+   display: inline-block;
+   position: relative;
+   margin-top: 10px;
+   padding-bottom: 10px;
+   a:hover {
+     color: black;
+   }
+   &::after {
+     content: '';
+     position: absolute;
+     width: 100%;
+     transform: scaleX(0);
+     height: 2px;
+     bottom: 0;
+     left: 0;
+     background-color: #f7931d;
+     transform-origin: bottom right;
+     transition: transform 0.25s ease-out;
+   }
+   &:hover::after,
+   &.active::after {
+     transform: scaleX(1);
+     transform-origin: bottom left;
+   }
+ }
+  
+  .items {
+    // z-index: 10;
+    transform: translateY(0);
+    position: absolute;
+    top: 0;
+    right: 20vw;
+    display: flex;
+    justify-content: space-between;
   }
 }
