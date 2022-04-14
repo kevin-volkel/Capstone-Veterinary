@@ -1,4 +1,4 @@
-@use '../themes/defaultTheme'as *;
+@use "../themes/defaultTheme" as *;
 
 .navbar {
   position: relative;
@@ -17,27 +17,23 @@
   &.showing {
     border-bottom: 3px solid transparent;
   }
+
+  .wm-logo {
+    width: 40%;
+  }
+  .vet-logo {
+    width: 15%;
+  }
+  .hamburger {
+    width: 15%;
+  }
 }
 
-
-
-.wm-logo {
-  width: 40%;
-}
-
-.vet-logo {
-  width: 15%;
-}
-
-.hamburger {
-  width: 15%;
-}
-
-.items {
+.hamburger.items {
   display: flex;
   font-family: $custom-font-1;
-  transform: translateY(-16rem);
-  transition: all 1s ease-in-out;
+  transform: translateY(-17rem);
+  transition: all 1s ease-in;
   height: 0;
   flex-direction: column;
   width: 100%;
@@ -54,15 +50,22 @@
     &:hover {
       color: black;
     }
-
-    ;
+  }
+}
+.hamburger.items.hide {
+  .menu-item a{
+    display: none;
   }
 }
 
-.items.show {
+.hamburger.items.show {
   height: auto;
-  display: flex;
   transform: translateY(0);
+  transition: all 1s ease-out;
+}
+
+.navbar2 {
+  display: none;
 }
 
 .container{
@@ -82,6 +85,10 @@
 
 @media only screen and (min-width: 1024px) {
   .navbar {
+    display: none;
+  }
+  .navbar2 {
+    width: 100%;
     height: 4rem;
     justify-content: flex-start;
     align-items: center;

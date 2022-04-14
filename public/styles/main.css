@@ -520,24 +520,21 @@ form#register {
 .navbar.showing {
   border-bottom: 3px solid transparent;
 }
-
-.wm-logo {
+.navbar .wm-logo {
   width: 40%;
 }
-
-.vet-logo {
+.navbar .vet-logo {
+  width: 15%;
+}
+.navbar .hamburger {
   width: 15%;
 }
 
-.hamburger {
-  width: 15%;
-}
-
-.items {
+.hamburger.items {
   display: flex;
   font-family: "ABeeZee", sans-serif;
-  transform: translateY(-16rem);
-  transition: all 1s ease-in-out;
+  transform: translateY(-17rem);
+  transition: all 1s ease-in;
   height: 0;
   flex-direction: column;
   width: 100%;
@@ -547,18 +544,26 @@ form#register {
   border-bottom: solid 3px #F7931D;
   position: absolute;
 }
-.items .menu-item a {
+.hamburger.items .menu-item a {
   font-size: 1.5rem;
   line-height: 3rem;
 }
-.items .menu-item a:hover {
+.hamburger.items .menu-item a:hover {
   color: black;
 }
 
-.items.show {
+.hamburger.items.hide .menu-item a {
+  display: none;
+}
+
+.hamburger.items.show {
   height: auto;
-  display: flex;
   transform: translateY(0);
+  transition: all 1s ease-out;
+}
+
+.navbar2 {
+  display: none;
 }
 
 .container {
@@ -576,6 +581,11 @@ form#register {
 
 @media only screen and (min-width: 1024px) {
   .navbar {
+    display: none;
+  }
+
+  .navbar2 {
+    width: 100%;
     height: 4rem;
     justify-content: flex-start;
     align-items: center;

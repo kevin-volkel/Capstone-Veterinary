@@ -13,18 +13,65 @@ const Navbar = ({ user }) => {
   const isActive = (route) => router.pathname === route;
 
   const [showNavbar, setShowNavbar] = useState(false);
-  const [showBorder, setShowBorder] = useState(true);
 
   return (
     <>
-      <div className={`navbar ${showNavbar ? "showing" : ""}`}>
-        <div className="container">
-          <div className="vet-logo">
-            <Image src={vetLogo} objectFit="contain" />
+      <div className="navbar">
+        <div className="vet-logo">
+          <Image src={vetLogo} objectFit="contain" />
+        </div>
+        <div className="wm-logo">
+          <Image src={wmLogo} objectFit="contain" />
+        </div>
+
+        <Icon
+          name="bars"
+          color="black"
+          className="hamburger"
+          size="large"
+          onClick={() => setShowNavbar((prev) => !prev)}
+        />
+
+        </div>
+
+        <div className={` hamburger items ${showNavbar ? 'show' : 'hide'}`}>
+          <div
+            className={`menu-item ${isActive('/') ? 'active' : ''} ${
+              showNavbar ? 'show' : ''
+            }`}
+          >
+            <Link href="/">Home</Link>
           </div>
-          <div className="wm-logo">
-            <Image src={wmLogo} objectFit="contain" />
+          <div
+            className={`menu-item ${isActive('/animals') ? 'active' : ''}`}
+          >
+            <Link href="/animals">Adoption</Link>
           </div>
+          {user !== null && (
+            <>
+              <div
+                className={`menu-item ${isActive('/admin') ? 'active' : ''}`}
+              >
+                <Link href="/admin">Admin</Link>
+              </div>
+              <div
+                className={`menu-item`}
+                style={{ cursor: 'pointer' }}
+                onClick={logoutUser}
+              >
+                <a href="#">Logout</a>
+              </div>
+            </>
+          )}
+        </div>
+      {/* </div> */}
+
+      <div className="navbar2">
+        <div className="vet-logo">
+          <Image src={vetLogo} objectFit="contain" />
+        </div>
+        <div className="wm-logo">
+          <Image src={wmLogo} objectFit="contain" />
         </div>
 
         <Icon

@@ -1,4 +1,3 @@
-const { query } = require("express");
 const AnimalModel = require("../models/AnimalModel");
 const UserModel = require("../models/UserModel");
 
