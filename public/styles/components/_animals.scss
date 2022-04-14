@@ -13,6 +13,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   text-align: center;
   background-color: white;
   margin: 1rem auto 2rem;
@@ -42,7 +43,7 @@ body {
   }
 
   .grid{
-    justify-content: space-between;
+    justify-content: space-evenly;
     .ui.card{
       font-size: 1.2rem;
       &:last-child{

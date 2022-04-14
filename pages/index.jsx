@@ -1,7 +1,5 @@
-import Head from "next/head";
 import Image from "next/image";
 import { Button, Segment } from "semantic-ui-react";
-import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 import adopt from "../public/media/adoption.png";
 //import "../styles/home.css";
@@ -33,6 +31,10 @@ export default function Home() {
             <Image src={adopt} position="relative" className="adopt-image" objectFit="contain"/>
           <div className="nf-sect">
             <p>
+              At vero eos et accus et iusto odio dignissimos ducimus qui
+              blanditiis praesentium voluptatum deleniti atque corrupti quosi
+              dolores et quas molestias excepturi sint occaecati cupidi non. At
+              vero eos et accus et iusto odio dignissimos ducimus qui blanditiis
               At vero eos et accus et iusto odio dignissimos ducimus qui
               blanditiis praesentium voluptatum deleniti atque corrupti quosi
               dolores et quas molestias excepturi sint occaecati cupidi non. At

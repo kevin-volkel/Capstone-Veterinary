@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=ABeeZee&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Oxygen&display=swap");
 html,
 body {
   height: 100vh;
@@ -35,6 +36,10 @@ a {
   margin: 0;
   cursor: pointer;
   font-size: 4rem;
+  font-family: "Oxygen", sans-serif;
+}
+#admin h1.ui.header:hover, #admin h1.ui.header:first-child:hover, #admin h1.ui.header:last-child:hover {
+  color: #F7931D;
 }
 #admin #header {
   display: flex;
@@ -57,9 +62,17 @@ a {
   color: #ffffff;
   margin-bottom: 2rem;
 }
-#admin-animals .button:hover {
-  background-color: #f68c13;
-  color: #ffffff;
+#admin-animals .button::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: rgb(255, 164, 29);
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
 }
 #admin-animals .ui.grid {
   display: flex;
@@ -95,6 +108,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   text-align: center;
   background-color: white;
   margin: 1rem auto 2rem;
@@ -119,7 +133,7 @@ body {
   justify-content: center;
 }
 #adoption .grid {
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 #adoption .grid .ui.card {
   font-size: 1.2rem;
@@ -240,6 +254,22 @@ body {
   margin-top: 1rem;
 }
 
+.img-container {
+  margin: 0;
+  -o-object-fit: contain;
+     object-fit: contain;
+  overflow: hidden;
+  margin: auto;
+  display: flex;
+  background: rgb(27, 27, 27);
+  align-items: center;
+  justify-content: center;
+}
+
+.curr-img {
+  margin: auto;
+}
+
 .card {
   margin: 1rem;
   padding: 1.5rem;
@@ -282,6 +312,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  grid-gap: 1.5rem;
 }
 
 .nf-sect {
@@ -291,6 +322,8 @@ body {
   align-items: center;
   justify-content: space-evenly;
   padding-bottom: 4%;
+  padding-left: 3%;
+  padding-right: 3%;
 }
 
 .adopt-image {
@@ -300,7 +333,6 @@ body {
 .nf-description {
   width: 60%;
   margin-right: 4%;
-  margin-left: 2%;
 }
 
 .ui.orange.button {
@@ -328,23 +360,6 @@ body {
   top: 50%;
   height: 30px;
   width: 40px;
-}
-
-.img-container {
-  margin: 0;
-  height: 40vw;
-  -o-object-fit: contain;
-     object-fit: contain;
-  overflow: hidden;
-  margin: auto;
-  display: flex;
-  background: rgb(27, 27, 27);
-  align-items: center;
-  justify-content: center;
-}
-
-.curr-img {
-  margin: auto;
 }
 
 .ui.segment {
@@ -515,74 +530,145 @@ div.animal-wrap {
 }
 
 .navbar {
+  position: relative;
   width: 100%;
-  height: 2.5rem;
+  z-index: 100;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-top: 1rem;
-  padding-bottom: 0.75rem;
-  border-bottom: 3px solid #F7931D;
+  padding-top: 0.5rem;
+  background: #F6F7F8;
+  transition: border 0.1s linear;
 }
-
-.wm-logo {
+.navbar.showing {
+  border-bottom: 3px solid transparent;
+}
+.navbar .wm-logo {
   width: 40%;
 }
-
-.vet-logo {
+.navbar .vet-logo {
   width: 15%;
 }
-
-.hamburger {
+.navbar i.icon.hamburger {
   width: 15%;
+  font-size: 1.9rem;
 }
 
-.items {
-  display: none;
-  font-family: "ABeeZee", sans-serif;
-}
-
-.items.show {
+.hamburger.items {
   display: flex;
+  font-family: "ABeeZee", sans-serif;
+  transition: all 1s ease-out;
   flex-direction: column;
-  position: absolute;
   width: 100%;
-  top: 3.25rem;
-  height: auto;
+  text-align: center;
   background: #F6F7F8;
   z-index: 9;
-  gap: 15x;
   border-bottom: solid 3px #F7931D;
-  text-align: center;
+  position: absolute;
+  height: auto;
 }
-.items.show .menu-item a {
+.hamburger.items .menu-item a {
   font-size: 1.5rem;
   line-height: 3rem;
 }
-.items.show .menu-item a:hover {
-  color: black;
+.hamburger.items .menu-item a:hover {
+  color: #F7931D;
+}
+.hamburger.items.tall {
+  transform: translateY(-12rem);
+}
+.hamburger.items.short {
+  transform: translateY(-6rem);
 }
 
+.hamburger.items.show {
+  transform: translateY(0);
+  transition: all 1s ease-out;
+}
+
+.navbar2 {
+  display: none;
+}
+
+.styling-case {
+  display: none;
+}
+
+@media only screen and (min-width: 768px) {
+  .navbar {
+    height: 7.5rem;
+  }
+  .navbar .vet-logo {
+    width: 10%;
+  }
+  .navbar i.icon.hamburger {
+    font-size: 2.8rem;
+  }
+
+  .hamburger.items .menu-item a {
+    font-size: 1.8rem;
+    line-height: 4rem;
+  }
+  .hamburger.items.hide.tall {
+    transform: translateY(-16rem);
+  }
+  .hamburger.items.hide.short {
+    transform: translateY(-8rem);
+  }
+}
 @media only screen and (min-width: 1024px) {
   .navbar {
-    height: 4rem;
+    display: none;
+  }
+
+  .styling-case {
+    display: flex !important;
+    margin-top: 1%;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .hamburger.items {
+    display: none;
+  }
+
+  .navbar2 {
+    width: 100%;
+    height: 5.5rem;
+    display: flex;
+    flex-direction: row;
     justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    padding: 0.1%;
+    border-bottom: 2px solid #F7931D;
+  }
+  .navbar2 .img-container {
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 5.5rem;
+    width: 35%;
+    background: inherit;
+  }
+  .navbar2 .img-container .vet-logo {
+    width: 18%;
+  }
+  .navbar2 .img-container .wm-logo {
+    width: 75%;
   }
 
   .vet-logo {
-    width: 5%;
-    margin-right: 5%;
+    width: 8%;
+    margin: 0 2%;
   }
 
   .wm-logo {
     width: 25%;
     display: flex;
-    justify-content: center;
-  }
-
-  .hamburger {
-    display: none !important;
   }
 
   .menu-item {
@@ -605,18 +691,12 @@ div.animal-wrap {
     height: 2px;
     bottom: 0;
     left: 0;
-    background-color: #f7931d;
+    background-color: rgb(255, 164, 29);
     transform-origin: bottom right;
     transition: transform 0.25s ease-out;
   }
   .menu-item:hover::after, .menu-item.active::after {
     transform: scaleX(1);
     transform-origin: bottom left;
-  }
-
-  .items {
-    display: flex;
-    justify-content: space-between;
-    justify-content: flex-end;
   }
 }/*# sourceMappingURL=main.css.map */

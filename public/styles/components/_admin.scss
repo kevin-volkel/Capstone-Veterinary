@@ -1,8 +1,11 @@
+@use '../themes/defaultTheme' as *;
+
 #admin {
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
+  
   h1 {
     font-weight: bold;
 
@@ -12,6 +15,10 @@
       margin: 0;
       cursor: pointer;
       font-size: 4rem;
+      font-family: $custom-font-2;
+      &:hover{
+        color: #F7931D;
+      }
     }
   }
 
@@ -23,7 +30,6 @@
     justify-content: space-evenly;
   }
 }
-
 
 #admin-animals {
   width: 70vw;
@@ -37,9 +43,17 @@
     background-color: #f7931d;
     color: #ffffff;
     margin-bottom: 2rem;
-    &:hover {
-      background-color: #f68c13;
-      color: #ffffff;
+    &::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      transform: scaleX(0);
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: rgb(255, 164, 29);
+      transform-origin: bottom right;
+      transition: transform 0.25s ease-out;
     }
   }
 

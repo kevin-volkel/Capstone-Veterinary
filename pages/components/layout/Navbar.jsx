@@ -31,8 +31,51 @@ const Navbar = ({ user }) => {
           size="large"
           onClick={() => setShowNavbar((prev) => !prev)}
         />
+      </div>
 
-        <div className={`items ${showNavbar ? 'show' : ''}`}>
+      <div
+        className={` hamburger items ${showNavbar ? 'show' : 'hide'} ${
+          user !== null ? 'tall' : 'short'
+        }`}
+      >
+        <div
+          className={`menu-item ${isActive('/') ? 'active' : ''} ${
+            showNavbar ? 'show' : ''
+          }`}
+        >
+          <Link href="/">Home</Link>
+        </div>
+        <div className={`menu-item ${isActive('/animals') ? 'active' : ''}`}>
+          <Link href="/animals">Adoption</Link>
+        </div>
+        {user !== null && (
+          <>
+            <div className={`menu-item ${isActive('/admin') ? 'active' : ''}`}>
+              <Link href="/admin">Admin</Link>
+            </div>
+            <div
+              className={`menu-item`}
+              style={{ cursor: 'pointer' }}
+              onClick={logoutUser}
+            >
+              <a href="#">Logout</a>
+            </div>
+          </>
+        )}
+      </div>
+      {/* </div> */}
+
+      <div className="navbar2">
+        <div className="img-container">
+          <div className="vet-logo">
+            <Image src={vetLogo} objectFit="contain" />
+          </div>
+          <div className="wm-logo">
+            <Image src={wmLogo} objectFit="contain" />
+          </div>
+        </div>
+
+        <div className="items">
           <div
             className={`menu-item ${isActive('/') ? 'active' : ''} ${
               showNavbar ? 'show' : ''
@@ -40,9 +83,7 @@ const Navbar = ({ user }) => {
           >
             <Link href="/">Home</Link>
           </div>
-          <div
-            className={`menu-item ${isActive('/animals') ? 'active' : ''}`}
-          >
+          <div className={`menu-item ${isActive('/animals') ? 'active' : ''}`}>
             <Link href="/animals">Adoption</Link>
           </div>
           {user !== null && (
