@@ -67,8 +67,6 @@ const createUser = async (req, res) => {
         'Password must have eight characters including one uppercase letter, one lowercase letter, and one number'
       );
 
-  if (name === 'Kevin Murray') return res.status(401).send('bababooey')
-
   try {
     let user;
     user = await UserModel.findOne({ email: email.toLowerCase() });
@@ -107,4 +105,21 @@ const createUser = async (req, res) => {
   }
 };
 
-module.exports = { postUserLogin, createUser };
+const deleteUser = async (req, res) => {
+  const { userId } = req.params;
+  
+  try {
+    const deletedUser = await UserModel.findByIdAndDelete(userId)
+    return res.status(200).json(deletedUser)
+  } catch (err) {
+    console.log(err)
+    return res.status(500).send('Error @ deleteUser')
+  }
+}
+
+const getUsers = async (req, res) => {
+  const users = await UserModel.find({})
+  return res.status(200).json(users)
+}
+
+module.exports = { postUserLogin, createUser, deleteUser, getUsers };
