@@ -525,8 +525,9 @@ form#register {
 .navbar .vet-logo {
   width: 15%;
 }
-.navbar .hamburger {
+.navbar i.icon.hamburger {
   width: 15%;
+  font-size: 1.9rem;
 }
 
 .hamburger.items {
@@ -548,7 +549,7 @@ form#register {
   line-height: 3rem;
 }
 .hamburger.items .menu-item a:hover {
-  color: black;
+  color: #F7931D;
 }
 
 .hamburger.items.hide .menu-item a {
@@ -565,32 +566,35 @@ form#register {
   display: none;
 }
 
-.container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-content: center;
-  align-items: center;
-  padding: 0.1%;
-}
+@media only screen and (min-width: 768px) {
+  .navbar {
+    height: 7.5rem;
+  }
+  .navbar .vet-logo {
+    width: 10%;
+  }
+  .navbar i.icon.hamburger {
+    font-size: 2.8rem;
+  }
 
-.desktop-items {
-  display: none;
+  .hamburger.items .menu-item a {
+    font-size: 1.8rem;
+    line-height: 4rem;
+  }
 }
-
 @media only screen and (min-width: 1024px) {
   .navbar {
     display: none;
   }
 
-  .navbar2 {
-    width: 100%;
-    height: 4rem;
-    justify-content: flex-start;
-    align-items: center;
+  .hamburger.items {
+    display: none;
   }
 
-  .container {
+  .navbar2 {
+    width: 100%;
+    height: 5.5rem;
+    justify-content: space-between;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
