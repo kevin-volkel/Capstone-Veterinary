@@ -83,38 +83,10 @@ const Navbar = ({ user }) => {
         />
 
         {/* for desktop navbar */}
-        <div className="dekstop-items">
+        <div className="desktop-items">
           <Link href="/">Home</Link>
           <Link href="/">Adoption</Link>
         </div>
-      </div>
-
-      {/* for mobile navbar */}
-      <div className={`items ${showNavbar ? "show" : ""}`}>
-        <div
-          className={`menu-item ${isActive("/") ? "active" : ""} ${
-            showNavbar ? "show" : ""
-          }`}
-        >
-          <Link href="/">Home</Link>
-        </div>
-        <div className={`menu-item ${isActive("/animals") ? "active" : ""}`}>
-          <Link href="/animals">Adoption</Link>
-        </div>
-        {user !== null && (
-          <>
-            <div className={`menu-item ${isActive("/admin") ? "active" : ""}`}>
-              <Link href="/admin">Admin</Link>
-            </div>
-            <div
-              className={`menu-item`}
-              style={{ cursor: "pointer" }}
-              onClick={logoutUser}
-            >
-              <a href="#">Logout</a>
-            </div>
-          </>
-        )}
       </div>
     </>
   );

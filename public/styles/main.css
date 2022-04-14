@@ -300,7 +300,6 @@ body {
 .nf-description {
   width: 60%;
   margin-right: 4%;
-  margin-left: 2%;
 }
 
 .ui.orange.button {
@@ -575,7 +574,7 @@ form#register {
   padding: 0.1%;
 }
 
-.dekstop-items {
+.desktop-items {
   display: none;
 }
 
@@ -614,12 +613,12 @@ form#register {
     display: none !important;
   }
 
-  .dekstop-items {
+  .desktop-items {
     display: inline !important;
     position: relative;
   }
 
-  /*.menu-item {
+  .menu-item {
     margin-right: 30px;
     font-size: 2rem;
     color: black;
@@ -627,35 +626,33 @@ form#register {
     position: relative;
     margin-top: 10px;
     padding-bottom: 10px;
-    a:hover {
-      color: black;
-    }
-    &::after {
-      content: '';
-      position: absolute;
-      width: 100%;
-      transform: scaleX(0);
-      height: 2px;
-      bottom: 0;
-      left: 0;
-      background-color: #f7931d;
-      transform-origin: bottom right;
-      transition: transform 0.25s ease-out;
-    }
-    &:hover::after,
-    &.active::after {
-      transform: scaleX(1);
-      transform-origin: bottom left;
-    }
+  }
+  .menu-item a:hover {
+    color: black;
+  }
+  .menu-item::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #f7931d;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+  }
+  .menu-item:hover::after, .menu-item.active::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
   }
 
-   .items {
-     // z-index: 10;
-     transform: translateY(0);
-     position: absolute;
-     top: 0;
-     right: 20vw;
-     display: flex;
-     justify-content: space-between;
-   }*/
+  .items {
+    transform: translateY(0);
+    position: absolute;
+    top: 0;
+    right: 20vw;
+    display: flex;
+    justify-content: space-between;
+  }
 }/*# sourceMappingURL=main.css.map */
