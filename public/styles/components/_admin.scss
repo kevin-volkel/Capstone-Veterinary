@@ -1,11 +1,11 @@
-@use '../themes/defaultTheme' as *;
+@use "../themes/defaultTheme" as *;
 
 #admin {
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  
+
   h1 {
     font-weight: bold;
 
@@ -16,8 +16,8 @@
       cursor: pointer;
       font-size: 4rem;
       font-family: $custom-font-2;
-      &:hover{
-        color: #F7931D;
+      &:hover {
+        color: #f7931d;
       }
     }
   }
@@ -44,7 +44,7 @@
     color: #ffffff;
     margin-bottom: 2rem;
     &::after {
-      content: '';
+      content: "";
       position: absolute;
       width: 100%;
       transform: scaleX(0);
@@ -59,11 +59,12 @@
 
   .ui.grid {
     display: flex;
+
     justify-content: space-around;
   }
-  .ui.card{
+  .ui.card {
     font-size: 1.2rem;
-    &:last-child{
+    &:last-child {
       margin: 1em 0;
     }
   }
@@ -71,6 +72,9 @@
   .no-animals {
     font-size: 1.5rem;
     font-weight: bold;
+  }
+  .pagination {
+    margin-top: 1rem;
   }
 }
 
