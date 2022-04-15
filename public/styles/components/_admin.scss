@@ -5,7 +5,7 @@
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  
+
   h1 {
     font-weight: bold;
 
@@ -95,6 +95,9 @@
     margin: 1.5rem;
     font-size: 1.5rem;
     font-weight: bold;
+  }
+  .pagination {
+    margin-top: 1rem;
   }
 }
 
