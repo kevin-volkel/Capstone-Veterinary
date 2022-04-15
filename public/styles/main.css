@@ -39,7 +39,7 @@ a {
   font-family: "Oxygen", sans-serif;
 }
 #admin h1.ui.header:hover, #admin h1.ui.header:first-child:hover, #admin h1.ui.header:last-child:hover {
-  color: #F7931D;
+  color: #f7931d;
 }
 #admin #header {
   display: flex;
@@ -87,6 +87,9 @@ a {
 #admin-animals .no-animals {
   font-size: 1.5rem;
   font-weight: bold;
+}
+#admin-animals .pagination {
+  margin-top: 1rem;
 }
 
 .ui.button > .icon:not(.button) {

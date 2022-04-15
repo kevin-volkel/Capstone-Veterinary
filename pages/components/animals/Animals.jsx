@@ -1,5 +1,5 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import {
   Button,
   Icon,
@@ -7,14 +7,14 @@ import {
   Container,
   Grid,
   Pagination,
-} from 'semantic-ui-react';
-import { baseURL } from '../../util/auth';
-import Cookies from 'js-cookie';
-import AnimalCard from './AnimalCard';
+} from "semantic-ui-react";
+import { baseURL } from "../../util/auth";
+import Cookies from "js-cookie";
+import AnimalCard from "./AnimalCard";
 
 const Animals = ({ animals, isAdmin }) => {
-  const [currPage, setCurrPage] = useState(1)
-  const [loading, setLoading] = useState(false)
+  const [currPage, setCurrPage] = useState(1);
+  const [loading, setLoading] = useState(false);
 
   const handlePageChange = (e, data) => {
     setCurrPage(data.activePage);
@@ -32,9 +32,7 @@ const Animals = ({ animals, isAdmin }) => {
       {animals.length ? (
         <Container fluid className="animal-list">
           <Grid columns="3" centered relaxed>
-            {animals
-              .slice((currPage - 1) * 6, currPage * 6)
-              .map((animal) => {
+            {animals.slice((currPage - 1) * 6, currPage * 6).map((animal) => {
               // console.log(animal);
               const { name, age, type, gender, picURLs, _id } = animal;
               const color = gender === "male" ? "#9AC7FF" : "#FA7091";
@@ -47,7 +45,7 @@ const Animals = ({ animals, isAdmin }) => {
                   picURLs={picURLs}
                   id={_id}
                   gender={gender}
-                  color={color}
+                  // color={color}
                   key={_id}
                 />
               );
@@ -56,7 +54,8 @@ const Animals = ({ animals, isAdmin }) => {
         </Container>
       ) : (
         <div className="no-animals">
-          There are currently no animal adoptions posted. {isAdmin ? "Start by adding one" : "Come back later." }
+          There are currently no animal adoptions posted.{" "}
+          {isAdmin ? "Start by adding one" : "Come back later."}
         </div>
       )}
       <Pagination

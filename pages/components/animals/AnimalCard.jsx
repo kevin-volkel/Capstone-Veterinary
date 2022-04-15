@@ -15,7 +15,7 @@ const AnimalCard = ({ name, age, type, picURLs, id, gender, color }) => {
         maxWidth: "250px",
         // maxHeight: "280px",
         textTransform: "uppercase",
-        background: color
+        background: color,
       }}
       // color={color}
       onClick={() => Router.push(`${baseURL}/${id}`)}
@@ -34,7 +34,10 @@ const AnimalCard = ({ name, age, type, picURLs, id, gender, color }) => {
         {/* <Card.Meta className="card-gender" content={gender} /> */}
         <Card.Meta className="card-gender">
           {gender}
-          <Icon name={gender === "male" ? "man" : "woman"} />
+          <Icon
+            name={gender === "male" ? "man" : "woman"}
+            color={gender === "male" ? "blue" : "pink"}
+          />
         </Card.Meta>
         <Card.Meta className="card-age" content={age} />
       </Card.Content>
