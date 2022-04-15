@@ -3,8 +3,9 @@ import { Button, Segment } from "semantic-ui-react";
 import Footer from "./components/layout/Footer";
 import adopt from "../public/media/adoption.png";
 import fEvents from "../public/media/CAT.png";
+import EventSlideshow from "./components/events/EventSlideshow";
 //import "../styles/home.css";
-import bannerPic from "../public/media/home-page-banner.jpg";
+// import bannerPic from "../public/media/home-page-banner.jpg";
 
 // const geojsonObject = { ... };
 // const geojsonObject2 = { ... }; 
@@ -13,19 +14,20 @@ export default function Home() {
   return (
     <div className="everything">
       <div className="slideshow">
-        <div className="img-container">
+        {/* <div className="img-container"> */}
           {/* are we still planning on having a slideshow or just a banner image? */}
           {/* <Button className="img-btn-left arrow" color="orange"></Button> */}
-          <Image
+          {/* <Image
             src={bannerPic}
             alt="dog being held"
             priority="true"
             position="relative"
             className="curr-img"
             objectFit="contain"
-          />
+          /> */}
           {/* <Button className="img-btn-right arrow" color="orange"></Button> */}
-        </div>
+          <EventSlideshow />
+        {/* </div> */}
       </div>
 
       <div className="nf-div">

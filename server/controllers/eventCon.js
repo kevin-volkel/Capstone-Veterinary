@@ -3,7 +3,7 @@ const UserModel = require("../models/UserModel");
 
 const addEvent = async (req, res) => {
   const { userId } = req.user;
-  const { title, desc, date, type, featured, location } = req.body;
+  const { title, desc, date, type, featured, location, bannerPic } = req.body;
 
   try {
     const newEvent = {
@@ -12,6 +12,7 @@ const addEvent = async (req, res) => {
       date,
       location,
       user: userId,
+      bannerPic
     };
     if (type) newEvent.type = type;
     if (featured) newEvent.featured = featured;

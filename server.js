@@ -42,7 +42,7 @@ const uploadRoute = require('./server/routes/uploadRoutes')
 app.use('/api/v1/user', userRoute);
 app.use('/api/v1/auth', authMiddleware, authRoute);
 app.use('/api/v1/animal', animalRoute);
-app.use('/api/v1/event', authMiddleware, eventRoute);
+app.use('/api/v1/event', eventRoute);
 app.use('/api/v1/upload', uploadRoute);
 
 connectDB();

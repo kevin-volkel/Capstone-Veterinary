@@ -26,6 +26,9 @@ const EventSchema = new Schema(
       type: String,
 			required: [true, "Must provide a location"]
     },
+    bannerPic: {
+      type: String,
+    }
   },
   { timestamps: true }
 );

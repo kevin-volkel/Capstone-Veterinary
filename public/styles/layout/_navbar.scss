@@ -33,7 +33,7 @@
 .hamburger.items {
   display: flex;
   font-family: $custom-font-1;
-  transition: all 1s ease-out;
+  transition: all 0.25s ease-out;
   flex-direction: column;
   width: 100%;
   text-align: center;
@@ -62,7 +62,7 @@
 
 .hamburger.items.show {
   transform: translateY(0);
-  transition: all 1s ease-out;
+  transition: all 0.25s linear;
 }
 
 .navbar2 {
@@ -124,32 +124,13 @@
     padding: 0.1%;
     border-bottom: 2px solid $clr-orange;
 
-    .img-container{
-      margin: 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      height: 5.5rem;
-      width: 35%;
-      background: inherit;
       .vet-logo{
-        width: 18%;
+        width: 6%;
       }
       .wm-logo{
-        width: 75%;
+        width: 25%;
+        
       }
-    }
-  }
-
-  .vet-logo {
-    width: 8%;
-    margin: 0 2%;
-  }
-
-  .wm-logo {
-    width: 25%;
-    display: flex;
-    //justify-content: center;
   }
 
   .menu-item {

@@ -14,6 +14,11 @@ const Navbar = ({ user }) => {
 
   const [showNavbar, setShowNavbar] = useState(false);
 
+  useEffect(() => {
+    setShowNavbar(false)
+  }, [router.pathname])
+  
+
   return (
     <>
       <div className="navbar">
@@ -66,14 +71,12 @@ const Navbar = ({ user }) => {
       {/* </div> */}
 
       <div className="navbar2">
-        <div className="img-container">
           <div className="vet-logo">
             <Image src={vetLogo} objectFit="contain" />
           </div>
           <div className="wm-logo">
             <Image src={wmLogo} objectFit="contain" />
           </div>
-        </div>
 
         <div className="items">
           <div
