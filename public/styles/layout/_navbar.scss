@@ -33,7 +33,7 @@
 .hamburger.items {
   display: flex;
   font-family: $custom-font-1;
-  transition: all 1s ease-out;
+  transition: all .6s ease-out;
   flex-direction: column;
   width: 100%;
   text-align: center;
@@ -62,7 +62,7 @@
 
 .hamburger.items.show {
   transform: translateY(0);
-  transition: all 1s ease-out;
+  transition: all .6s ease-out;
 }
 
 .navbar2 {
