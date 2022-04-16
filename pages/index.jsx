@@ -5,9 +5,8 @@ import adopt from "../public/media/adoption.png";
 import fEvents from "../public/media/CAT.png";
 //import "../styles/home.css";
 import bannerPic from "../public/media/home-page-banner.jpg";
+import MapLayout from "./components/layout/Map/MapLayout";
 
-// const geojsonObject = { ... };
-// const geojsonObject2 = { ... }; 
 
 export default function Home() {
   return (
@@ -32,12 +31,7 @@ export default function Home() {
         <Segment className="events-section">
           <h1 className="nf-title">Featured Events</h1>
           <div className="nf-wholeSect">
-            <Image
-              src={fEvents}
-              position="relative"
-              className="event-image"
-              objectFit="contain"
-            />
+            <MapLayout/>
           </div>
         </Segment>
       </div>
