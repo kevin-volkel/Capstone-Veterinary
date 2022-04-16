@@ -14,7 +14,7 @@
     &.ui.header:last-child {
       margin: 0;
       cursor: pointer;
-      font-size: 4rem;
+      font-size: 2.5rem;
       font-family: $custom-font-2;
       &:hover {
         color: #f7931d;
@@ -25,15 +25,15 @@
   #header {
     display: flex;
     width: 80vw;
-    margin: 3rem auto;
+    margin: 2rem auto;
     flex-direction: row;
     justify-content: space-evenly;
   }
 }
 
 #admin-animals {
-  width: 70vw;
-  margin: 1rem auto 2rem;
+  width: 80vw;
+  margin: 0rem auto 2rem;
   padding: 2rem 0;
 
   .button {
@@ -57,19 +57,42 @@
     }
   }
 
+  // .ui.selection.dropdown {
+  //   min-width: 10em;
+  // }
+
+  .animal-list{
+    display: flex;
+    justify-content: center;
+    margin: 1.5rem 0;
+  }
+
   .ui.grid {
     display: flex;
+    justify-content: center;
 
-    justify-content: space-around;
-  }
-  .ui.card {
-    font-size: 1.2rem;
-    &:last-child {
-      margin: 1em 0;
+    .ui.card {
+      font-size: 1.2rem;
+      margin: .5rem;
+      cursor: pointer;
+      text-align: center;
+      max-width: 250px;
+      text-transform: uppercase;
+      img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+      }
+
+      .animal-header{
+        font-size: 2rem;
+        margin-bottom: .8rem;
+      }
     }
   }
 
   .no-animals {
+    margin: 1.5rem;
     font-size: 1.5rem;
     font-weight: bold;
   }
@@ -80,4 +103,34 @@
 
 .ui.button > .icon:not(.button) {
   opacity: 1;
+}
+
+//TABLET
+@media only screen and (min-width: 768px) {
+  #admin{
+    h1.ui.header,
+    h1.ui.header:first-child,
+    h1.ui.header:last-child {
+      font-size: 3.5rem;
+    }
+    .button{
+      width: 60%;
+    }
+    .ui.pagination.menu .item {
+      min-width: 4em;
+      justify-content: center;
+    }
+  }
+}
+
+//DESKTOP
+@media only screen and (min-width: 1024px) {
+  #admin{
+    h1.ui.header,
+    h1.ui.header:first-child,
+    h1.ui.header:last-child {
+      font-size: 4rem;
+      
+    }
+  }
 }

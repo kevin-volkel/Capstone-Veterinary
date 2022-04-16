@@ -42,7 +42,7 @@ const addAnimal = async (req, res) => {
     if (vidURLs) newAnimal.vidURLs = vidURLs;
 
     const animal = await new AnimalModel(newAnimal).save();
-    const animalCreated = await AnimalModel.findOne(animal._id).populate(
+    const animalCreated = await AnimalModel.findById(animal._id).populate(
       'user'
     );
 
