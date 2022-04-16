@@ -5,6 +5,8 @@ const UserModel = require('../models/UserModel');
 const addAnimal = async (req, res) => {
   const userId = req.user.userId;
 
+  if(!userId) return res.status(404).send('no user with that ID')
+
   const {
     name,
     age,
@@ -19,7 +21,7 @@ const addAnimal = async (req, res) => {
     neutered,
     picURLs,
     vidURLs,
-    location,
+    location
   } = req.body;
 
   try {

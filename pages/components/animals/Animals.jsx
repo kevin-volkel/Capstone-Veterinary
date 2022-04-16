@@ -6,12 +6,15 @@ import {
   Container,
   Grid,
   Pagination,
+  Modal,
 } from "semantic-ui-react";
+import AddAnimalModal from "./AddAnimalModal";
 import AnimalCard from "./AnimalCard";
 
-const Animals = ({ animals, isAdmin }) => {
+const Animals = ({ animals, isAdmin, user }) => {
   const [currPage, setCurrPage] = useState(1);
   const [loading, setLoading] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const handlePageChange = (e, data) => {
     setCurrPage(data.activePage);
@@ -90,6 +93,7 @@ const Animals = ({ animals, isAdmin }) => {
     const newFilterObj = { ...filterObj, [name]: value };
     setFilterObj(newFilterObj);
     filterResults(newFilterObj);
+    setCurrPage(1);
   };
 
   const filterResults = (obj) => {
@@ -114,10 +118,18 @@ const Animals = ({ animals, isAdmin }) => {
   return (
     <>
       {isAdmin && (
-        <Button disabled={loading}>
+        <Button disabled={loading} onClick={() => setShowModal(true)}>
           <Icon name="plus" />
           Add Animal
         </Button>
+      )}
+
+      {showModal && (
+        <Modal open={showModal} closeIcon closeOnDimmerClick onClose={() => setShowModal(false)}>
+          <Modal.Content>
+            <AddAnimalModal user={user} setAnimals={setFilteredAnimals} />
+          </Modal.Content>
+        </Modal>
       )}
 
       <div className="sort-div">

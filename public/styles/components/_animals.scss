@@ -30,18 +30,23 @@ body {
     &.ui.header:first-child,
     &.ui.header:last-child {
       margin: 0;
+      margin-bottom: 2rem;
       cursor: pointer;
       font-size: 2.3rem;
     }
   }
 
   .sort-div {
-    margin: 1rem 0 0 0;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    .ui.selection.dropdown {
+      width: 16em;
+      min-width: 9em;
+      margin: 0.2rem;
+    }
   }
-
-  // .ui.selection.dropdown {
-  //   min-width: 10em;
-  // }
 
   .animal-list {
     width: 90%;
@@ -87,9 +92,15 @@ body {
       &.ui.header,
       &.ui.header:first-child,
       &.ui.header:last-child {
-        margin: 0;
-        cursor: pointer;
         font-size: 3.5rem;
+      }
+    }
+
+    .sort-div {
+      flex-direction: row;
+      .ui.selection.dropdown {
+        width: 11em;
+        min-width: 9em;
       }
     }
 
@@ -106,6 +117,14 @@ body {
     width: 80vw;
     .animal-list {
       width: 100%;
+    }
+
+    .sort-div {
+      .ui.selection.dropdown {
+        width: 13em;
+        min-width: 9em;
+        font-size: 1.1rem;
+      }
     }
   }
 }

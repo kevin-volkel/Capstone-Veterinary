@@ -60,6 +60,7 @@ a {
   font-size: 1.5rem;
   background-color: #f7931d;
   color: #ffffff;
+  margin: 0;
   margin-bottom: 2rem;
 }
 #admin-animals .button::after {
@@ -74,10 +75,21 @@ a {
   transform-origin: bottom right;
   transition: transform 0.25s ease-out;
 }
+#admin-animals .sort-div {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+#admin-animals .sort-div .ui.selection.dropdown {
+  width: 16em;
+  min-width: 9em;
+  margin: 0.2rem;
+}
 #admin-animals .animal-list {
   display: flex;
   justify-content: center;
-  margin: 1.5rem 0;
+  margin: 3rem 0;
 }
 #admin-animals .ui.grid {
   display: flex;
@@ -114,16 +126,28 @@ a {
   opacity: 1;
 }
 
+@media only screen and (max-width: 350px) {
+  #admin-animals {
+    min-width: 280px;
+  }
+}
 @media only screen and (min-width: 768px) {
   #admin h1.ui.header,
 #admin h1.ui.header:first-child,
 #admin h1.ui.header:last-child {
     font-size: 3.5rem;
   }
-  #admin .button {
+  #admin #admin-animals .button {
     width: 60%;
   }
-  #admin .ui.pagination.menu .item {
+  #admin #admin-animals .sort-div {
+    flex-direction: row;
+  }
+  #admin #admin-animals .sort-div .ui.selection.dropdown {
+    width: 11em;
+    min-width: 9em;
+  }
+  #admin #admin-animals .ui.pagination.menu .item {
     min-width: 4em;
     justify-content: center;
   }
@@ -133,6 +157,11 @@ a {
 #admin h1.ui.header:first-child,
 #admin h1.ui.header:last-child {
     font-size: 4rem;
+  }
+  #admin #admin-animals .sort-div .ui.selection.dropdown {
+    width: 13em;
+    min-width: 9em;
+    font-size: 1.1rem;
   }
 }
 body {
@@ -165,11 +194,20 @@ body {
 }
 #adoption h1.ui.header, #adoption h1.ui.header:first-child, #adoption h1.ui.header:last-child {
   margin: 0;
+  margin-bottom: 2rem;
   cursor: pointer;
   font-size: 2.3rem;
 }
 #adoption .sort-div {
-  margin: 1rem 0 0 0;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+#adoption .sort-div .ui.selection.dropdown {
+  width: 16em;
+  min-width: 9em;
+  margin: 0.2rem;
 }
 #adoption .animal-list {
   width: 90%;
@@ -206,9 +244,14 @@ body {
 
 @media only screen and (min-width: 768px) {
   #adoption h1.ui.header, #adoption h1.ui.header:first-child, #adoption h1.ui.header:last-child {
-    margin: 0;
-    cursor: pointer;
     font-size: 3.5rem;
+  }
+  #adoption .sort-div {
+    flex-direction: row;
+  }
+  #adoption .sort-div .ui.selection.dropdown {
+    width: 11em;
+    min-width: 9em;
   }
   #adoption .ui.pagination.menu .item {
     min-width: 4em;
@@ -221,6 +264,11 @@ body {
   }
   #adoption .animal-list {
     width: 100%;
+  }
+  #adoption .sort-div .ui.selection.dropdown {
+    width: 13em;
+    min-width: 9em;
+    font-size: 1.1rem;
   }
 }
 .container {

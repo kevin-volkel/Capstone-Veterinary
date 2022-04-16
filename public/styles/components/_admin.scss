@@ -42,6 +42,7 @@
     font-size: 1.5rem;
     background-color: #f7931d;
     color: #ffffff;
+    margin: 0;
     margin-bottom: 2rem;
     &::after {
       content: "";
@@ -57,14 +58,22 @@
     }
   }
 
-  // .ui.selection.dropdown {
-  //   min-width: 10em;
-  // }
+  .sort-div{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    .ui.selection.dropdown {
+      width: 16em;
+      min-width: 9em;
+      margin: 0.2rem;
+    }
+  }
 
   .animal-list{
     display: flex;
     justify-content: center;
-    margin: 1.5rem 0;
+    margin: 3rem 0;
   }
 
   .ui.grid {
@@ -105,6 +114,12 @@
   opacity: 1;
 }
 
+@media only screen and (max-width: 350px){
+  #admin-animals{
+    min-width: 280px;
+  }
+}
+
 //TABLET
 @media only screen and (min-width: 768px) {
   #admin{
@@ -113,12 +128,23 @@
     h1.ui.header:last-child {
       font-size: 3.5rem;
     }
-    .button{
-      width: 60%;
-    }
-    .ui.pagination.menu .item {
-      min-width: 4em;
-      justify-content: center;
+    #admin-animals{
+      .button{
+        width: 60%;
+      }
+
+      .sort-div{
+        flex-direction: row;
+        .ui.selection.dropdown {
+          width: 11em;
+          min-width: 9em;
+        }
+      }
+
+      .ui.pagination.menu .item {
+        min-width: 4em;
+        justify-content: center;
+      }
     }
   }
 }
@@ -131,6 +157,16 @@
     h1.ui.header:last-child {
       font-size: 4rem;
       
+    }
+
+    #admin-animals{
+      .sort-div{
+        .ui.selection.dropdown {
+          width: 13em;
+          min-width: 9em;
+          font-size: 1.1rem;
+        }
+      }
     }
   }
 }
