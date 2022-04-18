@@ -1,0 +1,150 @@
+.slideshow {
+  height: 15rem;
+}
+
+.embla {
+  position: relative;
+  background-color: #f7f7f7;
+  padding: 20px;
+  max-width: 1080px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media only screen and (min-width: 1024px) {
+  .slideshow{
+    height:60vh;
+  }
+  .embla{
+    max-width: 80vw;
+    height: 100%;
+  }
+  .embla_viewport{
+    height: 100%;
+  }
+  .embla_container{
+    height: 100%;
+  }
+  .embla_slide_inner{
+    height: 100%!important;
+  }
+}
+
+.embla_viewport {
+  overflow: hidden;
+  width: 100%;
+}
+
+.embla_viewport.is-draggable {
+  cursor: move;
+  cursor: grab;
+}
+
+.embla_viewport.is-dragging {
+  cursor: grabbing;
+}
+
+.embla_container {
+  display: flex;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -khtml-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  margin-left: -10px;
+}
+
+.embla_slide {
+  position: relative;
+  min-width: 100%;
+  padding-left: 10px;
+}
+
+.embla_slide_inner {
+  position: relative;
+  overflow: hidden;
+  height: 190px;
+}
+
+.embla_slide_img {
+  position: absolute;
+  display: block;
+  top: 50%;
+  left: 50%;
+  width: auto;
+  min-height: 100%;
+  min-width: 100%;
+  max-width: none;
+  transform: translate(-50%, -50%);
+}
+
+.embla_button {
+  outline: 0;
+  cursor: pointer;
+  background-color: transparent;
+  touch-action: manipulation;
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 0;
+  width: 30px;
+  height: 30px;
+  justify-content: center;
+  align-items: center;
+  fill: #f4a005;
+  padding: 0;
+}
+
+.embla_button:disabled {
+  cursor: default;
+  opacity: 0.3;
+}
+
+.embla_button_svg {
+  width: 100%;
+  height: 100%;
+}
+
+.embla__button-prev {
+  left: 27px;
+}
+
+.embla_button-next {
+  right: 27px;
+}
+
+.embla_dots {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  padding-top: 10px;
+}
+
+.embla_dot {
+  background-color: transparent;
+  cursor: pointer;
+  position: relative;
+  padding: 0;
+  outline: 0;
+  border: 0;
+  width: 30px;
+  height: 30px;
+  margin-right: 7.5px;
+  margin-left: 7.5px;
+  display: flex;
+  align-items: center;
+}
+
+.embla_dot:after {
+  background-color: #efefef;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  content: "";
+}
+
+.embla_dot.is-selected:after {
+  background-color: #f4a005;
+  opacity: 1;
+}
+

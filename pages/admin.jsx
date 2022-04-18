@@ -7,24 +7,18 @@ import { Header, Segment } from "semantic-ui-react";
 import Animals from "./components/animals/Animals";
 import Events from "./components/events/Events";
 
-const admin = ({user, animals}) => {
+const admin = ({ user, animals }) => {
   const [showEvents, setShowEvents] = useState(false);
 
   return (
     <div id="admin">
       <div id="header">
-        {showEvents ? (
-          <Header as="h1" style={{color: "#F7931D"}} onClick={() => setShowEvents(true)}>
-            Events
-          </Header>
-        ) : (
-          <Header as="h1" onClick={() => setShowEvents(true)}>
-            Events
-          </Header>
-        )}
-
         {!showEvents ? (
-          <Header as="h1" style={{color: "#F7931D"}} onClick={() => setShowEvents(false)}>
+          <Header
+            as="h1"
+            style={{ color: "#F7931D" }}
+            onClick={() => setShowEvents(false)}
+          >
             Animals
           </Header>
         ) : (
@@ -33,10 +27,23 @@ const admin = ({user, animals}) => {
           </Header>
         )}
 
+        {showEvents ? (
+          <Header
+            as="h1"
+            style={{ color: "#F7931D" }}
+            onClick={() => setShowEvents(true)}
+          >
+            Events
+          </Header>
+        ) : (
+          <Header as="h1" onClick={() => setShowEvents(true)}>
+            Events
+          </Header>
+        )}
       </div>
       {showEvents && <Events user={user} />}
       <Segment id="admin-animals">
-        {!showEvents && <Animals isAdmin={true} animals={animals}/>}
+        {!showEvents && <Animals isAdmin={true} user={user} animals={animals} />}
       </Segment>
     </div>
   );
@@ -55,7 +62,5 @@ admin.getInitialProps = async ({ ctx }) => {
   }
   return pageProps;
 };
-
-
 
 export default admin;

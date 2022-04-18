@@ -3,41 +3,29 @@ import { Button, Segment } from "semantic-ui-react";
 import Footer from "./components/layout/Footer";
 import adopt from "../public/media/adoption.png";
 import fEvents from "../public/media/CAT.png";
+import EventSlideshow from "./components/events/EventSlideshow";
 //import "../styles/home.css";
-import bannerPic from "../public/media/home-page-banner.jpg";
-import MapLayout from "./components/layout/Map/MapLayout";
+// import bannerPic from "../public/media/home-page-banner.jpg";
 
 
 export default function Home() {
   return (
     <div className="everything">
       <div className="slideshow">
-        <div className="img-container">
-          {/* are we still planning on having a slideshow or just a banner image? */}
-          {/* <Button className="img-btn-left arrow" color="orange"></Button> */}
-          <Image
-            src={bannerPic}
-            alt="dog being held"
-            priority="true"
-            position="relative"
-            className="curr-img"
-            objectFit="contain"
-          />
-          {/* <Button className="img-btn-right arrow" color="orange"></Button> */}
-        </div>
+          <EventSlideshow />
       </div>
 
       <div className="nf-div">
         <Segment className="events-section">
           <h1 className="nf-title">Featured Events</h1>
           <div className="nf-wholeSect">
-            <MapLayout/>
+            
           </div>
         </Segment>
       </div>
 
       <div className="nf-div">
-        <Segment className="new-friend-section">
+        <Segment className="adopt-section">
           <h1 className="nf-title">Find a New Friend!</h1>
           <div className="nf-wholeSect">
             <Image

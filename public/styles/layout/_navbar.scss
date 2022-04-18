@@ -124,32 +124,13 @@
     padding: 0.1%;
     border-bottom: 2px solid $clr-orange;
 
-    .img-container{
-      margin: 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      height: 5.5rem;
-      width: 35%;
-      background: inherit;
       .vet-logo{
-        width: 18%;
+        width: 6%;
       }
       .wm-logo{
-        width: 75%;
+        width: 25%;
+        
       }
-    }
-  }
-
-  .vet-logo {
-    width: 8%;
-    margin: 0 2%;
-  }
-
-  .wm-logo {
-    width: 25%;
-    display: flex;
-    //justify-content: center;
   }
 
   .menu-item {

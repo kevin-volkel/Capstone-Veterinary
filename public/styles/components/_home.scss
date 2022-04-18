@@ -219,7 +219,14 @@
   width: 40px;
 }
 
-.ui.segment {
+.events-section {
+  border: 100px solid rgba(0, 0, 0, 0.119);
+  border-radius: 4px;
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
+  width: 97%;
+  background-color: #f2711c;
+}
+.adopt-section {
   border: 1px solid rgba(0, 0, 0, 0.119);
   border-radius: 4px;
   box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
