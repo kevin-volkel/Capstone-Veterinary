@@ -1,4 +1,4 @@
-import React, {useState } from "react";
+import React, { useState } from 'react';
 import {
   Button,
   Icon,
@@ -7,9 +7,9 @@ import {
   Grid,
   Pagination,
   Modal,
-} from "semantic-ui-react";
-import AddAnimalModal from "./AddAnimalModal";
-import AnimalCard from "./AnimalCard";
+} from 'semantic-ui-react';
+import AddAnimalModal from './AddAnimalModal';
+import AnimalCard from './AnimalCard';
 
 const Animals = ({ animals, isAdmin, user }) => {
   const [currPage, setCurrPage] = useState(1);
@@ -22,39 +22,39 @@ const Animals = ({ animals, isAdmin, user }) => {
 
   const typeOptions = [
     {
-      text: "Any Type",
-      value: "any",
+      text: 'Any Type',
+      value: 'any',
     },
     {
-      text: "Dog",
-      value: "dog",
+      text: 'Dog',
+      value: 'dog',
     },
     {
-      text: "Cat",
-      value: "cat",
+      text: 'Cat',
+      value: 'cat',
     },
   ];
 
   const ageOptions = [
     {
-      text: "Any Age",
-      value: "any",
+      text: 'Any Age',
+      value: 'any',
     },
     {
-      text: "Young",
-      value: "young",
+      text: 'Young',
+      value: 'young',
     },
     {
-      text: "Mid",
-      value: "mid",
+      text: 'Mid',
+      value: 'mid',
     },
     {
-      text: "Adult",
-      value: "adult",
+      text: 'Adult',
+      value: 'adult',
     },
     {
-      text: "Senior",
-      value: "senior",
+      text: 'Senior',
+      value: 'senior',
     },
   ];
 
@@ -67,23 +67,23 @@ const Animals = ({ animals, isAdmin, user }) => {
 
   const genderOptions = [
     {
-      text: "Any Gender",
-      value: "any",
+      text: 'Any Gender',
+      value: 'any',
     },
     {
-      text: "Male",
-      value: "male",
+      text: 'Male',
+      value: 'male',
     },
     {
-      text: "Female",
-      value: "female",
+      text: 'Female',
+      value: 'female',
     },
   ];
 
   const [filterObj, setFilterObj] = useState({
-    type: "any",
-    age: "any",
-    gender: "any",
+    type: 'any',
+    age: 'any',
+    gender: 'any',
   });
 
   const [filteredAnimals, setFilteredAnimals] = useState(animals);
@@ -100,17 +100,17 @@ const Animals = ({ animals, isAdmin, user }) => {
     setFilteredAnimals(animals);
 
     const { type, gender, age } = obj;
-    if (type !== "any") {
+    if (type !== 'any') {
       setFilteredAnimals((prev) =>
         prev.filter((animal) => animal.type === type)
       );
     }
-    if (gender !== "any") {
+    if (gender !== 'any') {
       setFilteredAnimals((prev) =>
         prev.filter((animal) => animal.gender === gender)
       );
     }
-    if (age !== "any") {
+    if (age !== 'any') {
       setFilteredAnimals((prev) => prev.filter((animal) => animal.age === age));
     }
   };
@@ -125,7 +125,12 @@ const Animals = ({ animals, isAdmin, user }) => {
       )}
 
       {showModal && (
-        <Modal open={showModal} closeIcon closeOnDimmerClick onClose={() => setShowModal(false)}>
+        <Modal
+          open={showModal}
+          closeIcon
+          closeOnDimmerClick
+          onClose={() => setShowModal(false)}
+        >
           <Modal.Content>
             <AddAnimalModal user={user} setAnimals={setFilteredAnimals} />
           </Modal.Content>
@@ -167,7 +172,7 @@ const Animals = ({ animals, isAdmin, user }) => {
               .map((animal) => {
                 // console.log(animal);
                 const { name, age, type, gender, picURLs, _id } = animal;
-                const color = gender === "male" ? "#70B0FF" : "#FA7091";
+                const color = gender === 'male' ? '#70B0FF' : '#FA7091';
 
                 return (
                   <AnimalCard
@@ -188,8 +193,8 @@ const Animals = ({ animals, isAdmin, user }) => {
         <>
           {!animals.length ? (
             <div className="no-animals">
-              There are currently no animal adoptions posted.{" "}
-              {isAdmin ? "Start by adding one" : "Come back later."}
+              There are currently no animal adoptions posted.{' '}
+              {isAdmin ? 'Start by adding one' : 'Come back later.'}
             </div>
           ) : (
             <div className="no-animals">
