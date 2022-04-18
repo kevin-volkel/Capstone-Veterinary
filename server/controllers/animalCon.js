@@ -5,6 +5,8 @@ const UserModel = require('../models/UserModel');
 const addAnimal = async (req, res) => {
   const userId = req.user.userId;
 
+  if(!userId) return res.status(404).send('no user with that ID')
+
   const {
     name,
     age,
@@ -19,7 +21,7 @@ const addAnimal = async (req, res) => {
     neutered,
     picURLs,
     vidURLs,
-    location,
+    location
   } = req.body;
 
   try {
@@ -42,7 +44,7 @@ const addAnimal = async (req, res) => {
     if (vidURLs) newAnimal.vidURLs = vidURLs;
 
     const animal = await new AnimalModel(newAnimal).save();
-    const animalCreated = await AnimalModel.findOne(animal._id).populate(
+    const animalCreated = await AnimalModel.findById(animal._id).populate(
       'user'
     );
 

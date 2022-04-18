@@ -35,23 +35,23 @@ a {
 #admin h1.ui.header, #admin h1.ui.header:first-child, #admin h1.ui.header:last-child {
   margin: 0;
   cursor: pointer;
-  font-size: 4rem;
+  font-size: 2.5rem;
   font-family: "Oxygen", sans-serif;
 }
 #admin h1.ui.header:hover, #admin h1.ui.header:first-child:hover, #admin h1.ui.header:last-child:hover {
-  color: #F7931D;
+  color: #f7931d;
 }
 #admin #header {
   display: flex;
   width: 80vw;
-  margin: 3rem auto;
+  margin: 2rem auto;
   flex-direction: row;
   justify-content: space-evenly;
 }
 
 #admin-animals {
-  width: 70vw;
-  margin: 1rem auto 2rem;
+  width: 80vw;
+  margin: 0rem auto 2rem;
   padding: 2rem 0;
 }
 #admin-animals .button {
@@ -60,6 +60,7 @@ a {
   font-size: 1.5rem;
   background-color: #f7931d;
   color: #ffffff;
+  margin: 0;
   margin-bottom: 2rem;
 }
 #admin-animals .button::after {
@@ -74,25 +75,94 @@ a {
   transform-origin: bottom right;
   transition: transform 0.25s ease-out;
 }
+#admin-animals .sort-div {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+#admin-animals .sort-div .ui.selection.dropdown {
+  width: 16em;
+  min-width: 9em;
+  margin: 0.2rem;
+}
+#admin-animals .animal-list {
+  display: flex;
+  justify-content: center;
+  margin: 3rem 0;
+}
 #admin-animals .ui.grid {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
 }
-#admin-animals .ui.card {
+#admin-animals .ui.grid .ui.card {
   font-size: 1.2rem;
+  margin: 0.5rem;
+  cursor: pointer;
+  text-align: center;
+  max-width: 250px;
+  text-transform: uppercase;
 }
-#admin-animals .ui.card:last-child {
-  margin: 1em 0;
+#admin-animals .ui.grid .ui.card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+#admin-animals .ui.grid .ui.card .animal-header {
+  font-size: 2rem;
+  margin-bottom: 0.8rem;
 }
 #admin-animals .no-animals {
+  margin: 1.5rem;
   font-size: 1.5rem;
   font-weight: bold;
+}
+#admin-animals .pagination {
+  margin-top: 1rem;
 }
 
 .ui.button > .icon:not(.button) {
   opacity: 1;
 }
 
+@media only screen and (max-width: 350px) {
+  #admin-animals {
+    min-width: 280px;
+  }
+}
+@media only screen and (min-width: 768px) {
+  #admin h1.ui.header,
+#admin h1.ui.header:first-child,
+#admin h1.ui.header:last-child {
+    font-size: 3.5rem;
+  }
+  #admin #admin-animals .button {
+    width: 60%;
+  }
+  #admin #admin-animals .sort-div {
+    flex-direction: row;
+  }
+  #admin #admin-animals .sort-div .ui.selection.dropdown {
+    width: 11em;
+    min-width: 9em;
+  }
+  #admin #admin-animals .ui.pagination.menu .item {
+    min-width: 4em;
+    justify-content: center;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  #admin h1.ui.header,
+#admin h1.ui.header:first-child,
+#admin h1.ui.header:last-child {
+    font-size: 4rem;
+  }
+  #admin #admin-animals .sort-div .ui.selection.dropdown {
+    width: 13em;
+    min-width: 9em;
+    font-size: 1.1rem;
+  }
+}
 body {
   background-color: #f6f7f8;
   height: auto;
@@ -123,48 +193,82 @@ body {
 }
 #adoption h1.ui.header, #adoption h1.ui.header:first-child, #adoption h1.ui.header:last-child {
   margin: 0;
+  margin-bottom: 2rem;
   cursor: pointer;
-  font-size: 4rem;
+  font-size: 2.3rem;
+}
+#adoption .sort-div {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+#adoption .sort-div .ui.selection.dropdown {
+  width: 16em;
+  min-width: 9em;
+  margin: 0.2rem;
 }
 #adoption .animal-list {
-  width: 80%;
+  width: 90%;
   display: flex;
-  margin: 3.5rem 0;
+  margin: 3rem 0;
   justify-content: center;
 }
 #adoption .grid {
-  justify-content: space-evenly;
+  justify-content: center;
 }
 #adoption .grid .ui.card {
   font-size: 1.2rem;
+  margin: 0.5rem;
+  cursor: pointer;
+  text-align: center;
+  max-width: 250px;
+  text-transform: uppercase;
 }
-#adoption .grid .ui.card:last-child {
-  margin: 1em 0;
+#adoption .grid .ui.card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+#adoption .grid .ui.card .animal-header {
+  font-size: 2rem;
+  margin-bottom: 0.8rem;
+}
+#adoption .no-animals {
+  margin: 1.5rem;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
-/* .animal-header{
-    font-size: x-large;
-    color: #f2711c;
-    font-weight: bold;
-}
-
-.animal-card-info{
-    display: flex;
+@media only screen and (min-width: 768px) {
+  #adoption h1.ui.header, #adoption h1.ui.header:first-child, #adoption h1.ui.header:last-child {
+    font-size: 3.5rem;
+  }
+  #adoption .sort-div {
     flex-direction: row;
+  }
+  #adoption .sort-div .ui.selection.dropdown {
+    width: 11em;
+    min-width: 9em;
+  }
+  #adoption .ui.pagination.menu .item {
+    min-width: 4em;
     justify-content: center;
-} */
-/* .card-type{
-    border: solid rgba(221, 221, 221, 0.933);
-    padding: 0 2% 0 2%;
+  }
 }
-.card-gender{
-    border: solid rgba(221, 221, 221, 0.933);
-    padding: 0 2% 0 2%;
+@media only screen and (min-width: 1024px) {
+  #adoption {
+    width: 80vw;
+  }
+  #adoption .animal-list {
+    width: 100%;
+  }
+  #adoption .sort-div .ui.selection.dropdown {
+    width: 13em;
+    min-width: 9em;
+    font-size: 1.1rem;
+  }
 }
-.card-age{
-    border: 0 0 0 0 solid rgba(221, 221, 221, 0.933);
-    padding: 0 2% 0 2%;
-} */
 .container {
   padding: 0 2rem;
 }
@@ -561,7 +665,7 @@ div.animal-wrap {
 .hamburger.items {
   display: flex;
   font-family: "ABeeZee", sans-serif;
-  transition: all 0.25s ease-out;
+  transition: all 0.6s ease-out;
   flex-direction: column;
   width: 100%;
   text-align: center;
@@ -587,7 +691,7 @@ div.animal-wrap {
 
 .hamburger.items.show {
   transform: translateY(0);
-  transition: all 0.25s linear;
+  transition: all 0.6s ease-out;
 }
 
 .navbar2 {

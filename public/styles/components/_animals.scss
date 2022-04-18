@@ -30,50 +30,101 @@ body {
     &.ui.header:first-child,
     &.ui.header:last-child {
       margin: 0;
+      margin-bottom: 2rem;
       cursor: pointer;
-      font-size: 4rem;
+      font-size: 2.3rem;
+    }
+  }
+
+  .sort-div {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    .ui.selection.dropdown {
+      width: 16em;
+      min-width: 9em;
+      margin: 0.2rem;
     }
   }
 
   .animal-list {
-    width: 80%;
+    width: 90%;
     display: flex;
-    margin: 3.5rem 0;
+    margin: 3rem 0;
     justify-content: center;
   }
 
-  .grid{
-    justify-content: space-evenly;
-    .ui.card{
+  .grid {
+    justify-content: center;
+    .ui.card {
       font-size: 1.2rem;
-      &:last-child{
-        margin: 1em 0;
+      margin: 0.5rem;
+      cursor: pointer;
+      text-align: center;
+      max-width: 250px;
+      text-transform: uppercase;
+
+      img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
       }
+
+      .animal-header {
+        font-size: 2rem;
+        margin-bottom: 0.8rem;
+      }
+    }
+  }
+
+  .no-animals {
+    margin: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+}
+
+//TABELT
+@media only screen and (min-width: 768px) {
+  #adoption {
+    h1 {
+      &.ui.header,
+      &.ui.header:first-child,
+      &.ui.header:last-child {
+        font-size: 3.5rem;
+      }
+    }
+
+    .sort-div {
+      flex-direction: row;
+      .ui.selection.dropdown {
+        width: 11em;
+        min-width: 9em;
+      }
+    }
+
+    .ui.pagination.menu .item {
+      min-width: 4em;
+      justify-content: center;
     }
   }
 }
 
-/* .animal-header{
-    font-size: x-large;
-    color: #f2711c;
-    font-weight: bold;
-}
+//DESKTOP
+@media only screen and (min-width: 1024px) {
+  #adoption {
+    width: 80vw;
+    .animal-list {
+      width: 100%;
+    }
 
-.animal-card-info{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-} */
-
-/* .card-type{
-    border: solid rgba(221, 221, 221, 0.933);
-    padding: 0 2% 0 2%;
+    .sort-div {
+      .ui.selection.dropdown {
+        width: 13em;
+        min-width: 9em;
+        font-size: 1.1rem;
+      }
+    }
+  }
 }
-.card-gender{
-    border: solid rgba(221, 221, 221, 0.933);
-    padding: 0 2% 0 2%;
-}
-.card-age{
-    border: 0 0 0 0 solid rgba(221, 221, 221, 0.933);
-    padding: 0 2% 0 2%;
-} */

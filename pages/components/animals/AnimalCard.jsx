@@ -6,35 +6,25 @@ import { baseURL } from "../../util/auth";
 const AnimalCard = ({ name, age, type, picURLs, id, gender, color }) => {
   return (
     <Card
-      // key={id}
       className="animal-card"
-      style={{
-        marginTop: "0",
-        cursor: "pointer",
-        textAlign: "center",
-        maxWidth: "250px",
-        // maxHeight: "280px",
-        textTransform: "uppercase",
-        background: color
-      }}
-      // color={color}
       onClick={() => Router.push(`${baseURL}/${id}`)}
     >
       <Image
         src={picURLs[0]}
-        style={{ width: "100%", height: "150px", objectFit: "cover" }}
       />
       <Card.Content>
         <Card.Header
           className="animal-header"
-          style={{ fontSize: "2rem", marginBottom: ".8rem" }}
+          style={{ color: color }}
           content={name}
         />
         <Card.Meta className="card-type" content={type} />
-        {/* <Card.Meta className="card-gender" content={gender} /> */}
-        <Card.Meta className="card-gender">
+        <Card.Meta className="card-gender" style={{ color: color }}>
           {gender}
-          <Icon name={gender === "male" ? "man" : "woman"} />
+          <Icon
+            name={gender === "male" ? "man" : "woman"}
+            color={gender === "male" ? "blue" : "pink"}
+          />
         </Card.Meta>
         <Card.Meta className="card-age" content={age} />
       </Card.Content>
