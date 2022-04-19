@@ -1,34 +1,36 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import { Loader, Image, Placeholder, Button } from 'semantic-ui-react';
-import useEmblaCarousel from 'embla-carousel-react'
+import useEmblaCarousel from 'embla-carousel-react';
 import { DotButton, NextButton, PrevButton } from './SlideshowButtons';
 
 const EventSlideshow = () => {
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(false);
   const [viewportRef, embla] = useEmblaCarousel({
-    loop: true
-  })
-  const [selectedIndex, setSelectedIndex] = useState(0)
-  const [scrollSnaps, setScrollSnaps] = useState([])
+    loop: true,
+  });
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [scrollSnaps, setScrollSnaps] = useState([]);
 
-  const scrollPrev = useCallback( () => embla && embla.scrollPrev(), [embla])
-  const scrollNext = useCallback( () => embla && embla.scrollNext(), [embla])
-  const scrollTo = useCallback( (index) => embla && embla.scrollTo(index), [embla])
+  const scrollPrev = useCallback(() => embla && embla.scrollPrev(), [embla]);
+  const scrollNext = useCallback(() => embla && embla.scrollNext(), [embla]);
+  const scrollTo = useCallback(
+    (index) => embla && embla.scrollTo(index),
+    [embla]
+  );
 
   const onSelect = useCallback(() => {
-    if(!embla) return;
-    setSelectedIndex(embla.selectedScrollSnap)
-  }, [embla, setSelectedIndex])
-  
+    if (!embla) return;
+    setSelectedIndex(embla.selectedScrollSnap);
+  }, [embla, setSelectedIndex]);
+
   useEffect(() => {
-    if(!embla) return
+    if (!embla) return;
     onSelect();
-    setScrollSnaps(embla.scrollSnapList)
-    embla.on("select", onSelect)
-  }, [embla, setScrollSnaps, onSelect])
-  
+    setScrollSnaps(embla.scrollSnapList);
+    embla.on('select', onSelect);
+  }, [embla, setScrollSnaps, onSelect]);
 
   useEffect(async () => {
     setLoading(true);
@@ -43,22 +45,23 @@ const EventSlideshow = () => {
 
   return (
     <>
-      <div className="event-slideshow">
+      <div className='event-slideshow'>
         {loading ? (
           <Loader />
         ) : (
-          <div className="slideshow">
-            <div className="embla">
-              <div className="embla_viewport" ref={viewportRef}>
-                <div className="embla_container">
+          <div className='slideshow'>
+            <div className='embla'>
+              <div className='embla_viewport' ref={viewportRef}>
+                <div className='embla_container'>
                   {events.map((event, index) => (
-                    <div className="embla_slide" key={index}>
-                      <div className="embla_slide_inner">
-                        <Image 
-                          className="embla_slide_img"
+                    <div className='embla_slide' key={index}>
+                      <div className='embla_slide_inner'>
+                        <Image
+                          className='embla_slide_img'
                           src={event.bannerPic}
-                          alt="Something cool"
+                          alt='Something cool'
                         />
+                        <h1>Test</h1>
                       </div>
                     </div>
                   ))}
@@ -67,9 +70,9 @@ const EventSlideshow = () => {
               <PrevButton onClick={scrollPrev} />
               <NextButton onClick={scrollNext} />
             </div>
-            <div className="embla_dots">
-              {events.map( (_, index) => (
-                <DotButton 
+            <div className='embla_dots'>
+              {events.map((_, index) => (
+                <DotButton
                   key={index}
                   selected={index === selectedIndex}
                   onClick={() => scrollTo(index)}

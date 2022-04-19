@@ -1,9 +1,10 @@
-import React from "react";
+import React from 'react';
 
-const Animal = () => {
+
+const Animal = ({ animal }) => {
   return (
-    <div className="page-wrap">
-      <div className="animal-wrap">
+    <div className='page-wrap'>
+      <div className='animal-wrap'>
         <h2>Animal Name</h2>
         <p>
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Et culpa
