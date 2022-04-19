@@ -10,22 +10,18 @@ var transporter = nodemailer.createTransport({
 });
 
 var mailOptions = {
-  from: 'sendtest06@gmail.com',
-  to: 'kevinator900@gmail.com',
+  from: '',
+  to: '',
   text: 'That was easy!',
 };
 
-for (let i = 0; i < 10; i++) {
-  setTimeout(() => {
-    transporter.sendMail(
-      { ...mailOptions, subject: `Email #${i}` },
-      function (error, info) {
-        if (error) {
-          console.log(error);
-        } else {
-          console.log('Email sent: ' + info.response);
-        }
-      }
-    );
-  }, i * 3000);
-}
+transporter.sendMail(
+  { ...mailOptions, subject: `Email #${i}` },
+  function (error, info) {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log('Email sent: ' + info.response);
+    }
+  }
+);
