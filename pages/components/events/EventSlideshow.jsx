@@ -1,34 +1,61 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import axios from 'axios';
-import { Loader, Image, Placeholder, Button } from 'semantic-ui-react';
-import useEmblaCarousel from 'embla-carousel-react'
+import { Loader } from 'semantic-ui-react';
+import useEmblaCarousel from 'embla-carousel-react';
+import Autoplay from 'embla-carousel-autoplay';
 import { DotButton, NextButton, PrevButton } from './SlideshowButtons';
+import EventCard from './EventCard';
+import NoEvents from './NoEvents';
 
 const EventSlideshow = () => {
+  const autoplay = useRef(
+    Autoplay(
+      {
+        delay: 3000,
+        stopOnInteraction: false,
+        stopOnLastSnap: false,
+        stopOnMouseEnter: true,
+      },
+      (emblaRoot) => emblaRoot.parentElement
+    )
+  );
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [viewportRef, embla] = useEmblaCarousel({
-    loop: true
-  })
-  const [selectedIndex, setSelectedIndex] = useState(0)
-  const [scrollSnaps, setScrollSnaps] = useState([])
+  const [viewportRef, embla] = useEmblaCarousel(
+    {
+      loop: true,
+    },
+    [autoplay.current]
+  );
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [scrollSnaps, setScrollSnaps] = useState([]);
 
-  const scrollPrev = useCallback( () => embla && embla.scrollPrev(), [embla])
-  const scrollNext = useCallback( () => embla && embla.scrollNext(), [embla])
-  const scrollTo = useCallback( (index) => embla && embla.scrollTo(index), [embla])
+  const scrollPrev = useCallback(() => {
+    if (!embla) return;
+    embla.scrollPrev();
+    autoplay.current.reset();
+  }, [embla]);
+  const scrollNext = useCallback(() => {
+    if (!embla) return;
+    embla.scrollNext();
+    autoplay.current.reset();
+  }, [embla]);
+  const scrollTo = useCallback(
+    (index) => embla && embla.scrollTo(index),
+    [embla]
+  );
 
   const onSelect = useCallback(() => {
-    if(!embla) return;
-    setSelectedIndex(embla.selectedScrollSnap)
-  }, [embla, setSelectedIndex])
-  
+    if (!embla) return;
+    setSelectedIndex(embla.selectedScrollSnap);
+  }, [embla, setSelectedIndex]);
+
   useEffect(() => {
-    if(!embla) return
+    if (!embla) return;
     onSelect();
-    setScrollSnaps(embla.scrollSnapList)
-    embla.on("select", onSelect)
-  }, [embla, setScrollSnaps, onSelect])
-  
+    setScrollSnaps(embla.scrollSnapList);
+    embla.on('select', onSelect);
+  }, [embla, setScrollSnaps, onSelect]);
 
   useEffect(async () => {
     setLoading(true);
@@ -51,25 +78,28 @@ const EventSlideshow = () => {
             <div className="embla">
               <div className="embla_viewport" ref={viewportRef}>
                 <div className="embla_container">
-                  {events.map((event, index) => (
+                  {events.length === 0 ? 
+                  <>
+                    <NoEvents />
+                  </> : events.map((event, index) => (
                     <div className="embla_slide" key={index}>
                       <div className="embla_slide_inner">
-                        <Image 
-                          className="embla_slide_img"
-                          src={event.bannerPic}
-                          alt="Something cool"
-                        />
+                        <EventCard event={event} />
                       </div>
                     </div>
                   ))}
                 </div>
               </div>
-              <PrevButton onClick={scrollPrev} />
-              <NextButton onClick={scrollNext} />
+              {events.length > 1 && (
+                <>
+                  <PrevButton onClick={scrollPrev} />
+                  <NextButton onClick={scrollNext} />
+                </>
+              )}
             </div>
             <div className="embla_dots">
-              {events.map( (_, index) => (
-                <DotButton 
+              {events.length > 1 && events.map((_, index) => (
+                <DotButton
                   key={index}
                   selected={index === selectedIndex}
                   onClick={() => scrollTo(index)}

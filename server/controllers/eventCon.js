@@ -33,7 +33,7 @@ const getAllEvents = async (req, res) => {
       .sort({ createdAt: -1 })
       .populate("user");
 
-    if (!events.length) return res.status(404).send("No events found...");
+    // if (!events.length) return res.status(404).send("No events found...");
 
     return res.status(200).json(events);
   } catch (error) {
