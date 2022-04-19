@@ -46,7 +46,6 @@ const UserSchema = new mongoose.Schema({
     year: {
       type: Number,
       enum: [1, 2],
-      required: [true, "Must include your year"]
     }
   },
   profilePicURL: {

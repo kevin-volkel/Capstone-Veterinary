@@ -20,7 +20,7 @@ const AnimalSchema = new Schema(
     },
     breed: {
       type: String,
-      default: "Unspecified",
+      default: "unspecified",
     },
     gender: {
       type: String,
@@ -30,13 +30,17 @@ const AnimalSchema = new Schema(
     colors: {
       type: String,
     },
-    needs: [String],
-    details: [String],
+    needs: Boolean,
+    specialNeeds: [String],
+    details: {type: String},
     desc: {
       type: String,
       // required: [true, "Please include a brief description"]
     },
-    vaccs: [String],
+    vaccs: {
+      type: Boolean,
+      require: [true, "Must answer if the animal is vaccinated"],
+    },
     neutered: {
       type: Boolean,
       require: [true, "Must answer if the animal is neutered"],

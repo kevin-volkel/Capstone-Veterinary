@@ -7,6 +7,7 @@
   height: 4rem;
   background-color: #f6f7f8;
 }
+
 .everything {
   overflow-x: hidden;
 }
@@ -102,6 +103,7 @@
   align-items: center;
   justify-content: center;
 }
+
 .curr-img {
   margin: auto;
 }
@@ -142,20 +144,46 @@
   margin-left: 0.5rem;
 }
 
-.nf-title {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #f2711c;
+.nf-description {
+  width: 60%;
+  margin-right: 4%;
+  // margin-left: 2%;
 }
 
-.nf-wholeSect {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  grid-gap: 1.5rem;
+.img-btn-left {
+  left: 0;
+  margin-left: 5rem !important;
+  clip-path: polygon(40% 0%,
+      40% 20%,
+      100% 20%,
+      100% 80%,
+      40% 80%,
+      40% 100%,
+      0% 50%);
 }
+
+.img-btn-right {
+  right: 0;
+  margin-right: 5rem !important;
+  clip-path: polygon(0% 20%,
+      60% 20%,
+      60% 0%,
+      100% 50%,
+      60% 100%,
+      60% 80%,
+      0% 80%);
+}
+
+.arrow {
+  position: relative;
+  top: 50%;
+  height: 30px;
+  width: 40px;
+}
+
+
+
+//everything under the slide show
 
 .nf-sect {
   display: flex;
@@ -168,72 +196,110 @@
   padding-right: 3%;
 }
 
-.adopt-image {
+img {
+  width: 90%;
+}
+
+.events-section {
+  margin-top: 7.5rem !important;
   width: 100%;
+  border: 100px solid rgba(0, 0, 0, 0.119);
+  border-radius: 4px;
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
+  background-color: #f2711c !important; //couldn't find what kept it from turning orange but this made it work
+
+  h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fafafa;
+  }
+
+  .nf-wholeSect {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    grid-gap: 1.5rem;
+
+    p {
+      margin-top: 1rem;
+      color: #fafafa;
+    }
+
+    .ui.white.button {
+      margin-bottom: 4%;
+      padding: 5% 3.75%;
+      box-shadow: 2px 2px 5px #aaaaaa;
+      color: #f2711c;
+      background-color: #fafafa;
+    }
+  }
 }
 
-.nf-description {
-  width: 60%;
-  margin-right: 4%;
-  // margin-left: 2%;
-}
-
-.ui.orange.button {
-  margin-top: 2%;
-  padding: 5% 3.75%;
-  box-shadow: 2px 2px 5px #aaaaaa;
-}
-
-.img-btn-left {
-  left: 0;
-  margin-left: 5rem !important;
-  clip-path: polygon(
-    40% 0%,
-    40% 20%,
-    100% 20%,
-    100% 80%,
-    40% 80%,
-    40% 100%,
-    0% 50%
-  );
-}
-
-.img-btn-right {
-  right: 0;
-  margin-right: 5rem !important;
-  clip-path: polygon(
-    0% 20%,
-    60% 20%,
-    60% 0%,
-    100% 50%,
-    60% 100%,
-    60% 80%,
-    0% 80%
-  );
-}
-
-.arrow {
-  position: relative;
-  top: 50%;
-  height: 30px;
-  width: 40px;
-}
-
-.ui.segment {
+.adopt-section {
   border: 1px solid rgba(0, 0, 0, 0.119);
   border-radius: 4px;
   box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
-  width: 97%;
+  width: 100%;
+
+  h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #f2711c;
+  }
+
+  .nf-wholeSect {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    grid-gap: 1.5rem;
+
+    p {
+      margin-top: 1rem;
+    }
+  }
+
+  .ui.orange.button {
+    margin-bottom: 4%;
+    padding: 5% 3.75%;
+    box-shadow: 2px 2px 5px #aaaaaa;
+  }
 }
 
+.ui.segment:first-child{
+  h1{
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+  }
+}
+
+
+
 @media only screen and (min-width: 768px) {
+  html{
+    font-size: 1.55rem;
+  }
+
   .grid {
     width: 100%;
     flex-direction: column;
   }
+
+  .events-section {
+    margin-top: 4.25rem !important;
+    .nf-sect{
+      display: flex;
+    }
+  }
 }
 
 @media only screen and (min-width: 1024px) {
+  html{
+    font-size: 1.15rem;
+  }
   .img-container {
     height: 28vw;
   }
