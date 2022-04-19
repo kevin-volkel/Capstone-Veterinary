@@ -10,10 +10,12 @@ import PhotoUpload from "../layout/PhotoUpload";
 const AddAnimalModal = ({ user, setAnimals }) => {
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState(null);
-  const [media, setMedia] = useState(null);
-  const [mediaPreview, setMediaPreview] = useState(null);
 
-  const defaultAnimalPic = "http://clipart-library.com/img/1678353.png"
+  const [mediaPreview, setMediaPreview] = useState(null);
+  const [media, setMedia] = useState(null);
+
+  const defaultAnimalPic =
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7h1BiFC8Ot5v_yD14xO4Bz4vIVZDFChrIkFtN-XxtnMQAn73Srlyv-vznS5pXLGT-ywE&usqp=CAU";
 
   const postAxios = axios.create({
     baseURL: `${baseURL}/api/v1/posts`,
@@ -21,96 +23,194 @@ const AddAnimalModal = ({ user, setAnimals }) => {
   });
 
   const [newAnimal, setNewAnimal] = useState({
-    name: null,
-    age: null,
-    type: null,
-    breed: null,
-    gender: null,
-    colors: null,
-    needs: null,
-    details: null,
-    desc: null,
-    vaccs: null,
-    neutered: null,
-    picURLs: null,
-    vidURLs: null,
-    location: null,
+    name: "",
+    location: "northeast",
+    type: "dog",
+    gender: "male",
+    age: "young",
+    breed: "unspecified",
+    neutered: false,
+    vaccs: false,
+    colors: "",
+    desc: "",
+    details: "",
+    needs: false,
+    specialNeeds: [],
+    picURLs: [],
+    vidURLs: [],
   });
 
-  const handleChange = (e) => {
+  const handleChange = (e, data) => {
     const { name, value, files } = e.target;
-    if (name === "media" && files.length) {
-      setMedia(files[0]);
-      setMediaPreview(URL.createObjectURL(files[0]));
+
+    if (!name) {
+      setNewAnimal((prev) => ({
+        ...prev,
+        [data.name]: data.value,
+      }));
+    } else if (name == "media" && files.length) {
+      setMedia(() => files[0]);
+      setMediaPreview(() => URL.createObjectURL(files[0]));
     } else {
-      setNewAnimal((prev) => ({ ...prev, [name]: value }));
+      setNewAnimal((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
     }
   };
 
-  const handleSubmit = async (e) => {
+  const handleArrayChange = (e, data) => {
+    const {name, value} = data;
+    setNewAnimal((prev) => ({
+      ...prev,
+      [name]: [value],
+    }));
+  }
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   setLoading(true);
+
+  //   let animalPicURLs = [];
+  //   let animalVidURLs = [];
+
+  //   try {
+  //     if (media !== null) {
+  //       const formData = new FormData();
+  //       formData.append("image", media, {
+  //         headers: {
+  //           "Content-Type": "multipart/form-data",
+  //         },
+  //       });
+  //       const res = await axios.post("/api/v1/upload", formData);
+  //       animalPicURLs.push(res.data.src);
+  //     } else {
+  //       animalPicURLs.push(defaultAnimalPic);
+  //     }
+
+  //     if (media !== null && !profilePicURL) throw new Error("Cloudinary Error");
+
+  //     const res = await postAxios.post("/api/v1/animal", user, {
+  //       name: newAnimal.name.trim().toLowerCase(),
+  //       age: newAnimal.age,
+  //       type: newAnimal.type,
+  //       breed: newAnimal.breed.trim().toLowerCase(),
+  //       gender: newAnimal.gender,
+  //       colors: newAnimal.colors.trim().toLowerCase(),
+  //       needs: newAnimal.needs,
+  //       details: newAnimal.details,
+  //       desc: newAnimal.desc,
+  //       vaccs: newAnimal.vaccs,
+  //       neutered: newAnimal.neutered,
+  //       picURLs: animalPicURLs,
+  //       vidURLs: animalVidURLs,
+  //       location: newAnimal.location,
+  //     });
+  //     setAnimals((prev) => [res.data, ...prev]);
+  //     setNewAnimal({
+  //       name: "",
+  //       location: "northeast",
+  //       type: "dog",
+  //       gender: "male",
+  //       age: "young",
+  //       breed: "unspecified",
+  //       neutered: false,
+  //       vaccs: false,
+  //       colors: "",
+  //       desc: "",
+  //       details: "",
+  //       needs: null,
+  //       picURLs: [],
+  //       vidURLs: [],
+  //     });
+  //     setLoading(false);
+  //   } catch (err) {
+  //     console.log(err);
+  //     let caughtErr = catchErrors(err);
+  //     setErrorMsg(caughtErr);
+  //   }
+
+  //   setLoading(false);
+  // };
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setLoading(true);
+    console.log(newAnimal);
+  }
+  const typeOptions = [
+    {
+      text: "Dog",
+      value: "dog",
+      key: 0,
+    },
+    {
+      text: "Cat",
+      value: "cat",
+      key: 1,
+    },
+  ];
 
-    let animalPicURLs = [];
+  const ageOptions = [
+    {
+      text: "Young",
+      value: "young",
+      key: 0,
+    },
+    {
+      text: "Adult",
+      value: "adult",
+      key: 1,
+    },
+    {
+      text: "Senior",
+      value: "senior",
+      key: 2,
+    },
+  ];
 
-    try {
-      if (media !== null) {
-        const formData = new FormData();
-        formData.append("image", media, {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
-        });
-        const res = await axios.post('/api/v1/upload', formData);
-        animalPicURLs.push(res.data.src);
-      }else{
-        animalPicURLs.push(defaultAnimalPic);
-      }
+  const genderOptions = [
+    {
+      text: "Male",
+      value: "male",
+      key: 0,
+    },
+    {
+      text: "Female",
+      value: "female",
+      key: 1,
+    },
+  ];
 
-      if (media !== null && !profilePicURL) throw new Error('Cloudinary Error');
-      
-      const res = await postAxios.post("/api/v1/animal", {
-        name,
-        age,
-        type,
-        breed,
-        gender,
-        colors,
-        needs,
-        details,
-        desc,
-        vaccs,
-        neutered,
-        picURLs: animalPicURLs,
-        vidURLs,
-        location,
-      });
-      setAnimals((prev) => [res.data, ...prev]);
-      setNewAnimal({
-        name: null,
-        age: null,
-        type: null,
-        breed: null,
-        gender: null,
-        colors: null,
-        needs: null,
-        details: null,
-        desc: null,
-        vaccs: null,
-        neutered: null,
-        picURLs: null,
-        vidURLs: null,
-        location: null,
-      });
-      setLoading(false);
-    } catch (err) {
-      console.log(err);
-      let caughtErr = catchErrors(err);
-      setErrorMsg(caughtErr);
-    }
+  const locationOptions = [
+    {
+      text: "Northeast Campus",
+      value: "northeast",
+      key: 0,
+    },
+    {
+      text: "Northwest Campus",
+      value: "northwest",
+      key: 1,
+    },
+    {
+      text: "Southwest Campus",
+      value: "southwest",
+      key: 2,
+    },
+  ];
 
-    setLoading(false);
-  };
+  const booleanOptions = [
+    {
+      text: "No",
+      value: false,
+      key: 0,
+    },
+    {
+      text: "Yes",
+      value: true,
+      key: 1,
+    },
+  ];
 
   return (
     <div className="form-wrap">
@@ -119,6 +219,7 @@ const AddAnimalModal = ({ user, setAnimals }) => {
         error={errorMsg !== null}
         onSubmit={handleSubmit}
         id="add-animal"
+        style={{ width: "80%" }}
       >
         <Message
           error
@@ -127,24 +228,129 @@ const AddAnimalModal = ({ user, setAnimals }) => {
           onDismiss={() => setErrorMsg(null)}
         />
         <Segment>
-          <div className="upload-image" style={{display: "flex", justifyContent: "space-between"}}>
+          <div
+            className="upload-image"
+            style={{ display: "flex", justifyContent: "space-between" }}
+          >
             <h1>Add Animal</h1>
-            <PhotoUpload
+
+            {/* <PhotoUpload
               mediaPreview={mediaPreview}
-              defaultAnimalPic={defaultAnimalPic}
+              defaultProfilePic={defaultAnimalPic}
               handleChange={handleChange}
-            />
+            /> */}
           </div>
           <div id="form-group">
             <Form.Input
               label="Name"
               required
               placeholder="Name"
-              value={name}
+              value={newAnimal.name}
               name="name"
               onChange={handleChange}
               type="text"
             />
+            <Form.Select
+              required
+              options={locationOptions}
+              value={newAnimal.location}
+              name="location"
+              onChange={handleChange}
+              label="Location"
+            />
+            <Form.Select
+              required
+              options={typeOptions}
+              value={newAnimal.type}
+              onChange={handleChange}
+              name="type"
+              label="Type"
+            />
+            <Form.Select
+              required
+              options={genderOptions}
+              value={newAnimal.gender}
+              onChange={handleChange}
+              name="gender"
+              label="Gender"
+            />
+            <Form.Select
+              required
+              options={ageOptions}
+              value={newAnimal.age}
+              onChange={handleChange}
+              name="age"
+              label="Age"
+            />
+            <Form.Input
+              label="Breed"
+              placeholder="Breed"
+              value={newAnimal.breed}
+              name="breed"
+              onChange={handleChange}
+              type="text"
+            />
+            <Form.Select
+              required
+              options={booleanOptions}
+              value={newAnimal.neutered}
+              onChange={handleChange}
+              name="neutered"
+              label="Neutured?"
+            />
+            <Form.Select
+              required
+              options={booleanOptions}
+              value={newAnimal.vaccs}
+              onChange={handleChange}
+              name="vaccs"
+              label="Vaccinations Up to Date?"
+            />
+            <Form.Input
+              label="Colors"
+              placeholder="Colors"
+              value={newAnimal.colors}
+              name="colors"
+              onChange={handleChange}
+              type="text"
+            />
+            <Form.TextArea
+              label="Description"
+              placeholder="Add a short description of the animal..."
+              value={newAnimal.desc}
+              name="desc"
+              onChange={handleChange}
+              type="text"
+            />
+            <Form.TextArea
+              label="Details"
+              placeholder="List some of the animals characteristics..."
+              value={newAnimal.details}
+              name="details"
+              onChange={handleChange}
+              type="text"
+            />
+            <Form.Select
+              options={booleanOptions}
+              value={newAnimal.needs}
+              onChange={handleChange}
+              name="needs"
+              label="Any Special Needs?"
+            />
+            {newAnimal.needs && (
+              <Form.Input
+                required
+                label="Special Need"
+                placeholder="Special Need"
+                value={newAnimal.specialNeeds[0]}
+                name="specialNeeds"
+                // onChange={handleArrayChange}
+                type="text"
+              />
+            )}
+          </div>
+          <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <Button id="register-btn" content="Done" fluid />
           </div>
         </Segment>
       </Form>

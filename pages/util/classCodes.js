@@ -1,13 +1,13 @@
 export const classCodes = {
   495119: {
     campus: 'northwest',
+    year: 1,
     session: 1,
-    year: 1
   },
   336072: {
     campus: 'northwest',
-    session: 1,
-    year: 2
+    year: 1,
+    session: 2,
   },
   809365: {
     campus: 'northwest',
