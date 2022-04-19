@@ -406,45 +406,9 @@ body {
   margin-left: 0.5rem;
 }
 
-.nf-title {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #f2711c;
-}
-
-.nf-wholeSect {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  grid-gap: 1.5rem;
-}
-
-.nf-sect {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  justify-content: space-evenly;
-  padding-bottom: 4%;
-  padding-left: 3%;
-  padding-right: 3%;
-}
-
-.adopt-image {
-  width: 100%;
-}
-
 .nf-description {
   width: 60%;
   margin-right: 4%;
-}
-
-.ui.orange.button {
-  margin-top: 2%;
-  padding: 5% 3.75%;
-  box-shadow: 2px 2px 5px #aaaaaa;
 }
 
 .img-btn-left {
@@ -468,28 +432,109 @@ body {
   width: 40px;
 }
 
+.nf-sect {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-evenly;
+  padding-bottom: 4%;
+  padding-left: 3%;
+  padding-right: 3%;
+}
+
+img {
+  width: 90%;
+}
+
 .events-section {
+  margin-top: 7.5rem !important;
+  width: 100%;
   border: 100px solid rgba(0, 0, 0, 0.119);
   border-radius: 4px;
   box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
-  width: 97%;
-  background-color: #f2711c;
+  background-color: #f2711c !important;
+}
+.events-section h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fafafa;
+}
+.events-section .nf-wholeSect {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  grid-gap: 1.5rem;
+}
+.events-section .nf-wholeSect p {
+  margin-top: 1rem;
+  color: #fafafa;
+}
+.events-section .nf-wholeSect .ui.white.button {
+  margin-bottom: 4%;
+  padding: 5% 3.75%;
+  box-shadow: 2px 2px 5px #aaaaaa;
+  color: #f2711c;
+  background-color: #fafafa;
 }
 
 .adopt-section {
   border: 1px solid rgba(0, 0, 0, 0.119);
   border-radius: 4px;
   box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
-  width: 97%;
+  width: 100%;
+}
+.adopt-section h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #f2711c;
+}
+.adopt-section .nf-wholeSect {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  grid-gap: 1.5rem;
+}
+.adopt-section .nf-wholeSect p {
+  margin-top: 1rem;
+}
+.adopt-section .ui.orange.button {
+  margin-bottom: 4%;
+  padding: 5% 3.75%;
+  box-shadow: 2px 2px 5px #aaaaaa;
+}
+
+.ui.segment:first-child h1 {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
 }
 
 @media only screen and (min-width: 768px) {
+  html {
+    font-size: 1.55rem;
+  }
+
   .grid {
     width: 100%;
     flex-direction: column;
   }
+
+  .events-section {
+    margin-top: 4.25rem !important;
+  }
+  .events-section .nf-sect {
+    display: flex;
+  }
 }
 @media only screen and (min-width: 1024px) {
+  html {
+    font-size: 1.15rem;
+  }
+
   .img-container {
     height: 28vw;
   }
@@ -802,40 +847,18 @@ div.animal-wrap {
   }
 }
 .slideshow {
-  height: 15rem;
+  height: 18rem;
 }
 
 .embla {
   position: relative;
   background-color: #f7f7f7;
-  padding: 20px;
+  padding: 10px;
   max-width: 1080px;
   margin-left: auto;
   margin-right: auto;
 }
 
-@media only screen and (min-width: 1024px) {
-  .slideshow {
-    height: 60vh;
-  }
-
-  .embla {
-    max-width: 80vw;
-    height: 100%;
-  }
-
-  .embla_viewport {
-    height: 100%;
-  }
-
-  .embla_container {
-    height: 100%;
-  }
-
-  .embla_slide_inner {
-    height: 100% !important;
-  }
-}
 .embla_viewport {
   overflow: hidden;
   width: 100%;
@@ -873,7 +896,7 @@ div.animal-wrap {
 .embla_slide_inner {
   position: relative;
   overflow: hidden;
-  height: 190px;
+  height: 22em;
 }
 
 .embla_slide_img {
@@ -894,6 +917,7 @@ div.animal-wrap {
   background-color: transparent;
   touch-action: manipulation;
   position: absolute;
+  margin-left: 1rem;
   z-index: 1;
   top: 50%;
   transform: translateY(-50%);
@@ -928,7 +952,6 @@ div.animal-wrap {
   display: flex;
   list-style: none;
   justify-content: center;
-  padding-top: 10px;
 }
 
 .embla_dot {
@@ -957,4 +980,23 @@ div.animal-wrap {
 .embla_dot.is-selected:after {
   background-color: #f4a005;
   opacity: 1;
+}
+
+@media only screen and (min-width: 764px) {
+  .embla_slide_inner {
+    position: relative;
+    overflow: hidden;
+    height: 20rem;
+  }
+
+  .embla_dots {
+    padding-top: 10px;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .embla_slide_inner {
+    position: relative;
+    overflow: hidden;
+    height: 65vh !important;
+  }
 }/*# sourceMappingURL=main.css.map */
