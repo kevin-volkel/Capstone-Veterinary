@@ -106,7 +106,8 @@ a {
 #admin-animals .ui.grid .ui.card img {
   width: 100%;
   height: 150px;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 #admin-animals .ui.grid .ui.card .animal-header {
   font-size: 2rem;
@@ -228,7 +229,8 @@ body {
 #adoption .grid .ui.card img {
   width: 100%;
   height: 150px;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 #adoption .grid .ui.card .animal-header {
   font-size: 2rem;
@@ -360,7 +362,8 @@ body {
 
 .img-container {
   margin: 0;
-  object-fit: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
   overflow: hidden;
   margin: auto;
   display: flex;
@@ -403,19 +406,30 @@ body {
   margin-left: 0.5rem;
 }
 
-.nf-title {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #f2711c;
+.nf-description {
+  width: 60%;
+  margin-right: 4%;
 }
 
-.nf-wholeSect {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  grid-gap: 1.5rem;
+.img-btn-left {
+  left: 0;
+  margin-left: 5rem !important;
+  -webkit-clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
+          clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
+}
+
+.img-btn-right {
+  right: 0;
+  margin-right: 5rem !important;
+  -webkit-clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
+          clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
+}
+
+.arrow {
+  position: relative;
+  top: 50%;
+  height: 30px;
+  width: 40px;
 }
 
 .nf-sect {
@@ -429,54 +443,98 @@ body {
   padding-right: 3%;
 }
 
-.adopt-image {
+img {
+  width: 90%;
+}
+
+.events-section {
+  margin-top: 7.5rem !important;
+  width: 100%;
+  border: 100px solid rgba(0, 0, 0, 0.119);
+  border-radius: 4px;
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
+  background-color: #f2711c !important;
+}
+.events-section h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fafafa;
+}
+.events-section .nf-wholeSect {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  grid-gap: 1.5rem;
+}
+.events-section .nf-wholeSect p {
+  margin-top: 1rem;
+  color: #fafafa;
+}
+.events-section .nf-wholeSect .ui.white.button {
+  margin-bottom: 4%;
+  padding: 5% 3.75%;
+  box-shadow: 2px 2px 5px #aaaaaa;
+  color: #f2711c;
+  background-color: #fafafa;
+}
+
+.adopt-section {
+  border: 1px solid rgba(0, 0, 0, 0.119);
+  border-radius: 4px;
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
   width: 100%;
 }
-
-.nf-description {
-  width: 60%;
-  margin-right: 4%;
+.adopt-section h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #f2711c;
 }
-
-.ui.orange.button {
-  margin-top: 2%;
+.adopt-section .nf-wholeSect {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  grid-gap: 1.5rem;
+}
+.adopt-section .nf-wholeSect p {
+  margin-top: 1rem;
+}
+.adopt-section .ui.orange.button {
+  margin-bottom: 4%;
   padding: 5% 3.75%;
   box-shadow: 2px 2px 5px #aaaaaa;
 }
 
-.img-btn-left {
-  left: 0;
-  margin-left: 5rem !important;
-  clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
-}
-
-.img-btn-right {
-  right: 0;
-  margin-right: 5rem !important;
-  clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
-}
-
-.arrow {
-  position: relative;
-  top: 50%;
-  height: 30px;
-  width: 40px;
-}
-
-.ui.segment {
-  border: 1px solid rgba(0, 0, 0, 0.119);
-  border-radius: 4px;
-  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
-  width: 97%;
+.ui.segment:first-child h1 {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
 }
 
 @media only screen and (min-width: 768px) {
+  html {
+    font-size: 1.55rem;
+  }
+
   .grid {
     width: 100%;
     flex-direction: column;
   }
+
+  .events-section {
+    margin-top: 4.25rem !important;
+  }
+  .events-section .nf-sect {
+    display: flex;
+  }
 }
 @media only screen and (min-width: 1024px) {
+  html {
+    font-size: 1.15rem;
+  }
+
   .img-container {
     height: 28vw;
   }
@@ -495,11 +553,7 @@ div.ui.segment {
 }
 
 .form-wrap {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
   justify-content: center;
 }
 
@@ -557,8 +611,6 @@ div.visible.menu span {
   form#login,
 form#register {
     display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
     justify-content: center;
   }
 }
@@ -795,40 +847,18 @@ div.animal-wrap {
   }
 }
 .slideshow {
-  height: 15rem;
+  height: 18rem;
 }
 
 .embla {
   position: relative;
   background-color: #f7f7f7;
-  padding: 20px;
+  padding: 10px;
   max-width: 1080px;
   margin-left: auto;
   margin-right: auto;
 }
 
-@media only screen and (min-width: 1024px) {
-  .slideshow {
-    height: 60vh;
-  }
-
-  .embla {
-    max-width: 80vw;
-    height: 100%;
-  }
-
-  .embla_viewport {
-    height: 100%;
-  }
-
-  .embla_container {
-    height: 100%;
-  }
-
-  .embla_slide_inner {
-    height: 100% !important;
-  }
-}
 .embla_viewport {
   overflow: hidden;
   width: 100%;
@@ -836,16 +866,21 @@ div.animal-wrap {
 
 .embla_viewport.is-draggable {
   cursor: move;
+  cursor: -webkit-grab;
   cursor: grab;
 }
 
 .embla_viewport.is-dragging {
+  cursor: -webkit-grabbing;
   cursor: grabbing;
 }
 
 .embla_container {
   display: flex;
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   -webkit-touch-callout: none;
   -khtml-user-select: none;
   -webkit-tap-highlight-color: transparent;
@@ -861,7 +896,7 @@ div.animal-wrap {
 .embla_slide_inner {
   position: relative;
   overflow: hidden;
-  height: 190px;
+  height: 22em;
 }
 
 .embla_slide_img {
@@ -882,6 +917,7 @@ div.animal-wrap {
   background-color: transparent;
   touch-action: manipulation;
   position: absolute;
+  margin-left: 1rem;
   z-index: 1;
   top: 50%;
   transform: translateY(-50%);
@@ -916,7 +952,6 @@ div.animal-wrap {
   display: flex;
   list-style: none;
   justify-content: center;
-  padding-top: 10px;
 }
 
 .embla_dot {
@@ -945,4 +980,23 @@ div.animal-wrap {
 .embla_dot.is-selected:after {
   background-color: #f4a005;
   opacity: 1;
+}
+
+@media only screen and (min-width: 764px) {
+  .embla_slide_inner {
+    position: relative;
+    overflow: hidden;
+    height: 20rem;
+  }
+
+  .embla_dots {
+    padding-top: 10px;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .embla_slide_inner {
+    position: relative;
+    overflow: hidden;
+    height: 65vh !important;
+  }
 }/*# sourceMappingURL=main.css.map */
