@@ -114,7 +114,7 @@ const RegisterForm = ({
         <Segment>
           <div
             className="upload-image"
-            style={{ display: 'flex', justifyContent: 'space-between' }}
+            // style={{ display: 'flex', justifyContent: 'space-between' }}
           >
             <h1> Register </h1>
 

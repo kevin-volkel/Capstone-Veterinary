@@ -22,6 +22,14 @@ div.ui.segment {
 }
 
 /* FORM TOP */
+.login-title{
+  margin-bottom: 1rem;
+}
+
+.upload-image {
+  margin-bottom: 2rem;
+}
+
 #photo-upload {
   width: 70px;
   height: 70px;
@@ -40,10 +48,6 @@ body {
 div.edit button {
   width: 25px;
   height: 25px;
-}
-
-.upload-image {
-  margin-bottom: 1.1rem;
 }
 
 /* FORM FIELDS */
@@ -91,7 +95,7 @@ div.visible.menu span {
 
     /* form top */
     .ui.segment h1 {
-      font-size: 3rem;
+      font-size: 1.8rem;
     }
 
     .upload-image {
@@ -114,26 +118,22 @@ div.visible.menu span {
     }
 
     i.pencil.icon {
-      font-size: 1.3rem;
+      font-size: .8rem;
     }
 
     /* form fields */
     div.field {
-      font-size: 1.5rem;
+      font-size: .85rem;
     }
 
     div.visible.menu span {
-      font-size: 1.4rem;
+      font-size: 1.1rem;
     }
 
     /* form bottom */
     #login-btn,
     #register-btn {
-      padding: 13px;
-      font-size: 1.9rem;
-    }
-
-    .form-link {
+      padding: 15px;
       font-size: 1.3rem;
     }
   }
@@ -144,45 +144,27 @@ div.visible.menu span {
 @media only screen and (min-width: 1024px) {
   form#login,
   form#register {
-    width: 65vw;
+    width: 70vw;
 
-    // #form-group {
-    //   width: 30vw;
-    // }
-    // .upload-image {
-    //   justify-content: center !important;
-    // }
-    // .login-title {
-    //   text-align: center;
-    // }
-    // #photo-upload {
-    //   width: 10rem;
-    //   height: 10rem;
-    //   top: 10rem !important;
-    //   right: 8rem !important;
+    div.field {
+      font-size: 1.3rem;
+    }
 
-    //   img {
-    //     width: 10rem;
-    //     height: 10rem;
-    //   }
+    #login-btn,
+    #register-btn {
+      padding: 15px;
+      font-size: 1.5rem;
+    }
 
-    //   .edit {
-    //     position: relative;
-    //     left: 45px;
-    //     bottom: 10px;
-
-    //     button {
-    //       height: 35px;
-    //       width: 35px;
-    //     }
-    //   }
-    // }
+    .form-link{
+      font-size: 1.2rem;
+    }
   }
 }
 
-// @media only screen and (min-width: 1280px) {
-//   form#login,
-//   form#register {
-//     width: 55vw;
-//   }
-// }
+@media only screen and (min-width: 1280px) {
+  form#login,
+  form#register {
+    width: 60vw;
+  }
+}
