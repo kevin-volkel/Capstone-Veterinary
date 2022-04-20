@@ -1,17 +1,4 @@
 /* LOGIN & REGISTER FORM CSS */
-
-#login,
-#register {
-  margin: none;
-  width: 90%;
-  position: relative;
-  margin-top: 1.5rem;
-}
-
-div.ui.segment {
-  margin-top: 0;
-}
-
 .form-wrap {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -20,6 +7,19 @@ div.ui.segment {
       -ms-flex-pack: center;
           justify-content: center;
 }
+
+#login,
+#register {
+  margin: none;
+  width: 90%;
+  position: relative;
+  margin-top: 1.5rem;
+
+
+div.ui.segment {
+  margin-top: 0;
+}
+
 
 /* FORM TOP */
 .login-title{
@@ -64,6 +64,7 @@ div.visible.menu span {
   width: 50vw;
   margin: 0px auto;
   cursor: pointer;
+}
 }
 
 @media only screen and (min-height: 750px) and (min-width: 350px) {

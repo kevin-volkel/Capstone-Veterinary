@@ -62,7 +62,7 @@ const EventSlideshow = () => {
 
   return (
     <>
-      <div className="event-slideshow">
+      <div id="event-slideshow">
         {loading ? (
           <Loader />
         ) : (

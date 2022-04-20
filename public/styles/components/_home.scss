@@ -109,7 +109,6 @@
   margin: auto;
 }
 
-
 .card {
   margin: 1rem;
   padding: 1.5rem;
@@ -154,25 +153,29 @@
 .img-btn-left {
   left: 0;
   margin-left: 5rem !important;
-  clip-path: polygon(40% 0%,
-      40% 20%,
-      100% 20%,
-      100% 80%,
-      40% 80%,
-      40% 100%,
-      0% 50%);
+  clip-path: polygon(
+    40% 0%,
+    40% 20%,
+    100% 20%,
+    100% 80%,
+    40% 80%,
+    40% 100%,
+    0% 50%
+  );
 }
 
 .img-btn-right {
   right: 0;
   margin-right: 5rem !important;
-  clip-path: polygon(0% 20%,
-      60% 20%,
-      60% 0%,
-      100% 50%,
-      60% 100%,
-      60% 80%,
-      0% 80%);
+  clip-path: polygon(
+    0% 20%,
+    60% 20%,
+    60% 0%,
+    100% 50%,
+    60% 100%,
+    60% 80%,
+    0% 80%
+  );
 }
 
 .arrow {
@@ -181,8 +184,6 @@
   height: 30px;
   width: 40px;
 }
-
-
 
 //everything under the slide show
 
@@ -270,17 +271,15 @@ img {
   }
 }
 
-.ui.segment:first-child{
-  h1{
+.ui.segment:first-child {
+  h1 {
     margin-top: 1rem;
     margin-bottom: 2rem;
   }
 }
 
-
-
 @media only screen and (min-width: 768px) {
-  html{
+  html {
     font-size: 1.55rem;
   }
 
@@ -291,18 +290,20 @@ img {
 
   .events-section {
     margin-top: 4.25rem !important;
-    .nf-sect{
+    .nf-sect {
       display: flex;
     }
   }
 }
 
 @media only screen and (min-width: 1024px) {
-  html{
+  html {
     font-size: 1.15rem;
   }
   .img-container {
     height: 28vw;
   }
-
+  .adopt-section.ui.segment:first-child{
+    margin-top: 8.5rem;
+  }
 }
