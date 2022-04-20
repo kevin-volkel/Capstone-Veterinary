@@ -575,15 +575,6 @@ div.ui.segment {
   margin-bottom: 2rem;
 }
 
-#photo-upload {
-  width: 70px;
-  height: 70px;
-}
-#photo-upload img {
-  width: 70px;
-  height: 70px;
-}
-
 body {
   background-color: #f6f7f8;
   height: auto;
@@ -1074,4 +1065,32 @@ div.animal-wrap {
   .embla_dots {
     padding-top: 0px;
   }
+}
+#photo-upload {
+  border-radius: 35px;
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  width: 70px;
+  height: 70px;
+}
+#photo-upload img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 70px;
+  height: 70px;
+}
+#photo-upload .button {
+  border-radius: 50%;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  bottom: 20px;
+  left: 45px;
+  cursor: pointer;
+}
+
+#add-animal #photo-upload {
+  position: relative;
+  margin: 1rem 1rem 2rem;
 }/*# sourceMappingURL=main.css.map */

@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { Form, Segment, Button, Message } from "semantic-ui-react";
+import { Form, Segment, Button, Message, Divider } from "semantic-ui-react";
 import { setToken } from "../../util/auth";
 import axios from "axios";
 import catchErrors from "../../util/catchErrors";
 import Cookies from "js-cookie";
 import { baseURL } from "../../util/auth";
 import PhotoUpload from "../layout/PhotoUpload";
+import VideoUpload from "../layout/VideoUpload";
 
 const AddAnimalModal = ({ user, setAnimals }) => {
   const [loading, setLoading] = useState(false);
@@ -14,8 +15,14 @@ const AddAnimalModal = ({ user, setAnimals }) => {
   const [mediaPreview, setMediaPreview] = useState(null);
   const [media, setMedia] = useState(null);
 
+  const [videoPreview, setVideoPreview] = useState(null);
+  const [video, setVideo] = useState(null);
+
   const defaultAnimalPic =
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7h1BiFC8Ot5v_yD14xO4Bz4vIVZDFChrIkFtN-XxtnMQAn73Srlyv-vznS5pXLGT-ywE&usqp=CAU";
+
+  const defaultVideoPic =
+    "https://media.istockphoto.com/vectors/vector-play-button-icon-vector-id1066846868?k=20&m=1066846868&s=612x612&w=0&h=BikDjIPuOmb08aDFeDiEwDiKosX7EgnvtdQyLUvb3eA=";
 
   const postAxios = axios.create({
     baseURL: `${baseURL}/api/v1/posts`,
@@ -28,14 +35,14 @@ const AddAnimalModal = ({ user, setAnimals }) => {
     type: "dog",
     gender: "male",
     age: "young",
-    breed: "unspecified",
+    breed: "",
     neutered: false,
     vaccs: false,
     colors: "",
     desc: "",
     details: "",
     needs: false,
-    specialNeeds: [],
+    specialNeeds: "",
     picURLs: [],
     vidURLs: [],
   });
@@ -51,6 +58,9 @@ const AddAnimalModal = ({ user, setAnimals }) => {
     } else if (name == "media" && files.length) {
       setMedia(() => files[0]);
       setMediaPreview(() => URL.createObjectURL(files[0]));
+    } else if (name == "video" && files.length) {
+      setVideo(() => files[0]);
+      setVideoPreview(() => URL.createObjectURL(files[0]));
     } else {
       setNewAnimal((prev) => ({
         ...prev,
@@ -58,14 +68,6 @@ const AddAnimalModal = ({ user, setAnimals }) => {
       }));
     }
   };
-
-  const handleArrayChange = (e, data) => {
-    const {name, value} = data;
-    setNewAnimal((prev) => ({
-      ...prev,
-      [name]: [value],
-    }));
-  }
 
   // const handleSubmit = async (e) => {
   //   e.preventDefault();
@@ -88,7 +90,23 @@ const AddAnimalModal = ({ user, setAnimals }) => {
   //       animalPicURLs.push(defaultAnimalPic);
   //     }
 
-  //     if (media !== null && !profilePicURL) throw new Error("Cloudinary Error");
+  //     if (media !== null && !profilePicURL) throw new Error("Cloudinary Error Pic");
+      
+  //     //VIDEO
+  //     if (video !== null) {
+  //       const formData = new FormData();
+  //       formData.append("video", video, {
+  //         headers: {
+  //           "Content-Type": "multipart/form-data",
+  //         },
+  //       });
+  //       const res = await axios.post("/api/v1/upload", formData);
+  //       animalVidURLs.push(res.data.src);
+  //     } else {
+  //       animalVidURLs.push(defaultVideoPic);
+  //     }
+
+  //     if (video !== null && !profilePicURL) throw new Error("Cloudinary Error Video");
 
   //     const res = await postAxios.post("/api/v1/animal", user, {
   //       name: newAnimal.name.trim().toLowerCase(),
@@ -113,13 +131,14 @@ const AddAnimalModal = ({ user, setAnimals }) => {
   //       type: "dog",
   //       gender: "male",
   //       age: "young",
-  //       breed: "unspecified",
+  //       breed: "",
   //       neutered: false,
   //       vaccs: false,
   //       colors: "",
   //       desc: "",
   //       details: "",
-  //       needs: null,
+  //       needs: false,
+  //       specialNeeds: "",
   //       picURLs: [],
   //       vidURLs: [],
   //     });
@@ -133,10 +152,22 @@ const AddAnimalModal = ({ user, setAnimals }) => {
   //   setLoading(false);
   // };
 
-  const handleSubmit = (e) => {
+  const handleSubmit2 = (e) => {
     e.preventDefault();
     console.log(newAnimal);
-  }
+    // setLoading(true);
+
+    // let animalPicURLs = [];
+    // let animalVidURLs = [];
+
+    if (media !== null) {
+      console.log(media);
+    }
+    if (video !== null) {
+      console.log(video);
+    }
+  };
+
   const typeOptions = [
     {
       text: "Dog",
@@ -217,7 +248,7 @@ const AddAnimalModal = ({ user, setAnimals }) => {
       <Form
         loading={loading}
         error={errorMsg !== null}
-        onSubmit={handleSubmit}
+        onSubmit={handleSubmit2}
         id="add-animal"
         style={{ width: "80%" }}
       >
@@ -228,19 +259,20 @@ const AddAnimalModal = ({ user, setAnimals }) => {
           onDismiss={() => setErrorMsg(null)}
         />
         <Segment>
-          <div
-            className="upload-image"
-            style={{ display: "flex", justifyContent: "space-between" }}
-          >
+          <div style={{ display: "flex", justifyContent: "space-between" }}>
             <h1>Add Animal</h1>
-
-            {/* <PhotoUpload
+          </div>
+          <div id="form-group">
+            <PhotoUpload
               mediaPreview={mediaPreview}
               defaultProfilePic={defaultAnimalPic}
               handleChange={handleChange}
-            /> */}
-          </div>
-          <div id="form-group">
+            />
+            <VideoUpload
+              videoPreview={videoPreview}
+              defaultVideoPic={defaultVideoPic}
+              handleChange={handleChange}
+            />
             <Form.Input
               label="Name"
               required
@@ -324,13 +356,14 @@ const AddAnimalModal = ({ user, setAnimals }) => {
             />
             <Form.TextArea
               label="Details"
-              placeholder="List some of the animals characteristics..."
+              placeholder="List some of the animal's characteristics..."
               value={newAnimal.details}
               name="details"
               onChange={handleChange}
               type="text"
             />
             <Form.Select
+              required
               options={booleanOptions}
               value={newAnimal.needs}
               onChange={handleChange}
@@ -338,19 +371,23 @@ const AddAnimalModal = ({ user, setAnimals }) => {
               label="Any Special Needs?"
             />
             {newAnimal.needs && (
-              <Form.Input
-                required
-                label="Special Need"
-                placeholder="Special Need"
-                value={newAnimal.specialNeeds[0]}
+              <Form.TextArea
+                // label="Special"
+                placeholder="Special Needs..."
+                value={newAnimal.specialNeeds}
                 name="specialNeeds"
-                // onChange={handleArrayChange}
+                onChange={handleChange}
                 type="text"
               />
             )}
           </div>
-          <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <Button id="register-btn" content="Done" fluid />
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <Button
+              id="register-btn"
+              content="Done"
+              fluid
+              style={{ margin: "1rem 0" }}
+            />
           </div>
         </Segment>
       </Form>

@@ -1,29 +1,39 @@
 import React, { useRef } from 'react';
 import { Image, Button } from 'semantic-ui-react';
 
-const PhotoUpload = ({ mediaPreview, defaultProfilePic, handleChange }) => {
+const PhotoUpload = ({ videoPreview, defaultVideoPic, handleChange }) => {
   const inputRef = useRef(null);
 
   return (
     <div
-      id="photo-upload"
+      id="video-upload"
+      style={{
+        borderRadius: '35px',
+        width: "70px",
+        height: "70px",
+      }}
     >
       <Image
-        src={mediaPreview === null ? defaultProfilePic : mediaPreview}
+        src={videoPreview === null ? defaultVideoPic : videoPreview}
         circular
+        style={{objectFit: 'cover' ,width: "70px",
+        height: "70px",}}
       />
 
       <div className="edit">
         <input
           style={{ display: 'none' }}
           type="file"
-          accept="image/*"
+          accept="video/*"
           onChange={handleChange}
-          name="media"
+          name="video"
           ref={inputRef}
         />
         <Button
           onClick={(e) => inputRef.current.click()}
+          // content={<Icon name="edit outline" />}
+          icon="pencil"
+          color="blue"
           style={{
             borderRadius: '50%',
             padding: '0',
@@ -33,9 +43,6 @@ const PhotoUpload = ({ mediaPreview, defaultProfilePic, handleChange }) => {
             left: '45px',
             cursor: 'pointer',
           }}
-          // content={<Icon name="edit outline" />}
-          icon="pencil"
-          color="blue"
         />
       </div>
     </div>
