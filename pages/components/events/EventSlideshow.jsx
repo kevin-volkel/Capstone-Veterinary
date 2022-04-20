@@ -18,6 +18,7 @@ const EventSlideshow = () => {
   //     (emblaRoot) => emblaRoot.parentElement
   //   )
   // );
+  //needed to comment it out for now, was breaking website
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(false);
   const [viewportRef, embla] = useEmblaCarousel({

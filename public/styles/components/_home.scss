@@ -4,8 +4,9 @@
 
 .ui.menu {
   display: flex;
-  height: 4rem;
+  height: 3.5rem;
   background-color: #f6f7f8;
+  box-shadow: 2px 2px 3px 0 rgb(34 36 38 / 15%);
 }
 
 .everything {
@@ -86,7 +87,7 @@
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  max-width: 800px;
+  //max-width: 800px;
 }
 
 .slideshow {
@@ -284,7 +285,7 @@ img {
   }
 
   .grid {
-    width: 100%;
+    //width: 100%;
     flex-direction: column;
   }
 

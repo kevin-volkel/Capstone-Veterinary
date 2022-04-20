@@ -35,7 +35,7 @@ a {
 #admin h1.ui.header, #admin h1.ui.header:first-child, #admin h1.ui.header:last-child {
   margin: 0;
   cursor: pointer;
-  font-size: 2.5rem;
+  font-size: 2.25rem;
   font-family: "Oxygen", sans-serif;
 }
 #admin h1.ui.header:hover, #admin h1.ui.header:first-child:hover, #admin h1.ui.header:last-child:hover {
@@ -44,19 +44,18 @@ a {
 #admin #header {
   display: flex;
   width: 80vw;
-  margin: 2rem auto;
+  margin: 1.75rem auto;
   flex-direction: row;
   justify-content: space-evenly;
 }
 
 #admin-animals {
-  width: 80vw;
+  width: 95vw;
   margin: 0rem auto 2rem;
   padding: 2rem 0;
 }
 #admin-animals .button {
   width: 75%;
-  height: 60px;
   font-size: 1.5rem;
   background-color: #f7931d;
   color: #ffffff;
@@ -76,13 +75,14 @@ a {
   transition: transform 0.25s ease-out;
 }
 #admin-animals .sort-div {
-  align-items: center;
+  width: 70%;
+  margin-left: 15%;
+  align-content: stretch;
   justify-content: center;
   display: flex;
   flex-direction: column;
 }
 #admin-animals .sort-div .ui.selection.dropdown {
-  width: 16em;
   min-width: 9em;
   margin: 0.2rem;
 }
@@ -116,7 +116,6 @@ a {
 #admin-animals .no-animals {
   margin: 1.5rem;
   font-size: 1.5rem;
-  font-weight: bold;
 }
 #admin-animals .pagination {
   margin-top: 1rem;
@@ -132,23 +131,22 @@ a {
   }
 }
 @media only screen and (min-width: 768px) {
-  #admin h1.ui.header,
-#admin h1.ui.header:first-child,
-#admin h1.ui.header:last-child {
-    font-size: 3.5rem;
+  #admin-animals {
+    width: 93vw;
   }
-  #admin #admin-animals .button {
+  #admin-animals .button {
     width: 60%;
   }
-  #admin #admin-animals .sort-div {
+  #admin-animals .sort-div {
     flex-direction: row;
+    width: 90%;
+    margin-left: 5%;
   }
-  #admin #admin-animals .sort-div .ui.selection.dropdown {
-    width: 11em;
-    min-width: 9em;
+  #admin-animals .sort-div .ui.selection.dropdown {
+    min-width: 2em;
   }
-  #admin #admin-animals .ui.pagination.menu .item {
-    min-width: 4em;
+  #admin-animals .ui.pagination.menu .item {
+    min-width: 2em;
     justify-content: center;
   }
 }
@@ -156,7 +154,10 @@ a {
   #admin h1.ui.header,
 #admin h1.ui.header:first-child,
 #admin h1.ui.header:last-child {
-    font-size: 4rem;
+    font-size: 2rem;
+  }
+  #admin #admin-animals {
+    width: 70%;
   }
   #admin #admin-animals .sort-div .ui.selection.dropdown {
     width: 13em;
@@ -203,11 +204,13 @@ body {
   justify-content: center;
   display: flex;
   flex-direction: column;
+  grid-gap: 0.3rem;
 }
 #adoption .sort-div .ui.selection.dropdown {
-  width: 16em;
+  width: 15em;
   min-width: 9em;
   margin: 0.2rem;
+  font-size: 1.3rem;
 }
 #adoption .animal-list {
   width: 90%;
@@ -223,7 +226,7 @@ body {
   margin: 0.5rem;
   cursor: pointer;
   text-align: center;
-  max-width: 250px;
+  width: 250px;
   text-transform: uppercase;
 }
 #adoption .grid .ui.card img {
@@ -244,14 +247,22 @@ body {
 
 @media only screen and (min-width: 768px) {
   #adoption h1.ui.header, #adoption h1.ui.header:first-child, #adoption h1.ui.header:last-child {
-    font-size: 2.5rem;
+    font-size: 2rem;
+  }
+  #adoption .grid .iu-card {
+    width: 30%;
+  }
+  #adoption .grid .iu-card .content {
+    padding: 5rem !important;
   }
   #adoption .sort-div {
     flex-direction: row;
   }
   #adoption .sort-div .ui.selection.dropdown {
-    width: 11em;
-    min-width: 9em;
+    width: 22vw;
+    min-width: 15vw;
+    padding: 3%;
+    font-size: 0.75rem;
   }
   #adoption .ui.pagination.menu .item {
     min-width: 4em;
@@ -260,14 +271,13 @@ body {
 }
 @media only screen and (min-width: 1024px) {
   #adoption {
-    width: 80vw;
+    width: 70%;
   }
   #adoption .animal-list {
     width: 100%;
   }
   #adoption .sort-div .ui.selection.dropdown {
-    width: 13em;
-    min-width: 9em;
+    width: 20%;
     font-size: 1.1rem;
   }
 }
@@ -277,8 +287,9 @@ body {
 
 .ui.menu {
   display: flex;
-  height: 4rem;
+  height: 3.5rem;
   background-color: #f6f7f8;
+  box-shadow: 2px 2px 3px 0 rgba(34, 36, 38, 0.15);
 }
 
 .everything {
@@ -353,7 +364,6 @@ body {
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  max-width: 800px;
 }
 
 .slideshow {
@@ -519,7 +529,6 @@ img {
   }
 
   .grid {
-    width: 100%;
     flex-direction: column;
   }
 
@@ -725,7 +734,7 @@ div.animal-wrap {
   width: 40%;
 }
 .navbar .vet-logo {
-  width: 15%;
+  width: 20%;
 }
 .navbar i.icon.hamburger {
   width: 15%;
@@ -813,7 +822,7 @@ div.animal-wrap {
 
   .navbar2 {
     width: 100%;
-    height: 5.5rem;
+    height: 4.5rem;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -824,14 +833,16 @@ div.animal-wrap {
   }
   .navbar2 .vet-logo {
     width: 6%;
+    margin-left: 5%;
   }
   .navbar2 .wm-logo {
-    width: 25%;
+    width: 19%;
+    margin-right: 33%;
   }
 
   .menu-item {
     margin-right: 30px;
-    font-size: 2rem;
+    font-size: 135%;
     color: black;
     display: inline-block;
     position: relative;
@@ -874,6 +885,7 @@ div.animal-wrap {
 .embla_viewport {
   overflow: hidden;
   width: 100%;
+  height: 70vw;
 }
 
 .embla_viewport.is-draggable {
@@ -1018,6 +1030,12 @@ div.animal-wrap {
 
   .embla_dots {
     padding-top: 10px;
+  }
+
+  .embla_viewport {
+    overflow: hidden;
+    width: 100%;
+    height: 55vw !important;
   }
 }
 @media only screen and (min-width: 1024px) {

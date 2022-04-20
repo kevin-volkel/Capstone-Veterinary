@@ -22,7 +22,7 @@
     width: 40%;
   }
   .vet-logo {
-    width: 15%;
+    width: 20%;
   }
   i.icon.hamburger {
     width: 15%;
@@ -73,6 +73,8 @@
   display: none;
 }
 
+
+//TABLET
 @media only screen and (min-width: 768px) {
   .navbar {
     height: 5rem;
@@ -115,7 +117,7 @@
   }
   .navbar2 {
     width: 100%;
-    height: 5.5rem;
+    height: 4.5rem;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -126,16 +128,17 @@
 
       .vet-logo{
         width: 6%;
+        margin-left: 5%;
       }
       .wm-logo{
-        width: 25%;
-        
+        width: 19%;
+        margin-right: 33%;
       }
   }
 
   .menu-item {
     margin-right: 30px;
-    font-size: 2rem;
+    font-size: 135%;
     color: black;
     display: inline-block;
     position: relative;
