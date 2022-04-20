@@ -56,7 +56,7 @@ a {
 }
 #admin-animals .button {
   width: 75%;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   background-color: #f7931d;
   color: #ffffff;
   margin: 0;
@@ -135,7 +135,7 @@ a {
     width: 93vw;
   }
   #admin-animals .button {
-    width: 50%;
+    width: 60%;
   }
   #admin-animals .sort-div {
     flex-direction: row;
@@ -207,10 +207,10 @@ body {
   grid-gap: 0.3rem;
 }
 #adoption .sort-div .ui.selection.dropdown {
-  width: 10%;
+  width: 15em;
+  min-width: 9em;
   margin: 0.2rem;
   font-size: 1.3rem;
-  line-height: 3rem;
 }
 #adoption .animal-list {
   width: 90%;
@@ -259,10 +259,10 @@ body {
     flex-direction: row;
   }
   #adoption .sort-div .ui.selection.dropdown {
-    width: 23vw;
+    width: 22vw;
     min-width: 15vw;
-    font-size: 0.9rem;
-    line-height: 2.5rem;
+    padding: 3%;
+    font-size: 0.75rem;
   }
   #adoption .ui.pagination.menu .item {
     min-width: 4em;

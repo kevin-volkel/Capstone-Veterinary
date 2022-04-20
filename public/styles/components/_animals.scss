@@ -44,11 +44,10 @@ body {
     grid-gap: .3rem;
 
     .ui.selection.dropdown {
-      width: 10%;
-      //min-width: 9em;
+      width: 15em;
+      min-width: 9em;
       margin: 0.2rem;
       font-size: 1.3rem;
-      line-height: 3rem;
     }
   }
 
@@ -115,11 +114,10 @@ body {
       flex-direction: row;
 
       .ui.selection.dropdown {
-        width: 23vw;
+        width: 22vw;
         min-width: 15vw;
-        //padding: 3%;
-        font-size: .9rem;
-        line-height: 2.5rem;
+        padding: 3%;
+        font-size: .75rem;
       }
     }
 
