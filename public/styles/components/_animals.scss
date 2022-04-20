@@ -97,7 +97,7 @@ body {
       &.ui.header,
       &.ui.header:first-child,
       &.ui.header:last-child {
-        font-size: 1.75rem;
+        font-size: 2rem;
       }
     }
 
@@ -131,7 +131,7 @@ body {
 //DESKTOP
 @media only screen and (min-width: 1024px) {
   #adoption {
-    width: 80vw;
+    width: 70%;
 
     .animal-list {
       width: 100%;
@@ -139,10 +139,9 @@ body {
 
     .sort-div {
       .ui.selection.dropdown {
-        width: 13em;
-        min-width: 9em;
+        width: 20%;
         font-size: 1.1rem;
       }
     }
-  }
+  } 
 }

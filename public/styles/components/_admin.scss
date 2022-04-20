@@ -14,7 +14,7 @@
     &.ui.header:last-child {
       margin: 0;
       cursor: pointer;
-      font-size: 2.5rem;
+      font-size: 2.25rem;
       font-family: $custom-font-2;
 
       &:hover {
@@ -26,7 +26,7 @@
   #header {
     display: flex;
     width: 80vw;
-    margin: 2rem auto;
+    margin: 1.75rem auto;
     flex-direction: row;
     justify-content: space-evenly;
   }
@@ -60,13 +60,16 @@
   }
 
   .sort-div {
-    align-items: center;
+    //align-items: center;
+    width: 70%;
+    margin-left: 15%;
+    align-content: stretch;
     justify-content: center;
     display: flex;
     flex-direction: column;
 
     .ui.selection.dropdown {
-      width: 16em;
+      //width: 16em;
       min-width: 9em;
       margin: 0.2rem;
     }
@@ -106,7 +109,7 @@
   .no-animals {
     margin: 1.5rem;
     font-size: 1.5rem;
-    font-weight: bold;
+    //font-weight: bold;
   }
 
   .pagination {
@@ -134,6 +137,8 @@
 
     .sort-div {
       flex-direction: row;
+      width: 90%;
+      margin-left: 5%;
 
       .ui.selection.dropdown {
         min-width: 2em;
@@ -155,11 +160,12 @@
     h1.ui.header,
     h1.ui.header:first-child,
     h1.ui.header:last-child {
-      font-size: 4rem;
+      font-size: 2rem;
 
     }
 
     #admin-animals {
+      width: 70%;
       .sort-div {
         .ui.selection.dropdown {
           width: 13em;
