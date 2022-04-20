@@ -9,7 +9,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding-top: 0.5rem;
+  // padding-top: 0.5rem;
   // border-bottom: 3px solid $clr-orange;
   background: $clr-white-1;
   transition: border 0.1s linear;
@@ -77,12 +77,12 @@
 //TABLET
 @media only screen and (min-width: 768px) {
   .navbar {
-    height: 5.75rem;
+    height: 5rem;
     .vet-logo {
       width: 10%;
     }
     i.icon.hamburger {
-      font-size: 2.8rem;
+      font-size: 2.3rem;
     }
   }
   .hamburger.items {

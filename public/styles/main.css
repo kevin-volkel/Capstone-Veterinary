@@ -192,7 +192,7 @@ body {
   margin: 0;
   margin-bottom: 2rem;
   cursor: pointer;
-  font-size: 2.3rem;
+  font-size: 2.5rem;
 }
 #adoption .sort-div {
   align-items: center;
@@ -563,6 +563,14 @@ div.ui.segment {
 }
 
 /* FORM TOP */
+.login-title {
+  margin-bottom: 1rem;
+}
+
+.upload-image {
+  margin-bottom: 2rem;
+}
+
 #photo-upload {
   width: 70px;
   height: 70px;
@@ -580,10 +588,6 @@ body {
 div.edit button {
   width: 25px;
   height: 25px;
-}
-
-.upload-image {
-  margin-bottom: 1.1rem;
 }
 
 /* FORM FIELDS */
@@ -631,7 +635,7 @@ form#register {
   }
   form#login .ui.segment h1,
 form#register .ui.segment h1 {
-    font-size: 3rem;
+    font-size: 1.8rem;
   }
   form#login .upload-image,
 form#register .upload-image {
@@ -654,25 +658,21 @@ form#register div.edit button {
   }
   form#login i.pencil.icon,
 form#register i.pencil.icon {
-    font-size: 1.3rem;
+    font-size: 0.8rem;
   }
   form#login div.field,
 form#register div.field {
-    font-size: 1.5rem;
+    font-size: 0.85rem;
   }
   form#login div.visible.menu span,
 form#register div.visible.menu span {
-    font-size: 1.4rem;
+    font-size: 1.1rem;
   }
   form#login #login-btn,
 form#login #register-btn,
 form#register #login-btn,
 form#register #register-btn {
-    padding: 13px;
-    font-size: 1.9rem;
-  }
-  form#login .form-link,
-form#register .form-link {
+    padding: 15px;
     font-size: 1.3rem;
   }
 }
@@ -681,7 +681,28 @@ form#register .form-link {
 @media only screen and (min-width: 1024px) {
   form#login,
 form#register {
-    width: 65vw;
+    width: 70vw;
+  }
+  form#login div.field,
+form#register div.field {
+    font-size: 1.3rem;
+  }
+  form#login #login-btn,
+form#login #register-btn,
+form#register #login-btn,
+form#register #register-btn {
+    padding: 15px;
+    font-size: 1.5rem;
+  }
+  form#login .form-link,
+form#register .form-link {
+    font-size: 1.2rem;
+  }
+}
+@media only screen and (min-width: 1280px) {
+  form#login,
+form#register {
+    width: 60vw;
   }
 }
 div.animal-wrap {
@@ -708,7 +729,6 @@ div.animal-wrap {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding-top: 0.5rem;
   background: #F6F7F8;
   transition: border 0.1s linear;
 }
@@ -768,13 +788,13 @@ div.animal-wrap {
 
 @media only screen and (min-width: 768px) {
   .navbar {
-    height: 5.75rem;
+    height: 5rem;
   }
   .navbar .vet-logo {
     width: 10%;
   }
   .navbar i.icon.hamburger {
-    font-size: 2.8rem;
+    font-size: 2.3rem;
   }
 
   .hamburger.items .menu-item a {
