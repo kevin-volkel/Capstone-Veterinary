@@ -5,25 +5,28 @@ import useEmblaCarousel from 'embla-carousel-react';
 import { DotButton, NextButton, PrevButton } from './SlideshowButtons';
 import EventCard from './EventCard';
 import NoEvents from './NoEvents';
+import Autoplay from 'embla-carousel-autoplay';
 
 const EventSlideshow = () => {
-  // const autoplay = useRef(
-  //   Autoplay(
-  //     {
-  //       delay: 3000,
-  //       stopOnInteraction: false,
-  //       stopOnLastSnap: false,
-  //       stopOnMouseEnter: true,
-  //     },
-  //     (emblaRoot) => emblaRoot.parentElement
-  //   )
-  // );
-  //needed to comment it out for now, was breaking website
+  const autoplay = useRef(
+    Autoplay(
+      {
+        delay: 3000,
+        stopOnInteraction: false,
+        stopOnLastSnap: false,
+        stopOnMouseEnter: true,
+      },
+      (emblaRoot) => emblaRoot.parentElement
+    )
+  );
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [viewportRef, embla] = useEmblaCarousel({
-    loop: true,
-  });
+  const [viewportRef, embla] = useEmblaCarousel(
+    {
+      loop: true,
+    },
+    [autoplay.current]
+  );
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [scrollSnaps, setScrollSnaps] = useState([]);
 
@@ -59,7 +62,7 @@ const EventSlideshow = () => {
 
   return (
     <>
-      <div className='event-slideshow'>
+      <div className="event-slideshow">
         {loading ? (
           <Loader />
         ) : (
@@ -67,16 +70,19 @@ const EventSlideshow = () => {
             <div className="embla">
               <div className="embla_viewport" ref={viewportRef}>
                 <div className="embla_container">
-                  {events.length === 0 ? 
-                  <>
-                    <NoEvents />
-                  </> : events.map((event, index) => (
-                    <div className="embla_slide" key={index}>
-                      <div className="embla_slide_inner">
-                        <EventCard event={event} />
+                  {events.length === 0 ? (
+                    <>
+                      <NoEvents />
+                    </>
+                  ) : (
+                    events.map((event, index) => (
+                      <div className="embla_slide" key={index}>
+                        <div className="embla_slide_inner">
+                          <EventCard event={event} />
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    ))
+                  )}
                 </div>
               </div>
               {events.length > 1 && (
@@ -86,7 +92,7 @@ const EventSlideshow = () => {
                 </>
               )}
             </div>
-            <div className='embla_dots'>
+            <div className="embla_dots">
               {events.map((_, index) => (
                 <DotButton
                   key={index}

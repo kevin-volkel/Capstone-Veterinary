@@ -9,7 +9,7 @@ const EventCard = ({ event }) => {
           src={event.bannerPic}
           alt="Something cool"
         />
-            <div className="gradient" />
+        <div className="gradient" />
       </div>
   </>
 };
