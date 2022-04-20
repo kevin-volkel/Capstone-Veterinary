@@ -1,11 +1,11 @@
-const AnimalModel = require('../models/AnimalModel');
-const UserModel = require('../models/UserModel');
+const AnimalModel = require("../models/AnimalModel");
+const UserModel = require("../models/UserModel");
 
 //? adds an animal, no params
 const addAnimal = async (req, res) => {
   const userId = req.user.userId;
 
-  if(!userId) return res.status(404).send('no user with that ID')
+  if (!userId) return res.status(404).send("no user with that ID");
 
   const {
     name,
@@ -21,7 +21,7 @@ const addAnimal = async (req, res) => {
     neutered,
     picURLs,
     vidURLs,
-    location
+    location,
   } = req.body;
 
   try {
@@ -45,13 +45,13 @@ const addAnimal = async (req, res) => {
 
     const animal = await new AnimalModel(newAnimal).save();
     const animalCreated = await AnimalModel.findById(animal._id).populate(
-      'user'
+      "user"
     );
 
     return res.status(200).json(animalCreated);
   } catch (error) {
     console.log(error);
-    res.status(500).send('error at addAnimal');
+    res.status(500).send("error at addAnimal");
   }
 };
 
@@ -65,7 +65,7 @@ const getAllAnimals = async (req, res) => {
   try {
     let animals = await AnimalModel.find()
       .sort({ createdAt: -1 })
-      .populate('user');
+      .populate("user");
     // if (pageNumber === 1) {
     //   animals = await AnimalModel.find()
     //     .limit(size)
@@ -83,7 +83,7 @@ const getAllAnimals = async (req, res) => {
     return res.status(200).json(animals);
   } catch (error) {
     console.log(error);
-    res.status(500).send('Error at getAnimals');
+    res.status(500).send("Error at getAnimals");
     console.log(error);
   }
 };
@@ -92,16 +92,16 @@ const getAllAnimals = async (req, res) => {
 
 //? gets one animal, id required
 const getAnimal = async (req, res) => {
-  const { id: animalId } = req.body;
+  const { id: animalId } = req.params;
   try {
-    const animal = await AnimalModel.findById(animalId).populate('user');
+    const animal = await AnimalModel.findById(animalId).populate("user");
 
-    if (!animal) return res.status(404).send('animal not found');
+    if (!animal) return res.status(404).send("animal not found");
 
     return res.status(200).json(animal);
   } catch (error) {
     console.log(error);
-    res.status(500).send('error at getAnimal');
+    res.status(500).send("error at getAnimal");
   }
 };
 
@@ -112,23 +112,23 @@ const deleteAnimal = async (req, res) => {
     const { id: animalId } = req.params;
 
     const animal = await AnimalModel.findById(animalId);
-    if (!animal) return res.status(404).send('animal not found');
+    if (!animal) return res.status(404).send("animal not found");
 
     const user = await UserModel.findById(userId);
 
     if (animal.user.toString() !== userId) {
-      if (user.role === 'student' || user.role === 'teacher') {
+      if (user.role === "student" || user.role === "teacher") {
         await animal.remove();
-        return res.status(200).send('animal succesfully removed');
+        return res.status(200).send("animal succesfully removed");
       } else {
-        return res.status(401).send('Unauthorized');
+        return res.status(401).send("Unauthorized");
       }
     }
     await animal.remove();
-    return res.status(200).send('animal succesfully removed');
+    return res.status(200).send("animal succesfully removed");
   } catch (error) {
     console.log(error);
-    res.status(500).send('error at deleteAnimal');
+    res.status(500).send("error at deleteAnimal");
   }
 };
 
@@ -142,14 +142,14 @@ const editAnimal = async (req, res) => {
       { _id: animalId, createdBy: userId },
       req.body,
       { new: true, runValidators: true }
-    ).populate('user');
+    ).populate("user");
 
-    if (!animal) return res.status(404).send('animal not found');
+    if (!animal) return res.status(404).send("animal not found");
 
     return res.status(200).json(animal);
   } catch (error) {
     console.log(error);
-    res.status(500).send('error at editAnimal');
+    res.status(500).send("error at editAnimal");
   }
 };
 

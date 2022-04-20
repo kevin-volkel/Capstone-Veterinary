@@ -1,10 +1,11 @@
-import React from 'react';
-
+import axios from "axios";
+import React from "react";
+import { baseURL } from "./util/auth";
 
 const Animal = ({ animal }) => {
   return (
-    <div className='page-wrap'>
-      <div className='animal-wrap'>
+    <div className="page-wrap">
+      <div className="animal-wrap">
         <h2>Animal Name</h2>
         <p>
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Et culpa
@@ -15,6 +16,18 @@ const Animal = ({ animal }) => {
       </div>
     </div>
   );
+};
+
+Animal.getInitialProps = async (ctx) => {
+  try {
+    const { animal } = ctx.query;
+    const res = await axios.get(`${baseURL}/api/v1/animal/${animal}`);
+
+    const {} = res.data;
+    return {};
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export default Animal;
