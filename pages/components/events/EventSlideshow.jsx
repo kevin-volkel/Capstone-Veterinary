@@ -93,7 +93,7 @@ const EventSlideshow = () => {
               )}
             </div>
             <div className="embla_dots">
-              {events.map((_, index) => (
+              {events.length > 0 && events.map((_, index) => (
                 <DotButton
                   key={index}
                   selected={index === selectedIndex}
