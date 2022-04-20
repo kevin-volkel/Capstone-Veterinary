@@ -56,7 +56,7 @@ a {
 }
 #admin-animals .button {
   width: 75%;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   background-color: #f7931d;
   color: #ffffff;
   margin: 0;
@@ -106,7 +106,8 @@ a {
 #admin-animals .ui.grid .ui.card img {
   width: 100%;
   height: 150px;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 #admin-animals .ui.grid .ui.card .animal-header {
   font-size: 2rem;
@@ -134,7 +135,7 @@ a {
     width: 93vw;
   }
   #admin-animals .button {
-    width: 60%;
+    width: 50%;
   }
   #admin-animals .sort-div {
     flex-direction: row;
@@ -206,10 +207,10 @@ body {
   grid-gap: 0.3rem;
 }
 #adoption .sort-div .ui.selection.dropdown {
-  width: 15em;
-  min-width: 9em;
+  width: 10%;
   margin: 0.2rem;
   font-size: 1.3rem;
+  line-height: 3rem;
 }
 #adoption .animal-list {
   width: 90%;
@@ -231,7 +232,8 @@ body {
 #adoption .grid .ui.card img {
   width: 100%;
   height: 150px;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 #adoption .grid .ui.card .animal-header {
   font-size: 2rem;
@@ -257,10 +259,10 @@ body {
     flex-direction: row;
   }
   #adoption .sort-div .ui.selection.dropdown {
-    width: 22vw;
+    width: 23vw;
     min-width: 15vw;
-    padding: 3%;
-    font-size: 0.75rem;
+    font-size: 0.9rem;
+    line-height: 2.5rem;
   }
   #adoption .ui.pagination.menu .item {
     min-width: 4em;
@@ -370,7 +372,8 @@ body {
 
 .img-container {
   margin: 0;
-  object-fit: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
   overflow: hidden;
   margin: auto;
   display: flex;
@@ -421,13 +424,15 @@ body {
 .img-btn-left {
   left: 0;
   margin-left: 5rem !important;
-  clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
+  -webkit-clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
+          clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
 }
 
 .img-btn-right {
   right: 0;
   margin-right: 5rem !important;
-  clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
+  -webkit-clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
+          clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
 }
 
 .arrow {
@@ -557,11 +562,7 @@ div.ui.segment {
 }
 
 .form-wrap {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
   justify-content: center;
 }
 
@@ -615,8 +616,6 @@ div.visible.menu span {
 form#register {
     display: flex;
     flex-direction: column;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
     justify-content: center;
   }
 }
@@ -890,16 +889,21 @@ div.animal-wrap {
 
 .embla_viewport.is-draggable {
   cursor: move;
+  cursor: -webkit-grab;
   cursor: grab;
 }
 
 .embla_viewport.is-dragging {
+  cursor: -webkit-grabbing;
   cursor: grabbing;
 }
 
 .embla_container {
   display: flex;
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   -webkit-touch-callout: none;
   -khtml-user-select: none;
   -webkit-tap-highlight-color: transparent;
@@ -1095,7 +1099,8 @@ div.animal-wrap {
   height: 70px;
 }
 #photo-upload img {
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   width: 70px;
   height: 70px;
 }
