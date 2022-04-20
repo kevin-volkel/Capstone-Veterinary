@@ -41,10 +41,13 @@ body {
     justify-content: center;
     display: flex;
     flex-direction: column;
+    grid-gap: .3rem;
+
     .ui.selection.dropdown {
-      width: 16em;
+      width: 15em;
       min-width: 9em;
       margin: 0.2rem;
+      font-size: 1.3rem;
     }
   }
 
@@ -57,12 +60,13 @@ body {
 
   .grid {
     justify-content: center;
+
     .ui.card {
       font-size: 1.2rem;
       margin: 0.5rem;
       cursor: pointer;
       text-align: center;
-      max-width: 250px;
+      width: 250px;
       text-transform: uppercase;
 
       img {
@@ -85,22 +89,35 @@ body {
   }
 }
 
-//TABELT
+//TABLET
 @media only screen and (min-width: 768px) {
   #adoption {
     h1 {
+
       &.ui.header,
       &.ui.header:first-child,
       &.ui.header:last-child {
-        font-size: 3.5rem;
+        font-size: 1.75rem;
+      }
+    }
+
+    .grid {
+      .iu-card{
+        width: 30%;
+        .content{
+          padding: 5rem !important;
+        }
       }
     }
 
     .sort-div {
       flex-direction: row;
+
       .ui.selection.dropdown {
-        width: 11em;
-        min-width: 9em;
+        width: 22vw;
+        min-width: 15vw;
+        padding: 3%;
+        font-size: .75rem;
       }
     }
 
@@ -115,6 +132,7 @@ body {
 @media only screen and (min-width: 1024px) {
   #adoption {
     width: 80vw;
+
     .animal-list {
       width: 100%;
     }

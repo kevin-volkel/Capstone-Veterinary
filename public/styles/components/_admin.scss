@@ -1,4 +1,4 @@
-@use "../themes/defaultTheme" as *;
+@use "../themes/defaultTheme"as *;
 
 #admin {
   display: flex;
@@ -16,6 +16,7 @@
       cursor: pointer;
       font-size: 2.5rem;
       font-family: $custom-font-2;
+
       &:hover {
         color: #f7931d;
       }
@@ -32,18 +33,18 @@
 }
 
 #admin-animals {
-  width: 80vw;
+  width: 95vw;
   margin: 0rem auto 2rem;
   padding: 2rem 0;
 
   .button {
     width: 75%;
-    height: 60px;
     font-size: 1.5rem;
     background-color: #f7931d;
     color: #ffffff;
     margin: 0;
     margin-bottom: 2rem;
+
     &::after {
       content: "";
       position: absolute;
@@ -58,11 +59,12 @@
     }
   }
 
-  .sort-div{
+  .sort-div {
     align-items: center;
     justify-content: center;
     display: flex;
     flex-direction: column;
+
     .ui.selection.dropdown {
       width: 16em;
       min-width: 9em;
@@ -70,7 +72,7 @@
     }
   }
 
-  .animal-list{
+  .animal-list {
     display: flex;
     justify-content: center;
     margin: 3rem 0;
@@ -87,13 +89,14 @@
       text-align: center;
       max-width: 250px;
       text-transform: uppercase;
+
       img {
         width: 100%;
         height: 150px;
         object-fit: cover;
       }
 
-      .animal-header{
+      .animal-header {
         font-size: 2rem;
         margin-bottom: .8rem;
       }
@@ -105,62 +108,59 @@
     font-size: 1.5rem;
     font-weight: bold;
   }
+
   .pagination {
     margin-top: 1rem;
   }
 }
 
-.ui.button > .icon:not(.button) {
+.ui.button>.icon:not(.button) {
   opacity: 1;
 }
 
-@media only screen and (max-width: 350px){
-  #admin-animals{
+@media only screen and (max-width: 350px) {
+  #admin-animals {
     min-width: 280px;
   }
 }
 
 //TABLET
 @media only screen and (min-width: 768px) {
-  #admin{
-    h1.ui.header,
-    h1.ui.header:first-child,
-    h1.ui.header:last-child {
-      font-size: 3.5rem;
+  #admin-animals {
+     width: 93vw;
+    .button {
+      width: 60%;
     }
-    #admin-animals{
-      .button{
-        width: 60%;
-      }
 
-      .sort-div{
-        flex-direction: row;
-        .ui.selection.dropdown {
-          width: 11em;
-          min-width: 9em;
-        }
-      }
+    .sort-div {
+      flex-direction: row;
 
-      .ui.pagination.menu .item {
-        min-width: 4em;
-        justify-content: center;
+      .ui.selection.dropdown {
+        min-width: 2em;
       }
+    }
+
+    .ui.pagination.menu .item {
+      min-width: 2em;
+      justify-content: center;
     }
   }
 }
 
+
 //DESKTOP
 @media only screen and (min-width: 1024px) {
-  #admin{
+  #admin {
+
     h1.ui.header,
     h1.ui.header:first-child,
     h1.ui.header:last-child {
       font-size: 4rem;
-      
+
     }
 
-    #admin-animals{
-      .sort-div{
+    #admin-animals {
+      .sort-div {
         .ui.selection.dropdown {
           width: 13em;
           min-width: 9em;
