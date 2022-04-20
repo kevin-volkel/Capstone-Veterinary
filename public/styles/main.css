@@ -929,7 +929,7 @@ div.animal-wrap {
 .embla_slide_inner {
   position: relative;
   overflow: hidden;
-  height: 22em;
+  height: 18em;
 }
 
 .embla_slide_img {
@@ -1044,13 +1044,34 @@ div.animal-wrap {
   .embla_viewport {
     overflow: hidden;
     width: 100%;
-    height: 55vw !important;
+    height: 45vw !important;
   }
 }
 @media only screen and (min-width: 1024px) {
+  .ui.segment:last-child {
+    margin-top: 8.5rem;
+  }
+
+  .embla_viewport {
+    height: 44vw !important;
+  }
+
+  .embla {
+    padding: 0%;
+  }
+
+  .embla_slide_img {
+    width: 100%;
+  }
+
   .embla_slide_inner {
     position: relative;
     overflow: hidden;
-    height: 65vh !important;
+    height: 60vh !important;
+    width: 100%;
+  }
+
+  .embla_dots {
+    padding-top: 0px;
   }
 }/*# sourceMappingURL=main.css.map */
