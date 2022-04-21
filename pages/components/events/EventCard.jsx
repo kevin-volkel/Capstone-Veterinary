@@ -12,7 +12,7 @@ const EventCard = ({ event }) => {
       <div className="gradient" />
       <div className="text">
         <div className="card-title">{event.title}</div>
-        <div className="card-desc">{event.desc.length > 50 ? `${event.desc.slice(0, 47)}...` : event.desc}</div>
+        <div className="card-desc">{event.desc.length > 50 ? `${event.desc.slice(0, 48)}...` : event.desc}</div>
       </div>
     </>
   );

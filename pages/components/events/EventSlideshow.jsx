@@ -12,7 +12,7 @@ const EventSlideshow = () => {
     Autoplay(
       {
         delay: 3000,
-        stopOnInteraction: false,
+        stopOnInteraction: true,
         stopOnLastSnap: false,
         stopOnMouseEnter: true,
       },
@@ -30,10 +30,23 @@ const EventSlideshow = () => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [scrollSnaps, setScrollSnaps] = useState([]);
 
-  const scrollPrev = useCallback(() => embla && embla.scrollPrev(), [embla]);
-  const scrollNext = useCallback(() => embla && embla.scrollNext(), [embla]);
+  const scrollPrev = useCallback(() => {
+    if (!embla) return;
+    embla.scrollPrev();
+    autoplay.current.reset;
+  }, [embla]);
+  const scrollNext = useCallback(() => {
+    if (!embla) return;
+    embla.scrollNext();
+    autoplay.current.reset;
+  }, [embla]);
   const scrollTo = useCallback(
-    (index) => embla && embla.scrollTo(index),
+    (index) => {
+      if(!embla) return;
+      embla.scrollTo(index);
+      autoplay.current.reset;
+    },
+
     [embla]
   );
 
@@ -93,13 +106,14 @@ const EventSlideshow = () => {
               )}
             </div>
             <div className="embla_dots">
-              {events.length > 0 && events.map((_, index) => (
-                <DotButton
-                  key={index}
-                  selected={index === selectedIndex}
-                  onClick={() => scrollTo(index)}
-                />
-              ))}
+              {events.length > 0 &&
+                events.map((_, index) => (
+                  <DotButton
+                    key={index}
+                    selected={index === selectedIndex}
+                    onClick={() => scrollTo(index)}
+                  />
+                ))}
             </div>
           </div>
         )}
