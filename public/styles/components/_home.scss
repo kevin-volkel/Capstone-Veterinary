@@ -109,7 +109,6 @@
   margin: auto;
 }
 
-
 .card {
   margin: 1rem;
   padding: 1.5rem;
@@ -197,9 +196,6 @@
   padding-right: 3%;
 }
 
-img {
-  width: 90%;
-}
 
 .events-section {
   margin-top: 7.5rem !important;
@@ -270,17 +266,15 @@ img {
   }
 }
 
-.ui.segment:first-child{
-  h1{
+.ui.segment:first-child {
+  h1 {
     margin-top: 1rem;
     margin-bottom: 2rem;
   }
 }
 
-
-
 @media only screen and (min-width: 768px) {
-  html{
+  html {
     font-size: 1.55rem;
   }
 
@@ -291,18 +285,44 @@ img {
 
   .events-section {
     margin-top: 4.25rem !important;
-    .nf-sect{
+
+    .nf-sect {
       display: flex;
     }
   }
 }
 
 @media only screen and (min-width: 1024px) {
-  html{
-    font-size: 1.15rem;
-  }
-  .img-container {
-    height: 28vw;
-  }
+  html {
+    font-size: 1.10rem;
 
+    .nf-sect {
+      display: flex;
+      flex-direction: row-reverse;
+      padding-bottom: 1.75%;
+    }
+
+    .adopt-image{
+      border-radius: 3%;
+    }
+
+    .adopt-section{
+      .nf-wholeSect {
+        p {
+          margin-right: 1rem;
+          width: 200%;
+        }
+      }
+    }
+
+    .adopt-section .ui.orange.button{
+      padding: 1.75% 1.5%;
+      margin-bottom: 2%;
+
+    }
+
+    .adopt-section.ui.segment:first-child {
+      margin-top: 8.5rem;
+    }
+  }
 }

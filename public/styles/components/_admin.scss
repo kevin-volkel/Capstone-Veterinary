@@ -39,7 +39,7 @@
 
   .button {
     width: 75%;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     background-color: #f7931d;
     color: #ffffff;
     margin: 0;
@@ -129,10 +129,21 @@
 
 //TABLET
 @media only screen and (min-width: 768px) {
+  #admin {
+
+    h1.ui.header,
+    h1.ui.header:first-child,
+    h1.ui.header:last-child {
+      font-size: 2rem;
+
+    }
+  }
+
   #admin-animals {
-     width: 93vw;
+    width: 93vw;
+
     .button {
-      width: 60%;
+      width: 50%;
     }
 
     .sort-div {
@@ -166,6 +177,7 @@
 
     #admin-animals {
       width: 70%;
+
       .sort-div {
         .ui.selection.dropdown {
           width: 13em;
