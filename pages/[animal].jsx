@@ -1,8 +1,14 @@
 import axios from "axios";
-import React from "react";
+import React, { useEffect } from "react";
 import { baseURL } from "./util/auth";
+import { useRouter } from "next/router";
 
-const Animal = ({ animal }) => {
+const Animal = ({ animalObj }) => {
+  const router = useRouter();
+  const { animalObj } = router.query;
+
+  useEffect(() => {});
+
   return (
     <div className="page-wrap">
       <div className="animal-wrap">
@@ -23,8 +29,8 @@ Animal.getInitialProps = async (ctx) => {
     const { animal } = ctx.query;
     const res = await axios.get(`${baseURL}/api/v1/animal/${animal}`);
 
-    const {} = res.data;
-    return {};
+    const { animalObj } = res.data;
+    return { animalObj };
   } catch (error) {
     console.log(error);
   }
