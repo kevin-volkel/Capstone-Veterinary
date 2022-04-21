@@ -16,7 +16,8 @@ const AddAnimalModal = ({ user, setAnimals }) => {
   const [media, setMedia] = useState(null);
 
   const [videoPreview, setVideoPreview] = useState(null);
-  const [video, setVideo] = useState(null);
+  const [video, setVideo] = useState([]);
+  const inputRef = React.useRef(null);
 
   const defaultAnimalPic =
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7h1BiFC8Ot5v_yD14xO4Bz4vIVZDFChrIkFtN-XxtnMQAn73Srlyv-vznS5pXLGT-ywE&usqp=CAU";
@@ -49,6 +50,7 @@ const AddAnimalModal = ({ user, setAnimals }) => {
 
   const handleChange = (e, data) => {
     const { name, value, files } = e.target;
+    // console.log(e.target.files);
 
     if (!name) {
       setNewAnimal((prev) => ({
@@ -59,8 +61,10 @@ const AddAnimalModal = ({ user, setAnimals }) => {
       setMedia(() => files[0]);
       setMediaPreview(() => URL.createObjectURL(files[0]));
     } else if (name == "video" && files.length) {
-      setVideo(() => files[0]);
-      setVideoPreview(() => URL.createObjectURL(files[0]));
+      //!try maping through droppedFiles and pushing each to video & setVideoPreview to video[0]
+      let droppedFiles = Object.values(files)
+      setVideoPreview(() => URL.createObjectURL(droppedFiles[0]));
+      setVideo(() => droppedFiles);
     } else {
       setNewAnimal((prev) => ({
         ...prev,
@@ -91,7 +95,7 @@ const AddAnimalModal = ({ user, setAnimals }) => {
   //     }
 
   //     if (media !== null && !profilePicURL) throw new Error("Cloudinary Error Pic");
-      
+
   //     //VIDEO
   //     if (video !== null) {
   //       const formData = new FormData();
@@ -269,9 +273,12 @@ const AddAnimalModal = ({ user, setAnimals }) => {
               handleChange={handleChange}
             />
             <VideoUpload
-              videoPreview={videoPreview}
-              defaultVideoPic={defaultVideoPic}
               handleChange={handleChange}
+              inputRef={inputRef}
+              videoPreview={videoPreview}
+              setVideoPreview={setVideoPreview}
+              setVideo={setVideo}
+              video={video}
             />
             <Form.Input
               label="Name"

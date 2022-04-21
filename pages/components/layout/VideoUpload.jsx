@@ -1,52 +1,73 @@
-import React, { useRef } from 'react';
-import { Image, Button } from 'semantic-ui-react';
+import { Form, Header, Icon, Image, Segment } from "semantic-ui-react";
 
-const PhotoUpload = ({ videoPreview, defaultVideoPic, handleChange }) => {
-  const inputRef = useRef(null);
-
+const VideoUpload = ({
+  handleChange,
+  inputRef,
+  setVideo,
+  setVideoPreview,
+  video,
+  videoPreview,
+}) => {
   return (
-    <div
-      id="video-upload"
-      style={{
-        borderRadius: '35px',
-        width: "70px",
-        height: "70px",
-      }}
-    >
-      <Image
-        src={videoPreview === null ? defaultVideoPic : videoPreview}
-        circular
-        style={{objectFit: 'cover' ,width: "70px",
-        height: "70px",}}
-      />
-
-      <div className="edit">
-        <input
-          style={{ display: 'none' }}
-          type="file"
-          accept="video/*"
-          onChange={handleChange}
-          name="video"
-          ref={inputRef}
-        />
-        <Button
-          onClick={(e) => inputRef.current.click()}
-          // content={<Icon name="edit outline" />}
-          icon="pencil"
-          color="blue"
-          style={{
-            borderRadius: '50%',
-            padding: '0',
-            margin: '0',
-            position: 'relative',
-            bottom: '20px',
-            left: '45px',
-            cursor: 'pointer',
-          }}
-        />
-      </div>
-    </div>
+    <>
+      <Form.Field>
+        <Segment placeholder basic secondary>
+          <input
+            type="file"
+            accept="video/*"
+            multiple
+            onChange={handleChange}
+            name="video"
+            style={{ display: "none" }}
+            ref={inputRef}
+          />
+          <div
+            onClick={() => {
+              inputRef.current.click();
+            }}
+            style={{ cursor: "pointer" }}
+            onDragOver={(e) => {
+              e.preventDefault();
+              // setHightlighted(true);
+            }}
+            onDragLeave={(e) => {
+              e.preventDefault();
+              // setHightlighted(false);
+            }}
+            onDrop={(e) => {
+              e.preventDefault();
+              // setHightlighted(true);
+              let files = e.dataTransfer.files;
+              let droppedFiles = Object.values(files)
+              setVideoPreview(() => URL.createObjectURL(droppedFiles[0]));
+              setVideo(() => droppedFiles);
+            }}
+          >
+            {videoPreview === null ? (
+              <Segment
+                basic
+                placeholder
+                style={{ cursor: "pointer" }}
+                // {...(highlighted && { color: "green" })}
+              >
+                <Header icon>
+                  <Icon name="video" />
+                  Drag & Drop or Click to Upload
+                </Header>
+              </Segment>
+            ) : (
+              <Segment placeholder basic color="green">
+                <video>
+                  <source src={videoPreview}/>
+                  Your browser does not support the video tag.
+                </video>
+              </Segment>
+            )}
+          </div>
+        </Segment>
+      </Form.Field>
+    </>
   );
 };
 
-export default PhotoUpload;
+export default VideoUpload;
