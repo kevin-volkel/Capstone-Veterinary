@@ -13,12 +13,12 @@ const AdminEvent = ({ event }) => {
             : event.desc}
         </div>
         <div className="event-date">{convertDate(event.date)}</div>
-        <div className="options">
-          <Icon name="ellipsis vertical" size="large" />
-        </div>
       </div>
       <div className="event-pic">
         <Image src={event.bannerPic} />
+      </div>
+      <div className="options">
+        <Icon name="ellipsis vertical" size="large" />
       </div>
     </>
   );

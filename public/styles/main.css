@@ -1178,13 +1178,25 @@ div.animal-wrap {
   font-size: 1.3rem;
   font-weight: bold;
 }
-#admin-events .events-list .event-card .options {
-  margin-left: -1rem;
+#admin-events .events-list .event-card .event-desc {
+  font-size: 1.1rem;
+}
+#admin-events .events-list .event-card .event-date {
+  font-size: 0.8rem;
 }
 #admin-events .events-list .event-pic {
   width: 40%;
-  height: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 #admin-events .events-list .event-pic img {
+  height: 100%;
   object-fit: contain;
+}
+#admin-events .events-list .options {
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }/*# sourceMappingURL=main.css.map */

@@ -6,5 +6,5 @@ export const convertDate = (date) => {
 export const sortDates = (a, b) => {
   const aSec = new Date(a.date).getTime();
   const bSec = new Date(b.date).getTime();
-  return bSec - aSec;
+  return aSec - bSec;
 }
