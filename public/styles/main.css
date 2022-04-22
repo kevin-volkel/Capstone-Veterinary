@@ -1024,21 +1024,32 @@ div.animal-wrap {
   width: 100%;
 }
 #event-slideshow .text {
-  position: absolute;
+  position: relative;
   height: 100%;
-  top: 0;
+  top: 1;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   z-index: 11;
+  margin-bottom: 1rem;
 }
 #event-slideshow .text .card-title {
   font-size: 1.8rem;
   color: white;
+  margin-bottom: 0.5rem;
+  margin-left: 0.5rem;
+}
+#event-slideshow .text .card-date {
+  font-size: 0.9rem;
+  color: white;
+  margin-bottom: 0.25rem;
+  margin-left: 0.5rem;
 }
 #event-slideshow .text .card-desc {
   font-size: 1.1rem;
   color: white;
+  margin-bottom: 1rem;
+  margin-left: 0.5rem;
 }
 
 @media only screen and (min-width: 300px) {

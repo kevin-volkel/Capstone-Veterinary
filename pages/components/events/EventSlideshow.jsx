@@ -6,6 +6,7 @@ import { DotButton, NextButton, PrevButton } from './SlideshowButtons';
 import EventCard from './EventCard';
 import NoEvents from './NoEvents';
 import Autoplay from 'embla-carousel-autoplay';
+import { sortDates } from '../../util/dateFuncs';
 
 const EventSlideshow = () => {
   const autoplay = useRef(
@@ -42,7 +43,7 @@ const EventSlideshow = () => {
   }, [embla]);
   const scrollTo = useCallback(
     (index) => {
-      if(!embla) return;
+      if (!embla) return;
       embla.scrollTo(index);
       autoplay.current.reset;
     },
@@ -70,27 +71,28 @@ const EventSlideshow = () => {
 
   const fetchEvents = async () => {
     const res = await axios.get(`/api/v1/event`);
-    setEvents(res.data);
+    const events = res.data.sort(sortDates);
+    setEvents(events);
   };
 
   return (
     <>
-      <div id="event-slideshow">
+      <div id='event-slideshow'>
         {loading ? (
           <Loader />
         ) : (
-          <div className="slideshow">
-            <div className="embla">
-              <div className="embla_viewport" ref={viewportRef}>
-                <div className="embla_container">
+          <div className='slideshow'>
+            <div className='embla'>
+              <div className='embla_viewport' ref={viewportRef}>
+                <div className='embla_container'>
                   {events.length === 0 ? (
                     <>
                       <NoEvents />
                     </>
                   ) : (
                     events.map((event, index) => (
-                      <div className="embla_slide" key={index}>
-                        <div className="embla_slide_inner">
+                      <div className='embla_slide' key={index}>
+                        <div className='embla_slide_inner'>
                           <EventCard event={event} />
                         </div>
                       </div>
@@ -105,7 +107,7 @@ const EventSlideshow = () => {
                 </>
               )}
             </div>
-            <div className="embla_dots">
+            <div className='embla_dots'>
               {events.length > 0 &&
                 events.map((_, index) => (
                   <DotButton
