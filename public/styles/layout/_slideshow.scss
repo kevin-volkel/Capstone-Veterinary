@@ -1,6 +1,6 @@
 #event-slideshow {
   .slideshow {
-    height: 50vh;
+    height: 35vh;
   }
 
   .embla {
@@ -174,12 +174,21 @@
   }
 }
 
+
+@media only screen and (min-width: 300px) {
+  #event-slideshow{
+    .slideshow{
+      height: 22.75rem;
+    }
+  }
+}
+
 @media only screen and (min-width: 764px) {
   #event-slideshow {
     .embla_slide_inner {
       position: relative;
       overflow: hidden;
-      height: 15.25rem;
+      height: 18rem;
     }
 
     .embla_dots {
@@ -189,10 +198,52 @@
     .embla_viewport {
       overflow: hidden;
       width: 100%;
-      height: 45vw !important;
+      height: 58vw  !important;
+    }
+
+    .slideshow{
+      height: 20rem;
     }
   }
 }
+
+@media only screen and (min-width: 800px) {
+  #event-slideshow{
+    .embla_slide_inner {
+      position: relative;
+      overflow: hidden;
+      height: 18rem;
+    }
+
+    .embla_viewport {
+      height: 54vw  !important;
+    }
+
+    .slideshow{
+      height: 20rem;
+    }
+  }
+}
+
+
+@media only screen and (min-width: 900px) {
+  #event-slideshow{
+    .embla_slide_inner {
+      position: relative;
+      overflow: hidden;
+      height: 18rem;
+    }
+
+    .embla_viewport {
+      height: 50vw  !important;
+    }
+
+    .slideshow{
+      height: 21rem;
+    }
+  }
+}
+
 
 @media only screen and (min-width: 1024px) {
   // .slideshow{
