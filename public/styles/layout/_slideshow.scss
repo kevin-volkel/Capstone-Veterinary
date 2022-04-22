@@ -246,17 +246,10 @@
 
 
 @media only screen and (min-width: 1024px) {
-  // .slideshow{
-  //   height:60vh;
-  // }
-  // .embla_container{
-  //   height: 100%;
-  // }
 
-  
   #event-slideshow {
     .embla_viewport {
-      height: 44vw !important;
+      height: 30vw !important;
     }
 
     .embla {
@@ -277,6 +270,18 @@
     }
     .gradient {
       height: 100%;
+    }
+    .slideshow{
+      height: 20rem;
+    }
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  
+  #event-slideshow {
+    .embla_viewport {
+      height: 30vw !important;
     }
   }
 }

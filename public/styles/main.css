@@ -1095,7 +1095,7 @@ div.animal-wrap {
 }
 @media only screen and (min-width: 1024px) {
   #event-slideshow .embla_viewport {
-    height: 44vw !important;
+    height: 30vw !important;
   }
   #event-slideshow .embla {
     padding: 0%;
@@ -1114,6 +1114,14 @@ div.animal-wrap {
   }
   #event-slideshow .gradient {
     height: 100%;
+  }
+  #event-slideshow .slideshow {
+    height: 20rem;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  #event-slideshow .embla_viewport {
+    height: 30vw !important;
   }
 }
 #photo-upload {
