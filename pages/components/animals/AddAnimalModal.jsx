@@ -5,25 +5,18 @@ import axios from "axios";
 import catchErrors from "../../util/catchErrors";
 import Cookies from "js-cookie";
 import { baseURL } from "../../util/auth";
-import PhotoUpload from "../layout/PhotoUpload";
 import VideoUpload from "../layout/VideoUpload";
+import AnimalUpload from "../layout/AnimalUpload";
 
 const AddAnimalModal = ({ user, setAnimals }) => {
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState(null);
 
-  const [mediaPreview, setMediaPreview] = useState(null);
-  const [media, setMedia] = useState(null);
+  const [mediaPreview, setMediaPreview] = useState([]);
+  const [media, setMedia] = useState([]);
 
-  const [videoPreview, setVideoPreview] = useState(null);
+  const [videoPreview, setVideoPreview] = useState([]);
   const [video, setVideo] = useState([]);
-  const inputRef = React.useRef(null);
-
-  const defaultAnimalPic =
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7h1BiFC8Ot5v_yD14xO4Bz4vIVZDFChrIkFtN-XxtnMQAn73Srlyv-vznS5pXLGT-ywE&usqp=CAU";
-
-  const defaultVideoPic =
-    "https://media.istockphoto.com/vectors/vector-play-button-icon-vector-id1066846868?k=20&m=1066846868&s=612x612&w=0&h=BikDjIPuOmb08aDFeDiEwDiKosX7EgnvtdQyLUvb3eA=";
 
   const postAxios = axios.create({
     baseURL: `${baseURL}/api/v1/posts`,
@@ -50,21 +43,36 @@ const AddAnimalModal = ({ user, setAnimals }) => {
 
   const handleChange = (e, data) => {
     const { name, value, files } = e.target;
-    // console.log(e.target.files);
 
     if (!name) {
       setNewAnimal((prev) => ({
         ...prev,
         [data.name]: data.value,
       }));
-    } else if (name == "media" && files.length) {
-      setMedia(() => files[0]);
-      setMediaPreview(() => URL.createObjectURL(files[0]));
-    } else if (name == "video" && files.length) {
-      //!try maping through droppedFiles and pushing each to video & setVideoPreview to video[0]
-      let droppedFiles = Object.values(files)
-      setVideoPreview(() => URL.createObjectURL(droppedFiles[0]));
-      setVideo(() => droppedFiles);
+    } else if (name === "media" && files.length) {
+      if (files.length === 1) {
+        let droppedFiles = Object.values(files);
+        setMedia((prev) => [...prev, droppedFiles[0]]);
+        setMediaPreview((prev) => [...prev, URL.createObjectURL(droppedFiles[0])]);
+      } else {
+        let droppedFiles = Object.values(files);
+        droppedFiles.map((file) => {
+          setMedia((prev) => [...prev, file]);
+          setMediaPreview((prev) => [...prev, URL.createObjectURL(file)]);
+        });
+      }
+    } else if (name === "video" && files.length) {
+      if (files.length === 1) {
+        let droppedFiles = Object.values(files);
+        setVideo((prev) => [...prev, droppedFiles[0]]);
+        setVideoPreview((prev) => [...prev, URL.createObjectURL(droppedFiles[0])]);
+      } else {
+        let droppedFiles = Object.values(files);
+        droppedFiles.map((file) => {
+          setVideo((prev) => [...prev, file]);
+          setVideoPreview((prev) => [...prev, URL.createObjectURL(file)]);
+        });
+      }
     } else {
       setNewAnimal((prev) => ({
         ...prev,
@@ -73,103 +81,115 @@ const AddAnimalModal = ({ user, setAnimals }) => {
     }
   };
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   setLoading(true);
-
-  //   let animalPicURLs = [];
-  //   let animalVidURLs = [];
-
-  //   try {
-  //     if (media !== null) {
-  //       const formData = new FormData();
-  //       formData.append("image", media, {
-  //         headers: {
-  //           "Content-Type": "multipart/form-data",
-  //         },
-  //       });
-  //       const res = await axios.post("/api/v1/upload", formData);
-  //       animalPicURLs.push(res.data.src);
-  //     } else {
-  //       animalPicURLs.push(defaultAnimalPic);
-  //     }
-
-  //     if (media !== null && !profilePicURL) throw new Error("Cloudinary Error Pic");
-
-  //     //VIDEO
-  //     if (video !== null) {
-  //       const formData = new FormData();
-  //       formData.append("video", video, {
-  //         headers: {
-  //           "Content-Type": "multipart/form-data",
-  //         },
-  //       });
-  //       const res = await axios.post("/api/v1/upload", formData);
-  //       animalVidURLs.push(res.data.src);
-  //     } else {
-  //       animalVidURLs.push(defaultVideoPic);
-  //     }
-
-  //     if (video !== null && !profilePicURL) throw new Error("Cloudinary Error Video");
-
-  //     const res = await postAxios.post("/api/v1/animal", user, {
-  //       name: newAnimal.name.trim().toLowerCase(),
-  //       age: newAnimal.age,
-  //       type: newAnimal.type,
-  //       breed: newAnimal.breed.trim().toLowerCase(),
-  //       gender: newAnimal.gender,
-  //       colors: newAnimal.colors.trim().toLowerCase(),
-  //       needs: newAnimal.needs,
-  //       details: newAnimal.details,
-  //       desc: newAnimal.desc,
-  //       vaccs: newAnimal.vaccs,
-  //       neutered: newAnimal.neutered,
-  //       picURLs: animalPicURLs,
-  //       vidURLs: animalVidURLs,
-  //       location: newAnimal.location,
-  //     });
-  //     setAnimals((prev) => [res.data, ...prev]);
-  //     setNewAnimal({
-  //       name: "",
-  //       location: "northeast",
-  //       type: "dog",
-  //       gender: "male",
-  //       age: "young",
-  //       breed: "",
-  //       neutered: false,
-  //       vaccs: false,
-  //       colors: "",
-  //       desc: "",
-  //       details: "",
-  //       needs: false,
-  //       specialNeeds: "",
-  //       picURLs: [],
-  //       vidURLs: [],
-  //     });
-  //     setLoading(false);
-  //   } catch (err) {
-  //     console.log(err);
-  //     let caughtErr = catchErrors(err);
-  //     setErrorMsg(caughtErr);
-  //   }
-
-  //   setLoading(false);
-  // };
-
-  const handleSubmit2 = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(newAnimal);
+    setLoading(true);
+
+    let animalPicURLs = [];
+    let animalVidURLs = [];
+
+    try {
+      if (media !== null) {
+        const formData = new FormData();
+        formData.append("image", media, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
+        const res = await axios.post("/api/v1/upload", formData);
+        animalPicURLs.push(res.data.src);
+      } else {
+        animalPicURLs.push(defaultAnimalPic);
+      }
+
+      if (media !== null && !profilePicURL) throw new Error("Cloudinary Error Pic");
+
+      //VIDEO
+      if (video !== null) {
+        const formData = new FormData();
+        formData.append("video", video, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
+        const res = await axios.post("/api/v1/upload", formData);
+        animalVidURLs.push(res.data.src);
+      } else {
+        animalVidURLs.push(defaultVideoPic);
+      }
+
+      if (video !== null && !profilePicURL) throw new Error("Cloudinary Error Video");
+
+      const res = await postAxios.post("/api/v1/animal", user, {
+        name: newAnimal.name.trim().toLowerCase(),
+        age: newAnimal.age,
+        type: newAnimal.type,
+        breed: newAnimal.breed.trim().toLowerCase(),
+        gender: newAnimal.gender,
+        colors: newAnimal.colors.trim().toLowerCase(),
+        needs: newAnimal.needs,
+        details: newAnimal.details,
+        desc: newAnimal.desc,
+        vaccs: newAnimal.vaccs,
+        neutered: newAnimal.neutered,
+        picURLs: animalPicURLs,
+        vidURLs: animalVidURLs,
+        location: newAnimal.location,
+      });
+      setAnimals((prev) => [res.data, ...prev]);
+      setNewAnimal({
+        name: "",
+        location: "northeast",
+        type: "dog",
+        gender: "male",
+        age: "young",
+        breed: "",
+        neutered: false,
+        vaccs: false,
+        colors: "",
+        desc: "",
+        details: "",
+        needs: false,
+        specialNeeds: "",
+        picURLs: [],
+        vidURLs: [],
+      });
+      setLoading(false);
+    } catch (err) {
+      console.log(err);
+      let caughtErr = catchErrors(err);
+      setErrorMsg(caughtErr);
+    }
+
+    setLoading(false);
+  };
+
+  const handleSubmit2 = async (e) => {
+    e.preventDefault();
     // setLoading(true);
 
-    // let animalPicURLs = [];
-    // let animalVidURLs = [];
+    let animalPicURLs = [];
+    let animalVidURLs = [];
 
-    if (media !== null) {
-      console.log(media);
+    try{
+      if(media !== null){
+        const formData = new FormData();
+        formData.append("image", media, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        });
+        const res = await axios.post('/api/v1/upload', formData);
+        profilePicURL = res.data.src;
+      }else{
+        profilePicURL = defaultProfilePic;
+      }
+    }catch(err){
+      console.log(err);
+      let caughtErr = catchErrors(err);
+      setErrorMsg(caughtErr);
     }
-    if (video !== null) {
-      console.log(video);
-    }
+    setLoading(false);
   };
 
   const typeOptions = [
@@ -252,9 +272,9 @@ const AddAnimalModal = ({ user, setAnimals }) => {
       <Form
         loading={loading}
         error={errorMsg !== null}
-        onSubmit={handleSubmit2}
+        // onSubmit={handleSubmit2}
         id="add-animal"
-        style={{ width: "80%" }}
+        style={{ width: "100%" }}
       >
         <Message
           error
@@ -263,23 +283,34 @@ const AddAnimalModal = ({ user, setAnimals }) => {
           onDismiss={() => setErrorMsg(null)}
         />
         <Segment>
-          <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <div>
             <h1>Add Animal</h1>
           </div>
-          <div id="form-group">
-            <PhotoUpload
-              mediaPreview={mediaPreview}
-              defaultProfilePic={defaultAnimalPic}
+          <div
+            className="uploads"
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
+              margin: "1rem 0",
+            }}
+          >
+            <AnimalUpload
               handleChange={handleChange}
+              media={media}
+              mediaPreview={mediaPreview}
+              setMediaPreview={setMediaPreview}
+              setMedia={setMedia}
             />
             <VideoUpload
               handleChange={handleChange}
-              inputRef={inputRef}
               videoPreview={videoPreview}
               setVideoPreview={setVideoPreview}
               setVideo={setVideo}
               video={video}
             />
+          </div>
+          <div id="form-group">
             <Form.Input
               label="Name"
               required
@@ -379,7 +410,6 @@ const AddAnimalModal = ({ user, setAnimals }) => {
             />
             {newAnimal.needs && (
               <Form.TextArea
-                // label="Special"
                 placeholder="Special Needs..."
                 value={newAnimal.specialNeeds}
                 name="specialNeeds"
@@ -390,7 +420,7 @@ const AddAnimalModal = ({ user, setAnimals }) => {
           </div>
           <div style={{ display: "flex", justifyContent: "center" }}>
             <Button
-              id="register-btn"
+              id="add-animal-btn"
               content="Done"
               fluid
               style={{ margin: "1rem 0" }}
