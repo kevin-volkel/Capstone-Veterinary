@@ -9,7 +9,7 @@ const addEvent = async (req, res) => {
     const newEvent = {
       title,
       desc,
-      date,
+      date: new Date(date),
       location,
       user: userId,
       bannerPic

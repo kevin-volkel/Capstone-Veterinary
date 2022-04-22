@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image } from 'semantic-ui-react';
 
-const EventCard = ({ event }) => {
+const EventCard = ({ event, gradient = true }) => {
   return (
     <>
       <Image
@@ -9,7 +9,7 @@ const EventCard = ({ event }) => {
         src={event.bannerPic}
         alt="Something cool"
       />
-      <div className="gradient" />
+      {gradient && <div className="gradient" />}
       <div className="text">
         <div className="card-title">{event.title}</div>
         <div className="card-desc">{event.desc.length > 50 ? `${event.desc.slice(0, 48)}...` : event.desc}</div>

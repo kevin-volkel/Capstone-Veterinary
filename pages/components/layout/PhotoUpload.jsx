@@ -18,7 +18,6 @@ const PhotoUpload = ({ mediaPreview, defaultProfilePic, handleChange }) => {
           style={{ display: 'none' }}
           type="file"
           accept="image/*"
-          multiple
           onChange={handleChange}
           name="media"
           ref={inputRef}

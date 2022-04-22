@@ -1,12 +1,12 @@
 import React, { useRef } from "react";
 import { Form, Header, Icon, Image, Segment } from "semantic-ui-react";
 
-const VideoUpload = ({
+const AnimalUpload = ({
   handleChange,
-  setVideo,
-  setVideoPreview,
-  video,
-  videoPreview,
+  setMedia,
+  setMediaPreview,
+  media,
+  mediaPreview,
 }) => {
   const inputRef = useRef(null);
   return (
@@ -15,10 +15,10 @@ const VideoUpload = ({
         <Segment placeholder basic secondary>
           <input
             type="file"
-            accept="video/*"
+            accept="image/*"
             multiple
             onChange={handleChange}
-            name="video"
+            name="media"
             style={{ display: "none" }}
             ref={inputRef}
           />
@@ -42,16 +42,16 @@ const VideoUpload = ({
               let files = e.dataTransfer.files;
               if (files.length === 1) {
                 let droppedFiles = Object.values(files);
-                setVideo((prev) => [...prev, droppedFiles[0]]);
-                setVideoPreview((prev) => [
+                setMedia((prev) => [...prev, droppedFiles[0]]);
+                setMediaPreview((prev) => [
                   ...prev,
                   URL.createObjectURL(droppedFiles[0]),
                 ]);
               } else {
                 let droppedFiles = Object.values(files);
                 droppedFiles.map((file) => {
-                  setVideo((prev) => [...prev, file]);
-                  setVideoPreview((prev) => [
+                  setMedia((prev) => [...prev, file]);
+                  setMediaPreview((prev) => [
                     ...prev,
                     URL.createObjectURL(file),
                   ]);
@@ -59,10 +59,10 @@ const VideoUpload = ({
               }
             }}
           >
-            {!videoPreview.length ? (
+            {!mediaPreview.length ? (
               <Segment basic placeholder style={{ cursor: "pointer" }}>
                 <Header icon>
-                  <Icon name="file video outline" style={{ height: "100px" }} />
+                  <Icon name="file image outline" />
                   Drag & Drop or Click to Upload
                 </Header>
               </Segment>
@@ -75,15 +75,19 @@ const VideoUpload = ({
                   display: "flex",
                   flexDirection: "row",
                   justifyContent: "space-evenly",
-                  flexWrap: "wrap"
+                  flexWrap: "wrap",
                 }}
               >
-                {videoPreview.map((video, i) => {
+                {mediaPreview.map((pic, i) => {
                   return (
-                    <video key={i} style={{ maxWidth: "100px" }}>
-                      <source src={videoPreview[i]} />
-                      Your browser does not support the video tag.
-                    </video>
+                    <Image
+                      key={i}
+                      src={mediaPreview[i]}
+                      style={{ margin: ".3rem" }}
+                      alt={media[i].name}
+                      size="small"
+                      centered
+                    />
                   );
                 })}
               </Segment>
@@ -95,4 +99,4 @@ const VideoUpload = ({
   );
 };
 
-export default VideoUpload;
+export default AnimalUpload;
