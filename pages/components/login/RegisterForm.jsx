@@ -50,6 +50,7 @@ const RegisterForm = ({
   const handleSubmit = async (e) => {
     e.preventDefault();
     setFormLoading(true);
+    console.log(media);
 
     let profilePicURL;
 

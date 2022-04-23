@@ -82,7 +82,7 @@ const AnimalUpload = ({
                   return (
                     <Image
                       key={i}
-                      src={mediaPreview[i]}
+                      src={pic}
                       style={{ margin: ".3rem" }}
                       alt={media[i].name}
                       size="small"

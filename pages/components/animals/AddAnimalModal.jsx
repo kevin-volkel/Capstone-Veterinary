@@ -18,6 +18,12 @@ const AddAnimalModal = ({ user, setAnimals }) => {
   const [videoPreview, setVideoPreview] = useState([]);
   const [video, setVideo] = useState([]);
 
+  const defaultAnimalPic =
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7h1BiFC8Ot5v_yD14xO4Bz4vIVZDFChrIkFtN-XxtnMQAn73Srlyv-vznS5pXLGT-ywE&usqp=CAU";
+
+  const defaultVideoPic =
+    "https://media.istockphoto.com/vectors/vector-play-button-icon-vector-id1066846868?k=20&m=1066846868&s=612x612&w=0&h=BikDjIPuOmb08aDFeDiEwDiKosX7EgnvtdQyLUvb3eA=";
+
   const postAxios = axios.create({
     baseURL: `${baseURL}/api/v1/posts`,
     headers: { Authorization: `Bearer ${Cookies.get("token")}` },
@@ -53,7 +59,10 @@ const AddAnimalModal = ({ user, setAnimals }) => {
       if (files.length === 1) {
         let droppedFiles = Object.values(files);
         setMedia((prev) => [...prev, droppedFiles[0]]);
-        setMediaPreview((prev) => [...prev, URL.createObjectURL(droppedFiles[0])]);
+        setMediaPreview((prev) => [
+          ...prev,
+          URL.createObjectURL(droppedFiles[0]),
+        ]);
       } else {
         let droppedFiles = Object.values(files);
         droppedFiles.map((file) => {
@@ -65,7 +74,10 @@ const AddAnimalModal = ({ user, setAnimals }) => {
       if (files.length === 1) {
         let droppedFiles = Object.values(files);
         setVideo((prev) => [...prev, droppedFiles[0]]);
-        setVideoPreview((prev) => [...prev, URL.createObjectURL(droppedFiles[0])]);
+        setVideoPreview((prev) => [
+          ...prev,
+          URL.createObjectURL(droppedFiles[0]),
+        ]);
       } else {
         let droppedFiles = Object.values(files);
         droppedFiles.map((file) => {
@@ -102,7 +114,8 @@ const AddAnimalModal = ({ user, setAnimals }) => {
         animalPicURLs.push(defaultAnimalPic);
       }
 
-      if (media !== null && !profilePicURL) throw new Error("Cloudinary Error Pic");
+      if (media !== null && !profilePicURL)
+        throw new Error("Cloudinary Error Pic");
 
       //VIDEO
       if (video !== null) {
@@ -118,7 +131,8 @@ const AddAnimalModal = ({ user, setAnimals }) => {
         animalVidURLs.push(defaultVideoPic);
       }
 
-      if (video !== null && !profilePicURL) throw new Error("Cloudinary Error Video");
+      if (video !== null && !profilePicURL)
+        throw new Error("Cloudinary Error Video");
 
       const res = await postAxios.post("/api/v1/animal", user, {
         name: newAnimal.name.trim().toLowerCase(),
@@ -166,25 +180,47 @@ const AddAnimalModal = ({ user, setAnimals }) => {
 
   const handleSubmit2 = async (e) => {
     e.preventDefault();
-    // setLoading(true);
+    console.log(media);
+    setLoading(true);
 
     let animalPicURLs = [];
     let animalVidURLs = [];
 
-    try{
-      if(media !== null){
+    try {
+      if (media !== null) {
         const formData = new FormData();
-        formData.append("image", media, {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
+        media.forEach((image) => {
+          formData.append("image", image, {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          });
         });
-        const res = await axios.post('/api/v1/upload', formData);
-        profilePicURL = res.data.src;
-      }else{
-        profilePicURL = defaultProfilePic;
+        // console.log("done");
+
+        const res = await axios.post("/api/v1/upload/images", formData);
+        // console.log(res);
+        animalPicURLs = res.data.sources;
+        // console.log(animalPicURLs);
+      } else {
+        animalPicURLs = [defaultAnimalPic];
+        console.log(animalPicURLs);
       }
-    }catch(err){
+
+      // if (video !== null) {
+      //   const formData = new FormData();
+      //   formData.append("video", video, {
+      //     headers: {
+      //       "Content-Type": "multipart/form-data",
+      //     },
+      //   });
+
+      //   // console.log(formData);
+
+      //   // const res = await axios.post("/api/v1/upload/animal", formData);
+      //   // profilePicURL = res.data.src;
+      // }
+    } catch (err) {
       console.log(err);
       let caughtErr = catchErrors(err);
       setErrorMsg(caughtErr);
@@ -272,7 +308,7 @@ const AddAnimalModal = ({ user, setAnimals }) => {
       <Form
         loading={loading}
         error={errorMsg !== null}
-        // onSubmit={handleSubmit2}
+        onSubmit={handleSubmit2}
         id="add-animal"
         style={{ width: "100%" }}
       >
@@ -420,10 +456,11 @@ const AddAnimalModal = ({ user, setAnimals }) => {
           </div>
           <div style={{ display: "flex", justifyContent: "center" }}>
             <Button
+              disabled={loading}
               id="add-animal-btn"
               content="Done"
               fluid
-              style={{ margin: "1rem 0" }}
+              style={{ margin: "1rem 0", backgroundColor: "orange" }}
             />
           </div>
         </Segment>
