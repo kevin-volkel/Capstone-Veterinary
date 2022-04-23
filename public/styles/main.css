@@ -318,21 +318,6 @@ body {
   align-items: center;
 }
 
-.footer {
-  display: flex;
-  flex: 1;
-  padding: 2rem 0;
-  border-top: 1px solid #eaeaea;
-  justify-content: center;
-  align-items: center;
-}
-.footer a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 1;
-}
-
 .title {
   margin: 0;
   line-height: 1.15;
@@ -727,6 +712,9 @@ div.animal-wrap {
   display: flex;
   box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.4rem;
 }
 
 .page-wrap {
@@ -734,6 +722,91 @@ div.animal-wrap {
   justify-content: center;
 }
 
+.pet-name {
+  margin-top: 5% !important;
+}
+
+.pet-img {
+  width: 70vw;
+  height: 70vw;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.para-desc {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5%;
+  width: 70%;
+  font-size: 1.3rem;
+}
+
+.pet-title {
+  margin-top: 5%;
+}
+
+.pet-description {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 85vw;
+  margin-bottom: 10%;
+}
+.pet-description div {
+  margin-top: 2.5%;
+}
+.pet-description h3 {
+  margin-bottom: 2%;
+  margin-top: 3%;
+  color: #f2711c;
+  font-size: 1.65rem;
+}
+
+@media only screen and (min-width: 1024px) {
+  div.animal-wrap {
+    font-size: 1rem !important;
+    width: 100%;
+  }
+
+  .pet-name {
+    margin-top: 3% !important;
+  }
+
+  .pet-img {
+    width: 40vw;
+    height: 40vw;
+  }
+
+  .para-desc {
+    margin-top: 3%;
+    width: 70%;
+    font-size: 1.3rem;
+  }
+
+  .pet-title {
+    margin-top: 3%;
+  }
+
+  .pet-description {
+    margin-bottom: 7%;
+  }
+  .pet-description h3 {
+    margin-bottom: 1%;
+    margin-top: 2%;
+  }
+  .pet-description .section-1 {
+    display: flex;
+    flex-direction: row;
+  }
+  .pet-description .section-1 div {
+    display: flex;
+    flex-direction: column;
+  }
+}
 .navbar {
   position: relative;
   width: 100%;
@@ -1028,20 +1101,32 @@ div.animal-wrap {
   width: 100%;
 }
 #event-slideshow .text {
-  position: absolute;
+  position: relative;
   height: 100%;
-  top: 0;
+  top: 1;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   z-index: 11;
+  margin-bottom: 1rem;
 }
 #event-slideshow .text .card-title {
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   color: white;
+  margin-bottom: 0.5rem;
+  margin-left: 0.5rem;
+}
+#event-slideshow .text .card-date {
+  font-size: 0.9rem;
+  color: white;
+  margin-bottom: 0.25rem;
+  margin-left: 0.5rem;
 }
 #event-slideshow .text .card-desc {
+  font-size: 1.1rem;
   color: white;
+  margin-bottom: 1rem;
+  margin-left: 0.5rem;
 }
 
 @media only screen and (min-width: 300px) {
@@ -1151,4 +1236,85 @@ div.animal-wrap {
 #add-animal #photo-upload {
   position: relative;
   margin: 1rem 1rem 2rem;
+}
+
+#admin-events {
+  padding: 0;
+  margin: 0;
+}
+#admin-events .events-list {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-direction: column;
+}
+#admin-events .events-list .event-card {
+  min-height: 6rem;
+  display: flex;
+  text-align: left;
+  justify-content: space-between;
+  margin: 0 1rem;
+}
+#admin-events .events-list .event-card:first-of-type {
+  margin-top: 1rem;
+}
+#admin-events .events-list .event-card:last-of-type {
+  margin-bottom: 1rem;
+}
+#admin-events .events-list .event-card .event-title {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+#admin-events .events-list .event-card .event-desc {
+  font-size: 1.1rem;
+}
+#admin-events .events-list .event-card .event-date {
+  font-size: 0.8rem;
+}
+#admin-events .events-list .event-pic {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#admin-events .events-list .event-pic img {
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+#admin-events .events-list .options {
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.footer {
+  display: flex;
+  flex: 1;
+  padding: 1.5rem 0 0;
+  border-top: 1px solid #eaeaea;
+  justify-content: center;
+  align-items: center;
+}
+.footer a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
+@media only screen and (min-width: 768px) {
+  .footer {
+    font-size: 1.15rem;
+    padding: 1.3rem 0 0;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .footer {
+    font-size: 1.15rem;
+    padding: 2.4rem 0 1.1rem;
+  }
 }/*# sourceMappingURL=main.css.map */

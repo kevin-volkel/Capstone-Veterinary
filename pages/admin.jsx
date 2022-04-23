@@ -1,14 +1,15 @@
-import React, { useState } from "react";
-import { destroyCookie, parseCookies } from "nookies";
-import { redirectUser, baseURL } from "./util/auth";
-import axios from "axios";
+import React, { useState } from 'react';
+import { destroyCookie, parseCookies } from 'nookies';
+import { redirectUser, baseURL } from './util/auth';
+import axios from 'axios';
 // import Footer from "./components/layout/Footer";
-import { Header, Segment } from "semantic-ui-react";
-import Animals from "./components/animals/Animals";
-import Events from "./components/events/Events";
+import { Header, Segment } from 'semantic-ui-react';
+import Animals from './components/animals/Animals';
+import Events from './components/events/Events';
+import { sortDates } from './util/dateFuncs';
 
-const admin = ({ user, animals }) => {
-  const [showEvents, setShowEvents] = useState(false);
+const admin = ({ user, animals, events }) => {
+  const [showEvents, setShowEvents] = useState(true);
 
   return (
     <div id="admin">
@@ -16,7 +17,7 @@ const admin = ({ user, animals }) => {
         {!showEvents ? (
           <Header
             as="h1"
-            style={{ color: "#F7931D" }}
+            style={{ color: '#F7931D' }}
             onClick={() => setShowEvents(false)}
           >
             Animals
@@ -30,7 +31,7 @@ const admin = ({ user, animals }) => {
         {showEvents ? (
           <Header
             as="h1"
-            style={{ color: "#F7931D" }}
+            style={{ color: '#F7931D' }}
             onClick={() => setShowEvents(true)}
           >
             Events
@@ -41,10 +42,16 @@ const admin = ({ user, animals }) => {
           </Header>
         )}
       </div>
-      {showEvents && <Events user={user} />}
-      <Segment id="admin-animals">
-        {!showEvents && <Animals isAdmin={true} user={user} animals={animals} />}
-      </Segment>
+      {!showEvents ? (
+        <Segment id="admin-animals">
+          <Animals isAdmin={true} user={user} animals={animals} />
+        </Segment>
+      ) : (
+        <Segment id="admin-events">
+          <Events user={user} events={events}/>
+        </Segment>
+      )}
+
     </div>
   );
 };
@@ -54,8 +61,9 @@ admin.getInitialProps = async ({ ctx }) => {
   try {
     const animalRes = await axios.get(`${baseURL}/api/v1/animal`);
     pageProps.animals = animalRes.data;
-    // const eventsRes = await axios.get(`${baseURL}/api/v1/events`)
-    // pageProps.events = eventsRes.data;
+    const eventsRes = await axios.get(`${baseURL}/api/v1/event`)
+    const sortedEvents = eventsRes.data.sort(sortDates)
+    pageProps.events = sortedEvents;
   } catch (err) {
     console.error(err);
     pageProps.errorLoading = err;
