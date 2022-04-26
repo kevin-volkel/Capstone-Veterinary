@@ -3,6 +3,8 @@ const UserModel = require("../models/UserModel");
 
 //? adds an animal, no params
 const addAnimal = async (req, res) => {
+  console.log(req.user);
+  console.log(req.body);
   const userId = req.user.userId;
 
   if (!userId) return res.status(404).send("no user with that ID");

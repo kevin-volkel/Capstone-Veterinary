@@ -24,10 +24,10 @@ const AddAnimalModal = ({ user, setAnimals }) => {
   const defaultVideoPic =
     "https://media.istockphoto.com/vectors/vector-play-button-icon-vector-id1066846868?k=20&m=1066846868&s=612x612&w=0&h=BikDjIPuOmb08aDFeDiEwDiKosX7EgnvtdQyLUvb3eA=";
 
-  const postAxios = axios.create({
-    baseURL: `${baseURL}/api/v1/posts`,
-    headers: { Authorization: `Bearer ${Cookies.get("token")}` },
-  });
+  // const postAxios = axios.create({
+  //   baseURL: `${baseURL}/api/v1/posts`,
+  //   headers: { Authorization: `Bearer ${Cookies.get("token")}` },
+  // });
 
   const [newAnimal, setNewAnimal] = useState({
     name: "",
@@ -180,13 +180,13 @@ const AddAnimalModal = ({ user, setAnimals }) => {
 
   const handleSubmit2 = async (e) => {
     e.preventDefault();
-    console.log(media);
     setLoading(true);
 
     let animalPicURLs = [];
     let animalVidURLs = [];
 
     try {
+      //IMAGES
       if (media !== null) {
         const formData = new FormData();
         media.forEach((image) => {
@@ -196,30 +196,73 @@ const AddAnimalModal = ({ user, setAnimals }) => {
             },
           });
         });
-        // console.log("done");
-
         const res = await axios.post("/api/v1/upload/images", formData);
-        // console.log(res);
         animalPicURLs = res.data.sources;
-        // console.log(animalPicURLs);
       } else {
         animalPicURLs = [defaultAnimalPic];
-        console.log(animalPicURLs);
       }
+      if (media !== null && !animalPicURLs.length)
+        throw new Error("Cloudinary Pics Error");
 
-      // if (video !== null) {
-      //   const formData = new FormData();
-      //   formData.append("video", video, {
-      //     headers: {
-      //       "Content-Type": "multipart/form-data",
-      //     },
-      //   });
+      //VIDEOS
+      if (video !== null) {
+        const formData = new FormData();
+        video.forEach((vid) => {
+          formData.append("video", vid, {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          });
+        });
+        const res = await axios.post("/api/v1/upload/videos", formData);
+        animalVidURLs = res.data.sources;
+      }
+      if (video !== null && !animalVidURLs.length)
+        throw new Error("Cloudinary Vids Error");
 
-      //   // console.log(formData);
+      const res = await axios.post("/api/v1/animal", {
+        user,
+        name: newAnimal.name.trim().toLowerCase(),
+        age: newAnimal.age,
+        type: newAnimal.type,
+        breed: newAnimal.breed.trim().toLowerCase(),
+        gender: newAnimal.gender,
+        colors: newAnimal.colors.trim().toLowerCase(),
+        needs: newAnimal.needs,
+        specialNeeds: newAnimal.specialNeeds.trim().toLowerCase(),
+        details: newAnimal.details.trim().toLowerCase(),
+        desc: newAnimal.desc.trim().toLowerCase(),
+        vaccs: newAnimal.vaccs,
+        neutered: newAnimal.neutered,
+        picURLs: animalPicURLs,
+        vidURLs: animalVidURLs,
+        location: newAnimal.location
+      }, {
+        headers: {Authorization: `Bearer ${Cookies.get("token")}`}
+      });
 
-      //   // const res = await axios.post("/api/v1/upload/animal", formData);
-      //   // profilePicURL = res.data.src;
-      // }
+      setAnimals((prev) => [res.data, ...prev]);
+
+      console.log(newAnimal);
+
+      setNewAnimal({
+        name: "",
+        location: "northeast",
+        type: "dog",
+        gender: "male",
+        age: "young",
+        breed: "",
+        neutered: false,
+        vaccs: false,
+        colors: "",
+        desc: "",
+        details: "",
+        needs: false,
+        specialNeeds: "",
+        picURLs: [],
+        vidURLs: [],
+      });
+      setLoading(false);
     } catch (err) {
       console.log(err);
       let caughtErr = catchErrors(err);
