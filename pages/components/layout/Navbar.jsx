@@ -15,18 +15,22 @@ const Navbar = ({ user }) => {
   const [showNavbar, setShowNavbar] = useState(false);
 
   useEffect(() => {
-    setShowNavbar(false)
-  }, [router.pathname])
-  
+    setShowNavbar(false);
+  }, [router.pathname]);
 
   return (
     <>
       <div className="navbar">
         <div className="vet-logo">
-          <Image src={vetLogo} objectFit="contain" />
+          <Link href="/">
+            <Image src={vetLogo} objectFit="contain" />
+          </Link>
         </div>
+
         <div className="wm-logo">
-          <Image src={wmLogo} objectFit="contain" />
+          <Link href="/">
+            <Image src={wmLogo} objectFit="contain" />
+          </Link>
         </div>
 
         <Icon
@@ -72,12 +76,12 @@ const Navbar = ({ user }) => {
       {/* </div> */}
 
       <div className="navbar2">
-          <div className="vet-logo">
-            <Image src={vetLogo} objectFit="contain" />
-          </div>
-          <div className="wm-logo">
-            <Image src={wmLogo} objectFit="contain" />
-          </div>
+        <div className="vet-logo">
+          <Image src={vetLogo} objectFit="contain" />
+        </div>
+        <div className="wm-logo">
+          <Image src={wmLogo} objectFit="contain" />
+        </div>
 
         <div className="items">
           <div

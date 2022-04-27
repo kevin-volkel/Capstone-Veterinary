@@ -3,7 +3,6 @@ import { Icon, Image } from 'semantic-ui-react';
 import { convertDate } from '../../util/dateFuncs';
 
 const AdminEvent = ({ event, eventElem }) => {
-
   return (
     <>
       <div className='event-info'>

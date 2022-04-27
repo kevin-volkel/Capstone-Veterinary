@@ -1,23 +1,25 @@
-import axios from "axios";
-import React, { useEffect } from "react";
-import { baseURL } from "./util/auth";
-import { useRouter } from "next/router";
-import Footer from "./components/layout/Footer";
+import axios from 'axios';
+import React, { useEffect } from 'react';
+import { baseURL, redirectUser } from './util/auth';
+import { useRouter } from 'next/router';
+import Footer from './components/layout/Footer';
 // import puppy from '../public/media/puppy.png';
 
-// const Animal = ({ animalObj }) => {
-const Animal = () => {
+const Animal = ({ animalObj, errorLoading }) => {
+  const puppy = './media/puppy.png';
   const router = useRouter();
-  const { animalObj } = router.query;
-  const puppy = "./media/puppy.png";
 
-  //   useEffect(() => {});
+  useEffect(() => {
+    if (errorLoading !== null) {
+      router.push('/');
+    }
+  }, []);
 
   return (
     <div>
       <div className="page-wrap">
         <div className="animal-wrap">
-          <h1 className="pet-name">Animal Name</h1>
+          <h1 className="pet-name">{animalObj.name}</h1>
           <img src={puppy} alt="broken doggy :(" className="pet-img" />
           <div className="para-desc">
             <p>location | user | type | gender | breed</p>
@@ -68,16 +70,18 @@ const Animal = () => {
   );
 };
 
-// Animal.getInitialProps = async (ctx) => {
-//   try {
-//     const { animal } = ctx.query;
-//     const res = await axios.get(`${baseURL}/api/v1/animal/${animal}`);
+Animal.getInitialProps = async (ctx) => {
+  try {
+    const { animal } = ctx.query;
+    const res = await axios.get(`${baseURL}/api/v1/animal/${animal}`);
 
-//     const { animalObj } = res.data;
-//     return { animalObj };
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
+    const animalObj = res.data;
+    console.log(animalObj);
+    return { animalObj, errorLoading: null };
+  } catch (error) {
+    // console.log(error);
+    return { errorLoading: error, animalObj: {} };
+  }
+};
 
 export default Animal;
