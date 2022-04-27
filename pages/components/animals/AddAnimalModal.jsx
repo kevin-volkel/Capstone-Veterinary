@@ -243,8 +243,6 @@ const AddAnimalModal = ({ user, setAnimals }) => {
 
       setAnimals((prev) => [res.data, ...prev]);
 
-      console.log(newAnimal);
-
       setNewAnimal({
         name: "",
         location: "northeast",
