@@ -38,12 +38,14 @@ const authRoute = require('./server/routes/authRoute')
 const animalRoute = require('./server/routes/animalRoute')
 const eventRoute = require('./server/routes/eventRoute');
 const uploadRoute = require('./server/routes/uploadRoutes')
+const emailRoute = require('./server/routes/emailRoutes')
 
 app.use('/api/v1/user', userRoute);
 app.use('/api/v1/auth', authMiddleware, authRoute);
 app.use('/api/v1/animal', animalRoute);
 app.use('/api/v1/event', eventRoute);
 app.use('/api/v1/upload', uploadRoute);
+app.use('/api/v1/email', emailRoute)
 
 connectDB();
 
