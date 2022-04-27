@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { Image } from 'semantic-ui-react';
 import { convertDate } from '../../util/dateFuncs';
 
 const EventCard = ({ event, gradient = true }) => {
+  
+
   return (
     <>
       <Image

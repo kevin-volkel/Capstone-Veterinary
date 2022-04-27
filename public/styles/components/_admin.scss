@@ -168,6 +168,7 @@
 @media only screen and (min-width: 1024px) {
   #admin {
 
+
     h1.ui.header,
     h1.ui.header:first-child,
     h1.ui.header:last-child {
@@ -177,6 +178,8 @@
 
     #admin-animals {
       width: 70%;
+      align-self: center;
+    
 
       .sort-div {
         .ui.selection.dropdown {
@@ -186,5 +189,25 @@
         }
       }
     }
+    #admin-events{
+      width: 70%;
+      align-self: center;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+
+      .event-info{
+        div{
+          margin-bottom: 0.5rem;
+        }
+      }
+      .options {
+        height: 1rem;
+      }
+      .event-list{
+        
+      }
+  }
+
   }
 }

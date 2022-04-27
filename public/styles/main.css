@@ -164,11 +164,25 @@ a {
   }
   #admin #admin-animals {
     width: 70%;
+    align-self: center;
   }
   #admin #admin-animals .sort-div .ui.selection.dropdown {
     width: 13em;
     min-width: 9em;
     font-size: 1.1rem;
+  }
+  #admin #admin-events {
+    width: 70%;
+    align-self: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  #admin #admin-events .event-info div {
+    margin-bottom: 0.5rem;
+  }
+  #admin #admin-events .options {
+    height: 1rem;
   }
 }
 body {
