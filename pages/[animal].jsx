@@ -70,6 +70,7 @@ const Animal = ({ animalObj, errorLoading }) => {
               </div>
             </div>
           </div>
+          <div className="pet-gallery"></div>
         </div>
       </div>
       <Footer />

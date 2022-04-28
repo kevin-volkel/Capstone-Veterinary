@@ -55,3 +55,16 @@
     }
   }
 }
+
+
+@media only screen and (min-width: 768px) {
+  .event-card{
+    line-height: 1.5rem;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .event-info{
+    margin-left: 3%;
+  }
+}

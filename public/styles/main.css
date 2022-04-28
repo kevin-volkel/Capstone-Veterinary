@@ -728,7 +728,7 @@ div.animal-wrap {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
 }
 
 .page-wrap {
@@ -1373,6 +1373,16 @@ div.animal-wrap {
   justify-content: flex-end;
 }
 
+@media only screen and (min-width: 768px) {
+  .event-card {
+    line-height: 1.5rem;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .event-info {
+    margin-left: 3%;
+  }
+}
 .footer {
   display: flex;
   flex: 1;
