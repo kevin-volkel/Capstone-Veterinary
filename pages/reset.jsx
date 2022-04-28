@@ -1,38 +1,163 @@
 import axios from 'axios';
-import React, { useState } from 'react';
-import { Button, Form, Segment } from 'semantic-ui-react';
+import { useRouter } from 'next/router';
+import React, { useState, useEffect } from 'react';
+import { Button, Form, Message, Segment } from 'semantic-ui-react';
+import catchErrors from './util/catchErrors';
 import { resetPassword } from './util/email';
-import { emailReg } from './util/regi'
+import { emailReg } from './util/regi';
 
 const reset = () => {
   const [email, setEmail] = useState('');
-  const [valid, setValid] = useState(false)
+  const [errorMsg, setErrorMsg] = useState(null);
+  const [step, setStep] = useState(1)
+  const [codeInput, setCodeInput] = useState(12345);
+  const [trueCode, setTrueCode] = useState(null)
+  const [wrongCounter, setWrongCounter] = useState(0)
+  const [newPassword, setNewPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
+  const router = useRouter()
 
-  const handleSubmit = async () => {
-    axios.post('/api/v1/email', {
-      email: 'kvolke272@west-mec.org',
-      code: '134fd23',
-    });
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    try {
+      const code = Math.floor(Math.random() * 89999) + 10000;
+      await axios.post('/api/v1/email', {
+        email: email,
+        code: code,
+      });
+      setTrueCode(code)
+      setStep(2);
+    } catch (err) {
+      console.log(err);
+      const caughtError = catchErrors(err);
+      setErrorMsg(caughtError);
+    }
   };
 
-  const handleChange = (e) => {
-    setEmail(e.target.value);
-    if(emailReg.match(emailReg)) return setValid(true)
-    return setValid(false)
+  const handleCodeSubmit = async (e) => {
+    e.preventDefault();
+
+    if(+codeInput !== trueCode) {
+      setWrongCounter(prev => prev + 1)
+      setErrorMsg('Wrong Code')
+      return false;
+    }
+
+    if(wrongCounter >= 3) {
+      setStep(1)
+      setErrorMsg('Too many attempts. Try again later')
+      setEmail('')
+      setCodeInput(12345)
+      return false;
+    }
+
+    setStep(3);
+    return true;
   }
+  
+
+  const changePassword = async (e) => {
+    e.preventDefault();
+
+    try {
+      if(newPassword !== confirmPassword) {
+        setErrorMsg('Passwords do not match')
+        return false;
+      }
+
+      const res = await axios.patch('/api/v1/user', {
+        email,
+        newPassword
+      })
+
+      router.push('/')
+
+    } catch (err) {
+      console.log(err)
+      const caughtError = catchErrors(err)
+      setErrorMsg(caughtError)
+    }
+  }
+
+  useEffect( () => {
+    if(errorMsg !== null) {
+      setTimeout( () => {
+        setErrorMsg(null)
+      }, 5000)
+    }
+  }, [errorMsg])
 
   return (
     <div className="form-wrap">
-      <Form id="resetPassword" onSubmit={handleSubmit} disabled={!valid}>
+      <Form
+        id="resetPassword"
+        onSubmit={step === 1 ? handleSubmit : step === 2 ? handleCodeSubmit : changePassword}
+        error={errorMsg !== null}
+      >
+        <Message
+          error
+          content={errorMsg}
+          header="Oops!"
+          onDismiss={() => setErrorMsg(null)}
+        />
         <Segment>
           <h1 className="reset-password">Reset Password</h1>
-          <Form.Input
-            type="email"
-            value={email}
-            placeholder="Email"
-            onChange={handleChange}
-          />
-          <Button content="Click to enter password" type="submit" disabled={!valid} color={valid ? 'green' : 'white'}/>
+          {step === 1 ? (
+            <>
+              <Form.Input
+                type="email"
+                value={email}
+                placeholder="Email"
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <Button
+                content="Click to reset password"
+                type="submit"
+                className="reset-btn"
+                color="orange"
+              />
+            </>
+          ) : step === 2 ? (
+            <>
+              <Form.Input
+                type="number"
+                value={codeInput}
+                placeholder="12345"
+                onChange={(e) => setCodeInput(e.target.value)}
+                min='10000'
+                max='99999'
+              />
+              <Button
+                content="Click to reset password"
+                type="submit"
+                className="reset-btn"
+                color="orange"
+              />
+              <div className="back-to-email" onClick={() => setStep(1)}>
+                Email not recieved?
+              </div>
+            </>
+          ) : <>
+            <Form.Input 
+              label="New Password"
+              type="password"
+              value={newPassword}
+              onChange={(e) => setNewPassword(e.target.value)}
+            />
+            <Form.Input 
+              label="Confirm New Password"
+              type="password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+            />
+            <Button 
+              content="Confirm Password"
+              type="submit"
+              className="reset-btn"
+              color="orange"
+            />
+          </>}
         </Segment>
       </Form>
     </div>

@@ -24,11 +24,14 @@ MyApp.getInitialProps = async ({ ctx, Component }) => {
   }
 
   const protectedRoutes = ['/admin'];
+  const unprotectedRoutes = ['/login', '/reset']
 
   const isProtectedRoute = protectedRoutes.includes(ctx.pathname);
 
   if (!token) {
     isProtectedRoute && redirectUser(ctx, '/login');
+  } else if (unprotectedRoutes.includes(ctx.pathname)) {
+    redirectUser(ctx, '/')
   } else {
     if (Component.getInitialProps) {
       pageProps = await Component.getInitialProps(ctx);
