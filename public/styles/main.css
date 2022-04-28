@@ -106,7 +106,8 @@ a {
 #admin-animals .ui.grid .ui.card img {
   width: 100%;
   height: 150px;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 #admin-animals .ui.grid .ui.card .animal-header {
   font-size: 2rem;
@@ -251,7 +252,8 @@ body {
 #adoption .grid .ui.card img {
   width: 100%;
   height: 150px;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 #adoption .grid .ui.card .animal-header {
   font-size: 2rem;
@@ -375,7 +377,8 @@ body {
 
 .img-container {
   margin: 0;
-  object-fit: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
   overflow: hidden;
   margin: auto;
   display: flex;
@@ -426,13 +429,15 @@ body {
 .img-btn-left {
   left: 0;
   margin-left: 5rem !important;
-  clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
+  -webkit-clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
+          clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
 }
 
 .img-btn-right {
   right: 0;
   margin-right: 5rem !important;
-  clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
+  -webkit-clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
+          clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
 }
 
 .arrow {
@@ -561,11 +566,7 @@ body {
 }
 /* LOGIN & REGISTER FORM CSS */
 .form-wrap {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
   justify-content: center;
 }
 
@@ -632,8 +633,6 @@ body {
 form#register {
     display: flex;
     flex-direction: column;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
     justify-content: center;
   }
 }
@@ -744,7 +743,8 @@ div.animal-wrap {
 .pet-img {
   width: 70vw;
   height: 70vw;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .para-desc {
@@ -771,13 +771,17 @@ div.animal-wrap {
   margin-bottom: 10%;
 }
 .pet-description div {
-  margin-top: 2.5%;
+  margin: 0 2.5% 0% 3%;
 }
 .pet-description h3 {
   margin-bottom: 2%;
+  margin-bottom: 0 !important;
   margin-top: 3%;
   color: #f2711c;
   font-size: 1.65rem;
+}
+.pet-description p {
+  margin-bottom: 7%;
 }
 
 @media only screen and (min-width: 1024px) {
@@ -798,7 +802,7 @@ div.animal-wrap {
   .para-desc {
     margin-top: 3%;
     width: 70%;
-    font-size: 1.3rem;
+    font-size: 1rem;
   }
 
   .pet-title {
@@ -814,11 +818,33 @@ div.animal-wrap {
   }
   .pet-description .section-1 {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    width: 90%;
   }
   .pet-description .section-1 div {
     display: flex;
     flex-direction: column;
+    width: 100%;
+  }
+  .pet-description .section-2 {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+  .pet-description .section-2 div {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+  }
+  .pet-description .section-3 {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+  .pet-description .section-3 div {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
   }
 }
 .form-wrap #resetPassword {
@@ -1005,14 +1031,19 @@ div.animal-wrap {
 }
 #event-slideshow .embla_viewport.is-draggable {
   cursor: move;
+  cursor: -webkit-grab;
   cursor: grab;
 }
 #event-slideshow .embla_viewport.is-dragging {
+  cursor: -webkit-grabbing;
   cursor: grabbing;
 }
 #event-slideshow .embla_container {
   display: flex;
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   -webkit-touch-callout: none;
   -khtml-user-select: none;
   -webkit-tap-highlight-color: transparent;
@@ -1236,7 +1267,8 @@ div.animal-wrap {
   height: 70px;
 }
 #photo-upload img {
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   width: 70px;
   height: 70px;
 }
@@ -1299,7 +1331,8 @@ div.animal-wrap {
 }
 #admin-events .events-list .event-pic img {
   height: 100%;
-  object-fit: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 #admin-events .events-list .options {
   width: 30px;
