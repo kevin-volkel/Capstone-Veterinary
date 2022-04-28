@@ -771,13 +771,17 @@ div.animal-wrap {
   margin-bottom: 10%;
 }
 .pet-description div {
-  margin-top: 2.5%;
+  margin: 0 2.5% 0% 3%;
 }
 .pet-description h3 {
   margin-bottom: 2%;
+  margin-bottom: 0 !important;
   margin-top: 3%;
   color: #f2711c;
   font-size: 1.65rem;
+}
+.pet-description p {
+  margin-bottom: 7%;
 }
 
 @media only screen and (min-width: 1024px) {
@@ -798,7 +802,7 @@ div.animal-wrap {
   .para-desc {
     margin-top: 3%;
     width: 70%;
-    font-size: 1.3rem;
+    font-size: 1rem;
   }
 
   .pet-title {
@@ -814,11 +818,33 @@ div.animal-wrap {
   }
   .pet-description .section-1 {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    width: 90%;
   }
   .pet-description .section-1 div {
     display: flex;
     flex-direction: column;
+    width: 100%;
+  }
+  .pet-description .section-2 {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+  .pet-description .section-2 div {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+  }
+  .pet-description .section-3 {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+  .pet-description .section-3 div {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
   }
 }
 .form-wrap #resetPassword {

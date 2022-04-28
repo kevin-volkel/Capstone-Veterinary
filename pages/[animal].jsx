@@ -1,17 +1,17 @@
-import axios from 'axios';
-import React, { useEffect } from 'react';
-import { baseURL, redirectUser } from './util/auth';
-import { useRouter } from 'next/router';
-import Footer from './components/layout/Footer';
+import axios from "axios";
+import React, { useEffect } from "react";
+import { baseURL, redirectUser } from "./util/auth";
+import { useRouter } from "next/router";
+import Footer from "./components/layout/Footer";
 // import puppy from '../public/media/puppy.png';
 
 const Animal = ({ animalObj, errorLoading }) => {
-  const puppy = './media/puppy.png';
+  const puppy = "./media/puppy.png";
   const router = useRouter();
 
   useEffect(() => {
     if (errorLoading !== null) {
-      router.push('/');
+      router.push("/");
     }
   }, []);
 
@@ -31,6 +31,9 @@ const Animal = ({ animalObj, errorLoading }) => {
                 <h3>Description</h3>
                 <p>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Quibusdam enim laboriosam ad velit deleniti inventore! Cumque
+                  necessitatibus enim ipsum assumenda mollitia. Totam modi id
+                  laudantium mollitia quisquam nulla? Atque, autem.
                   Quibusdam enim laboriosam ad velit deleniti inventore! Cumque
                   necessitatibus enim ipsum assumenda mollitia. Totam modi id
                   laudantium mollitia quisquam nulla? Atque, autem.
@@ -57,10 +60,14 @@ const Animal = ({ animalObj, errorLoading }) => {
               </div>
             </div>
             <div className="section-3">
+            <div>
               <h3>Neutered or Spayed?</h3>
               <p>no.</p>
-              <h3>Special Needs?</h3>
-              <p>yes! requires your cheddar cheese</p>
+              </div>
+              <div>
+                <h3>Special Needs?</h3>
+                <p>yes! requires your cheddar cheese</p>
+              </div>
             </div>
           </div>
         </div>
