@@ -132,7 +132,7 @@ const Animals = ({ animals, isAdmin, user }) => {
           onClose={() => setShowModal(false)}
         >
           <Modal.Content>
-            <AddAnimalModal user={user} setAnimals={setFilteredAnimals} />
+            <AddAnimalModal user={user} setAnimals={setFilteredAnimals} setShowModal={setShowModal} />
           </Modal.Content>
         </Modal>
       )}

@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { Form, Segment, Button, Message, Divider } from "semantic-ui-react";
+import {
+  Form,
+  Segment,
+  Button,
+  Message,
+  Divider,
+  Header,
+} from "semantic-ui-react";
 import { setToken } from "../../util/auth";
 import axios from "axios";
 import catchErrors from "../../util/catchErrors";
@@ -8,7 +15,7 @@ import { baseURL } from "../../util/auth";
 import VideoUpload from "../layout/VideoUpload";
 import AnimalUpload from "../layout/AnimalUpload";
 
-const AddAnimalModal = ({ user, setAnimals }) => {
+const AddAnimalModal = ({ user, setAnimals, setShowModal }) => {
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState(null);
 
@@ -70,6 +77,7 @@ const AddAnimalModal = ({ user, setAnimals }) => {
           setMediaPreview((prev) => [...prev, URL.createObjectURL(file)]);
         });
       }
+      // console.log(media);
     } else if (name === "video" && files.length) {
       if (files.length === 1) {
         let droppedFiles = Object.values(files);
@@ -101,93 +109,8 @@ const AddAnimalModal = ({ user, setAnimals }) => {
     let animalVidURLs = [];
 
     try {
-      if (media !== null) {
-        const formData = new FormData();
-        formData.append("image", media, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        });
-        const res = await axios.post("/api/v1/upload", formData);
-        animalPicURLs.push(res.data.src);
-      } else {
-        animalPicURLs.push(defaultAnimalPic);
-      }
-
-      if (media !== null && !profilePicURL)
-        throw new Error("Cloudinary Error Pic");
-
-      //VIDEO
-      if (video !== null) {
-        const formData = new FormData();
-        formData.append("video", video, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        });
-        const res = await axios.post("/api/v1/upload", formData);
-        animalVidURLs.push(res.data.src);
-      } else {
-        animalVidURLs.push(defaultVideoPic);
-      }
-
-      if (video !== null && !profilePicURL)
-        throw new Error("Cloudinary Error Video");
-
-      const res = await postAxios.post("/api/v1/animal", user, {
-        name: newAnimal.name.trim().toLowerCase(),
-        age: newAnimal.age,
-        type: newAnimal.type,
-        breed: newAnimal.breed.trim().toLowerCase(),
-        gender: newAnimal.gender,
-        colors: newAnimal.colors.trim().toLowerCase(),
-        needs: newAnimal.needs,
-        details: newAnimal.details,
-        desc: newAnimal.desc,
-        vaccs: newAnimal.vaccs,
-        neutered: newAnimal.neutered,
-        picURLs: animalPicURLs,
-        vidURLs: animalVidURLs,
-        location: newAnimal.location,
-      });
-      setAnimals((prev) => [res.data, ...prev]);
-      setNewAnimal({
-        name: "",
-        location: "northeast",
-        type: "dog",
-        gender: "male",
-        age: "young",
-        breed: "",
-        neutered: false,
-        vaccs: false,
-        colors: "",
-        desc: "",
-        details: "",
-        needs: false,
-        specialNeeds: "",
-        picURLs: [],
-        vidURLs: [],
-      });
-      setLoading(false);
-    } catch (err) {
-      console.log(err);
-      let caughtErr = catchErrors(err);
-      setErrorMsg(caughtErr);
-    }
-
-    setLoading(false);
-  };
-
-  const handleSubmit2 = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-
-    let animalPicURLs = [];
-    let animalVidURLs = [];
-
-    try {
       //IMAGES
-      if (media !== null) {
+      if (media.length !== 0) {
         const formData = new FormData();
         media.forEach((image) => {
           formData.append("image", image, {
@@ -201,11 +124,11 @@ const AddAnimalModal = ({ user, setAnimals }) => {
       } else {
         animalPicURLs = [defaultAnimalPic];
       }
-      if (media !== null && !animalPicURLs.length)
-        throw new Error("Cloudinary Pics Error");
+      if (media.length !== 0 && !animalPicURLs.length)
+        throw new Error("Error while uploading image(s).");
 
       //VIDEOS
-      if (video !== null) {
+      if (video.length !== 0) {
         const formData = new FormData();
         video.forEach((vid) => {
           formData.append("video", vid, {
@@ -217,29 +140,33 @@ const AddAnimalModal = ({ user, setAnimals }) => {
         const res = await axios.post("/api/v1/upload/videos", formData);
         animalVidURLs = res.data.sources;
       }
-      if (video !== null && !animalVidURLs.length)
-        throw new Error("Cloudinary Vids Error");
+      if (video.length !== 0 && !animalVidURLs.length)
+        throw new Error("Error while uploading video(s)");
 
-      const res = await axios.post("/api/v1/animal", {
-        user,
-        name: newAnimal.name.trim().toLowerCase(),
-        age: newAnimal.age,
-        type: newAnimal.type,
-        breed: newAnimal.breed.trim().toLowerCase(),
-        gender: newAnimal.gender,
-        colors: newAnimal.colors.trim().toLowerCase(),
-        needs: newAnimal.needs,
-        specialNeeds: newAnimal.specialNeeds.trim().toLowerCase(),
-        details: newAnimal.details.trim().toLowerCase(),
-        desc: newAnimal.desc.trim().toLowerCase(),
-        vaccs: newAnimal.vaccs,
-        neutered: newAnimal.neutered,
-        picURLs: animalPicURLs,
-        vidURLs: animalVidURLs,
-        location: newAnimal.location
-      }, {
-        headers: {Authorization: `Bearer ${Cookies.get("token")}`}
-      });
+      const res = await axios.post(
+        "/api/v1/animal",
+        {
+          user,
+          name: newAnimal.name.trim().toLowerCase(),
+          age: newAnimal.age,
+          type: newAnimal.type,
+          breed: newAnimal.breed.trim().toLowerCase(),
+          gender: newAnimal.gender,
+          colors: newAnimal.colors.trim().toLowerCase(),
+          needs: newAnimal.needs,
+          specialNeeds: newAnimal.specialNeeds.trim().toLowerCase(),
+          details: newAnimal.details.trim().toLowerCase(),
+          desc: newAnimal.desc.trim().toLowerCase(),
+          vaccs: newAnimal.vaccs,
+          neutered: newAnimal.neutered,
+          picURLs: animalPicURLs,
+          vidURLs: animalVidURLs,
+          location: newAnimal.location,
+        },
+        {
+          headers: { Authorization: `Bearer ${Cookies.get("token")}` },
+        }
+      );
 
       setAnimals((prev) => [res.data, ...prev]);
 
@@ -260,7 +187,13 @@ const AddAnimalModal = ({ user, setAnimals }) => {
         picURLs: [],
         vidURLs: [],
       });
+
+      setMedia([]);
+      setVideo([]);
+      setVideoPreview([]);
+      setMediaPreview([]);
       setLoading(false);
+      setShowModal(false);
     } catch (err) {
       console.log(err);
       let caughtErr = catchErrors(err);
@@ -345,11 +278,12 @@ const AddAnimalModal = ({ user, setAnimals }) => {
   ];
 
   return (
-    <div className="form-wrap">
+    <div className="form-wrap" style={{flexDirection: "column"}}>
+      {loading && <Message success content="This may take a few moments." />}
       <Form
         loading={loading}
         error={errorMsg !== null}
-        onSubmit={handleSubmit2}
+        onSubmit={handleSubmit}
         id="add-animal"
         style={{ width: "100%" }}
       >

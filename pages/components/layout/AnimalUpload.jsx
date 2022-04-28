@@ -57,6 +57,7 @@ const AnimalUpload = ({
                   ]);
                 });
               }
+              // console.log(media);
             }}
           >
             {!mediaPreview.length ? (
@@ -83,9 +84,8 @@ const AnimalUpload = ({
                     <Image
                       key={i}
                       src={pic}
-                      style={{ margin: ".3rem" }}
-                      alt={media[i].name}
-                      size="small"
+                      style={{ margin: ".3rem", width: "180px", objectFit: "scale-down" }}
+                      alt={media.length ? media[i].name : "image"}
                       centered
                     />
                   );

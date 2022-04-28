@@ -9,7 +9,7 @@ import Events from './components/events/Events';
 import { sortDates } from './util/dateFuncs';
 
 const admin = ({ user, animals, events }) => {
-  const [showEvents, setShowEvents] = useState(true);
+  const [showEvents, setShowEvents] = useState(false);
 
   return (
     <div id="admin">
