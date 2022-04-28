@@ -80,7 +80,7 @@ const VideoUpload = ({
               >
                 {videoPreview.map((video, i) => {
                   return (
-                    <video key={i} style={{ maxWidth: "100px" }}>
+                    <video key={i} style={{ maxWidth: "180px", objectFit: "scale-down" }}>
                       <source src={videoPreview[i]} />
                       Your browser does not support the video tag.
                     </video>
