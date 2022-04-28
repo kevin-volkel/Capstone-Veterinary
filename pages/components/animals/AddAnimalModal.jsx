@@ -278,167 +278,144 @@ const AddAnimalModal = ({ user, setAnimals, setShowModal }) => {
   ];
 
   return (
-    <div className="form-wrap" style={{flexDirection: "column"}}>
-      {loading && <Message success content="This may take a few moments." />}
-      <Form
-        loading={loading}
-        error={errorMsg !== null}
-        onSubmit={handleSubmit}
-        id="add-animal"
-        style={{ width: "100%" }}
-      >
+    <div className="form-wrap">
+      <Form loading={loading} error={errorMsg !== null} onSubmit={handleSubmit}>
         <Message
           error
           header="Oops!"
           content={errorMsg}
           onDismiss={() => setErrorMsg(null)}
         />
-        <Segment>
-          <div>
-            <h1>Add Animal</h1>
-          </div>
-          <div
-            className="uploads"
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "space-between",
-              margin: "1rem 0",
-            }}
-          >
-            <AnimalUpload
-              handleChange={handleChange}
-              media={media}
-              mediaPreview={mediaPreview}
-              setMediaPreview={setMediaPreview}
-              setMedia={setMedia}
-            />
-            <VideoUpload
-              handleChange={handleChange}
-              videoPreview={videoPreview}
-              setVideoPreview={setVideoPreview}
-              setVideo={setVideo}
-              video={video}
-            />
-          </div>
-          <div id="form-group">
-            <Form.Input
-              label="Name"
-              required
-              placeholder="Name"
-              value={newAnimal.name}
-              name="name"
-              onChange={handleChange}
-              type="text"
-            />
-            <Form.Select
-              required
-              options={locationOptions}
-              value={newAnimal.location}
-              name="location"
-              onChange={handleChange}
-              label="Location"
-            />
-            <Form.Select
-              required
-              options={typeOptions}
-              value={newAnimal.type}
-              onChange={handleChange}
-              name="type"
-              label="Type"
-            />
-            <Form.Select
-              required
-              options={genderOptions}
-              value={newAnimal.gender}
-              onChange={handleChange}
-              name="gender"
-              label="Gender"
-            />
-            <Form.Select
-              required
-              options={ageOptions}
-              value={newAnimal.age}
-              onChange={handleChange}
-              name="age"
-              label="Age"
-            />
-            <Form.Input
-              label="Breed"
-              placeholder="Breed"
-              value={newAnimal.breed}
-              name="breed"
-              onChange={handleChange}
-              type="text"
-            />
-            <Form.Select
-              required
-              options={booleanOptions}
-              value={newAnimal.neutered}
-              onChange={handleChange}
-              name="neutered"
-              label="Neutured?"
-            />
-            <Form.Select
-              required
-              options={booleanOptions}
-              value={newAnimal.vaccs}
-              onChange={handleChange}
-              name="vaccs"
-              label="Vaccinations Up to Date?"
-            />
-            <Form.Input
-              label="Colors"
-              placeholder="Colors"
-              value={newAnimal.colors}
-              name="colors"
-              onChange={handleChange}
-              type="text"
-            />
+        <div>
+          <h1>Add Animal</h1>
+        </div>
+        <div className="uploads">
+          <AnimalUpload
+            handleChange={handleChange}
+            media={media}
+            mediaPreview={mediaPreview}
+            setMediaPreview={setMediaPreview}
+            setMedia={setMedia}
+          />
+          <VideoUpload
+            handleChange={handleChange}
+            videoPreview={videoPreview}
+            setVideoPreview={setVideoPreview}
+            setVideo={setVideo}
+            video={video}
+          />
+        </div>
+        <div id="form-group">
+          <Form.Input
+            label="Name"
+            required
+            placeholder="Name"
+            value={newAnimal.name}
+            name="name"
+            onChange={handleChange}
+            type="text"
+          />
+          <Form.Select
+            required
+            options={locationOptions}
+            value={newAnimal.location}
+            name="location"
+            onChange={handleChange}
+            label="Location"
+          />
+          <Form.Select
+            required
+            options={typeOptions}
+            value={newAnimal.type}
+            onChange={handleChange}
+            name="type"
+            label="Type"
+          />
+          <Form.Select
+            required
+            options={genderOptions}
+            value={newAnimal.gender}
+            onChange={handleChange}
+            name="gender"
+            label="Gender"
+          />
+          <Form.Select
+            required
+            options={ageOptions}
+            value={newAnimal.age}
+            onChange={handleChange}
+            name="age"
+            label="Age"
+          />
+          <Form.Input
+            label="Breed"
+            placeholder="Breed"
+            value={newAnimal.breed}
+            name="breed"
+            onChange={handleChange}
+            type="text"
+          />
+          <Form.Select
+            required
+            options={booleanOptions}
+            value={newAnimal.neutered}
+            onChange={handleChange}
+            name="neutered"
+            label="Neutured?"
+          />
+          <Form.Select
+            required
+            options={booleanOptions}
+            value={newAnimal.vaccs}
+            onChange={handleChange}
+            name="vaccs"
+            label="Vaccinations Up to Date?"
+          />
+          <Form.Input
+            label="Colors"
+            placeholder="Colors"
+            value={newAnimal.colors}
+            name="colors"
+            onChange={handleChange}
+            type="text"
+          />
+          <Form.TextArea
+            label="Description"
+            placeholder="Add a short description of the animal..."
+            value={newAnimal.desc}
+            name="desc"
+            onChange={handleChange}
+            type="text"
+          />
+          <Form.TextArea
+            label="Details"
+            placeholder="List some of the animal's characteristics..."
+            value={newAnimal.details}
+            name="details"
+            onChange={handleChange}
+            type="text"
+          />
+          <Form.Select
+            required
+            options={booleanOptions}
+            value={newAnimal.needs}
+            onChange={handleChange}
+            name="needs"
+            label="Any Special Needs?"
+          />
+          {newAnimal.needs && (
             <Form.TextArea
-              label="Description"
-              placeholder="Add a short description of the animal..."
-              value={newAnimal.desc}
-              name="desc"
+              placeholder="Special Needs..."
+              value={newAnimal.specialNeeds}
+              name="specialNeeds"
               onChange={handleChange}
               type="text"
             />
-            <Form.TextArea
-              label="Details"
-              placeholder="List some of the animal's characteristics..."
-              value={newAnimal.details}
-              name="details"
-              onChange={handleChange}
-              type="text"
-            />
-            <Form.Select
-              required
-              options={booleanOptions}
-              value={newAnimal.needs}
-              onChange={handleChange}
-              name="needs"
-              label="Any Special Needs?"
-            />
-            {newAnimal.needs && (
-              <Form.TextArea
-                placeholder="Special Needs..."
-                value={newAnimal.specialNeeds}
-                name="specialNeeds"
-                onChange={handleChange}
-                type="text"
-              />
-            )}
-          </div>
-          <div style={{ display: "flex", justifyContent: "center" }}>
-            <Button
-              disabled={loading}
-              id="add-animal-btn"
-              content="Done"
-              fluid
-              style={{ margin: "1rem 0", backgroundColor: "orange" }}
-            />
-          </div>
-        </Segment>
+          )}
+        </div>
+        <div className="button-div">
+          <Button disabled={loading} id="add-animal-btn" content="Done" fluid />
+        </div>
       </Form>
     </div>
   );

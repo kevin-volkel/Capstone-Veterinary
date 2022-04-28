@@ -1,15 +1,16 @@
 const nodemailer = require('nodemailer');
 const UserModel = require('../models/UserModel')
-require('dotenv').config();
+const emailReg = /^[a-z0-9](\.?[a-z0-9]){3,}@west-mec\.(edu|org)$/gi
 
+require('dotenv').config();
 
 const resetPassword = async (req, res) => {
   try {
     const {email, code} = req.body;
 
+    const user = await UserModel.findOne({email: email.toLowerCase()});
+    if(!user) return res.status(400).send('No user found with that email')
 
-    
-  
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
@@ -34,6 +35,7 @@ const resetPassword = async (req, res) => {
         }
       }
     );
+    console.log('EMAIL SENT')
     res.status(200).send('Email sent')
   } catch (err) {
     console.log(err)

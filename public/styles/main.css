@@ -847,6 +847,38 @@ div.animal-wrap {
     width: 50%;
   }
 }
+#add-animal i.close {
+  font-size: 1.8rem;
+}
+#add-animal .form-wrap {
+  flex-direction: column;
+}
+#add-animal .form {
+  width: 100%;
+  padding: 0.5rem;
+}
+#add-animal h1 {
+  color: #F7931D;
+}
+#add-animal .uploads {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 1rem 0;
+}
+#add-animal .field {
+  font-size: 1.1rem;
+}
+#add-animal .button-div {
+  display: flex;
+  justify-content: center;
+}
+#add-animal .button-div .button {
+  margin: 1rem 0;
+  background-color: orange;
+  font-size: 1.2rem;
+}
+
 .form-wrap #resetPassword {
   margin-top: 1.5rem;
 }
@@ -854,6 +886,12 @@ div.animal-wrap {
 .reset-password {
   font-size: 1.5rem;
   text-align: center;
+}
+
+.back-to-email {
+  margin-top: 5px;
+  text-align: center;
+  cursor: pointer;
 }
 
 .navbar {

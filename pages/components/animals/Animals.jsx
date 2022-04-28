@@ -126,6 +126,7 @@ const Animals = ({ animals, isAdmin, user }) => {
 
       {showModal && (
         <Modal
+          id='add-animal'
           open={showModal}
           closeIcon
           closeOnDimmerClick
