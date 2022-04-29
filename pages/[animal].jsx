@@ -4,7 +4,7 @@ import { baseURL, redirectUser } from "./util/auth";
 import { useRouter } from "next/router";
 import Footer from "./components/layout/Footer";
 // import puppy from '../public/media/puppy.png';
-import { Icon, Image, Button } from "semantic-ui-react";
+import { Icon, Image, Button, Grid } from "semantic-ui-react";
 
 const Animal = ({ user, animalObj, errorLoading }) => {
   // const puppy = "./media/puppy.png";
@@ -41,8 +41,19 @@ const Animal = ({ user, animalObj, errorLoading }) => {
             )}
             {user && (
               <div id="">
-                <Icon size="large" circular name="pencil alternate" style={{ cursor: "pointer" }} />
-                <Icon size="large" circular color="red" name="trash alternate" style={{ cursor: "pointer" }} />
+                <Icon
+                  size="large"
+                  circular
+                  name="pencil alternate"
+                  style={{ cursor: "pointer" }}
+                />
+                <Icon
+                  size="large"
+                  circular
+                  color="red"
+                  name="trash alternate"
+                  style={{ cursor: "pointer" }}
+                />
               </div>
             )}
           </div>
@@ -101,8 +112,9 @@ const Animal = ({ user, animalObj, errorLoading }) => {
               )}
             </div>
           </div>
+          
           {animalObj.picURLs.length && (
-            <div className="pet-gallery" style={{ display: "flex" }}>
+            <Grid className="pet-gallery" style={{ display: "flex" }}>
               {animalObj.picURLs.map((pic, index) => {
                 return (
                   <Image
@@ -111,11 +123,10 @@ const Animal = ({ user, animalObj, errorLoading }) => {
                   />
                 );
               })}
-            </div>
+            </Grid>
           )}
         </div>
       </div>
-      <Footer />
     </div>
   );
 };
