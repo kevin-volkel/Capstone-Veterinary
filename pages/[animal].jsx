@@ -41,9 +41,9 @@ const Animal = ({ user, animalObj, errorLoading }) => {
               </div>
             )}
             {user && (
-              <div id="">
-                <Icon circular inverted name="pencil alternate" style={{ cursor: "pointer" }} />
-                <Icon circular inverted color="red" name="trash alternate" style={{ cursor: "pointer" }} />
+              <div class="editing-icons">
+                <Icon circular id="edit-1" inverted name="pencil alternate" style={{ cursor: "pointer" }} />
+                <Icon circular id="edit-2" inverted color="red" name="trash alternate" style={{ cursor: "pointer" }} />
               </div>
             )}
           </div>

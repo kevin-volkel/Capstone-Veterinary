@@ -765,6 +765,13 @@ div.animal-wrap {
   justify-content: space-between;
   margin: 1rem 0 0;
 }
+.top-btns #edit-1 {
+  width: 2rem !important;
+}
+.top-btns #edit-2 {
+  width: 2.5rem;
+  margin-left: 1.25rem !important;
+}
 
 .page-wrap {
   display: flex;

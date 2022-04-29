@@ -18,6 +18,13 @@ div.animal-wrap {
   align-items: center;
   justify-content: space-between;
   margin: 1rem 0 0;
+  #edit-1{
+    width: 2rem !important;
+  }
+  #edit-2{
+    width: 2.5rem;
+    margin-left: 1.25rem !important;
+  }
 }
 
 .page-wrap {
