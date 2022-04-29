@@ -1,13 +1,17 @@
 import axios from "axios";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { baseURL, redirectUser } from "./util/auth";
 import { useRouter } from "next/router";
 // import puppy from '../public/media/puppy.png';
-import { Icon, Image, Button } from "semantic-ui-react";
+import { Icon, Image, Button, Modal, ModalContent } from "semantic-ui-react";
+import ImageModal from "./components/layout/ImageModal";
 
 const Animal = ({ user, animalObj, errorLoading }) => {
   // const puppy = "./media/puppy.png";
   const router = useRouter();
+
+  const [showModal, setShowModal] = useState(false);
+  const [showImage, setShowImage] = useState(null);
 
   useEffect(() => {
     if (errorLoading !== null) {
@@ -17,6 +21,19 @@ const Animal = ({ user, animalObj, errorLoading }) => {
 
   return (
     <div>
+      {showModal && (
+        <Modal
+          open={showModal}
+          closeIcon
+          closeOnDimmerClick
+          onClose={() => setShowModal(false)}
+          style={{ marginTop: "2.2rem" }}
+        >
+          <Modal.Content>
+            <ImageModal image={animalObj.picURLs[showImage]} />
+          </Modal.Content>
+        </Modal>
+      )}
       <div className="page-wrap">
         <div className="animal-wrap">
           <div
@@ -42,8 +59,19 @@ const Animal = ({ user, animalObj, errorLoading }) => {
             )}
             {user && (
               <div id="">
-                <Icon circular inverted name="pencil alternate" style={{ cursor: "pointer" }} />
-                <Icon circular inverted color="red" name="trash alternate" style={{ cursor: "pointer" }} />
+                <Icon
+                  circular
+                  inverted
+                  name="pencil alternate"
+                  style={{ cursor: "pointer" }}
+                />
+                <Icon
+                  circular
+                  inverted
+                  color="red"
+                  name="trash alternate"
+                  style={{ cursor: "pointer" }}
+                />
               </div>
             )}
           </div>
@@ -107,8 +135,12 @@ const Animal = ({ user, animalObj, errorLoading }) => {
               {animalObj.picURLs.map((pic, index) => {
                 return (
                   <Image
-                    style={{ width: "250px", height: "auto" }}
+                    style={{ width: "250px", height: "auto", cursor: "pointer" }}
                     src={animalObj.picURLs[index]}
+                    onClick={() => {
+                      setShowImage(index);
+                      setShowModal(true);
+                    }}
                   />
                 );
               })}
@@ -126,7 +158,7 @@ Animal.getInitialProps = async (ctx) => {
     const res = await axios.get(`${baseURL}/api/v1/animal/${animal}`);
 
     const animalObj = res.data;
-    console.log(animalObj);
+    // console.log(animalObj);
     return { animalObj, errorLoading: null };
   } catch (error) {
     // console.log(error);

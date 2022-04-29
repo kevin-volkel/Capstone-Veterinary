@@ -638,6 +638,7 @@ body {
 #register #login-btn,
 #register #register-btn {
   margin-bottom: 1rem;
+  margin-right: 0;
   padding: 10px;
   font-size: 1.4rem;
   color: white;
@@ -646,8 +647,8 @@ body {
 #login .form-link,
 #register .form-link {
   text-align: center;
-  width: 80vw;
-  margin: 0px auto;
+  width: 100%;
+  margin: 0 0 1rem;
   cursor: pointer;
 }
 #login .reset-password-link,
@@ -868,10 +869,6 @@ div.animal-wrap {
   }
 }
 @media only screen and (min-width: 1024px) {
-  div.animal-wrap {
-    width: 100%;
-  }
-
   .pet-name {
     margin-top: 3% !important;
   }
@@ -1022,6 +1019,11 @@ div.animal-wrap {
   margin-top: 5px;
   text-align: center;
   cursor: pointer;
+}
+
+.reset-btn {
+  margin: 0;
+  width: 100%;
 }
 
 .navbar {
@@ -1595,6 +1597,7 @@ div.animal-wrap {
   }
 }
 .footer {
+  margin-top: 1.5rem;
   display: flex;
   flex: 1;
   padding: 1.5rem 0 0;

@@ -112,7 +112,7 @@ const reset = () => {
                 onChange={(e) => setEmail(e.target.value)}
               />
               <Button
-                content="Click to reset password"
+                content="Reset password"
                 type="submit"
                 className="reset-btn"
                 color="orange"
