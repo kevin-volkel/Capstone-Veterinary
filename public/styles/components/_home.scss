@@ -1,3 +1,5 @@
+@import url('');
+
 .container {
   padding: 0 2rem;
 }
@@ -17,6 +19,10 @@
   margin-top: 1rem;
   display: flex;
   justify-content: center;
+  h1{
+    // font-family: 'ABeeZee', sans-serif;
+    font-family: 'Signika', sans-serif;
+  }
 }
 
 .main {
@@ -240,6 +246,10 @@
 
     p {
       margin-top: 1rem;
+      //font-family: 'Montserrat', sans-serif;
+      // font-family: 'Poppins', sans-serif;
+      //font-family: 'Raleway', sans-serif;
+      font-family: 'merriweather', sans-serif;
     }
   }
 
@@ -276,6 +286,18 @@
   }
 }
 
+@media only screen and (min-width: 780px) {
+  .nf-wholeSect {
+    p {
+      font-size: .7rem;
+    }
+    .ui.orange.button {
+      font-size: .7rem;
+      padding: 3% 3.75%;
+    }
+  }
+}
+
 @media only screen and (min-width: 1024px) {
   html {
     font-size: 1.10rem;
@@ -295,6 +317,7 @@
         p {
           margin-right: 1rem;
           width: 200%;
+          font-size: 1rem;
         }
       }
     }

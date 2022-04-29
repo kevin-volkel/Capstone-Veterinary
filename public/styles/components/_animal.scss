@@ -80,10 +80,66 @@ div.animal-wrap {
 }
 
 
+@media only screen and (min-width: 768px) {
+  div.animal-wrap {
+    font-size: .8rem;
+  }
+
+  .para-desc {
+    font-size: .9rem;
+  }
+
+  .pet-title {
+    font-size: 1.3rem;
+    margin-bottom: 0%;
+  }
+
+  .pet-description {
+    h3 {
+      font-size: 1.2rem;
+    }
+
+    .section-1 {
+      display: flex;
+      flex-direction: column;
+      width: 90%;
+
+      //width: 30%;
+      div {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+      }
+    }
+
+    .section-2 {
+      display: flex;
+      flex-direction: row;
+      width: 95%;
+
+      div {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+      }
+    }
+
+    .section-3 {
+      display: flex;
+      flex-direction: row;
+      width: 95%;
+
+      div {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+      }
+    }
+  }
+}
 
 @media only screen and (min-width: 1024px) {
   div.animal-wrap {
-    font-size: 1rem !important;
     width: 100%;
   }
 
@@ -99,11 +155,12 @@ div.animal-wrap {
   .para-desc {
     margin-top: 3%;
     width: 70%;
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
 
   .pet-title {
     margin-top: 3%;
+    font-size: 1.7rem;
   }
 
   .pet-description {
@@ -112,6 +169,12 @@ div.animal-wrap {
     h3 {
       margin-bottom: 1%;
       margin-top: 2%;
+      font-size: 1.5rem;
+    }
+
+    p{
+      margin-bottom: 3%;
+      font-size: 1rem;
     }
 
     .section-1 {
