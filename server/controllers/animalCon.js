@@ -15,6 +15,7 @@ const addAnimal = async (req, res) => {
     gender,
     colors,
     needs,
+    specialNeeds,
     details,
     desc,
     vaccs,
@@ -31,15 +32,16 @@ const addAnimal = async (req, res) => {
       gender,
       neutered,
       location,
+      vaccs,
+      needs,
       age,
       user: userId,
     };
     if (breed) newAnimal.breed = breed;
     if (colors) newAnimal.colors = colors;
-    if (needs) newAnimal.needs = needs;
+    if (specialNeeds) newAnimal.specialNeeds = specialNeeds;
     if (details) newAnimal.details = details;
     if (desc) newAnimal.desc = desc;
-    if (vaccs) newAnimal.vacc = vaccs;
     if (picURLs) newAnimal.picURLs = picURLs;
     if (vidURLs) newAnimal.vidURLs = vidURLs;
 

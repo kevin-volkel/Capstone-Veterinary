@@ -147,16 +147,16 @@ const AddAnimalModal = ({ user, setAnimals, setShowModal }) => {
         "/api/v1/animal",
         {
           user,
-          name: newAnimal.name.trim().toLowerCase(),
+          name: newAnimal.name.trim(),
           age: newAnimal.age,
           type: newAnimal.type,
-          breed: newAnimal.breed.trim().toLowerCase(),
+          breed: newAnimal.breed.trim(),
           gender: newAnimal.gender,
-          colors: newAnimal.colors.trim().toLowerCase(),
+          colors: newAnimal.colors.trim(),
           needs: newAnimal.needs,
-          specialNeeds: newAnimal.specialNeeds.trim().toLowerCase(),
-          details: newAnimal.details.trim().toLowerCase(),
-          desc: newAnimal.desc.trim().toLowerCase(),
+          specialNeeds: newAnimal.specialNeeds.trim(),
+          details: newAnimal.details.trim(),
+          desc: newAnimal.desc.trim(),
           vaccs: newAnimal.vaccs,
           neutered: newAnimal.neutered,
           picURLs: animalPicURLs,
@@ -264,7 +264,33 @@ const AddAnimalModal = ({ user, setAnimals, setShowModal }) => {
     },
   ];
 
-  const booleanOptions = [
+  const neuteredOptions = [
+    {
+      text: "No",
+      value: false,
+      key: 0,
+    },
+    {
+      text: "Yes",
+      value: true,
+      key: 1,
+    },
+  ];
+
+  const vaccsOptions = [
+    {
+      text: "No",
+      value: false,
+      key: 0,
+    },
+    {
+      text: "Yes",
+      value: true,
+      key: 1,
+    },
+  ];
+
+  const needsOptions = [
     {
       text: "No",
       value: false,
@@ -357,7 +383,7 @@ const AddAnimalModal = ({ user, setAnimals, setShowModal }) => {
           />
           <Form.Select
             required
-            options={booleanOptions}
+            options={neuteredOptions}
             value={newAnimal.neutered}
             onChange={handleChange}
             name="neutered"
@@ -365,7 +391,7 @@ const AddAnimalModal = ({ user, setAnimals, setShowModal }) => {
           />
           <Form.Select
             required
-            options={booleanOptions}
+            options={vaccsOptions}
             value={newAnimal.vaccs}
             onChange={handleChange}
             name="vaccs"
@@ -397,13 +423,13 @@ const AddAnimalModal = ({ user, setAnimals, setShowModal }) => {
           />
           <Form.Select
             required
-            options={booleanOptions}
+            options={needsOptions}
             value={newAnimal.needs}
             onChange={handleChange}
             name="needs"
             label="Any Special Needs?"
           />
-          {newAnimal.needs && (
+          {newAnimal.needs === true && (
             <Form.TextArea
               placeholder="Special Needs..."
               value={newAnimal.specialNeeds}

@@ -98,11 +98,6 @@
         height: 180px;
         object-fit: cover;
       }
-
-      .animal-header {
-        font-size: 2rem;
-        margin-bottom: .8rem;
-      }
     }
   }
 
@@ -156,6 +151,13 @@
       }
     }
 
+    .ui.card{
+      .animal-header {
+        font-size: 1.5rem;
+        margin-bottom: .8rem;
+      }
+    }
+
     .ui.pagination.menu .item {
       min-width: 2em;
       justify-content: center;
@@ -187,6 +189,10 @@
           min-width: 9em;
           font-size: 1.1rem;
         }
+      }
+
+      .ui.pagination.menu .item {
+        min-width: 4em;
       }
     }
     #admin-events{

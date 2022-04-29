@@ -90,7 +90,7 @@ body {
 }
 
 //TABLET
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 760px) {
   #adoption {
     h1 {
 
@@ -102,10 +102,13 @@ body {
     }
 
     .grid {
-      .iu-card{
-        width: 30%;
-        .content{
-          padding: 5rem !important;
+      .ui.card{
+        font-size: 1rem;
+        .animal-header{
+          font-size: 1.5rem
+        }
+        .meta{
+          font-size: 1rem;
         }
       }
     }
@@ -122,7 +125,7 @@ body {
     }
 
     .ui.pagination.menu .item {
-      min-width: 4em;
+      min-width: 2em;
       justify-content: center;
     }
   }
@@ -142,6 +145,10 @@ body {
         width: 20%;
         font-size: 1.1rem;
       }
+    }
+
+    .ui.pagination.menu .item {
+      min-width: 4em;
     }
   } 
 }

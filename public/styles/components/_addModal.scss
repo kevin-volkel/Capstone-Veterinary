@@ -1,40 +1,44 @@
-@use "../themes/defaultTheme"as *;
+@use "../themes/defaultTheme" as *;
 
-#add-animal{
-  i.close{
-    font-size: 1.8rem;
+#add-animal {
+  i.close {
+    font-size: 1.5rem;
   }
 
-  .form-wrap{
+  .form-wrap {
     flex-direction: column;
   }
 
-  .form{
+  .form {
     width: 100%;
-    padding: .5rem;
+    padding: 0.5rem;
   }
 
-  h1{
+  .error.message i.close {
+    font-size: 1rem;
+  }
+
+  h1 {
     color: $clr-orange;
   }
 
-  .uploads{
+  .uploads {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     margin: 1rem 0;
   }
 
-  .field{
+  .field {
     font-size: 1.1rem;
   }
 
-  .button-div{
+  .button-div {
     display: flex;
     justify-content: center;
 
-    .button{
-      margin: 1rem 0;
+    .button {
+      margin: 1rem 0 0;
       background-color: orange;
       font-size: 1.2rem;
     }
@@ -42,5 +46,55 @@
 }
 
 @media only screen and (min-width: 768px) {
-  
+  #add-animal {
+    h1{
+      font-size: 2rem;
+    }
+
+    .field {
+      font-size: 0.8rem;
+    }
+    .button-div {
+      .button {
+        font-size: .9rem;
+      }
+    }
+
+    .ui.icon.header {
+      font-size: 1.3rem;
+      .icon {
+      font-size: 2.5em;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 991px) {
+  #add-animal {
+    i.close {
+      top: 1.0535rem;
+      right: 1rem;
+      color: rgba(0, 0, 0, 0.87);
+      font-size: 1.8rem;
+    }
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  #add-animal {
+    h1 {
+      font-size: 2.5rem;
+    }
+
+    .field {
+      font-size: 1.2rem;
+    }
+
+    .ui.icon.header{
+      font-size: 1.5rem;
+      .icon{
+        font-size: 3em;
+      }
+    }
+  }
 }
