@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import { Icon, Image } from 'semantic-ui-react';
 import { convertDate } from '../../util/dateFuncs';
+import EventDropdown from './EventDropdown';
 
 const AdminEvent = ({ event, eventElem }) => {
   return (
@@ -18,7 +19,7 @@ const AdminEvent = ({ event, eventElem }) => {
         <Image src={event.bannerPic} />
       </div>
       <div className='options'>
-        <Icon name='ellipsis vertical' size='large' />
+        <EventDropdown />
       </div>
     </>
   );
