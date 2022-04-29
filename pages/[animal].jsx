@@ -2,7 +2,6 @@ import axios from "axios";
 import React, { useEffect } from "react";
 import { baseURL, redirectUser } from "./util/auth";
 import { useRouter } from "next/router";
-import Footer from "./components/layout/Footer";
 // import puppy from '../public/media/puppy.png';
 import { Icon, Image, Button, Grid } from "semantic-ui-react";
 
@@ -29,6 +28,7 @@ const Animal = ({ user, animalObj, errorLoading }) => {
                 onClick={() => router.push("/admin")}
                 style={{ cursor: "pointer" }}
               >
+                <Icon name="arrow left" />
                 Back to Admin
               </div>
             ) : (
@@ -36,24 +36,14 @@ const Animal = ({ user, animalObj, errorLoading }) => {
                 style={{ cursor: "pointer" }}
                 onClick={() => router.push("/animals")}
               >
+                <Icon name="arrow left" />
                 Back to Adoption
               </div>
             )}
             {user && (
               <div id="">
-                <Icon
-                  size="large"
-                  circular
-                  name="pencil alternate"
-                  style={{ cursor: "pointer" }}
-                />
-                <Icon
-                  size="large"
-                  circular
-                  color="red"
-                  name="trash alternate"
-                  style={{ cursor: "pointer" }}
-                />
+                <Icon circular inverted name="pencil alternate" style={{ cursor: "pointer" }} />
+                <Icon circular inverted color="red" name="trash alternate" style={{ cursor: "pointer" }} />
               </div>
             )}
           </div>
@@ -112,7 +102,7 @@ const Animal = ({ user, animalObj, errorLoading }) => {
               )}
             </div>
           </div>
-          
+
           {animalObj.picURLs.length && (
             <Grid className="pet-gallery" style={{ display: "flex" }}>
               {animalObj.picURLs.map((pic, index) => {
