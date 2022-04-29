@@ -3,6 +3,7 @@ const UserModel = require('../models/UserModel');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const isEmail = require('validator/lib/isEmail');
+const LogModel = require('../models/LogModel');
 
 const passwordReg = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/g;
 const emailReg = /^[a-z0-9](\.?[a-z0-9]){3,}@west-mec\.(edu|org)$/gi;
@@ -89,6 +90,12 @@ const createUser = async (req, res) => {
     user.password = await bcrypt.hash(password, 10);
     user = await user.save();
 
+    const newLog = LogModel.create({
+      user: user._id,
+      action: 'registered',
+      details: `${name} created an account`
+    })
+
     const payload = { userId: user._id, role: user.role };
     jwt.sign(
       payload,
@@ -96,7 +103,7 @@ const createUser = async (req, res) => {
       { expiresIn: '2d' },
       (err, token) => {
         if (err) throw err;
-        res.status(200).json({ token });
+        res.status(200).json({ token, newLog });
       }
     );
   } catch (err) {
@@ -124,8 +131,6 @@ const getUsers = async (req, res) => {
 
 const resetPassword = async (req, res) => {
   const { email, newPassword } = req.body;
-  console.log(`Email: ${email}`)
-  console.log(`Password: ${newPassword}`)
 
   try {
     const invalidPassword = newPassword.match(passwordReg);
@@ -137,13 +142,17 @@ const resetPassword = async (req, res) => {
         );
     }
   
-    const userToChange = UserModel.findOne({ email: email }).select(
+    const userToChange = await UserModel.findOne({ email: email }).select(
       '+password'
     );
+
+    if(!userToChange) return res.status(400).send('User not found?')
+
+
     const samePassword = await bcrypt.compare(newPassword, userToChange.password)
     if(samePassword) return res.status(400).send('New password cannot be the same as the old password')
   
-    userToChange.password = await bcrypt.hash(password, 10);
+    userToChange.password = await bcrypt.hash(newPassword, 10);
     userToChange.save();
     return res.status(200).send('Password Changed')
   } catch (err) {

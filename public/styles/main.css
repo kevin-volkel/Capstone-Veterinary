@@ -645,9 +645,13 @@ body {
 #login .form-link,
 #register .form-link {
   text-align: center;
-  width: 50vw;
+  width: 80vw;
   margin: 0px auto;
   cursor: pointer;
+}
+#login .reset-password-link,
+#register .reset-password-link {
+  margin-top: 10px;
 }
 
 @media only screen and (min-height: 750px) and (min-width: 350px) {
@@ -1065,6 +1069,9 @@ div.animal-wrap {
 .hamburger.items .menu-item a:hover {
   color: #F7931D;
 }
+.hamburger.items.taller {
+  transform: translateY(-15rem);
+}
 .hamburger.items.tall {
   transform: translateY(-12rem);
 }
@@ -1107,6 +1114,9 @@ div.animal-wrap {
   }
   .hamburger.items.hide.tall {
     transform: translateY(-16rem);
+  }
+  .hamburger.items.hide.tall.taller {
+    transform: translateY(-20rem) !important;
   }
   .hamburger.items.hide.short {
     transform: translateY(-8rem);

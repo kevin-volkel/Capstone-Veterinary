@@ -52,6 +52,9 @@
       color: $clr-orange;
     }
   }
+  &.taller{
+    transform: translateY(-15rem)
+  }
   &.tall {
     transform: translateY(-12rem);
   }
@@ -97,6 +100,9 @@
     }
     &.hide.tall {
       transform: translateY(-16rem);
+    }
+    &.hide.tall.taller{
+      transform: translateY(-20rem)!important;
     }
     &.hide.short {
       transform: translateY(-8rem);

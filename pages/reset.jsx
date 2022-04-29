@@ -71,7 +71,7 @@ const reset = () => {
         newPassword
       })
 
-      router.push('/')
+      router.push('/login')
 
     } catch (err) {
       console.log(err)

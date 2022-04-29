@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { Icon } from "semantic-ui-react";
-import Link from "next/link";
-import Image from "next/image";
-import wmLogo from "../../../public/media/WMlogo.png";
-import vetLogo from "../../../public/media/vetLogo.png";
-import { logoutUser } from "../../util/auth";
-import { useRouter } from "next/router";
+import React, { useState, useEffect } from 'react';
+import { Icon } from 'semantic-ui-react';
+import Link from 'next/link';
+import Image from 'next/image';
+import wmLogo from '../../../public/media/WMlogo.png';
+import vetLogo from '../../../public/media/vetLogo.png';
+import { logoutUser } from '../../util/auth';
+import { useRouter } from 'next/router';
 
 const Navbar = ({ user }) => {
   const router = useRouter();
@@ -38,34 +38,43 @@ const Navbar = ({ user }) => {
           color="black"
           className="hamburger"
           size="large"
-          style={{ cursor: "pointer" }}
+          style={{ cursor: 'pointer' }}
           onClick={() => setShowNavbar((prev) => !prev)}
         />
       </div>
 
       <div
-        className={` hamburger items ${showNavbar ? "show" : "hide"} ${
-          user !== null ? "tall" : "short"
+        className={` hamburger items ${showNavbar ? 'show' : 'hide'} ${
+          user !== null ? (user.role === 'teacher' ? 'taller' : 'tall') : 'short'
         }`}
       >
         <div
-          className={`menu-item ${isActive("/") ? "active" : ""} ${
-            showNavbar ? "show" : ""
+          className={`menu-item ${isActive('/') ? 'active' : ''} ${
+            showNavbar ? 'show' : ''
           }`}
         >
           <Link href="/">Home</Link>
         </div>
-        <div className={`menu-item ${isActive("/animals") ? "active" : ""}`}>
+        <div className={`menu-item ${isActive('/animals') ? 'active' : ''}`}>
           <Link href="/animals">Adoption</Link>
         </div>
         {user !== null && (
           <>
-            <div className={`menu-item ${isActive("/admin") ? "active" : ""}`}>
+            <div className={`menu-item ${isActive('/admin') ? 'active' : ''}`}>
               <Link href="/admin">Admin</Link>
             </div>
+            {user.role === 'teacher' && (
+              <div
+                className={`menu-item ${
+                  isActive('/changelog') ? 'active' : ''
+                }`}
+              >
+                <Link href="/changelog">Changelog</Link>
+              </div>
+            )}
             <div
               className={`menu-item`}
-              style={{ cursor: "pointer" }}
+              style={{ cursor: 'pointer' }}
               onClick={logoutUser}
             >
               <a href="#">Logout</a>
@@ -85,25 +94,34 @@ const Navbar = ({ user }) => {
 
         <div className="items">
           <div
-            className={`menu-item ${isActive("/") ? "active" : ""} ${
-              showNavbar ? "show" : ""
+            className={`menu-item ${isActive('/') ? 'active' : ''} ${
+              showNavbar ? 'show' : ''
             }`}
           >
             <Link href="/">Home</Link>
           </div>
-          <div className={`menu-item ${isActive("/animals") ? "active" : ""}`}>
+          <div className={`menu-item ${isActive('/animals') ? 'active' : ''}`}>
             <Link href="/animals">Adoption</Link>
           </div>
           {user !== null && (
             <>
               <div
-                className={`menu-item ${isActive("/admin") ? "active" : ""}`}
+                className={`menu-item ${isActive('/admin') ? 'active' : ''}`}
               >
                 <Link href="/admin">Admin</Link>
               </div>
+              {user.role === 'teacher' && (
+                <div
+                  className={`menu-item ${
+                    isActive('/changelog') ? 'active' : ''
+                  }`}
+                >
+                  <Link href="/changelog">Changelog</Link>
+                </div>
+              )}
               <div
                 className={`menu-item`}
-                style={{ cursor: "pointer" }}
+                style={{ cursor: 'pointer' }}
                 onClick={logoutUser}
               >
                 <a href="#">Logout</a>

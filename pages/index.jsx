@@ -53,8 +53,6 @@ export default function Home() {
           </div>
         </Segment>
       </div>
-
-      <Footer />
     </div>
   );
 }
