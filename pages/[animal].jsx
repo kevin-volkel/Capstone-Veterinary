@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { baseURL, redirectUser } from "./util/auth";
 import { useRouter } from "next/router";
 // import puppy from '../public/media/puppy.png';
-import { Icon, Image, Button, Modal, ModalContent } from "semantic-ui-react";
+import { Icon, Image, Button, Modal, ModalContent, Grid } from "semantic-ui-react";
 import ImageModal from "./components/layout/ImageModal";
 
 const Animal = ({ user, animalObj, errorLoading }) => {
@@ -23,6 +23,7 @@ const Animal = ({ user, animalObj, errorLoading }) => {
     <div>
       {showModal && (
         <Modal
+        id="image-modal"
           open={showModal}
           closeIcon
           closeOnDimmerClick
@@ -58,11 +59,12 @@ const Animal = ({ user, animalObj, errorLoading }) => {
               </div>
             )}
             {user && (
-              <div id="">
+              <div>
                 <Icon
                   circular
                   inverted
                   id="edit-1"
+                  size="mid"
                   name="pencil alternate"
                   style={{ cursor: "pointer" }}
                 />
@@ -70,6 +72,7 @@ const Animal = ({ user, animalObj, errorLoading }) => {
                   circular
                   inverted
                   id="edit-2"
+                  size="mid"
                   color="red"
                   name="trash alternate"
                   style={{ cursor: "pointer" }}
@@ -132,6 +135,8 @@ const Animal = ({ user, animalObj, errorLoading }) => {
               )}
             </div>
           </div>
+
+          <h3>Gallery</h3>
 
           {animalObj.picURLs.length && (
             <Grid className="pet-gallery" style={{ display: "flex" }}>
