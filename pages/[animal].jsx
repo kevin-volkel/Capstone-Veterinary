@@ -2,16 +2,23 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { baseURL, redirectUser } from "./util/auth";
 import { useRouter } from "next/router";
-// import puppy from '../public/media/puppy.png';
-import { Icon, Image, Button, Modal, ModalContent } from "semantic-ui-react";
-import ImageModal from "./components/layout/ImageModal";
+import { deleteAnimal } from "./util/animalActions";
 
-const Animal = ({ user, animalObj, errorLoading }) => {
+import { Icon, Image, Button, Modal, Header, Popup } from "semantic-ui-react";
+import ImageModal from "./components/layout/ImageModal";
+import EditAnimalModal from "./components/animals/EditAnimalModal";
+
+const Animal = ({ user, animalObj, errorLoading, animals }) => {
   // const puppy = "./media/puppy.png";
   const router = useRouter();
 
-  const [showModal, setShowModal] = useState(false);
+  const [allAnimals, setAnimals] = useState(animals);
+
+  const [showImageModal, setShowImageModal] = useState(false);
   const [showImage, setShowImage] = useState(null);
+
+  const [showEdit, setShowEdit] = useState(false);
+  const [showDelete, setShowDelete] = useState(false);
 
   useEffect(() => {
     if (errorLoading !== null) {
@@ -21,16 +28,34 @@ const Animal = ({ user, animalObj, errorLoading }) => {
 
   return (
     <div>
-      {showModal && (
+      {showImageModal && (
         <Modal
-          open={showModal}
+          open={showImageModal}
           closeIcon
           closeOnDimmerClick
-          onClose={() => setShowModal(false)}
+          onClose={() => setShowImageModal(false)}
           style={{ marginTop: "2.2rem" }}
         >
           <Modal.Content>
-            <ImageModal image={animalObj.picURLs[showImage]} />
+            <ImageModal image={showImage} />
+          </Modal.Content>
+        </Modal>
+      )}
+      {showEdit && (
+        <Modal
+          id="add-animal"
+          open={showEdit}
+          closeIcon
+          closeOnDimmerClick
+          onClose={() => setShowEdit(false)}
+        >
+          <Modal.Content>
+            <EditAnimalModal
+              animal={animalObj}
+              user={user}
+              setAnimals={setAnimals}
+              setShowModal={setShowEdit}
+            />
           </Modal.Content>
         </Modal>
       )}
@@ -58,20 +83,40 @@ const Animal = ({ user, animalObj, errorLoading }) => {
               </div>
             )}
             {user && (
-              <div id="">
+              <div>
                 <Icon
                   circular
                   inverted
                   name="pencil alternate"
                   style={{ cursor: "pointer" }}
+                  onClick={() => setShowEdit(true)}
                 />
-                <Icon
-                  circular
-                  inverted
-                  color="red"
-                  name="trash alternate"
-                  style={{ cursor: "pointer" }}
-                />
+                <Popup
+                  on="click"
+                  position="top right"
+                  trigger={
+                    <Icon
+                      circular
+                      inverted
+                      color="red"
+                      name="trash alternate"
+                      style={{ cursor: "pointer" }}
+                    />
+                  }
+                >
+                  <Header as="h4" content="Are you sure?" />
+                  <p>This action is irreversable!</p>
+
+                  <Button
+                    color="red"
+                    icon="trash"
+                    content="Delete"
+                    onClick={() => {
+                      deleteAnimal(animalObj._id, setAnimals);
+                      router.push("/admin");
+                    }}
+                  />
+                </Popup>
               </div>
             )}
           </div>
@@ -82,7 +127,7 @@ const Animal = ({ user, animalObj, errorLoading }) => {
             className="pet-img"
           />
           <div className="para-desc" style={{ flexDirection: "column" }}>
-            {user && <p>Added by {user.name}</p>}
+            {user && <p>Added by {animalObj.user.name}</p>}
             <p>
               {animalObj.type} | {animalObj.gender} | {animalObj.age} |{" "}
               {animalObj.breed !== "unspecified" && `${animalObj.breed} | `}
@@ -135,11 +180,16 @@ const Animal = ({ user, animalObj, errorLoading }) => {
               {animalObj.picURLs.map((pic, index) => {
                 return (
                   <Image
-                    style={{ width: "250px", height: "auto", cursor: "pointer" }}
-                    src={animalObj.picURLs[index]}
+                    key={index}
+                    style={{
+                      width: "250px",
+                      height: "auto",
+                      cursor: "pointer",
+                    }}
+                    src={pic}
                     onClick={() => {
-                      setShowImage(index);
-                      setShowModal(true);
+                      setShowImage(pic);
+                      setShowImageModal(true);
                     }}
                   />
                 );
@@ -155,14 +205,17 @@ const Animal = ({ user, animalObj, errorLoading }) => {
 Animal.getInitialProps = async (ctx) => {
   try {
     const { animal } = ctx.query;
-    const res = await axios.get(`${baseURL}/api/v1/animal/${animal}`);
+    const res1 = await axios.get(`${baseURL}/api/v1/animal`); //GET ALL ANIMALS
+    const animals = res1.data;
+    // console.log(animals);
 
-    const animalObj = res.data;
-    // console.log(animalObj);
-    return { animalObj, errorLoading: null };
+    const res2 = await axios.get(`${baseURL}/api/v1/animal/${animal}`); //GET ANIMAL
+    const animalObj = res2.data;
+
+    return { animalObj, errorLoading: null, animals };
   } catch (error) {
-    // console.log(error);
-    return { errorLoading: error, animalObj: {} };
+    console.log(error);
+    return { errorLoading: error, animalObj: {}, animals: {} };
   }
 };
 
