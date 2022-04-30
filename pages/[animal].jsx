@@ -3,12 +3,8 @@ import React, { useEffect, useState } from "react";
 import { baseURL, redirectUser } from "./util/auth";
 import { useRouter } from "next/router";
 // import puppy from '../public/media/puppy.png';
-<<<<<<< HEAD
-import { Icon, Image, Button, Grid } from "semantic-ui-react";
-=======
 import { Icon, Image, Button, Modal, ModalContent } from "semantic-ui-react";
 import ImageModal from "./components/layout/ImageModal";
->>>>>>> 7785c969457a4045a1fa32eef6b1e1549d9d2107
 
 const Animal = ({ user, animalObj, errorLoading }) => {
   // const puppy = "./media/puppy.png";
