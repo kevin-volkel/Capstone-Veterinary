@@ -766,6 +766,9 @@ div.animal-wrap {
   justify-content: space-between;
   margin: 1rem 0 0;
 }
+.top-btns #edit-2 {
+  margin-left: 1rem !important;
+}
 
 .page-wrap {
   display: flex;
@@ -817,12 +820,28 @@ div.animal-wrap {
   font-size: 1.65rem;
 }
 .pet-description p {
-  margin-bottom: 7%;
+  margin-bottom: 4%;
+}
+
+h3 {
+  margin-top: 0;
+}
+
+.content {
+  background: rgba(255, 255, 255, 0.3);
 }
 
 @media only screen and (min-width: 768px) {
   div.animal-wrap {
     font-size: 0.8rem;
+  }
+
+  .top-btns #edit-1 {
+    font-size: 1.25rem;
+  }
+  .top-btns #edit-2 {
+    font-size: 1.25rem;
+    margin-left: 1rem !important;
   }
 
   .para-desc {
@@ -871,6 +890,10 @@ div.animal-wrap {
 @media only screen and (min-width: 1024px) {
   .pet-name {
     margin-top: 3% !important;
+  }
+
+  .top-btns #edit-2 {
+    margin-left: 1.5rem !important;
   }
 
   .pet-img {

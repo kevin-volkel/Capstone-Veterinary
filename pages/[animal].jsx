@@ -87,10 +87,13 @@ const Animal = ({ user, animalObj, errorLoading, animals }) => {
                 <Icon
                   circular
                   inverted
+                  id="edit-1"
+                  size="mid"
                   name="pencil alternate"
                   style={{ cursor: "pointer" }}
                   onClick={() => setShowEdit(true)}
                 />
+<<<<<<< HEAD
                 <Popup
                   on="click"
                   position="top right"
@@ -117,6 +120,17 @@ const Animal = ({ user, animalObj, errorLoading, animals }) => {
                     }}
                   />
                 </Popup>
+=======
+                <Icon
+                  circular
+                  inverted
+                  id="edit-2"
+                  size="mid"
+                  color="red"
+                  name="trash alternate"
+                  style={{ cursor: "pointer" }}
+                />
+>>>>>>> 9ae6710d71f4df1d2eed838414ae4a7e8c543b08
               </div>
             )}
           </div>
@@ -175,8 +189,11 @@ const Animal = ({ user, animalObj, errorLoading, animals }) => {
               )}
             </div>
           </div>
+
+          <h3>Gallery</h3>
+
           {animalObj.picURLs.length && (
-            <div className="pet-gallery" style={{ display: "flex" }}>
+            <Grid className="pet-gallery" style={{ display: "flex" }}>
               {animalObj.picURLs.map((pic, index) => {
                 return (
                   <Image
@@ -194,7 +211,7 @@ const Animal = ({ user, animalObj, errorLoading, animals }) => {
                   />
                 );
               })}
-            </div>
+            </Grid>
           )}
         </div>
       </div>
