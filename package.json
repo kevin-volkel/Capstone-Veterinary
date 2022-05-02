@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@googlemaps/react-wrapper": "^1.1.32",
     "axios": "^0.25.0",
     "bcryptjs": "^2.4.3",
     "cloudinary": "^1.28.1",
