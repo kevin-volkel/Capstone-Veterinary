@@ -1,5 +1,7 @@
 const AnimalModel = require("../models/AnimalModel");
 const UserModel = require("../models/UserModel");
+const LogModel = require('../models/LogModel');
+
 
 //? adds an animal, no params
 const addAnimal = async (req, res) => {
@@ -49,6 +51,15 @@ const addAnimal = async (req, res) => {
     const animalCreated = await AnimalModel.findById(animal._id).populate(
       "user"
     );
+
+    const user = await UserModel.findById(userId)
+
+    const newLog = await LogModel.create({
+      user: userId,
+      action: 'added animal',
+      details: `${user.name} added the animal ${name}`
+    })
+
 
     return res.status(200).json(animalCreated);
   } catch (error) {
@@ -127,6 +138,14 @@ const deleteAnimal = async (req, res) => {
       }
     }
     await animal.remove();
+
+    const newLog = await LogModel.create({
+      user: userId,
+      action: 'deleted animal',
+      details: `${user.name} deleted the animal ${animal.name}`
+    })
+    console.log(newLog)
+
     return res.status(200).send("animal succesfully removed");
   } catch (error) {
     console.log(error);
@@ -147,6 +166,14 @@ const editAnimal = async (req, res) => {
     ).populate("user");
 
     if (!animal) return res.status(404).send("animal not found");
+
+    const user = await UserModel.findById(userId)
+
+    const newLog = await LogModel.create({
+      user: userId,
+      action: 'changed animal',
+      details: `${user.name} changed the animal ${animal.name}`
+    })
 
     return res.status(200).json(animal);
   } catch (error) {

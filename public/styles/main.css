@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=ABeeZee&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Oxygen&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono&display=swap");
 html,
 body {
   height: 100vh;
@@ -106,8 +107,7 @@ a {
 #admin-animals .ui.grid .ui.card img {
   width: 100%;
   height: 180px;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 #admin-animals .no-animals {
   margin: 1.5rem;
@@ -255,8 +255,7 @@ body {
 #adoption .grid .ui.card img {
   width: 100%;
   height: 150px;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 #adoption .grid .ui.card .animal-header {
   font-size: 2rem;
@@ -389,8 +388,7 @@ body {
 
 .img-container {
   margin: 0;
-  -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
   overflow: hidden;
   margin: auto;
   display: flex;
@@ -441,15 +439,13 @@ body {
 .img-btn-left {
   left: 0;
   margin-left: 5rem !important;
-  -webkit-clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
-          clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
+  clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
 }
 
 .img-btn-right {
   right: 0;
   margin-right: 5rem !important;
-  -webkit-clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
-          clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
+  clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
 }
 
 .arrow {
@@ -589,7 +585,11 @@ body {
 }
 /* LOGIN & REGISTER FORM CSS */
 .form-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
 }
 
@@ -661,6 +661,8 @@ body {
 form#register {
     display: flex;
     flex-direction: column;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
   }
 }
@@ -782,8 +784,7 @@ div.animal-wrap {
 .pet-img {
   width: 70vw;
   height: 70vw;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 
 .para-desc {
@@ -1049,6 +1050,34 @@ h3 {
   width: 100%;
 }
 
+.changelog-container {
+  width: 95vw;
+  margin: auto;
+  margin-top: 1rem;
+}
+.changelog-container .changelog-title {
+  font-size: 1.5rem;
+  text-align: center;
+}
+.changelog-container .log-container {
+  background: black;
+  color: white;
+  font-family: "Space Mono", monospace;
+  padding: 0.75rem 5px;
+  display: flex;
+  flex-direction: column;
+  height: 70vh;
+}
+.changelog-container .log-container .log-text {
+  font-size: 0.85rem;
+}
+.changelog-container .log-container .log-text .log-date {
+  color: greenyellow;
+}
+.changelog-container .log-container .log-text.error {
+  color: rgb(189, 0, 0);
+}
+
 .navbar {
   position: relative;
   width: 100%;
@@ -1230,19 +1259,14 @@ h3 {
 }
 #event-slideshow .embla_viewport.is-draggable {
   cursor: move;
-  cursor: -webkit-grab;
   cursor: grab;
 }
 #event-slideshow .embla_viewport.is-dragging {
-  cursor: -webkit-grabbing;
   cursor: grabbing;
 }
 #event-slideshow .embla_container {
   display: flex;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  user-select: none;
   -webkit-touch-callout: none;
   -khtml-user-select: none;
   -webkit-tap-highlight-color: transparent;
@@ -1535,8 +1559,7 @@ h3 {
   height: 70px;
 }
 #photo-upload img {
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   width: 70px;
   height: 70px;
 }
@@ -1599,8 +1622,7 @@ h3 {
 }
 #admin-events .events-list .event-pic img {
   height: 100%;
-  -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
 }
 #admin-events .events-list .options {
   width: 30px;

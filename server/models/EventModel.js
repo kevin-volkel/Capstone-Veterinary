@@ -28,6 +28,7 @@ const EventSchema = new Schema(
     },
     bannerPic: {
       type: String,
+      required: [true, 'Must provide a banner picture']
     }
   },
   { timestamps: true }

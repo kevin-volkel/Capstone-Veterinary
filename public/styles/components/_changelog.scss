@@ -1,0 +1,33 @@
+@use '../themes/defaultTheme' as *;
+
+.changelog-container{
+  width: 95vw;
+  margin: auto;
+  margin-top: 1rem;
+
+  .changelog-title{
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .log-container{
+    background: black;
+    color: white;
+    font-family: $custom-monospace;
+    padding: 0.75rem 5px;
+    display: flex;
+    flex-direction: column;
+    height: 70vh;
+
+    .log-text{
+      font-size: 0.85rem;
+
+      .log-date{
+        color: greenyellow;
+      }
+      &.error{
+        color: rgb(189, 0, 0);
+      }
+    }
+  }
+}
