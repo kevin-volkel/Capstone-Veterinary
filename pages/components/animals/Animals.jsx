@@ -8,7 +8,6 @@ import {
   Pagination,
   Modal,
 } from 'semantic-ui-react';
-import AddAnimalModal from './AddAnimalModal';
 import AnimalCard from './AnimalCard';
 
 const Animals = ({ animals, isAdmin, user }) => {
