@@ -4,7 +4,15 @@ import { baseURL } from "./util/auth";
 import { useRouter } from "next/router";
 import { deleteAnimal } from "./util/animalActions";
 
-import { Icon, Image, Button, Modal, Header, Popup, Grid } from "semantic-ui-react";
+import {
+  Grid,
+  Icon,
+  Image,
+  Button,
+  Modal,
+  Header,
+  Popup,
+} from "semantic-ui-react";
 import ImageModal from "./components/layout/ImageModal";
 import EditAnimalModal from "./components/animals/EditAnimalModal";
 

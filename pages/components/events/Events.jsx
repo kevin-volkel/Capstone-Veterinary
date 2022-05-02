@@ -1,18 +1,52 @@
 import React, { useState } from 'react';
-import { Container, Divider } from 'semantic-ui-react';
+import {
+  Button,
+  Icon,
+  Dropdown,
+  Container,
+  Grid,
+  Pagination,
+  Modal,
+  Divider,
+} from 'semantic-ui-react';
 import AdminEvent from './AdminEvent';
+import AddEventModal from './AddEventModal';
 import EventCard from './EventCard';
 
 const Events = ({ user, events }) => {
+  const [loading, setLoading] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [susEvents, setSusEvents] = useState(events);
   return (
     <>
+      <Button disabled={loading} onClick={() => setShowModal(true)}>
+        <Icon name='plus' />
+        Add Animal
+      </Button>
+      {showModal && (
+        <Modal
+          id='add-animal'
+          open={showModal}
+          closeIcon
+          closeOnDimmerClick
+          onClose={() => setShowModal(false)}
+        >
+          <Modal.Content>
+            <AddEventModal
+              user={user}
+              setAnimals={setSusEvents}
+              setShowModal={setShowModal}
+            />
+          </Modal.Content>
+        </Modal>
+      )}
       <Container fluid className='events-list'>
-        {events.map((event, i) => (
+        {susEvents.map((event, i) => (
           <>
             <div className='event-card' key={i}>
               <AdminEvent event={event} />
             </div>
-            {i !== events.length - 1 && <Divider />}
+            {i !== susEvents.length - 1 && <Divider />}
           </>
         ))}
       </Container>
