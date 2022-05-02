@@ -5,6 +5,7 @@ import { destroyCookie, parseCookies } from 'nookies';
 import { redirectUser, baseURL } from './util/auth';
 import axios from 'axios';
 import Layout from './components/layout/Layout';
+import jwt from 'jsonwebtoken';
 
 function MyApp({ Component, pageProps }) {
   
@@ -23,13 +24,18 @@ MyApp.getInitialProps = async ({ ctx, Component }) => {
     pageProps = await Component.getInitialProps(ctx);
   }
 
+  
+
   const protectedRoutes = ['/admin'];
   const unprotectedRoutes = ['/login', '/reset']
+  const veryProtectedRoutes = ['/changelog']
 
   const isProtectedRoute = protectedRoutes.includes(ctx.pathname);
+  const isVeryProtectedRoute = veryProtectedRoutes.includes(ctx.pathname)
 
   if (!token) {
     isProtectedRoute && redirectUser(ctx, '/login');
+    isVeryProtectedRoute && redirectUser(ctx, '/')
   } else if (unprotectedRoutes.includes(ctx.pathname)) {
     redirectUser(ctx, '/')
   } else {
@@ -44,6 +50,8 @@ MyApp.getInitialProps = async ({ ctx, Component }) => {
       });
 
       const { user } = res.data;
+
+      if(user.role !== 'teacher' && isVeryProtectedRoute) redirectUser(ctx, '/')
 
       pageProps.user = user;
     } catch (err) {

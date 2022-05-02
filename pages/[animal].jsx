@@ -1,14 +1,32 @@
 import axios from "axios";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { baseURL, redirectUser } from "./util/auth";
 import { useRouter } from "next/router";
-import Footer from "./components/layout/Footer";
-// import puppy from '../public/media/puppy.png';
-import { Icon, Image, Button } from "semantic-ui-react";
+import { deleteAnimal } from "./util/animalActions";
 
-const Animal = ({ user, animalObj, errorLoading }) => {
+import {
+  Grid,
+  Icon,
+  Image,
+  Button,
+  Modal,
+  Header,
+  Popup,
+} from "semantic-ui-react";
+import ImageModal from "./components/layout/ImageModal";
+import EditAnimalModal from "./components/animals/EditAnimalModal";
+
+const Animal = ({ user, animalObj, errorLoading, animals }) => {
   // const puppy = "./media/puppy.png";
   const router = useRouter();
+
+  const [allAnimals, setAnimals] = useState(animals);
+
+  const [showImageModal, setShowImageModal] = useState(false);
+  const [showImage, setShowImage] = useState(null);
+
+  const [showEdit, setShowEdit] = useState(false);
+  const [showDelete, setShowDelete] = useState(false);
 
   useEffect(() => {
     if (errorLoading !== null) {
@@ -18,6 +36,37 @@ const Animal = ({ user, animalObj, errorLoading }) => {
 
   return (
     <div>
+      {showImageModal && (
+        <Modal
+          open={showImageModal}
+          closeIcon
+          closeOnDimmerClick
+          onClose={() => setShowImageModal(false)}
+          style={{ marginTop: "2.2rem" }}
+        >
+          <Modal.Content>
+            <ImageModal image={showImage} />
+          </Modal.Content>
+        </Modal>
+      )}
+      {showEdit && (
+        <Modal
+          id="add-animal"
+          open={showEdit}
+          closeIcon
+          closeOnDimmerClick
+          onClose={() => setShowEdit(false)}
+        >
+          <Modal.Content>
+            <EditAnimalModal
+              animal={animalObj}
+              user={user}
+              setAnimals={setAnimals}
+              setShowModal={setShowEdit}
+            />
+          </Modal.Content>
+        </Modal>
+      )}
       <div className="page-wrap">
         <div className="animal-wrap">
           <div
@@ -29,6 +78,7 @@ const Animal = ({ user, animalObj, errorLoading }) => {
                 onClick={() => router.push("/admin")}
                 style={{ cursor: "pointer" }}
               >
+                <Icon name="arrow left" />
                 Back to Admin
               </div>
             ) : (
@@ -36,13 +86,47 @@ const Animal = ({ user, animalObj, errorLoading }) => {
                 style={{ cursor: "pointer" }}
                 onClick={() => router.push("/animals")}
               >
+                <Icon name="arrow left" />
                 Back to Adoption
               </div>
             )}
             {user && (
-              <div id="">
-                <Icon size="large" circular name="pencil alternate" style={{ cursor: "pointer" }} />
-                <Icon size="large" circular color="red" name="trash alternate" style={{ cursor: "pointer" }} />
+              <div>
+                <Icon
+                  circular
+                  inverted
+                  id="edit-1"
+                  size="mid"
+                  name="pencil alternate"
+                  style={{ cursor: "pointer" }}
+                  onClick={() => setShowEdit(true)}
+                />
+                <Popup
+                  on="click"
+                  position="top right"
+                  trigger={
+                    <Icon
+                      circular
+                      inverted
+                      color="red"
+                      name="trash alternate"
+                      style={{ cursor: "pointer" }}
+                    />
+                  }
+                >
+                  <Header as="h4" content="Are you sure?" />
+                  <p>This action is irreversable!</p>
+
+                  <Button
+                    color="red"
+                    icon="trash"
+                    content="Delete"
+                    onClick={() => {
+                      deleteAnimal(animalObj._id, setAnimals);
+                      router.push("/admin");
+                    }}
+                  />
+                </Popup>
               </div>
             )}
           </div>
@@ -53,7 +137,7 @@ const Animal = ({ user, animalObj, errorLoading }) => {
             className="pet-img"
           />
           <div className="para-desc" style={{ flexDirection: "column" }}>
-            {user && <p>Added by {user.name}</p>}
+            {user && <p>Added by {animalObj.user.name}</p>}
             <p>
               {animalObj.type} | {animalObj.gender} | {animalObj.age} |{" "}
               {animalObj.breed !== "unspecified" && `${animalObj.breed} | `}
@@ -101,21 +185,32 @@ const Animal = ({ user, animalObj, errorLoading }) => {
               )}
             </div>
           </div>
+
+          <h3>Gallery</h3>
+
           {animalObj.picURLs.length && (
-            <div className="pet-gallery" style={{ display: "flex" }}>
+            <Grid className="pet-gallery" style={{ display: "flex" }}>
               {animalObj.picURLs.map((pic, index) => {
                 return (
                   <Image
-                    style={{ width: "250px", height: "auto" }}
-                    src={animalObj.picURLs[index]}
+                    key={index}
+                    style={{
+                      width: "250px",
+                      height: "auto",
+                      cursor: "pointer",
+                    }}
+                    src={pic}
+                    onClick={() => {
+                      setShowImage(pic);
+                      setShowImageModal(true);
+                    }}
                   />
                 );
               })}
-            </div>
+            </Grid>
           )}
         </div>
       </div>
-      <Footer />
     </div>
   );
 };
@@ -123,14 +218,17 @@ const Animal = ({ user, animalObj, errorLoading }) => {
 Animal.getInitialProps = async (ctx) => {
   try {
     const { animal } = ctx.query;
-    const res = await axios.get(`${baseURL}/api/v1/animal/${animal}`);
+    const res1 = await axios.get(`${baseURL}/api/v1/animal`); //GET ALL ANIMALS
+    const animals = res1.data;
+    // console.log(animals);
 
-    const animalObj = res.data;
-    console.log(animalObj);
-    return { animalObj, errorLoading: null };
+    const res2 = await axios.get(`${baseURL}/api/v1/animal/${animal}`); //GET ANIMAL
+    const animalObj = res2.data;
+
+    return { animalObj, errorLoading: null, animals };
   } catch (error) {
-    // console.log(error);
-    return { errorLoading: error, animalObj: {} };
+    console.log(error);
+    return { errorLoading: error, animalObj: {}, animals: {} };
   }
 };
 

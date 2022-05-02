@@ -71,7 +71,7 @@ const reset = () => {
         newPassword
       })
 
-      router.push('/')
+      router.push('/login')
 
     } catch (err) {
       console.log(err)
@@ -112,7 +112,7 @@ const reset = () => {
                 onChange={(e) => setEmail(e.target.value)}
               />
               <Button
-                content="Click to reset password"
+                content="Reset password"
                 type="submit"
                 className="reset-btn"
                 color="orange"

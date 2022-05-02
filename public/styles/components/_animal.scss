@@ -12,12 +12,15 @@ div.animal-wrap {
   font-size: 1.2rem;
 }
 
-.top-btn{
-  width: 90%;
+.top-btns{
   display: flex;
-  margin: 1rem 0;
+  width: 90%;
   align-items: center;
   justify-content: space-between;
+  margin: 1rem 0 0;
+  #edit-2{
+    margin-left: 1rem !important;
+  }
 }
 
 .page-wrap {
@@ -75,14 +78,32 @@ div.animal-wrap {
   }
 
   p {
-    margin-bottom: 7%;
+    margin-bottom: 4%;
   }
+}
+
+h3{
+  margin-top: 0;
+}
+
+.content{
+  background: rgba(255,255,255, .3);
 }
 
 
 @media only screen and (min-width: 768px) {
   div.animal-wrap {
     font-size: .8rem;
+  }
+
+  .top-btns{
+    #edit-1{
+      font-size: 1.25rem;
+    }
+    #edit-2{
+      font-size: 1.25rem;
+      margin-left: 1rem !important;
+    }
   }
 
   .para-desc {
@@ -139,12 +160,14 @@ div.animal-wrap {
 }
 
 @media only screen and (min-width: 1024px) {
-  div.animal-wrap {
-    width: 100%;
-  }
-
   .pet-name {
     margin-top: 3% !important;
+  }
+
+  .top-btns{
+    #edit-2{
+      margin-left: 1.5rem !important;
+    }
   }
 
   .pet-img {

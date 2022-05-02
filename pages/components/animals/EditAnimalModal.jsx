@@ -1,45 +1,28 @@
 import React, { useState } from "react";
-import {
-  Form,
-  Button,
-  Message,
-} from "semantic-ui-react";
+import { Form, Button, Message } from "semantic-ui-react";
+import { setToken } from "../../util/auth";
 import axios from "axios";
 import catchErrors from "../../util/catchErrors";
 import Cookies from "js-cookie";
+import { baseURL } from "../../util/auth";
 import VideoUpload from "../layout/VideoUpload";
 import AnimalUpload from "../layout/AnimalUpload";
+import { editAnimal } from "../../util/animalActions";
 
-const AddAnimalModal = ({ user, setAnimals, setShowModal }) => {
+const EditAnimalModal = ({ user, setAnimals, setShowModal, animal }) => {
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState(null);
-
-  const [mediaPreview, setMediaPreview] = useState([]);
-  const [media, setMedia] = useState([]);
-
-  const [videoPreview, setVideoPreview] = useState([]);
-  const [video, setVideo] = useState([]);
 
   const defaultAnimalPic =
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7h1BiFC8Ot5v_yD14xO4Bz4vIVZDFChrIkFtN-XxtnMQAn73Srlyv-vznS5pXLGT-ywE&usqp=CAU";
 
-  const [newAnimal, setNewAnimal] = useState({
-    name: "",
-    location: "northeast",
-    type: "dog",
-    gender: "male",
-    age: "young",
-    breed: "",
-    neutered: false,
-    vaccs: false,
-    colors: "",
-    desc: "",
-    details: "",
-    needs: false,
-    specialNeeds: "",
-    picURLs: [],
-    vidURLs: [],
-  });
+  const [mediaPreview, setMediaPreview] = useState(animal.picURLs);
+  const [media, setMedia] = useState(animal.picURLs);
+
+  const [videoPreview, setVideoPreview] = useState(animal.vidURLs);
+  const [video, setVideo] = useState(animal.vidURLs);
+
+  const [newAnimal, setNewAnimal] = useState(animal);
 
   const handleChange = (e, data) => {
     const { name, value, files } = e.target;
@@ -95,6 +78,9 @@ const AddAnimalModal = ({ user, setAnimals, setShowModal }) => {
     let animalPicURLs = [];
     let animalVidURLs = [];
 
+    console.log(media); //!error here
+    console.log(video);
+
     try {
       //IMAGES
       if (media.length !== 0) {
@@ -108,8 +94,6 @@ const AddAnimalModal = ({ user, setAnimals, setShowModal }) => {
         });
         const res = await axios.post("/api/v1/upload/images", formData);
         animalPicURLs = res.data.sources;
-      } else {
-        animalPicURLs = [defaultAnimalPic];
       }
       if (media.length !== 0 && !animalPicURLs.length)
         throw new Error("Error while uploading image(s).");
@@ -130,50 +114,25 @@ const AddAnimalModal = ({ user, setAnimals, setShowModal }) => {
       if (video.length !== 0 && !animalVidURLs.length)
         throw new Error("Error while uploading video(s)");
 
-      const res = await axios.post(
-        "/api/v1/animal",
-        {
-          user,
-          name: newAnimal.name.trim(),
-          age: newAnimal.age,
-          type: newAnimal.type,
-          breed: newAnimal.breed.trim(),
-          gender: newAnimal.gender,
-          colors: newAnimal.colors.trim(),
-          needs: newAnimal.needs,
-          specialNeeds: newAnimal.specialNeeds.trim(),
-          details: newAnimal.details.trim(),
-          desc: newAnimal.desc.trim(),
-          vaccs: newAnimal.vaccs,
-          neutered: newAnimal.neutered,
-          picURLs: animalPicURLs,
-          vidURLs: animalVidURLs,
-          location: newAnimal.location,
-        },
-        {
-          headers: { Authorization: `Bearer ${Cookies.get("token")}` },
-        }
+      await editAnimal(
+        newAnimal.name,
+        newAnimal.location,
+        newAnimal.type,
+        newAnimal.gender,
+        newAnimal.age,
+        newAnimal.breed,
+        newAnimal.neutered,
+        newAnimal.vaccs,
+        newAnimal.colors,
+        newAnimal.desc,
+        newAnimal.details,
+        newAnimal.needs,
+        newAnimal.specialNeeds,
+        newAnimal.picURLs,
+        newAnimal.vidURLs,
+        setAnimals,
+        newAnimal._id
       );
-
-      setAnimals((prev) => [res.data, ...prev]);
-
-      setNewAnimal({
-        name: "",
-        location: "northeast",
-        type: "dog",
-        gender: "male",
-        age: "young",
-        breed: "",
-        neutered: false,
-        vaccs: false,
-        colors: "",
-        desc: "",
-        details: "",
-        needs: false,
-        specialNeeds: "",
-        picURLs: [],
-        vidURLs: [],
-      });
 
       setMedia([]);
       setVideo([]);
@@ -300,7 +259,7 @@ const AddAnimalModal = ({ user, setAnimals, setShowModal }) => {
           onDismiss={() => setErrorMsg(null)}
         />
         <div>
-          <h1>Add Animal</h1>
+          <h1>Edit Animal</h1>
         </div>
         <div className="uploads">
           <AnimalUpload
@@ -363,7 +322,7 @@ const AddAnimalModal = ({ user, setAnimals, setShowModal }) => {
           <Form.Input
             label="Breed"
             placeholder="Breed"
-            value={newAnimal.breed}
+            value={newAnimal.breed === "unspecified" ? "" : newAnimal.breed}
             name="breed"
             onChange={handleChange}
             type="text"
@@ -434,4 +393,4 @@ const AddAnimalModal = ({ user, setAnimals, setShowModal }) => {
   );
 };
 
-export default AddAnimalModal;
+export default EditAnimalModal;

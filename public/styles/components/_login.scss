@@ -53,6 +53,7 @@ div.visible.menu span {
 #login-btn,
 #register-btn {
   margin-bottom: 1rem;
+  margin-right: 0;
   padding: 10px;
   font-size: 1.4rem;
   color: white;
@@ -61,9 +62,13 @@ div.visible.menu span {
 
 .form-link {
   text-align: center;
-  width: 50vw;
-  margin: 0px auto;
+  width: 100%;
+  margin: 0 0 1rem;
   cursor: pointer;
+}
+
+.reset-password-link{
+  margin-top: 10px;
 }
 }
 
