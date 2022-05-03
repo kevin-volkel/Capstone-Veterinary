@@ -21,7 +21,7 @@ const Events = ({ user, events }) => {
     <>
       <Button disabled={loading} onClick={() => setShowModal(true)}>
         <Icon name='plus' />
-        Add Animal
+        Add Event
       </Button>
       {showModal && (
         <Modal
@@ -34,7 +34,7 @@ const Events = ({ user, events }) => {
           <Modal.Content>
             <AddEventModal
               user={user}
-              setAnimals={setSusEvents}
+              setEvents={setSusEvents}
               setShowModal={setShowModal}
             />
           </Modal.Content>

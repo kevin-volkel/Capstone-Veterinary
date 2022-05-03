@@ -7,13 +7,11 @@ import {
   Divider,
   Header,
 } from 'semantic-ui-react';
-import { setToken } from '../../util/auth';
 import axios from 'axios';
 import catchErrors from '../../util/catchErrors';
 import Cookies from 'js-cookie';
-import { baseURL } from '../../util/auth';
 
-import AnimalUpload from '../layout/AnimalUpload';
+import EventUpload from '../layout/EventUpload';
 
 const AddEventModal = ({ user, setAnimals, setShowModal }) => {
   const [loading, setLoading] = useState(false);
@@ -21,14 +19,6 @@ const AddEventModal = ({ user, setAnimals, setShowModal }) => {
 
   const [mediaPreview, setMediaPreview] = useState([]);
   const [media, setMedia] = useState([]);
-
-  const defaultAnimalPic =
-    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7h1BiFC8Ot5v_yD14xO4Bz4vIVZDFChrIkFtN-XxtnMQAn73Srlyv-vznS5pXLGT-ywE&usqp=CAU';
-
-  // const postAxios = axios.create({
-  //   baseURL: `${baseURL}/api/v1/posts`,
-  //   headers: { Authorization: `Bearer ${Cookies.get("token")}` },
-  // });
 
   const [newEvent, setNewEvent] = useState({
     title: '',
@@ -62,7 +52,6 @@ const AddEventModal = ({ user, setAnimals, setShowModal }) => {
           setMediaPreview((prev) => [...prev, URL.createObjectURL(file)]);
         });
       }
-      // console.log(media);
     } else {
       setNewEvent((prev) => ({
         ...prev,
@@ -156,7 +145,7 @@ const AddEventModal = ({ user, setAnimals, setShowModal }) => {
           <h1>Add Event</h1>
         </div>
         <div className='uploads'>
-          <AnimalUpload
+          <EventUpload
             handleChange={handleChange}
             media={media}
             mediaPreview={mediaPreview}
