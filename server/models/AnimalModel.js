@@ -31,7 +31,7 @@ const AnimalSchema = new Schema(
       type: String,
     },
     needs: Boolean,
-    specialNeeds: [String],
+    specialNeeds: {type: String},
     details: {type: String},
     desc: {
       type: String,

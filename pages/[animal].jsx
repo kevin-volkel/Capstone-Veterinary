@@ -17,7 +17,6 @@ import ImageModal from "./components/layout/ImageModal";
 import EditAnimalModal from "./components/animals/EditAnimalModal";
 
 const Animal = ({ user, animalObj, errorLoading, animals }) => {
-  // const puppy = "./media/puppy.png";
   const router = useRouter();
 
   const [allAnimals, setAnimals] = useState(animals);
@@ -96,7 +95,6 @@ const Animal = ({ user, animalObj, errorLoading, animals }) => {
                   circular
                   inverted
                   id="edit-1"
-                  size="mid"
                   name="pencil alternate"
                   style={{ cursor: "pointer" }}
                   onClick={() => setShowEdit(true)}

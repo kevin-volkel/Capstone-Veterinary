@@ -18,6 +18,7 @@ export const deleteAnimal = async (animalId, setAnimals) => {
 };
 
 export const editAnimal = async (
+  user,
   name,
   location,
   type,
@@ -39,10 +40,10 @@ export const editAnimal = async (
   try {
     const res = await animalAxios.put(`/${animalId}`, {
       user,
-      name: name.trim().toLowerCase(),
+      name: name.trim(),
       age,
       type,
-      breed: breed.trim().toLowerCase(),
+      breed: breed.trim(),
       gender,
       colors: colors.trim(),
       needs,
@@ -58,7 +59,6 @@ export const editAnimal = async (
     setAnimals((prev) => prev.filter((animal) => animal._id !== animalId));
     setAnimals((prev) => [res.data, ...prev]);
   } catch (error) {
-    console.log(error);
-    setError(catchErrors(error));
+    console.log(catchErrors(error));
   }
 };

@@ -64,7 +64,6 @@ const AddAnimalModal = ({ user, setAnimals, setShowModal }) => {
           setMediaPreview((prev) => [...prev, URL.createObjectURL(file)]);
         });
       }
-      // console.log(media);
     } else if (name === "video" && files.length) {
       if (files.length === 1) {
         let droppedFiles = Object.values(files);
