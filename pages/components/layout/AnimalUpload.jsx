@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { Form, Header, Icon, Image, Segment } from "semantic-ui-react";
+import { Button, Form, Header, Icon, Image, Segment } from "semantic-ui-react";
 
 const AnimalUpload = ({
   handleChange,
@@ -68,29 +68,43 @@ const AnimalUpload = ({
                 </Header>
               </Segment>
             ) : (
-              <Segment
-                placeholder
-                basic
-                color="green"
-                style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  justifyContent: "space-evenly",
-                  flexWrap: "wrap",
-                }}
-              >
-                {mediaPreview.map((pic, i) => {
-                  return (
-                    <Image
-                      key={i}
-                      src={pic}
-                      style={{ margin: ".3rem", width: "180px", objectFit: "scale-down" }}
-                      alt={media.length ? media[i].name : "image"}
-                      centered
-                    />
-                  );
-                })}
-              </Segment>
+              <div>
+                <Button
+                  onClick={() => {
+                    setMedia([]);
+                    setMediaPreview([]);
+                  }}
+                >
+                  Empty Input
+                </Button>
+                <Segment
+                  placeholder
+                  basic
+                  color="green"
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent: "space-evenly",
+                    flexWrap: "wrap",
+                  }}
+                >
+                  {mediaPreview.map((pic, i) => {
+                    return (
+                      <Image
+                        key={i}
+                        src={pic}
+                        style={{
+                          margin: ".3rem",
+                          width: "180px",
+                          objectFit: "scale-down",
+                        }}
+                        alt={media.length ? media[i].name : "image"}
+                        centered
+                      />
+                    );
+                  })}
+                </Segment>
+              </div>
             )}
           </div>
         </Segment>

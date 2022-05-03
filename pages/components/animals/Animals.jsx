@@ -9,6 +9,7 @@ import {
   Modal,
 } from 'semantic-ui-react';
 import AnimalCard from './AnimalCard';
+import AddAnimalModal from './AddAnimalModal'
 
 const Animals = ({ animals, isAdmin, user }) => {
   const [currPage, setCurrPage] = useState(1);

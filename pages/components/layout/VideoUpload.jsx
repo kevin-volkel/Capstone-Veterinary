@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { Form, Header, Icon, Image, Segment } from "semantic-ui-react";
+import { Button, Form, Header, Icon, Image, Segment } from "semantic-ui-react";
 
 const VideoUpload = ({
   handleChange,
@@ -67,26 +67,39 @@ const VideoUpload = ({
                 </Header>
               </Segment>
             ) : (
-              <Segment
-                placeholder
-                basic
-                color="green"
-                style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  justifyContent: "space-evenly",
-                  flexWrap: "wrap"
-                }}
-              >
-                {videoPreview.map((video, i) => {
-                  return (
-                    <video key={i} style={{ maxWidth: "180px", objectFit: "scale-down" }}>
-                      <source src={videoPreview[i]} />
-                      Your browser does not support the video tag.
-                    </video>
-                  );
-                })}
-              </Segment>
+              <div>
+                <Button
+                  onClick={() => {
+                    setVideo([]);
+                    setVideoPreview([]);
+                  }}
+                >
+                  Empty Input
+                </Button>
+                <Segment
+                  placeholder
+                  basic
+                  color="green"
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent: "space-evenly",
+                    flexWrap: "wrap",
+                  }}
+                >
+                  {videoPreview.map((video, i) => {
+                    return (
+                      <video
+                        key={i}
+                        style={{ maxWidth: "180px", objectFit: "scale-down" }}
+                      >
+                        <source src={videoPreview[i]} />
+                        Your browser does not support the video tag.
+                      </video>
+                    );
+                  })}
+                </Segment>
+              </div>
             )}
           </div>
         </Segment>

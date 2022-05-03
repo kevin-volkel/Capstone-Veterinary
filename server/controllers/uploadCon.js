@@ -1,5 +1,4 @@
 const fs = require("fs");
-const { isArray } = require("util");
 const cloudinary = require("cloudinary").v2;
 
 const uploadProfilePic = async (req, res) => {
