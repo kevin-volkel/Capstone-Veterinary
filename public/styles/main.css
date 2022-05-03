@@ -107,7 +107,8 @@ a {
 #admin-animals .ui.grid .ui.card img {
   width: 100%;
   height: 180px;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 #admin-animals .no-animals {
   margin: 1.5rem;
@@ -255,7 +256,8 @@ body {
 #adoption .grid .ui.card img {
   width: 100%;
   height: 150px;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 #adoption .grid .ui.card .animal-header {
   font-size: 2rem;
@@ -375,20 +377,14 @@ body {
   font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
 }
 
-.grid {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
 .slideshow {
   margin-top: 1rem;
 }
 
 .img-container {
   margin: 0;
-  object-fit: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
   overflow: hidden;
   margin: auto;
   display: flex;
@@ -439,13 +435,15 @@ body {
 .img-btn-left {
   left: 0;
   margin-left: 5rem !important;
-  clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
+  -webkit-clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
+          clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
 }
 
 .img-btn-right {
   right: 0;
   margin-right: 5rem !important;
-  clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
+  -webkit-clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
+          clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
 }
 
 .arrow {
@@ -585,11 +583,7 @@ body {
 }
 /* LOGIN & REGISTER FORM CSS */
 .form-wrap {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
   justify-content: center;
 }
 
@@ -661,8 +655,6 @@ body {
 form#register {
     display: flex;
     flex-direction: column;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
     justify-content: center;
   }
 }
@@ -749,6 +741,7 @@ form#register {
 }
 div.animal-wrap {
   margin-top: 1rem;
+  padding-bottom: 10%;
   width: 90%;
   border-radius: 4px;
   background-color: white;
@@ -784,7 +777,8 @@ div.animal-wrap {
 .pet-img {
   width: 70vw;
   height: 70vw;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .para-desc {
@@ -793,12 +787,13 @@ div.animal-wrap {
   justify-content: center;
   align-items: center;
   margin-top: 5%;
-  width: 70%;
+  width: 80%;
   font-size: 1.3rem;
 }
 
 .pet-title {
-  margin-top: 5%;
+  margin-top: 6%;
+  margin-bottom: 8%;
 }
 
 .pet-description {
@@ -808,20 +803,18 @@ div.animal-wrap {
   justify-content: flex-start;
   align-items: flex-start;
   width: 85vw;
-  margin-bottom: 10%;
+  margin-bottom: 5%;
 }
 .pet-description div {
   margin: 0 2.5% 0% 3%;
 }
 .pet-description h3 {
-  margin-bottom: 2%;
-  margin-bottom: 0 !important;
-  margin-top: 3%;
+  margin-top: 0%;
   color: #f2711c;
   font-size: 1.65rem;
 }
 .pet-description p {
-  margin-bottom: 4%;
+  margin-bottom: 7%;
 }
 
 h3 {
@@ -832,16 +825,35 @@ h3 {
   background: rgba(255, 255, 255, 0.3);
 }
 
+.gallery-title {
+  font-size: 1.71rem;
+}
+
+.pet-gallery {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  grid-gap: 6px;
+  padding-top: 5% !important;
+}
+.pet-gallery img {
+  width: 80% !important;
+  height: 250px !important;
+  -o-object-fit: cover !important;
+     object-fit: cover !important;
+  border-radius: 3%;
+}
+
 @media only screen and (min-width: 768px) {
   div.animal-wrap {
     font-size: 0.8rem;
   }
 
   .top-btns #edit-1 {
-    font-size: 1.25rem;
+    font-size: 1rem;
   }
   .top-btns #edit-2 {
-    font-size: 1.25rem;
+    font-size: 1rem;
     margin-left: 1rem !important;
   }
 
@@ -887,14 +899,34 @@ h3 {
     flex-direction: column;
     width: 50%;
   }
+
+  .gallery-title {
+    font-size: 1.35rem;
+  }
+
+  .pet-gallery {
+    align-items: center;
+    justify-content: center;
+    grid-gap: 3px;
+  }
+  .pet-gallery img {
+    padding: 1% !important;
+    width: 38% !important;
+    height: 260px !important;
+    -o-object-fit: cover !important;
+       object-fit: cover !important;
+  }
 }
 @media only screen and (min-width: 1024px) {
   .pet-name {
     margin-top: 3% !important;
   }
 
+  .top-btns #edit-1 {
+    font-size: 1.25rem;
+  }
   .top-btns #edit-2 {
-    margin-left: 1.5rem !important;
+    font-size: 1.25rem;
   }
 
   .pet-img {
@@ -954,6 +986,19 @@ h3 {
     display: flex;
     flex-direction: column;
     width: 50%;
+  }
+
+  .pet-gallery {
+    align-items: center;
+    justify-content: center;
+    grid-gap: 1px;
+  }
+  .pet-gallery img {
+    padding: 0.5% !important;
+    width: 33% !important;
+    height: 260px !important;
+    -o-object-fit: cover !important;
+       object-fit: cover !important;
   }
 }
 #add-animal i.close {
@@ -1259,14 +1304,19 @@ h3 {
 }
 #event-slideshow .embla_viewport.is-draggable {
   cursor: move;
+  cursor: -webkit-grab;
   cursor: grab;
 }
 #event-slideshow .embla_viewport.is-dragging {
+  cursor: -webkit-grabbing;
   cursor: grabbing;
 }
 #event-slideshow .embla_container {
   display: flex;
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   -webkit-touch-callout: none;
   -khtml-user-select: none;
   -webkit-tap-highlight-color: transparent;
@@ -1559,7 +1609,8 @@ h3 {
   height: 70px;
 }
 #photo-upload img {
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   width: 70px;
   height: 70px;
 }
@@ -1622,7 +1673,8 @@ h3 {
 }
 #admin-events .events-list .event-pic img {
   height: 100%;
-  object-fit: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 #admin-events .events-list .options {
   width: 30px;
@@ -1663,9 +1715,9 @@ h3 {
     padding: 1.3rem 0 0;
   }
 }
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 1024px) {
   .footer {
-    font-size: 1.15rem;
-    padding: 2.4rem 0 1.1rem;
+    font-size: 0.95rem;
+    padding: 2rem 0 0rem;
   }
 }/*# sourceMappingURL=main.css.map */
