@@ -1,8 +1,21 @@
-.es-div {
+.events-map {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-left: 3%;
-    padding-right: 3%;
+    padding-bottom: 25px;
+    background-color: #fff;
+
+    h1 {
+        color: #f2711c;
+    }
+
+    .map {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 0;
+        border: 1px solid rgb(183, 183, 183);
+        box-shadow: 2px 2px 4px rgb(213, 213, 213);
+    }
 }
