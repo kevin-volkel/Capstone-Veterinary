@@ -2,9 +2,34 @@ import axios from 'axios';
 import React from 'react';
 import { baseURL } from './util/auth';
 import { parseCookies } from 'nookies';
-import { convertDate, extractTime, getLogDate, sortDates } from './util/dateFuncs';
+import Cookies from 'js-cookie';
+import {
+  convertDate,
+  extractTime,
+  getLogDate,
+  sortDates,
+} from './util/dateFuncs';
+import { Button } from 'semantic-ui-react';
+import { useRouter } from 'next/router';
 
-const changelog = ({ log, errorLoading }) => {
+const changelog = ({ log, errorLoading, user }) => {
+  const router = useRouter();
+
+  const clearLog = async () => {
+    try {
+      const token = Cookies.get('token');
+      const deleted = await axios.delete('/api/v1/log', {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      console.log(deleted);
+      router.reload('/changelog');
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div className="changelog-container">
       <h1 className="changelog-title"> Changelog </h1>
@@ -24,7 +49,8 @@ const changelog = ({ log, errorLoading }) => {
               return (
                 <div className="log-text" key={message._id}>
                   <span className="log-date">
-                    {getLogDate(message.createdAt)}{` `}
+                    {getLogDate(message.createdAt)}
+                    {` `}
                     {extractTime(message.createdAt)}:{` `}
                   </span>
                   {message.details}
@@ -32,6 +58,15 @@ const changelog = ({ log, errorLoading }) => {
               );
             })
         )}
+      </div>
+      <div className="clear-btn-container">
+        <Button
+          content="Clear Log"
+          onClick={clearLog}
+          color="red"
+          icon="trash"
+          className="clear-btn"
+        />
       </div>
     </div>
   );

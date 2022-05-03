@@ -1,15 +1,52 @@
-import Image from "next/image";
-import { Button, Segment } from "semantic-ui-react";
-import Footer from "./components/layout/Footer";
-import adopt from "../public/media/adoption.png";
-import eventImg from "../public/media/event.png";
-import fEvents from "../public/media/CAT.png";
-import EventSlideshow from "./components/events/EventSlideshow";
-import EventsSection from "./components/events/EventsSection";
+import Image from 'next/image';
+import { Button, Segment } from 'semantic-ui-react';
+import Footer from './components/layout/Footer';
+import adopt from '../public/media/adoption.png';
+import eventImg from '../public/media/event.png';
+import fEvents from '../public/media/CAT.png';
+import EventSlideshow from './components/events/EventSlideshow';
+import EventsSection from './components/events/EventsSection';
+import { useEffect, useState } from 'react';
 //import "../styles/home.css";
 // import bannerPic from "../public/media/home-page-banner.jpg";
 
 export default function Home() {
+  // const konamiCode = [
+  //   'ArrowUp',
+  //   'ArrowUp',
+  //   'ArrowDown',
+  //   'ArrowDown',
+  //   'ArrowLeft',
+  //   'ArrowRight',
+  //   'ArrowLeft',
+  //   'ArrowRight',
+  //   'b',
+  //   'a',
+  //   'Enter',
+  // ];
+  // const [currKey, setCurrKey] = useState(0);
+
+  // const handleKeyDown = (e) => {
+  //   const { key } = e;
+  //   if (key !== konamiCode[currKey]) {
+  //     console.log('fail');
+  //     return setCurrKey(0);
+  //   }
+  //   if (key === konamiCode[currKey] && currKey === 10) {
+  //     setCurrKey(0);
+  //     return console.log('KONAMI');
+  //   }
+  //   console.log(currKey);
+  //   if (key === konamiCode[currKey]) {
+  //     console.log('success');
+  //     return setCurrKey(currKey + 1);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   document.onkeydown = handleKeyDown;
+  // }, []);
+
   return (
     <div className="everything">
       <div className="slideshow">

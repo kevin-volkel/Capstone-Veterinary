@@ -1,16 +1,16 @@
 @use '../themes/defaultTheme' as *;
 
-.changelog-container{
+.changelog-container {
   width: 95vw;
   margin: auto;
   margin-top: 1rem;
 
-  .changelog-title{
+  .changelog-title {
     font-size: 1.5rem;
     text-align: center;
   }
 
-  .log-container{
+  .log-container {
     background: black;
     color: white;
     font-family: $custom-monospace;
@@ -18,16 +18,46 @@
     display: flex;
     flex-direction: column;
     height: 70vh;
+    overflow-y: scroll;
 
-    .log-text{
+    &::-webkit-scrollbar {
+      width: 10px;
+      margin-right: 5px;
+      transition: all 2s linear;
+    }
+
+    /* Track */
+    &::-webkit-scrollbar-track {
+      background: #000000;
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+      background: rgb(224, 224, 224);
+    }
+    
+    /* Handle on hover */
+    &::-webkit-scrollbar-thumb:hover {
+      background: rgb(149, 149, 149);
+    }
+
+    .log-text {
       font-size: 0.85rem;
 
-      .log-date{
+      .log-date {
         color: greenyellow;
       }
-      &.error{
+      &.error {
         color: rgb(189, 0, 0);
       }
+    }
+  }
+
+  .clear-btn-container{
+    display: flex;
+    justify-content: center;
+    .clear-btn{
+      margin-top: 1rem;
     }
   }
 }

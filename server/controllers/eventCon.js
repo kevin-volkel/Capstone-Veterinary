@@ -1,5 +1,7 @@
 const EventModel = require("../models/EventModel");
 const UserModel = require("../models/UserModel");
+const LogModel = require('../models/LogModel');
+
 
 const addEvent = async (req, res) => {
   const { userId } = req.user;
@@ -19,6 +21,14 @@ const addEvent = async (req, res) => {
 
     const event = await new EventModel(newEvent).save();
     const eventCreated = await EventModel.findOne(event._id).populate("user");
+
+    const user = await UserModel.findById(userId)
+
+    const newLog = await LogModel.create({
+      user: userId,
+      action: 'added event',
+      details: `${user.name} created the event ${title}`
+    })
 
     return res.status(200).json(eventCreated);
   } catch (error) {
@@ -88,6 +98,15 @@ const deleteEvent = async (req, res) => {
       }
     }
     await event.remove();
+
+    const newLog = await LogModel.create({
+      user: userId,
+      action: 'deleted event',
+      details: `${user.name} deleted the event ${event.title}`
+    })
+
+    console.log(newLog)
+
     return res.status(200).send("event succesfully removed");
   } catch (error) {
     console.log(error);
@@ -106,7 +125,14 @@ const editEvent = async (req, res) => {
       { new: true, runValidators: true }
     ).populate("user");
 
+    const user = await UserModel.findById(userId)
+
     if (!event) return res.status(404).send("event not found");
+    const newLog = await LogModel.create({
+      user: userId,
+      action: 'changed event',
+      details: `${user.name} changed the event  ${event.title}`
+    })
 
     return res.status(200).json(event);
   } catch (error) {
