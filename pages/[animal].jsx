@@ -106,6 +106,7 @@ const Animal = ({ user, animalObj, errorLoading, animals }) => {
                     <Icon
                       circular
                       inverted
+                      id="edit-2"
                       color="red"
                       name="trash alternate"
                       style={{ cursor: "pointer" }}
@@ -184,7 +185,7 @@ const Animal = ({ user, animalObj, errorLoading, animals }) => {
             </div>
           </div>
 
-          <h3>Gallery</h3>
+          <h3 className="gallery-title">Gallery</h3>
 
           {animalObj.picURLs.length && (
             <Grid className="pet-gallery" style={{ display: "flex" }}>
