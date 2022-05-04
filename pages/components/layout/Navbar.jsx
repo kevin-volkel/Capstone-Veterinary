@@ -20,14 +20,14 @@ const Navbar = ({ user }) => {
 
   return (
     <>
-      <div className="navbar">
-        <div className="vet-logo">
+      <div className="navbar" >
+        <div className="vet-logo" aria-label='West-mec vet logo'>
           <Link href="/">
             <Image src={vetLogo} objectFit="contain" />
           </Link>
         </div>
 
-        <div className="wm-logo">
+        <div className="wm-logo" aria-label='West-mec logo'>
           <Link href="/">
             <Image src={wmLogo} objectFit="contain" />
           </Link>
@@ -40,6 +40,7 @@ const Navbar = ({ user }) => {
           size="large"
           style={{ cursor: 'pointer' }}
           onClick={() => setShowNavbar((prev) => !prev)}
+          aria-label='Pages menu'
         />
       </div>
 
@@ -47,15 +48,17 @@ const Navbar = ({ user }) => {
         className={` hamburger items ${showNavbar ? 'show' : 'hide'} ${
           user !== null ? (user.role === 'teacher' ? 'taller' : 'tall') : 'short'
         }`}
+
       >
         <div
           className={`menu-item ${isActive('/') ? 'active' : ''} ${
             showNavbar ? 'show' : ''
           }`}
+          aria-label='Home'
         >
           <Link href="/">Home</Link>
         </div>
-        <div className={`menu-item ${isActive('/animals') ? 'active' : ''}`}>
+        <div className={`menu-item ${isActive('/animals') ? 'active' : ''}`} aria-label='Adoption'>
           <Link href="/animals">Adoption</Link>
         </div>
         {user !== null && (
@@ -85,10 +88,10 @@ const Navbar = ({ user }) => {
       {/* </div> */}
 
       <div className="navbar2">
-        <div className="vet-logo">
+        <div className="vet-logo" aria-label='West-mec vet logo'>
           <Image src={vetLogo} objectFit="contain" />
         </div>
-        <div className="wm-logo">
+        <div className="wm-logo" aria-label='West-mec Logo'>
           <Image src={wmLogo} objectFit="contain" />
         </div>
 
@@ -97,10 +100,11 @@ const Navbar = ({ user }) => {
             className={`menu-item ${isActive('/') ? 'active' : ''} ${
               showNavbar ? 'show' : ''
             }`}
+            aria-label='Home'
           >
             <Link href="/">Home</Link>
           </div>
-          <div className={`menu-item ${isActive('/animals') ? 'active' : ''}`}>
+          <div className={`menu-item ${isActive('/animals') ? 'active' : ''}`} aria-label='Adoption'>
             <Link href="/animals">Adoption</Link>
           </div>
           {user !== null && (
