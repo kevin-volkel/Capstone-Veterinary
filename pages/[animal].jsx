@@ -32,11 +32,24 @@ const Animal = ({ user, animalObj, errorLoading, animals }) => {
     }
   }, []);
 
+  const handleKeyPress = (e, pic) => {
+    const { code } = e;
+    if (code === "Enter") {
+      setShowImage(pic);
+      setShowImageModal(true);
+    }
+  };
+
   return (
     <div>
       {showImageModal && (
         <Modal
           open={showImageModal}
+          // icon={{
+          //   tabIndex: 0,
+          //   name: "close",
+          //   onClick: setShowImageModal(false),
+          // }}
           closeIcon
           closeOnDimmerClick
           onClose={() => setShowImageModal(false)}
@@ -80,12 +93,9 @@ const Animal = ({ user, animalObj, errorLoading, animals }) => {
                 Back to Admin
               </div>
             ) : (
-              <div
-                style={{ cursor: "pointer" }}
-                onClick={() => router.push("/animals")}
-              >
+              <div style={{ cursor: "pointer" }}>
                 <Icon name="arrow left" />
-                Back to Adoption
+                <a href="/animals">Back to Adoption</a>
               </div>
             )}
             {user && (
@@ -191,6 +201,7 @@ const Animal = ({ user, animalObj, errorLoading, animals }) => {
               {animalObj.picURLs.map((pic, index) => {
                 return (
                   <Image
+                    tabIndex={0}
                     key={index}
                     style={{
                       width: "250px",
@@ -198,10 +209,12 @@ const Animal = ({ user, animalObj, errorLoading, animals }) => {
                       cursor: "pointer",
                     }}
                     src={pic}
+                    onKeyDown={(e) => handleKeyPress(e, pic)}
                     onClick={() => {
                       setShowImage(pic);
                       setShowImageModal(true);
                     }}
+                    alt={`Gallery Img ${index}`}
                   />
                 );
               })}

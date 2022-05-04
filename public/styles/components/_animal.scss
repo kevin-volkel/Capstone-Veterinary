@@ -30,7 +30,6 @@ div.animal-wrap {
   justify-content: center;
 }
 
-
 //pet card styling
 .pet-name {
   margin-top: 5% !important;
@@ -76,7 +75,7 @@ div.animal-wrap {
     // justify-content: center;
     // align-items: center;
     margin-top: 0%;
-    color: #f2711c;
+    color: #f06f1a;
     font-size: 1.65rem;
   }
 
@@ -93,10 +92,10 @@ h3 {
 }
 
 .content {
-  background: rgba(255, 255, 255, .3);
+  background: rgba(255, 255, 255, 0.3);
 }
 
-.gallery-title{
+.gallery-title {
   font-size: 1.71rem;
 }
 
@@ -115,10 +114,9 @@ h3 {
   }
 }
 
-
 @media only screen and (min-width: 768px) {
   div.animal-wrap {
-    font-size: .8rem;
+    font-size: 0.8rem;
   }
 
   .top-btns {
@@ -133,7 +131,7 @@ h3 {
   }
 
   .para-desc {
-    font-size: .9rem;
+    font-size: 0.9rem;
   }
 
   .pet-title {
@@ -184,7 +182,7 @@ h3 {
     }
   }
 
-  .gallery-title{
+  .gallery-title {
     font-size: 1.35rem;
   }
 
@@ -192,7 +190,7 @@ h3 {
     align-items: center;
     justify-content: center;
     grid-gap: 3px;
- 
+
     img {
       padding: 1% !important;
       width: 38% !important;
@@ -289,9 +287,9 @@ h3 {
     align-items: center;
     justify-content: center;
     grid-gap: 1px;
- 
+
     img {
-      padding: .5% !important;
+      padding: 0.5% !important;
       width: 33% !important;
       height: 260px !important;
       object-fit: cover !important;
