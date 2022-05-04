@@ -112,7 +112,8 @@ a {
 #admin-animals .ui.grid .ui.card img {
   width: 100%;
   height: 180px;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 #admin-animals .no-animals {
   margin: 1.5rem;
@@ -260,7 +261,8 @@ body {
 #adoption .grid .ui.card img {
   width: 100%;
   height: 150px;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 #adoption .grid .ui.card .animal-header {
   font-size: 2rem;
@@ -389,7 +391,8 @@ body {
 
 .img-container {
   margin: 0;
-  object-fit: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
   overflow: hidden;
   margin: auto;
   display: flex;
@@ -440,13 +443,15 @@ body {
 .img-btn-left {
   left: 0;
   margin-left: 5rem !important;
-  clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
+  -webkit-clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
+          clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
 }
 
 .img-btn-right {
   right: 0;
   margin-right: 5rem !important;
-  clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
+  -webkit-clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
+          clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
 }
 
 .arrow {
@@ -580,17 +585,10 @@ body {
     padding: 1.75% 1.5%;
     margin-bottom: 2%;
   }
-  html .adopt-section.ui.segment:first-child {
-    margin-top: 8.5rem;
-  }
 }
 /* LOGIN & REGISTER FORM CSS */
 .form-wrap {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
   justify-content: center;
 }
 
@@ -662,8 +660,6 @@ body {
 form#register {
     display: flex;
     flex-direction: column;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
     justify-content: center;
   }
 }
@@ -786,7 +782,8 @@ div.animal-wrap {
 .pet-img {
   width: 70vw;
   height: 70vw;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .para-desc {
@@ -847,7 +844,8 @@ h3 {
 .pet-gallery img {
   width: 80% !important;
   height: 250px !important;
-  object-fit: cover !important;
+  -o-object-fit: cover !important;
+     object-fit: cover !important;
   border-radius: 3%;
 }
 
@@ -920,7 +918,8 @@ h3 {
     padding: 1% !important;
     width: 38% !important;
     height: 260px !important;
-    object-fit: cover !important;
+    -o-object-fit: cover !important;
+       object-fit: cover !important;
   }
 }
 @media only screen and (min-width: 1024px) {
@@ -1003,7 +1002,8 @@ h3 {
     padding: 0.5% !important;
     width: 33% !important;
     height: 260px !important;
-    object-fit: cover !important;
+    -o-object-fit: cover !important;
+       object-fit: cover !important;
   }
 }
 #add-animal i.close {
@@ -1125,6 +1125,7 @@ h3 {
 .changelog-container .log-container::-webkit-scrollbar {
   width: 10px;
   margin-right: 5px;
+  -webkit-transition: all 2s linear;
   transition: all 2s linear;
 }
 .changelog-container .log-container::-webkit-scrollbar-track {
@@ -1160,19 +1161,63 @@ h3 {
   align-items: center;
   padding-bottom: 25px;
   background-color: #fff;
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-top: 15px;
 }
 .events-map h1 {
   color: #f2711c;
 }
-.events-map .map {
+.events-map .map-and-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.events-map .map-and-text .map {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-right: 0;
   border: 1px solid rgb(183, 183, 183);
   box-shadow: 2px 2px 4px rgb(213, 213, 213);
+  width: 100%;
+  height: 60vw;
+  border-radius: 3%;
 }
 
+@media only screen and (min-width: 768px) {
+  .events-map {
+    margin-top: 5vw;
+  }
+  .events-map .map-and-text p {
+    padding-left: 7%;
+    padding-right: 7%;
+    padding-bottom: 3%;
+  }
+  .events-map .map-and-text .map {
+    width: 80%;
+    height: 45vw;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .events-map {
+    margin-top: 15vw;
+    padding-top: 25px;
+  }
+  .events-map .map-and-text {
+    display: flex;
+    flex-direction: row;
+  }
+  .events-map .map-and-text p {
+    width: 40%;
+    font-size: 1rem;
+  }
+  .events-map .map-and-text .map {
+    width: 65%;
+    height: 40vw;
+  }
+}
 .navbar {
   position: relative;
   width: 100%;
@@ -1354,14 +1399,19 @@ h3 {
 }
 #event-slideshow .embla_viewport.is-draggable {
   cursor: move;
+  cursor: -webkit-grab;
   cursor: grab;
 }
 #event-slideshow .embla_viewport.is-dragging {
+  cursor: -webkit-grabbing;
   cursor: grabbing;
 }
 #event-slideshow .embla_container {
   display: flex;
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   -webkit-touch-callout: none;
   -khtml-user-select: none;
   -webkit-tap-highlight-color: transparent;
@@ -1654,7 +1704,8 @@ h3 {
   height: 70px;
 }
 #photo-upload img {
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   width: 70px;
   height: 70px;
 }
@@ -1717,7 +1768,8 @@ h3 {
 }
 #admin-events .events-list .event-pic img {
   height: 100%;
-  object-fit: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 #admin-events .events-list .options {
   width: 30px;
