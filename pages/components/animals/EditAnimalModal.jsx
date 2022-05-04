@@ -9,7 +9,7 @@ import AnimalUpload from "../layout/AnimalUpload";
 import { editAnimal } from "../../util/animalActions";
 import { useRouter } from "next/router";
 
-const EditAnimalModal = ({ user, setAnimals, setShowModal, animal }) => {
+const EditAnimalModal = ({ setAnimals, setShowModal, animal }) => {
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState(null);
 
@@ -158,7 +158,6 @@ const EditAnimalModal = ({ user, setAnimals, setShowModal, animal }) => {
         throw new Error("Error while uploading video(s)");
 
       await editAnimal(
-        user,
         newAnimal.name,
         newAnimal.location,
         newAnimal.type,

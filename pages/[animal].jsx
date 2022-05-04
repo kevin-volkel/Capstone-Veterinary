@@ -25,7 +25,6 @@ const Animal = ({ user, animalObj, errorLoading, animals }) => {
   const [showImage, setShowImage] = useState(null);
 
   const [showEdit, setShowEdit] = useState(false);
-  const [showDelete, setShowDelete] = useState(false);
 
   useEffect(() => {
     if (errorLoading !== null) {

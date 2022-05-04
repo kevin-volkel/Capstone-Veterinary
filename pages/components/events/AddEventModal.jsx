@@ -1,32 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   Form,
-  Segment,
   Button,
   Message,
-  Divider,
-  Header,
-} from 'semantic-ui-react';
-import axios from 'axios';
-import catchErrors from '../../util/catchErrors';
-import Cookies from 'js-cookie';
+  Divider
+} from "semantic-ui-react";
+import axios from "axios";
+import catchErrors from "../../util/catchErrors";
+import EventUpload from "../layout/EventUpload";
+import { addEvent } from "../../util/eventActions";
+import defaultEventPic from "../../../public/media/home-page-banner.jpg";
 
-import EventUpload from '../layout/EventUpload';
-
-const AddEventModal = ({ user, setAnimals, setShowModal }) => {
+const AddEventModal = ({ setEvents, setShowModal }) => {
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState(null);
 
-  const [mediaPreview, setMediaPreview] = useState([]);
-  const [media, setMedia] = useState([]);
+  const [mediaPreview, setMediaPreview] = useState(null);
+  const [media, setMedia] = useState(null);
 
   const [newEvent, setNewEvent] = useState({
-    title: '',
-    desc: '',
-    date: '',
-    type: '',
-    location: '',
-    bannerPic: '',
+    title: "",
+    desc: "",
+    date: "",
+    type: "",
+    otherType: "",
+    featured: false,
+    location: "",
+    bannerPic: "",
   });
 
   const handleChange = (e, data) => {
@@ -37,21 +37,9 @@ const AddEventModal = ({ user, setAnimals, setShowModal }) => {
         ...prev,
         [data.name]: data.value,
       }));
-    } else if (name === 'media' && files.length) {
-      if (files.length === 1) {
-        let droppedFiles = Object.values(files);
-        setMedia((prev) => [...prev, droppedFiles[0]]);
-        setMediaPreview((prev) => [
-          ...prev,
-          URL.createObjectURL(droppedFiles[0]),
-        ]);
-      } else {
-        let droppedFiles = Object.values(files);
-        droppedFiles.map((file) => {
-          setMedia((prev) => [...prev, file]);
-          setMediaPreview((prev) => [...prev, URL.createObjectURL(file)]);
-        });
-      }
+    } else if (name == 'media' && files.length) {
+      setMedia(() => files[0]);
+      setMediaPreview(() => URL.createObjectURL(files[0]));
     } else {
       setNewEvent((prev) => ({
         ...prev,
@@ -64,64 +52,44 @@ const AddEventModal = ({ user, setAnimals, setShowModal }) => {
     e.preventDefault();
     setLoading(true);
 
-    let animalPicURLs = [];
+    let eventPicUrl = "bruh";
 
     try {
       //IMAGES
-      if (media.length !== 0) {
+      if (media !== null) {
         const formData = new FormData();
-        media.forEach((image) => {
-          formData.append('image', image, {
-            headers: {
-              'Content-Type': 'multipart/form-data',
-            },
-          });
+        formData.append("image", media, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
         });
-        const res = await axios.post('/api/v1/upload/images', formData);
-        animalPicURLs = res.data.sources;
+        const res = await axios.post("/api/v1/upload", formData);
+        eventPicUrl = res.data.src;
       } else {
-        animalPicURLs = [defaultAnimalPic];
+        eventPicUrl = defaultEventPic.src;
       }
-      if (media.length !== 0 && !animalPicURLs.length)
-        throw new Error('Error while uploading image(s).');
+      if (media !== null && !eventPicUrl) throw new Error("Cloudinary Error");
 
-      const res = await axios.post(
-        '/api/v1/event',
-        {
-          user,
-          title: newEvent.title.trim(),
-          desc: newEvent.desc.trim(),
-          date: new Date(newEvent.date),
-          type: newEvent.type.trim(),
-          bannerPic: newEvent.bannerPic,
-          location: newEvent.location,
-        },
-        {
-          headers: { Authorization: `Bearer ${Cookies.get('token')}` },
-        }
-      );
+      let eventDate = new Date(newEvent.date);
 
-      setAnimals((prev) => [res.data, ...prev]);
+      if (newEvent.otherType !== "") {
+        newEvent.type = newEvent.otherType;
+      }
 
-      setNewEvent({
-        title: '',
-        location: 'northeast',
-        type: 'dog',
-        gender: 'male',
-        age: 'young',
-        breed: '',
-        neutered: false,
-        vaccs: false,
-        colors: '',
-        desc: '',
-        details: '',
-        needs: false,
-        specialNeeds: '',
-        picURLs: [],
-      });
+      await addEvent(
+        newEvent.title,
+        newEvent.desc,
+        eventDate,
+        newEvent.type,
+        eventPicUrl,
+        newEvent.location,
+        newEvent.featured,
+        setEvents,
+        setNewEvent
+      )
 
-      setMedia([]);
-      setMediaPreview([]);
+      setMedia(null);
+      setMediaPreview(null);
       setLoading(false);
       setShowModal(false);
     } catch (err) {
@@ -132,19 +100,50 @@ const AddEventModal = ({ user, setAnimals, setShowModal }) => {
     setLoading(false);
   };
 
+  const typeOptions = [
+    {
+      text: "Fundraiser",
+      value: "fundraiser",
+      key: 0,
+    },
+    {
+      text: "Adoption",
+      value: "adoption",
+      key: 1,
+    },
+    {
+      text: "Other",
+      value: "other",
+      key: 2,
+    },
+  ];
+
+  const featuredOptions = [
+    {
+      text: "No",
+      value: false,
+      key: 0,
+    },
+    {
+      text: "Yes",
+      value: true,
+      key: 1,
+    },
+  ];
+
   return (
-    <div className='form-wrap'>
+    <div className="form-wrap">
       <Form loading={loading} error={errorMsg !== null} onSubmit={handleSubmit}>
         <Message
           error
-          header='Oops!'
+          header="Oops!"
           content={errorMsg}
           onDismiss={() => setErrorMsg(null)}
         />
         <div>
           <h1>Add Event</h1>
         </div>
-        <div className='uploads'>
+        <div className="uploads">
           <EventUpload
             handleChange={handleChange}
             media={media}
@@ -153,44 +152,76 @@ const AddEventModal = ({ user, setAnimals, setShowModal }) => {
             setMedia={setMedia}
           />
         </div>
-        <div id='form-group'>
+        <div id="form-group">
           <Form.Input
-            label='Title'
+            label="Title"
             required
-            placeholder='Title'
-            value={newEvent.name}
-            name='title'
+            placeholder="Title"
+            value={newEvent.title}
+            name="title"
             onChange={handleChange}
-            type='text'
+            type="text"
           />
           <Form.Input
-            label='Location'
+            label="Date"
+            required
+            placeholder="Date"
+            value={newEvent.date}
+            name="date"
+            onChange={handleChange}
+            type="date"
+          />
+          <Form.Input
+            label="Location"
             required
             value={newEvent.location}
-            name='location'
+            name="location"
             onChange={handleChange}
-            type='text'
-            placeholder='Location'
+            type="text"
+            placeholder="Location"
           />
-          <Form.Input
+          <Form.Group>
+            <div id="event-type">
+              <Form.Select
+                required
+                options={typeOptions}
+                value={newEvent.type}
+                name="type"
+                onChange={handleChange}
+                label="Type"
+              />
+              {newEvent.type === "other" && (
+                <Form.Input
+                  required
+                  placeholder="Other..."
+                  value={newEvent.otherType}
+                  name="otherType"
+                  onChange={handleChange}
+                  type="text"
+                />
+              )}
+            </div>
+            <Form.Select
+              required
+              options={featuredOptions}
+              value={newEvent.featured}
+              name="featured"
+              onChange={handleChange}
+              label="Featured"
+            />
+          </Form.Group>
+          <Form.TextArea
             required
             value={newEvent.desc}
             onChange={handleChange}
-            name='desc'
-            label='Description'
-            placeholder='Description'
-          />
-          <Form.Input
-            required
-            value={newEvent.gender}
-            onChange={handleChange}
-            name='gender'
-            label='Date'
-            type='date'
+            name="desc"
+            label="Description"
+            type="text"
+            placeholder="Add a short description of the event..."
           />
         </div>
-        <div className='button-div'>
-          <Button disabled={loading} id='add-animal-btn' content='Done' fluid />
+        <div className="button-div">
+          <Button disabled={loading} id="add-event-btn" content="Done" fluid />
         </div>
       </Form>
     </div>

@@ -93,7 +93,7 @@ const EventSlideshow = () => {
                     events.map((event, index) => (
                       <div className='embla_slide' key={index}>
                         <div className='embla_slide_inner'>
-                          <EventCard event={event} />
+                          <EventCard event={event} gradient={true} />
                         </div>
                       </div>
                     ))

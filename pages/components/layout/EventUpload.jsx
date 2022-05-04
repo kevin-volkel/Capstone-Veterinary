@@ -40,7 +40,7 @@ const EventUpload = ({
               setMedia(droppedFile);
             }}
           >
-            {!mediaPreview.length ? (
+            {mediaPreview == null ? (
               <Segment basic placeholder style={{ cursor: "pointer" }}>
                 <Header icon>
                   <Icon name="file image outline" />
@@ -48,43 +48,27 @@ const EventUpload = ({
                 </Header>
               </Segment>
             ) : (
-              <div>
-                <Button
-                  onClick={() => {
-                    setMedia([]);
-                    setMediaPreview([]);
-                  }}
-                >
-                  Empty Input
-                </Button>
-                <Segment
-                  placeholder
-                  basic
-                  color="green"
+              <Segment
+                placeholder
+                basic
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "space-evenly",
+                  flexWrap: "wrap",
+                }}
+              >
+                <Image
+                  src={mediaPreview}
                   style={{
-                    display: "flex",
-                    flexDirection: "row",
-                    justifyContent: "space-evenly",
-                    flexWrap: "wrap",
+                    margin: ".3rem",
+                    width: "180px",
+                    objectFit: "scale-down",
                   }}
-                >
-                  {mediaPreview.map((pic, i) => {
-                    return (
-                      <Image
-                        key={i}
-                        src={pic}
-                        style={{
-                          margin: ".3rem",
-                          width: "180px",
-                          objectFit: "scale-down",
-                        }}
-                        alt={media.length ? media[i].name : "image"}
-                        centered
-                      />
-                    );
-                  })}
-                </Segment>
-              </div>
+                  alt={media.name}
+                  centered
+                />
+              </Segment>
             )}
           </div>
         </Segment>

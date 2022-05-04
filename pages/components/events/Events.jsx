@@ -25,7 +25,7 @@ const Events = ({ user, events }) => {
       </Button>
       {showModal && (
         <Modal
-          id='add-animal'
+          id='add-event'
           open={showModal}
           closeIcon
           closeOnDimmerClick
@@ -44,7 +44,7 @@ const Events = ({ user, events }) => {
         {susEvents.map((event, i) => (
           <>
             <div className='event-card' key={i}>
-              <AdminEvent event={event} />
+              <AdminEvent event={event} setEvents={setSusEvents} />
             </div>
             {i !== susEvents.length - 1 && <Divider />}
           </>

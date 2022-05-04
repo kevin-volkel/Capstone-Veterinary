@@ -18,27 +18,38 @@ export const deleteEvent = async (eventId, setEvents) => {
 };
 
 export const addEvent = async (
-  user,
   title,
   desc,
   date,
   type,
   bannerPic,
   location,
-  eventId
+  featured,
+  setEvents,
+  setNewEvent
 ) => {
   try {
-    const res = await eventAxios.post(`/${eventId}`, {
-      user,
+    const res = await eventAxios.post("/", {
       title,
       desc,
       date,
       type,
       bannerPic,
       location,
+      featured,
     });
     setEvents((prev) => [res.data, ...prev]);
+    setNewEvent({
+      title: "",
+      desc: "",
+      date: "",
+      type: "",
+      featured: false,
+      location: "",
+      bannerPic: "",
+    });
   } catch {
+    console.log(error);
     console.log(catchErrors(error));
   }
 };

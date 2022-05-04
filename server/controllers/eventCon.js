@@ -10,14 +10,14 @@ const addEvent = async (req, res) => {
   try {
     const newEvent = {
       title,
-      desc,
       date: new Date(date),
       location,
       user: userId,
-      bannerPic
+      bannerPic,
+      type,
+      featured,
+      desc
     };
-    if (type) newEvent.type = type;
-    if (featured) newEvent.featured = featured;
 
     const event = await new EventModel(newEvent).save();
     const eventCreated = await EventModel.findOne(event._id).populate("user");

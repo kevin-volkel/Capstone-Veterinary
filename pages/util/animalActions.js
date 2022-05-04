@@ -18,7 +18,6 @@ export const deleteAnimal = async (animalId, setAnimals) => {
 };
 
 export const editAnimal = async (
-  user,
   name,
   location,
   type,
@@ -39,7 +38,6 @@ export const editAnimal = async (
 ) => {
   try {
     const res = await animalAxios.put(`/${animalId}`, {
-      user,
       name: name.trim(),
       age,
       type,

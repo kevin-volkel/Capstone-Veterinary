@@ -9,7 +9,6 @@ const EventSchema = new Schema(
     },
     desc: {
       type: String,
-      required: [true, 'must provided a description'],
     },
     date: {
       type: Date,
@@ -17,6 +16,7 @@ const EventSchema = new Schema(
     },
     type: {
       type: String,
+      required: [true, 'must provided an event type'],
     },
     featured: {
       type: Boolean,

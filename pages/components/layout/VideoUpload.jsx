@@ -29,15 +29,12 @@ const VideoUpload = ({
             style={{ cursor: "pointer" }}
             onDragOver={(e) => {
               e.preventDefault();
-              // setHightlighted(true);
             }}
             onDragLeave={(e) => {
               e.preventDefault();
-              // setHightlighted(false);
             }}
             onDrop={(e) => {
               e.preventDefault();
-              // setHightlighted(true);
 
               let files = e.dataTransfer.files;
               if (files.length === 1) {
@@ -79,7 +76,6 @@ const VideoUpload = ({
                 <Segment
                   placeholder
                   basic
-                  color="green"
                   style={{
                     display: "flex",
                     flexDirection: "row",

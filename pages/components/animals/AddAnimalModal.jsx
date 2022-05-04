@@ -10,7 +10,7 @@ import Cookies from "js-cookie";
 import VideoUpload from "../layout/VideoUpload";
 import AnimalUpload from "../layout/AnimalUpload";
 
-const AddAnimalModal = ({ user, setAnimals, setShowModal }) => {
+const AddAnimalModal = ({ setAnimals, setShowModal }) => {
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState(null);
 
@@ -132,7 +132,6 @@ const AddAnimalModal = ({ user, setAnimals, setShowModal }) => {
       const res = await axios.post(
         "/api/v1/animal",
         {
-          user,
           name: newAnimal.name.trim(),
           age: newAnimal.age,
           type: newAnimal.type,
