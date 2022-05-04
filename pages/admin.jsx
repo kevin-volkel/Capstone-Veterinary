@@ -14,33 +14,29 @@ const admin = ({ user, animals, events }) => {
   return (
     <div id="admin">
       <div id="header">
-        {!showEvents ? (
-          <Header
-            as="h1"
-            style={{ color: '#F7931D' }}
-            onClick={() => setShowEvents(false)}
-          >
-            Animals
-          </Header>
-        ) : (
-          <Header as="h1" onClick={() => setShowEvents(false)}>
-            Animals
-          </Header>
-        )}
+        <Header
+          as="h1"
+          className={
+            !showEvents
+              ? "active"
+              : ""
+          }
+          onClick={() => setShowEvents(false)}
+        >
+          Animals
+        </Header>
 
-        {showEvents ? (
-          <Header
-            as="h1"
-            style={{ color: '#F7931D' }}
-            onClick={() => setShowEvents(true)}
-          >
-            Events
-          </Header>
-        ) : (
-          <Header as="h1" onClick={() => setShowEvents(true)}>
-            Events
-          </Header>
-        )}
+        <Header
+          as="h1"
+          className={
+            showEvents
+              ? "active"
+              : ""
+          }
+          onClick={() => setShowEvents(true)}
+        >
+          Events
+        </Header>
       </div>
       {!showEvents ? (
         <Segment id="admin-animals">
@@ -48,10 +44,9 @@ const admin = ({ user, animals, events }) => {
         </Segment>
       ) : (
         <Segment id="admin-events">
-          <Events user={user} events={events}/>
+          <Events user={user} events={events} />
         </Segment>
       )}
-
     </div>
   );
 };
@@ -61,8 +56,8 @@ admin.getInitialProps = async ({ ctx }) => {
   try {
     const animalRes = await axios.get(`${baseURL}/api/v1/animal`);
     pageProps.animals = animalRes.data;
-    const eventsRes = await axios.get(`${baseURL}/api/v1/event`)
-    const sortedEvents = eventsRes.data.sort(sortDates)
+    const eventsRes = await axios.get(`${baseURL}/api/v1/event`);
+    const sortedEvents = eventsRes.data.sort(sortDates);
     pageProps.events = sortedEvents;
   } catch (err) {
     console.error(err);

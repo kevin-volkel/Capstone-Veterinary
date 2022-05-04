@@ -48,6 +48,11 @@ a {
   margin: 1.75rem auto;
   flex-direction: row;
   justify-content: space-evenly;
+  gap: 5rem;
+}
+#admin #header h1.active {
+  color: #d97500;
+  border-bottom: 2px solid #d97500;
 }
 
 #admin-animals {
@@ -212,7 +217,7 @@ body {
 }
 #adoption h1 {
   font-weight: bold;
-  color: #f7931d;
+  color: #df7b05;
   margin-bottom: 3rem;
   text-align: center;
 }
@@ -260,6 +265,9 @@ body {
 #adoption .grid .ui.card .animal-header {
   font-size: 2rem;
   margin-bottom: 0.8rem;
+}
+#adoption .grid .ui.card .card-type, #adoption .grid .ui.card .card-age {
+  color: rgb(66, 66, 66);
 }
 #adoption .no-animals {
   margin: 1.5rem;
@@ -488,7 +496,7 @@ body {
   margin-bottom: 4%;
   padding: 5% 3.75%;
   box-shadow: 2px 2px 5px #aaaaaa;
-  color: #f2711c;
+  color: #f06f1a;
   background-color: #fafafa;
 }
 
@@ -502,7 +510,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #f2711c;
+  color: #f06f1a;
 }
 .adopt-section .nf-wholeSect {
   display: flex;
@@ -1012,7 +1020,7 @@ h3 {
   font-size: 1rem;
 }
 #add-animal h1 {
-  color: #F7931D;
+  color: #f06f1a;
 }
 #add-animal .uploads {
   display: flex;
@@ -1199,7 +1207,7 @@ h3 {
   text-align: center;
   background: #F6F7F8;
   z-index: 9;
-  border-bottom: solid 3px #F7931D;
+  border-bottom: solid 3px #f06f1a;
   position: absolute;
   height: auto;
 }
@@ -1208,7 +1216,7 @@ h3 {
   line-height: 3rem;
 }
 .hamburger.items .menu-item a:hover {
-  color: #F7931D;
+  color: #f06f1a;
 }
 .hamburger.items.taller {
   transform: translateY(-15rem);
@@ -1289,7 +1297,7 @@ h3 {
     align-content: center;
     align-items: center;
     padding: 0.1%;
-    border-bottom: 2px solid #F7931D;
+    border-bottom: 2px solid #f06f1a;
   }
   .navbar2 .vet-logo {
     width: 6%;

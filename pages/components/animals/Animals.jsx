@@ -173,7 +173,7 @@ const Animals = ({ animals, isAdmin, user }) => {
               .map((animal) => {
                 // console.log(animal);
                 const { name, age, type, gender, picURLs, _id } = animal;
-                const color = gender === 'male' ? '#70B0FF' : '#FA7091';
+                // const color = gender === 'male' ? '#5797e6' : '#f06687';
 
                 return (
                   <AnimalCard
@@ -183,7 +183,6 @@ const Animals = ({ animals, isAdmin, user }) => {
                     picURLs={picURLs}
                     id={_id}
                     gender={gender}
-                    color={color}
                     key={_id}
                   />
                 );

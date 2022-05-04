@@ -29,6 +29,12 @@
     margin: 1.75rem auto;
     flex-direction: row;
     justify-content: space-evenly;
+    gap: 5rem;
+
+    h1.active{
+      color: #d97500;
+      border-bottom: 2px solid #d97500;
+    }
   }
 }
 

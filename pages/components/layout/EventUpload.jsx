@@ -65,7 +65,6 @@ const EventUpload = ({
                     width: "180px",
                     objectFit: "scale-down",
                   }}
-                  alt={media.name}
                   centered
                 />
               </Segment>

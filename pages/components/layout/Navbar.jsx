@@ -23,13 +23,13 @@ const Navbar = ({ user }) => {
       <div className="navbar">
         <div className="vet-logo">
           <Link href="/">
-            <Image src={vetLogo} objectFit="contain" />
+            <Image src={vetLogo} objectFit="contain" alt="West Mec Vertinary Sciences"/>
           </Link>
         </div>
 
         <div className="wm-logo">
           <Link href="/">
-            <Image src={wmLogo} objectFit="contain" />
+            <Image src={wmLogo} objectFit="contain" alt="West Mec"/>
           </Link>
         </div>
 
@@ -86,10 +86,10 @@ const Navbar = ({ user }) => {
 
       <div className="navbar2">
         <div className="vet-logo">
-          <Image src={vetLogo} objectFit="contain" />
+          <Image src={vetLogo} objectFit="contain" alt="West Mec Vertinary Sciences"/>
         </div>
         <div className="wm-logo">
-          <Image src={wmLogo} objectFit="contain" />
+          <Image src={wmLogo} objectFit="contain" alt="West Mec"/>
         </div>
 
         <div className="items">

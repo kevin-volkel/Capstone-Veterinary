@@ -22,7 +22,7 @@ body {
 
   h1 {
     font-weight: bold;
-    color: #f7931d;
+    color: #df7b05;
     margin-bottom: 3rem;
     text-align: center;
 
@@ -78,6 +78,10 @@ body {
       .animal-header {
         font-size: 2rem;
         margin-bottom: 0.8rem;
+      }
+
+      .card-type, .card-age{
+        color: rgb(66, 66, 66);
       }
     }
   }
