@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   Form,
   Segment,
@@ -8,12 +8,12 @@ import {
   Image,
   Header,
   Icon,
-} from 'semantic-ui-react';
-import axios from 'axios';
-import { setToken } from '../../util/auth';
-import { classCodes, teacherCodes } from '../../util/classCodes';
-import catchErrors from '../../util/catchErrors';
-import PhotoUpload from '../layout/PhotoUpload';
+} from "semantic-ui-react";
+import axios from "axios";
+import { setToken } from "../../util/auth";
+import { classCodes, teacherCodes } from "../../util/classCodes";
+import catchErrors from "../../util/catchErrors";
+import PhotoUpload from "../layout/PhotoUpload";
 // import { passwordReg, emailReg } from '../../util/regi';
 // import isEmail from 'validator/lib/isEmail';
 
@@ -28,7 +28,7 @@ const RegisterForm = ({
     user;
 
   const defaultProfilePic =
-    'https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg';
+    "https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg";
 
   const [formLoading, setFormLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState(null);
@@ -36,13 +36,13 @@ const RegisterForm = ({
 
   const roleOptions = [
     {
-      text: 'Student',
-      value: 'student',
+      text: "Student",
+      value: "student",
       key: 0,
     },
     {
-      text: 'Teacher',
-      value: 'teacher',
+      text: "Teacher",
+      value: "teacher",
       key: 1,
     },
   ];
@@ -57,29 +57,29 @@ const RegisterForm = ({
     try {
       if (media !== null) {
         const formData = new FormData();
-        formData.append('image', media, {
+        formData.append("image", media, {
           headers: {
-            'Content-Type': 'multipart/form-data',
+            "Content-Type": "multipart/form-data",
           },
         });
-        const res = await axios.post('/api/v1/upload', formData);
+        const res = await axios.post("/api/v1/upload", formData);
         profilePicURL = res.data.src;
       } else {
         profilePicURL = defaultProfilePic;
       }
 
-      if (media !== null && !profilePicURL) throw new Error('Cloudinary Error');
+      if (media !== null && !profilePicURL) throw new Error("Cloudinary Error");
 
       let submittedClass = null;
-      if (role === 'teacher') {
+      if (role === "teacher") {
         submittedClass = teacherCodes[teacherCode];
       } else {
         submittedClass = classCodes[classCode];
       }
 
-      if (!submittedClass) throw new Error('Invalid class code');
+      if (!submittedClass) throw new Error("Invalid class code");
 
-      const res = await axios.post('/api/v1/user/signup', {
+      const res = await axios.post("/api/v1/user/signup", {
         name: `${firstName.trim()} ${lastName.trim()}`,
         email,
         password,
@@ -118,12 +118,11 @@ const RegisterForm = ({
             // style={{ display: 'flex', justifyContent: 'space-between' }}
           >
             <h1> Register </h1>
-
-            <PhotoUpload
-              mediaPreview={mediaPreview}
-              defaultProfilePic={defaultProfilePic}
-              handleChange={handleChange} 
-            />
+              <PhotoUpload
+                mediaPreview={mediaPreview}
+                defaultProfilePic={defaultProfilePic}
+                handleChange={handleChange}
+              />
           </div>
           <div id="form-group">
             <Form.Input
@@ -146,13 +145,13 @@ const RegisterForm = ({
               name="password"
               onChange={handleChange}
               icon={{
-                name: showPassword ? 'eye slash' : 'eye',
+                name: showPassword ? "eye slash" : "eye",
                 circular: true,
                 link: true,
                 onClick: () => setShowPassword(!showPassword),
               }}
               iconPosition="left"
-              type={showPassword ? 'text' : 'password'}
+              type={showPassword ? "text" : "password"}
             />
           </div>
           <Divider hidden />
@@ -185,7 +184,7 @@ const RegisterForm = ({
               name="role"
               label="Student or Teacher?"
             />
-            {role == 'teacher' ? (
+            {role == "teacher" ? (
               <Form.Input
                 type="text"
                 label="Teacher Code"
@@ -211,7 +210,7 @@ const RegisterForm = ({
               />
             )}
           </Form.Group>
-          <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <div style={{ display: "flex", justifyContent: "center" }}>
             <Button id="register-btn" content="Register" fluid />
           </div>
           <h5 className="form-link" onClick={() => setIsLogin(true)}>

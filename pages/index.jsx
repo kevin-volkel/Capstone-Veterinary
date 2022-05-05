@@ -89,6 +89,7 @@ export default function Home() {
               content="Ready To Adopt"
               className="nf-adopt-btn"
               href="/animals"
+              role='link'
               // onClick=''
             />
           </div>
