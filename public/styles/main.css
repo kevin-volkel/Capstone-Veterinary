@@ -878,6 +878,7 @@ h3 {
   -o-object-fit: cover !important;
      object-fit: cover !important;
   border-radius: 3%;
+  min-width: 30vw;
 }
 
 @media only screen and (min-width: 768px) {
@@ -938,6 +939,11 @@ h3 {
 
   .gallery-title {
     font-size: 1.35rem;
+  }
+
+  .pet-img {
+    width: 50vw;
+    height: 50vw;
   }
 
   .pet-gallery {
@@ -1022,6 +1028,11 @@ h3 {
     display: flex;
     flex-direction: column;
     width: 50%;
+  }
+
+  .pet-img {
+    width: 25vw;
+    height: 25vw;
   }
 
   .pet-gallery {
