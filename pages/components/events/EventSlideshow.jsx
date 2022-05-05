@@ -6,9 +6,8 @@ import { DotButton, NextButton, PrevButton } from './SlideshowButtons';
 import EventCard from './EventCard';
 import NoEvents from './NoEvents';
 import Autoplay from 'embla-carousel-autoplay';
-import { sortDates } from '../../util/dateFuncs';
 
-const EventSlideshow = () => {
+const EventSlideshow = ({ events, loading, setEventModalShowing }) => {
   const autoplay = useRef(
     Autoplay(
       {
@@ -20,8 +19,6 @@ const EventSlideshow = () => {
       (emblaRoot) => emblaRoot.parentElement
     )
   );
-  const [events, setEvents] = useState([]);
-  const [loading, setLoading] = useState(false);
   const [viewportRef, embla] = useEmblaCarousel(
     {
       loop: true,
@@ -63,37 +60,31 @@ const EventSlideshow = () => {
     embla.on('select', onSelect);
   }, [embla, setScrollSnaps, onSelect]);
 
-  useEffect(async () => {
-    setLoading(true);
-    await fetchEvents();
-    setLoading(false);
-  }, []);
-
-  const fetchEvents = async () => {
-    const res = await axios.get(`/api/v1/event`);
-    const events = res.data.sort(sortDates);
-    setEvents(events);
-  };
-
   return (
     <>
-      <div id='event-slideshow'>
+      <div id="event-slideshow">
         {loading ? (
           <Loader />
         ) : (
-          <div className='slideshow'>
-            <div className='embla'>
-              <div className='embla_viewport' ref={viewportRef}>
-                <div className='embla_container'>
+          <div className="slideshow">
+            <div className="embla">
+              <div className="embla_viewport" ref={viewportRef}>
+                <div className="embla_container">
                   {events.length === 0 ? (
                     <>
                       <NoEvents />
                     </>
                   ) : (
                     events.map((event, index) => (
-                      <div className='embla_slide' key={index}>
-                        <div className='embla_slide_inner'>
-                          <EventCard event={event} gradient={true} />
+                      <div
+                        className="embla_slide"
+                        key={index}
+                        onClick={() => {
+                          setEventModalShowing(event.title);
+                        }}
+                      >
+                        <div className="embla_slide_inner">
+                          <EventCard event={event} />
                         </div>
                       </div>
                     ))
@@ -107,7 +98,7 @@ const EventSlideshow = () => {
                 </>
               )}
             </div>
-            <div className='embla_dots'>
+            <div className="embla_dots">
               {events.length > 0 &&
                 events.map((_, index) => (
                   <DotButton

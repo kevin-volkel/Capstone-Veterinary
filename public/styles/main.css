@@ -40,11 +40,7 @@ a {
   font-family: "Oxygen", sans-serif;
 }
 #admin h1.ui.header:hover, #admin h1.ui.header:first-child:hover, #admin h1.ui.header:last-child:hover {
-<<<<<<< HEAD
-  color: #f06f1a;
-=======
   color: #df7b05;
->>>>>>> c5c80887597194a28267ac71441597c2d52f17cb
 }
 #admin #header {
   display: flex;
@@ -66,13 +62,8 @@ a {
 }
 #admin-animals .button {
   width: 75%;
-<<<<<<< HEAD
-  font-size: 1rem;
-  background-color: #f06f1a;
-=======
   font-size: 1.2rem;
   background-color: #df7b05;
->>>>>>> c5c80887597194a28267ac71441597c2d52f17cb
   color: #ffffff;
   margin: 0;
   margin-bottom: 2rem;
@@ -85,11 +76,7 @@ a {
   height: 2px;
   bottom: 0;
   left: 0;
-<<<<<<< HEAD
-  background-color: #f06f1a;
-=======
   background-color: #df7b05;
->>>>>>> c5c80887597194a28267ac71441597c2d52f17cb
   transform-origin: bottom right;
   transition: transform 0.25s ease-out;
 }
@@ -125,8 +112,7 @@ a {
 #admin-animals .ui.grid .ui.card img {
   width: 100%;
   height: 180px;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 #admin-animals .no-animals {
   margin: 1.5rem;
@@ -292,8 +278,7 @@ body {
 #adoption .grid .ui.card img {
   width: 100%;
   height: 150px;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 #adoption .grid .ui.card .animal-header {
   font-size: 2rem;
@@ -422,8 +407,7 @@ body {
 
 .img-container {
   margin: 0;
-  -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
   overflow: hidden;
   margin: auto;
   display: flex;
@@ -474,15 +458,13 @@ body {
 .img-btn-left {
   left: 0;
   margin-left: 5rem !important;
-  -webkit-clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
-          clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
+  clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
 }
 
 .img-btn-right {
   right: 0;
   margin-right: 5rem !important;
-  -webkit-clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
-          clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
+  clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
 }
 
 .arrow {
@@ -620,7 +602,11 @@ body {
 }
 /* LOGIN & REGISTER FORM CSS */
 .form-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
 }
 
@@ -704,6 +690,8 @@ body {
 form#register {
     display: flex;
     flex-direction: column;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
   }
 }
@@ -826,8 +814,7 @@ div.animal-wrap {
 .pet-img {
   width: 70vw;
   height: 70vw;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 
 .para-desc {
@@ -888,8 +875,7 @@ h3 {
 .pet-gallery img {
   width: 80% !important;
   height: 250px !important;
-  -o-object-fit: cover !important;
-     object-fit: cover !important;
+  object-fit: cover !important;
   border-radius: 3%;
 }
 
@@ -962,8 +948,7 @@ h3 {
     padding: 1% !important;
     width: 38% !important;
     height: 260px !important;
-    -o-object-fit: cover !important;
-       object-fit: cover !important;
+    object-fit: cover !important;
   }
 }
 @media only screen and (min-width: 1024px) {
@@ -1046,8 +1031,7 @@ h3 {
     padding: 0.5% !important;
     width: 33% !important;
     height: 260px !important;
-    -o-object-fit: cover !important;
-       object-fit: cover !important;
+    object-fit: cover !important;
   }
 }
 #add-animal i.close, #add-event i.close {
@@ -1173,7 +1157,6 @@ h3 {
 .changelog-container .log-container::-webkit-scrollbar {
   width: 10px;
   margin-right: 5px;
-  -webkit-transition: all 2s linear;
   transition: all 2s linear;
 }
 .changelog-container .log-container::-webkit-scrollbar-track {
@@ -1447,19 +1430,14 @@ h3 {
 }
 #event-slideshow .embla_viewport.is-draggable {
   cursor: move;
-  cursor: -webkit-grab;
   cursor: grab;
 }
 #event-slideshow .embla_viewport.is-dragging {
-  cursor: -webkit-grabbing;
   cursor: grabbing;
 }
 #event-slideshow .embla_container {
   display: flex;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  user-select: none;
   -webkit-touch-callout: none;
   -khtml-user-select: none;
   -webkit-tap-highlight-color: transparent;
@@ -1752,8 +1730,7 @@ h3 {
   height: 70px;
 }
 #photo-upload img {
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   width: 70px;
   height: 70px;
 }
@@ -1816,8 +1793,7 @@ h3 {
 }
 #admin-events .events-list .event-pic img {
   height: 100%;
-  -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
 }
 #admin-events .events-list .options {
   width: 30px;
