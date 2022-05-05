@@ -118,6 +118,8 @@ const Navbar = ({ user }) => {
             objectFit="contain"
             alt="West Mec"
             aria-label="West-Mec Logo"
+            role="img"
+            title="navbar button"
           />
         </div>
 

@@ -40,7 +40,7 @@ a {
   font-family: "Oxygen", sans-serif;
 }
 #admin h1.ui.header:hover, #admin h1.ui.header:first-child:hover, #admin h1.ui.header:last-child:hover {
-  color: #f7931d;
+  color: #df7b05;
 }
 #admin #header {
   display: flex;
@@ -63,7 +63,7 @@ a {
 #admin-animals .button {
   width: 75%;
   font-size: 1.2rem;
-  background-color: #f7931d;
+  background-color: #df7b05;
   color: #ffffff;
   margin: 0;
   margin-bottom: 2rem;
@@ -76,7 +76,7 @@ a {
   height: 2px;
   bottom: 0;
   left: 0;
-  background-color: rgb(255, 164, 29);
+  background-color: #df7b05;
   transform-origin: bottom right;
   transition: transform 0.25s ease-out;
 }
@@ -532,6 +532,7 @@ body {
   margin-bottom: 4%;
   padding: 5% 3.75%;
   box-shadow: 2px 2px 5px #aaaaaa;
+  background-color: #cd4c00;
 }
 
 .ui.segment:first-child h1 {
@@ -1166,7 +1167,7 @@ h3 {
   padding-top: 15px;
 }
 .events-map h1 {
-  color: #f2711c;
+  color: #f06f1a;
 }
 .events-map .map-and-text {
   display: flex;

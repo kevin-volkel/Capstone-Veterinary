@@ -25,7 +25,7 @@ const EventsSection = () => {
             //allowfullscreen=""
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
-            aria-label="dot-button"
+            aria-label="map"
           ></iframe>
         </div>
       </div>

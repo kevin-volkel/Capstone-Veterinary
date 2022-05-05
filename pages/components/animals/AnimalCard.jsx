@@ -12,6 +12,8 @@ const AnimalCard = ({ name, age, type, picURLs, id, gender }) => {
     <Card
       className="animal-card"
       onClick={() => Router.push(`${baseURL}/${id}`)}
+      role="animal"
+      title="animal"
     >
       <Image
         src={picURLs[0]}

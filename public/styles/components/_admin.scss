@@ -18,7 +18,7 @@
       font-family: $custom-font-2;
 
       &:hover {
-        color: #f7931d;
+        color: #df7b05;
       }
     }
   }
@@ -46,7 +46,7 @@
   .button {
     width: 75%;
     font-size: 1.2rem;
-    background-color: #f7931d;
+    background-color: #df7b05;
     color: #ffffff;
     margin: 0;
     margin-bottom: 2rem;
@@ -59,7 +59,7 @@
       height: 2px;
       bottom: 0;
       left: 0;
-      background-color: rgb(255, 164, 29);
+      background-color: #df7b05;
       transform-origin: bottom right;
       transition: transform 0.25s ease-out;
     }
