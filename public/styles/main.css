@@ -40,11 +40,7 @@ a {
   font-family: "Oxygen", sans-serif;
 }
 #admin h1.ui.header:hover, #admin h1.ui.header:first-child:hover, #admin h1.ui.header:last-child:hover {
-<<<<<<< HEAD
-  color: #f06f1a;
-=======
   color: #df7b05;
->>>>>>> c5c80887597194a28267ac71441597c2d52f17cb
 }
 #admin #header {
   display: flex;
@@ -66,13 +62,8 @@ a {
 }
 #admin-animals .button {
   width: 75%;
-<<<<<<< HEAD
-  font-size: 1rem;
-  background-color: #f06f1a;
-=======
   font-size: 1.2rem;
   background-color: #df7b05;
->>>>>>> c5c80887597194a28267ac71441597c2d52f17cb
   color: #ffffff;
   margin: 0;
   margin-bottom: 2rem;
@@ -85,11 +76,7 @@ a {
   height: 2px;
   bottom: 0;
   left: 0;
-<<<<<<< HEAD
-  background-color: #f06f1a;
-=======
   background-color: #df7b05;
->>>>>>> c5c80887597194a28267ac71441597c2d52f17cb
   transform-origin: bottom right;
   transition: transform 0.25s ease-out;
 }
