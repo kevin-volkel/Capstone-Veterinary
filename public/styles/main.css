@@ -111,7 +111,7 @@ a {
 }
 #admin-animals .ui.grid .ui.card img {
   width: 100%;
-  height: 180px;
+  height: 200px;
   -o-object-fit: cover;
      object-fit: cover;
 }
@@ -278,7 +278,7 @@ body {
 }
 #adoption .grid .ui.card img {
   width: 100%;
-  height: 150px;
+  height: 200px;
   -o-object-fit: cover;
      object-fit: cover;
 }

@@ -21,7 +21,7 @@ const AddAnimalModal = ({ setAnimals, setShowModal }) => {
   const [video, setVideo] = useState([]);
 
   const defaultAnimalPic =
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7h1BiFC8Ot5v_yD14xO4Bz4vIVZDFChrIkFtN-XxtnMQAn73Srlyv-vznS5pXLGT-ywE&usqp=CAU";
+    "dog.svg";
 
   const [newAnimal, setNewAnimal] = useState({
     name: "",
