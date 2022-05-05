@@ -1,6 +1,6 @@
 @use "../themes/defaultTheme" as *;
 
-#add-animal {
+#add-animal, #add-event {
   i.close {
     font-size: 1.5rem;
   }
@@ -39,14 +39,15 @@
 
     .button {
       margin: 1rem 0 0;
-      background-color: orange;
+      color: white;
+      background-color: $clr-orange;
       font-size: 1.2rem;
     }
   }
 }
 
 @media only screen and (min-width: 768px) {
-  #add-animal {
+  #add-animal, #add-event {
     h1{
       font-size: 2rem;
     }
@@ -56,7 +57,7 @@
     }
     .button-div {
       .button {
-        font-size: .9rem;
+        font-size: .8rem;
       }
     }
 
@@ -70,7 +71,7 @@
 }
 
 @media only screen and (min-width: 991px) {
-  #add-animal {
+  #add-animal, #add-event {
     i.close {
       top: 1.0535rem;
       right: 1rem;
@@ -81,9 +82,15 @@
 }
 
 @media only screen and (min-width: 1024px) {
-  #add-animal {
+  #add-animal, #add-event {
     h1 {
       font-size: 2.5rem;
+    }
+
+    .button-div {
+      .button {
+        font-size: 1.2rem;
+      }
     }
 
     .field {

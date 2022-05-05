@@ -40,7 +40,7 @@ a {
   font-family: "Oxygen", sans-serif;
 }
 #admin h1.ui.header:hover, #admin h1.ui.header:first-child:hover, #admin h1.ui.header:last-child:hover {
-  color: #f7931d;
+  color: #f06f1a;
 }
 #admin #header {
   display: flex;
@@ -51,8 +51,8 @@ a {
   gap: 5rem;
 }
 #admin #header h1.active {
-  color: #d97500;
-  border-bottom: 2px solid #d97500;
+  color: #f06f1a;
+  border-bottom: 2px solid #f06f1a;
 }
 
 #admin-animals {
@@ -62,8 +62,8 @@ a {
 }
 #admin-animals .button {
   width: 75%;
-  font-size: 1.2rem;
-  background-color: #f7931d;
+  font-size: 1rem;
+  background-color: #f06f1a;
   color: #ffffff;
   margin: 0;
   margin-bottom: 2rem;
@@ -76,7 +76,7 @@ a {
   height: 2px;
   bottom: 0;
   left: 0;
-  background-color: rgb(255, 164, 29);
+  background-color: #f06f1a;
   transform-origin: bottom right;
   transition: transform 0.25s ease-out;
 }
@@ -112,7 +112,8 @@ a {
 #admin-animals .ui.grid .ui.card img {
   width: 100%;
   height: 180px;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 #admin-animals .no-animals {
   margin: 1.5rem;
@@ -124,6 +125,27 @@ a {
 
 .ui.button > .icon:not(.button) {
   opacity: 1;
+}
+
+#admin-events .ui.button {
+  width: 75%;
+  font-size: 1rem;
+  background-color: #f06f1a;
+  color: #ffffff;
+  margin: 0;
+  margin-bottom: 1rem;
+}
+#admin-events .ui.button::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #f06f1a;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
 }
 
 @media only screen and (max-width: 350px) {
@@ -139,10 +161,7 @@ a {
   }
 
   #admin-animals {
-    width: 93vw;
-  }
-  #admin-animals .button {
-    width: 50%;
+    width: 90vw;
   }
   #admin-animals .sort-div {
     flex-direction: row;
@@ -260,7 +279,8 @@ body {
 #adoption .grid .ui.card img {
   width: 100%;
   height: 150px;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 #adoption .grid .ui.card .animal-header {
   font-size: 2rem;
@@ -389,7 +409,8 @@ body {
 
 .img-container {
   margin: 0;
-  object-fit: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
   overflow: hidden;
   margin: auto;
   display: flex;
@@ -440,13 +461,15 @@ body {
 .img-btn-left {
   left: 0;
   margin-left: 5rem !important;
-  clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
+  -webkit-clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
+          clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
 }
 
 .img-btn-right {
   right: 0;
   margin-right: 5rem !important;
-  clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
+  -webkit-clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
+          clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
 }
 
 .arrow {
@@ -586,11 +609,7 @@ body {
 }
 /* LOGIN & REGISTER FORM CSS */
 .form-wrap {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
   justify-content: center;
 }
 
@@ -641,20 +660,32 @@ body {
   margin-bottom: 1rem;
   margin-right: 0;
   padding: 10px;
-  font-size: 1.4rem;
+  font-size: 1.8rem;
   color: white;
-  background: #f7931d;
+  background: #f06f1a;
 }
 #login .form-link,
 #register .form-link {
   text-align: center;
   width: 100%;
-  margin: 0 0 1rem;
+  background: none;
+  color: black;
   cursor: pointer;
+}
+#login .form-link:hover,
+#register .form-link:hover {
+  background: none;
+  color: rgba(0, 0, 0, 0.6);
 }
 #login .reset-password-link,
 #register .reset-password-link {
-  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  margin-top: 0.2rem;
+  padding: 0.78571429em 1.5em 0.78571429em;
+  font-size: 1rem;
+  font-family: Lato, "Helvetica Neue", Arial, Helvetica, sans-serif;
+  font-weight: 700;
 }
 
 @media only screen and (min-height: 750px) and (min-width: 350px) {
@@ -662,8 +693,6 @@ body {
 form#register {
     display: flex;
     flex-direction: column;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
     justify-content: center;
   }
 }
@@ -786,7 +815,8 @@ div.animal-wrap {
 .pet-img {
   width: 70vw;
   height: 70vw;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .para-desc {
@@ -847,7 +877,8 @@ h3 {
 .pet-gallery img {
   width: 80% !important;
   height: 250px !important;
-  object-fit: cover !important;
+  -o-object-fit: cover !important;
+     object-fit: cover !important;
   border-radius: 3%;
 }
 
@@ -920,7 +951,8 @@ h3 {
     padding: 1% !important;
     width: 38% !important;
     height: 260px !important;
-    object-fit: cover !important;
+    -o-object-fit: cover !important;
+       object-fit: cover !important;
   }
 }
 @media only screen and (min-width: 1024px) {
@@ -1003,63 +1035,65 @@ h3 {
     padding: 0.5% !important;
     width: 33% !important;
     height: 260px !important;
-    object-fit: cover !important;
+    -o-object-fit: cover !important;
+       object-fit: cover !important;
   }
 }
-#add-animal i.close {
+#add-animal i.close, #add-event i.close {
   font-size: 1.5rem;
 }
-#add-animal .form-wrap {
+#add-animal .form-wrap, #add-event .form-wrap {
   flex-direction: column;
 }
-#add-animal .form {
+#add-animal .form, #add-event .form {
   width: 100%;
   padding: 0.5rem;
 }
-#add-animal .error.message i.close {
+#add-animal .error.message i.close, #add-event .error.message i.close {
   font-size: 1rem;
 }
-#add-animal h1 {
+#add-animal h1, #add-event h1 {
   color: #f06f1a;
 }
-#add-animal .uploads {
+#add-animal .uploads, #add-event .uploads {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   margin: 1rem 0;
 }
-#add-animal .field {
+#add-animal .field, #add-event .field {
   font-size: 1.1rem;
 }
-#add-animal .button-div {
+#add-animal .button-div, #add-event .button-div {
   display: flex;
   justify-content: center;
 }
-#add-animal .button-div .button {
+#add-animal .button-div .button, #add-event .button-div .button {
   margin: 1rem 0 0;
-  background-color: orange;
+  color: white;
+  background-color: #f06f1a;
   font-size: 1.2rem;
 }
 
 @media only screen and (min-width: 768px) {
-  #add-animal h1 {
+  #add-animal h1, #add-event h1 {
     font-size: 2rem;
   }
-  #add-animal .field {
+  #add-animal .field, #add-event .field {
     font-size: 0.8rem;
   }
-  #add-animal .button-div .button {
-    font-size: 0.9rem;
+  #add-animal .button-div .button, #add-event .button-div .button {
+    font-size: 0.8rem;
   }
-  #add-animal .ui.icon.header {
+  #add-animal .ui.icon.header, #add-event .ui.icon.header {
     font-size: 1.3rem;
   }
-  #add-animal .ui.icon.header .icon {
+  #add-animal .ui.icon.header .icon, #add-event .ui.icon.header .icon {
     font-size: 2.5em;
   }
 }
 @media only screen and (min-width: 991px) {
-  #add-animal i.close {
+  #add-animal i.close, #add-event i.close {
     top: 1.0535rem;
     right: 1rem;
     color: rgba(0, 0, 0, 0.87);
@@ -1067,16 +1101,19 @@ h3 {
   }
 }
 @media only screen and (min-width: 1024px) {
-  #add-animal h1 {
+  #add-animal h1, #add-event h1 {
     font-size: 2.5rem;
   }
-  #add-animal .field {
+  #add-animal .button-div .button, #add-event .button-div .button {
     font-size: 1.2rem;
   }
-  #add-animal .ui.icon.header {
+  #add-animal .field, #add-event .field {
+    font-size: 1.2rem;
+  }
+  #add-animal .ui.icon.header, #add-event .ui.icon.header {
     font-size: 1.5rem;
   }
-  #add-animal .ui.icon.header .icon {
+  #add-animal .ui.icon.header .icon, #add-event .ui.icon.header .icon {
     font-size: 3em;
   }
 }
@@ -1125,6 +1162,7 @@ h3 {
 .changelog-container .log-container::-webkit-scrollbar {
   width: 10px;
   margin-right: 5px;
+  -webkit-transition: all 2s linear;
   transition: all 2s linear;
 }
 .changelog-container .log-container::-webkit-scrollbar-track {
@@ -1328,7 +1366,7 @@ h3 {
     height: 2px;
     bottom: 0;
     left: 0;
-    background-color: rgb(255, 164, 29);
+    background-color: #f06f1a;
     transform-origin: bottom right;
     transition: transform 0.25s ease-out;
   }
@@ -1354,14 +1392,19 @@ h3 {
 }
 #event-slideshow .embla_viewport.is-draggable {
   cursor: move;
+  cursor: -webkit-grab;
   cursor: grab;
 }
 #event-slideshow .embla_viewport.is-dragging {
+  cursor: -webkit-grabbing;
   cursor: grabbing;
 }
 #event-slideshow .embla_container {
   display: flex;
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   -webkit-touch-callout: none;
   -khtml-user-select: none;
   -webkit-tap-highlight-color: transparent;
@@ -1654,7 +1697,8 @@ h3 {
   height: 70px;
 }
 #photo-upload img {
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   width: 70px;
   height: 70px;
 }
@@ -1717,7 +1761,8 @@ h3 {
 }
 #admin-events .events-list .event-pic img {
   height: 100%;
-  object-fit: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 #admin-events .events-list .options {
   width: 30px;

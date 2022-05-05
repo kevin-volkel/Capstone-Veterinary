@@ -106,12 +106,14 @@ const reset = () => {
           {step === 1 ? (
             <>
               <Form.Input
+                tabIndex="4"
                 type="email"
                 value={email}
                 placeholder="Email"
                 onChange={(e) => setEmail(e.target.value)}
               />
               <Button
+                tabIndex="5"
                 content="Reset password"
                 type="submit"
                 className="reset-btn"

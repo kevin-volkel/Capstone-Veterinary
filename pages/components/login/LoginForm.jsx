@@ -3,7 +3,7 @@ import { Form, Segment, Message, Divider, Button } from "semantic-ui-react";
 import { setToken } from "../../util/auth";
 import axios from "axios";
 import catchErrors from "../../util/catchErrors";
-import Link from "next/link";
+import Link from 'next/link';
 
 const LoginForm = ({ user, handleChange, setIsLogin }) => {
   const [formLoading, setFormLoading] = useState(false);
@@ -77,10 +77,10 @@ const LoginForm = ({ user, handleChange, setIsLogin }) => {
             <div style={{ display: "flex", justifyContent: "center" }}>
               <Button id="login-btn" content="Log In" fluid />
             </div>
-            <h5 className="form-link" onClick={() => setIsLogin(false)}>
+            <Button className="form-link" onClick={() => setIsLogin(false)}>
               Need to make an account?
-            </h5>
-            <Link href="/reset"><h5 className="form-link reset-password-link">Reset Password</h5></Link>
+            </Button>
+            <Link href="/reset"><a className="form-link reset-password-link">Reset Password</a></Link>
           </Segment>
         </Form>
       </div>

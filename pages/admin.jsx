@@ -16,6 +16,8 @@ const admin = ({ user, animals, events }) => {
       <div id="header">
         <Header
           as="h1"
+          role="link"
+          tabIndex={1}
           className={
             !showEvents
               ? "active"
@@ -28,6 +30,8 @@ const admin = ({ user, animals, events }) => {
 
         <Header
           as="h1"
+          role="link"
+          tabIndex={2}
           className={
             showEvents
               ? "active"

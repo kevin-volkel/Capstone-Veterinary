@@ -1,4 +1,4 @@
-@use "../themes/defaultTheme"as *;
+@use "../themes/defaultTheme" as *;
 
 #admin {
   display: flex;
@@ -18,7 +18,7 @@
       font-family: $custom-font-2;
 
       &:hover {
-        color: #f7931d;
+        color: $clr-orange;
       }
     }
   }
@@ -31,9 +31,9 @@
     justify-content: space-evenly;
     gap: 5rem;
 
-    h1.active{
-      color: #d97500;
-      border-bottom: 2px solid #d97500;
+    h1.active {
+      color: $clr-orange;
+      border-bottom: 2px solid $clr-orange;
     }
   }
 }
@@ -45,8 +45,8 @@
 
   .button {
     width: 75%;
-    font-size: 1.2rem;
-    background-color: #f7931d;
+    font-size: 1rem;
+    background-color: $clr-orange;
     color: #ffffff;
     margin: 0;
     margin-bottom: 2rem;
@@ -59,7 +59,7 @@
       height: 2px;
       bottom: 0;
       left: 0;
-      background-color: rgb(255, 164, 29);
+      background-color: $clr-orange;
       transform-origin: bottom right;
       transition: transform 0.25s ease-out;
     }
@@ -93,7 +93,7 @@
 
     .ui.card {
       font-size: 1.2rem;
-      margin: .5rem;
+      margin: 0.5rem;
       cursor: pointer;
       text-align: center;
       max-width: 250px;
@@ -118,8 +118,32 @@
   }
 }
 
-.ui.button>.icon:not(.button) {
+.ui.button > .icon:not(.button) {
   opacity: 1;
+}
+
+#admin-events {
+  .ui.button {
+    width: 75%;
+    font-size: 1rem;
+    background-color: $clr-orange;
+    color: #ffffff;
+    margin: 0;
+    margin-bottom: 1rem;
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      transform: scaleX(0);
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: $clr-orange;
+      transform-origin: bottom right;
+      transition: transform 0.25s ease-out;
+    }
+  }
 }
 
 @media only screen and (max-width: 350px) {
@@ -131,21 +155,19 @@
 //TABLET
 @media only screen and (min-width: 768px) {
   #admin {
-
     h1.ui.header,
     h1.ui.header:first-child,
     h1.ui.header:last-child {
       font-size: 2rem;
-
     }
   }
 
   #admin-animals {
-    width: 93vw;
+    width: 90vw;
 
-    .button {
-      width: 50%;
-    }
+    // .button {
+    //   width: 50%;
+    // }
 
     .sort-div {
       flex-direction: row;
@@ -157,10 +179,10 @@
       }
     }
 
-    .ui.card{
+    .ui.card {
       .animal-header {
         font-size: 1.5rem;
-        margin-bottom: .8rem;
+        margin-bottom: 0.8rem;
       }
     }
 
@@ -171,23 +193,18 @@
   }
 }
 
-
 //DESKTOP
 @media only screen and (min-width: 1024px) {
   #admin {
-
-
     h1.ui.header,
     h1.ui.header:first-child,
     h1.ui.header:last-child {
       font-size: 2.8rem;
-
     }
 
     #admin-animals {
       width: 70%;
       align-self: center;
-    
 
       .sort-div {
         .ui.selection.dropdown {
@@ -201,15 +218,15 @@
         min-width: 4em;
       }
     }
-    #admin-events{
+    #admin-events {
       width: 70%;
       align-self: center;
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
 
-      .event-info{
-        div{
+      .event-info {
+        div {
           margin-bottom: 0.5rem;
         }
       }
@@ -217,9 +234,8 @@
         height: 1rem;
       }
       // .event-list{
-        
-      // }
-  }
 
+      // }
+    }
   }
 }

@@ -1,3 +1,4 @@
+@use '../themes/defaultTheme' as *;
 /* LOGIN & REGISTER FORM CSS */
 .form-wrap {
   display: -webkit-box;
@@ -55,20 +56,31 @@ div.visible.menu span {
   margin-bottom: 1rem;
   margin-right: 0;
   padding: 10px;
-  font-size: 1.4rem;
+  font-size: 1.8rem;
   color: white;
-  background: #f7931d;
+  background: $clr-orange;
 }
 
 .form-link {
   text-align: center;
   width: 100%;
-  margin: 0 0 1rem;
+  background: none;
+  color: black;
   cursor: pointer;
+  &:hover{
+    background: none;
+    color: rgba(0,0,0,.6);
+  }
 }
 
 .reset-password-link{
-  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  margin-top: .2rem;
+  padding: 0.78571429em 1.5em 0.78571429em;
+  font-size: 1rem;
+  font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+  font-weight: 700;
 }
 }
 

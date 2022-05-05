@@ -10,7 +10,7 @@ const DropdownExampleDropdown = ({ setEvents, eventId }) => {
   const router = useRouter();
 
   return (
-    <Dropdown icon="ellipsis vertical">
+    <Dropdown icon="ellipsis vertical" title="Dropdown">
       <Dropdown.Menu>
         <Dropdown.Item text="Edit Event" />
         <Dropdown.Item

@@ -48,6 +48,8 @@ const Navbar = ({ user }) => {
           color="black"
           className="hamburger"
           size="large"
+          role="button"
+          tabIndex="1"
           style={{ cursor: 'pointer' }}
           onClick={() => setShowNavbar((prev) => !prev)}
           aria-label="Pages menu"
@@ -69,18 +71,18 @@ const Navbar = ({ user }) => {
           }`}
           aria-label="Home"
         >
-          <Link href="/">Home</Link>
+          <Link href="/" tabIndex="2">Home</Link>
         </div>
         <div
           className={`menu-item ${isActive('/animals') ? 'active' : ''}`}
           aria-label="Adoption"
         >
-          <Link href="/animals">Adoption</Link>
+          <Link href="/animals" tabIndex="3">Adoption</Link>
         </div>
         {user !== null && (
           <>
             <div className={`menu-item ${isActive('/admin') ? 'active' : ''}`}>
-              <Link href="/admin">Admin</Link>
+              <Link href="/admin" tabIndex="4">Admin</Link>
             </div>
             {user.role === 'teacher' && (
               <div
@@ -88,7 +90,7 @@ const Navbar = ({ user }) => {
                   isActive('/changelog') ? 'active' : ''
                 }`}
               >
-                <Link href="/changelog">Changelog</Link>
+                <Link href="/changelog" tabIndex="5">Changelog</Link>
               </div>
             )}
             <div
@@ -128,20 +130,20 @@ const Navbar = ({ user }) => {
             }`}
             aria-label="Home"
           >
-            <Link href="/">Home</Link>
+            <Link href="/" tabIndex="2">Home</Link>
           </div>
           <div
             className={`menu-item ${isActive('/animals') ? 'active' : ''}`}
             aria-label="Adoption"
           >
-            <Link href="/animals">Adoption</Link>
+            <Link href="/animals" tabIndex="3">Adoption</Link>
           </div>
           {user !== null && (
             <>
               <div
                 className={`menu-item ${isActive('/admin') ? 'active' : ''}`}
               >
-                <Link href="/admin">Admin</Link>
+                <Link href="/admin" tabIndex="4">Admin</Link>
               </div>
               {user.role === 'teacher' && (
                 <div
@@ -149,7 +151,7 @@ const Navbar = ({ user }) => {
                     isActive('/changelog') ? 'active' : ''
                   }`}
                 >
-                  <Link href="/changelog">Changelog</Link>
+                  <Link href="/changelog" tabIndex="5">Changelog</Link>
                 </div>
               )}
               <div
@@ -157,7 +159,7 @@ const Navbar = ({ user }) => {
                 style={{ cursor: 'pointer' }}
                 onClick={logoutUser}
               >
-                <a href="#">Logout</a>
+                <a href="#" tabIndex="6">Logout</a>
               </div>
             </>
           )}

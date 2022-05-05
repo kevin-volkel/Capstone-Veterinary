@@ -41,6 +41,7 @@ const Events = ({ user, events }) => {
         </Modal>
       )}
       <Container fluid className='events-list'>
+        <Divider />
         {susEvents.map((event, i) => (
           <>
             <div className='event-card' key={i}>
