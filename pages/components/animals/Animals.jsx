@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   Button,
   Icon,
@@ -7,9 +7,9 @@ import {
   Grid,
   Pagination,
   Modal,
-} from "semantic-ui-react";
-import AnimalCard from "./AnimalCard";
-import AddAnimalModal from "./AddAnimalModal";
+} from 'semantic-ui-react';
+import AnimalCard from './AnimalCard';
+import AddAnimalModal from './AddAnimalModal';
 
 const Animals = ({ animals, isAdmin, user }) => {
   const [currPage, setCurrPage] = useState(1);
@@ -22,39 +22,39 @@ const Animals = ({ animals, isAdmin, user }) => {
 
   const typeOptions = [
     {
-      text: "Any Type",
-      value: "any",
+      text: 'Any Type',
+      value: 'any',
     },
     {
-      text: "Dog",
-      value: "dog",
+      text: 'Dog',
+      value: 'dog',
     },
     {
-      text: "Cat",
-      value: "cat",
+      text: 'Cat',
+      value: 'cat',
     },
   ];
 
   const ageOptions = [
     {
-      text: "Any Age",
-      value: "any",
+      text: 'Any Age',
+      value: 'any',
     },
     {
-      text: "Young",
-      value: "young",
+      text: 'Young',
+      value: 'young',
     },
     {
-      text: "Mid",
-      value: "mid",
+      text: 'Mid',
+      value: 'mid',
     },
     {
-      text: "Adult",
-      value: "adult",
+      text: 'Adult',
+      value: 'adult',
     },
     {
-      text: "Senior",
-      value: "senior",
+      text: 'Senior',
+      value: 'senior',
     },
   ];
 
@@ -67,23 +67,23 @@ const Animals = ({ animals, isAdmin, user }) => {
 
   const genderOptions = [
     {
-      text: "Any Gender",
-      value: "any",
+      text: 'Any Gender',
+      value: 'any',
     },
     {
-      text: "Male",
-      value: "male",
+      text: 'Male',
+      value: 'male',
     },
     {
-      text: "Female",
-      value: "female",
+      text: 'Female',
+      value: 'female',
     },
   ];
 
   const [filterObj, setFilterObj] = useState({
-    type: "any",
-    age: "any",
-    gender: "any",
+    type: 'any',
+    age: 'any',
+    gender: 'any',
   });
 
   const [filteredAnimals, setFilteredAnimals] = useState(animals);
@@ -100,17 +100,17 @@ const Animals = ({ animals, isAdmin, user }) => {
     setFilteredAnimals(animals);
 
     const { type, gender, age } = obj;
-    if (type !== "any") {
+    if (type !== 'any') {
       setFilteredAnimals((prev) =>
         prev.filter((animal) => animal.type === type)
       );
     }
-    if (gender !== "any") {
+    if (gender !== 'any') {
       setFilteredAnimals((prev) =>
         prev.filter((animal) => animal.gender === gender)
       );
     }
-    if (age !== "any") {
+    if (age !== 'any') {
       setFilteredAnimals((prev) => prev.filter((animal) => animal.age === age));
     }
   };
@@ -119,14 +119,14 @@ const Animals = ({ animals, isAdmin, user }) => {
     <>
       {isAdmin && (
         <Button disabled={loading} onClick={() => setShowModal(true)}>
-          <Icon name="plus" />
+          <Icon name='plus' />
           Add Animal
         </Button>
       )}
 
       {showModal && (
         <Modal
-          id="add-animal"
+          id='add-animal'
           open={showModal}
           closeIcon
           closeOnDimmerClick
@@ -142,26 +142,26 @@ const Animals = ({ animals, isAdmin, user }) => {
         </Modal>
       )}
 
-      <div className="sort-div">
+      <div className='sort-div'>
         <Dropdown
-          placeholder="Type"
-          name="type"
+          placeholder='Type'
+          name='type'
           selection
           options={typeOptions}
           onChange={handleChange}
           value={filterObj.type}
         />
         <Dropdown
-          placeholder="Gender"
-          name="gender"
+          placeholder='Gender'
+          name='gender'
           selection
           options={genderOptions}
           onChange={handleChange}
           value={filterObj.gender}
         />
         <Dropdown
-          placeholder="Age"
-          name="age"
+          placeholder='Age'
+          name='age'
           selection
           options={ageOptions}
           onChange={handleChange}
@@ -170,14 +170,13 @@ const Animals = ({ animals, isAdmin, user }) => {
       </div>
 
       {filteredAnimals.length ? (
-        <Container fluid className="animal-list">
-          <Grid columns="3" centered relaxed>
+        <Container fluid className='animal-list'>
+          <Grid columns='3' centered relaxed>
             {filteredAnimals
               .slice((currPage - 1) * 6, currPage * 6)
               .map((animal, index) => {
                 // console.log(animal);
                 const { name, age, type, gender, picURLs, _id } = animal;
-                // const color = gender === 'male' ? '#5797e6' : '#f06687';
 
                 return (
                   <AnimalCard
@@ -196,12 +195,12 @@ const Animals = ({ animals, isAdmin, user }) => {
       ) : (
         <>
           {!animals.length ? (
-            <div className="no-animals">
-              There are currently no animal adoptions posted.{" "}
-              {isAdmin ? "Start by adding one" : "Come back later."}
+            <div className='no-animals'>
+              There are currently no animal adoptions posted.{' '}
+              {isAdmin ? 'Start by adding one' : 'Come back later.'}
             </div>
           ) : (
-            <div className="no-animals">
+            <div className='no-animals'>
               There are no animals matching that description.
             </div>
           )}
@@ -213,7 +212,7 @@ const Animals = ({ animals, isAdmin, user }) => {
         totalPages={Math.ceil(filteredAnimals.length / 6)}
         firstItem={null}
         lastItem={null}
-        role="link"
+        role='link'
       />
     </>
   );
