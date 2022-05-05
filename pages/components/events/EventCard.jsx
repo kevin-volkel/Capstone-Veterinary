@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import { Image } from 'semantic-ui-react';
 import { convertDate } from '../../util/dateFuncs';
 
-const EventCard = ({ event, gradient }) => {
+const EventCard = ({ event, setEventModalShowing }) => {
   return (
     <>
       <Image
@@ -10,7 +10,9 @@ const EventCard = ({ event, gradient }) => {
         src={event.bannerPic}
         alt={event.title}
       />
-      {gradient && <div className="gradient" />}
+      <div
+        className="gradient"
+      />
       <div className="text">
         <h1 className="card-date">{convertDate(event.date)}</h1>
         <div className="card-title">{event.title.toUpperCase()}</div>

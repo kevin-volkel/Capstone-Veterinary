@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { Button, Segment } from 'semantic-ui-react';
+import { Button, Segment, Modal } from 'semantic-ui-react';
 import Footer from './components/layout/Footer';
 import adopt from '../public/media/adoption.png';
 import eventImg from '../public/media/event.png';
@@ -7,6 +7,10 @@ import fEvents from '../public/media/CAT.png';
 import EventSlideshow from './components/events/EventSlideshow';
 import EventsSection from './components/events/EventsSection';
 import { useEffect, useState } from 'react';
+import axios from 'axios';
+import { sortDates } from './util/dateFuncs';
+import EventModal from './components/events/EventModal';
+
 //import "../styles/home.css";
 // import bannerPic from "../public/media/home-page-banner.jpg";
 
@@ -47,10 +51,45 @@ export default function Home() {
   //   document.onkeydown = handleKeyDown;
   // }, []);
 
+  const [eventModalShowing, setEventModalShowing] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [events, setEvents] = useState([]);
+
+  useEffect(async () => {
+    setLoading(true);
+    await fetchEvents();
+    setLoading(false);
+  }, []);
+
+  const fetchEvents = async () => {
+    const res = await axios.get(`/api/v1/event`);
+    const events = res.data.sort(sortDates);
+    setEvents(events);
+  };
+
   return (
     <div className="everything">
+      {eventModalShowing !== null &&
+        events.map((event) => {
+          if (event.title === eventModalShowing) {
+            return (
+              <Modal
+                id="event-modal"
+                open={eventModalShowing !== null}
+                closeIcon
+                closeOnDimmerClick
+                onClose={() => setEventModalShowing(null)}
+              >
+                <Modal.Content>
+                  <EventModal event={event}/>
+                </Modal.Content>
+              </Modal>
+            );
+          }
+        })}
+
       <div className="slideshow">
-        <EventSlideshow />
+        <EventSlideshow events={events} loading={loading} setEventModalShowing={setEventModalShowing}/>
       </div>
 
       <div className="es-div">
@@ -89,7 +128,7 @@ export default function Home() {
               content="Ready To Adopt"
               className="nf-adopt-btn"
               href="/animals"
-              role='link'
+              role="link"
               // onClick=''
             />
           </div>

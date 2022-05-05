@@ -210,6 +210,8 @@ const Animals = ({ animals, isAdmin, user }) => {
         onPageChange={handlePageChange}
         activePage={currPage}
         totalPages={Math.ceil(filteredAnimals.length / 6)}
+        firstItem={null}
+        lastItem={null}
         role='link'
       />
     </>

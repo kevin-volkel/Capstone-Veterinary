@@ -187,7 +187,7 @@ const Animal = ({ user, animalObj, errorLoading, animals }) => {
               </div>
               {animalObj.needs === true && (
                 <div>
-                  <h3>Special Needs</h3>
+                  <h3>{animalObj.specialNeeds ? "Special Needs" : ""}</h3>
                   <p>{animalObj.specialNeeds}</p>
                 </div>
               )}
