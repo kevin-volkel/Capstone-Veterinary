@@ -9,6 +9,7 @@ import catchErrors from "../../util/catchErrors";
 import Cookies from "js-cookie";
 import VideoUpload from "../layout/VideoUpload";
 import AnimalUpload from "../layout/AnimalUpload";
+import dogDefault from "../../../public/media/dog-profile.svg"
 
 const AddAnimalModal = ({ setAnimals, setShowModal }) => {
   const [loading, setLoading] = useState(false);
@@ -21,7 +22,7 @@ const AddAnimalModal = ({ setAnimals, setShowModal }) => {
   const [video, setVideo] = useState([]);
 
   const defaultAnimalPic =
-    "dog.svg";
+    {dogDefault};
 
   const [newAnimal, setNewAnimal] = useState({
     name: "",
