@@ -801,7 +801,7 @@ form#register {
 }
 div.animal-wrap {
   margin-top: 1rem;
-  padding-bottom: 10%;
+  padding-bottom: 5%;
   width: 90%;
   border-radius: 4px;
   background-color: white;
@@ -986,7 +986,8 @@ h3 {
 }
 @media only screen and (min-width: 1024px) {
   .pet-name {
-    margin-top: 3% !important;
+    margin-top: 2% !important;
+    margin-bottom: 2%;
   }
 
   .top-btns #edit-1 {
@@ -1013,18 +1014,19 @@ h3 {
   }
 
   .pet-description {
-    margin-bottom: 7%;
+    margin-bottom: 2.5%;
   }
   .pet-description h3 {
     margin-bottom: 1%;
-    margin-top: 2%;
+    margin-top: 1%;
     font-size: 1.5rem;
   }
   .pet-description p {
-    margin-bottom: 3%;
+    margin-bottom: 1%;
     font-size: 1rem;
   }
   .pet-description .section-1 {
+    margin: 0;
     display: flex;
     flex-direction: column;
     width: 90%;
@@ -1035,6 +1037,7 @@ h3 {
     width: 100%;
   }
   .pet-description .section-2 {
+    margin: 0;
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -1045,6 +1048,7 @@ h3 {
     width: 50%;
   }
   .pet-description .section-3 {
+    margin: 0;
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -1061,13 +1065,14 @@ h3 {
   }
 
   .gallery-title {
-    font-size: 1.7rem;
+    font-size: 2.5rem;
   }
 
   .pet-gallery {
     align-items: center;
     justify-content: center;
     grid-gap: 1px;
+    padding-top: 0;
   }
   .pet-gallery img {
     padding: 0.5% !important;

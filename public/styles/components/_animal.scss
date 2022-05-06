@@ -1,6 +1,6 @@
 div.animal-wrap {
   margin-top: 1rem;
-  padding-bottom: 10%;
+  padding-bottom: 5%;
   width: 90%;
   border-radius: 4px;
   background-color: white;
@@ -23,7 +23,7 @@ div.animal-wrap {
   #edit-2 {
     margin-left: 1rem !important;
   }
-  div{
+  div {
     font-size: 1.2rem;
   }
 }
@@ -210,7 +210,8 @@ h3 {
 
 @media only screen and (min-width: 1024px) {
   .pet-name {
-    margin-top: 3% !important;
+    margin-top: 2% !important;
+    margin-bottom: 2%;
   }
 
   .top-btns {
@@ -240,20 +241,21 @@ h3 {
   }
 
   .pet-description {
-    margin-bottom: 7%;
+    margin-bottom: 2.5%;
 
     h3 {
       margin-bottom: 1%;
-      margin-top: 2%;
+      margin-top: 1%;
       font-size: 1.5rem;
     }
 
     p {
-      margin-bottom: 3%;
+      margin-bottom: 1%;
       font-size: 1rem;
     }
 
     .section-1 {
+      margin: 0;
       display: flex;
       flex-direction: column;
       width: 90%;
@@ -267,6 +269,7 @@ h3 {
     }
 
     .section-2 {
+      margin: 0;
       display: flex;
       flex-direction: row;
       width: 100%;
@@ -279,6 +282,7 @@ h3 {
     }
 
     .section-3 {
+      margin: 0;
       display: flex;
       flex-direction: row;
       width: 100%;
@@ -297,13 +301,14 @@ h3 {
   }
 
   .gallery-title {
-    font-size: 1.70rem;
+    font-size: 2.5rem;
   }
 
   .pet-gallery {
     align-items: center;
     justify-content: center;
     grid-gap: 1px;
+    padding-top: 0;
 
     img {
       padding: 0.5% !important;
