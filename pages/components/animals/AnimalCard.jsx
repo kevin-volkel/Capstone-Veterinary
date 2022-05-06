@@ -18,7 +18,6 @@ const AnimalCard = ({ name, age, type, picURLs, id, gender }) => {
       <Image
         src={picURLs[0]}
         alt={`${name} the ${type}`}
-        ariaLabel={`${name} the ${type}`}
       />
       <Card.Content>
         <Card.Header

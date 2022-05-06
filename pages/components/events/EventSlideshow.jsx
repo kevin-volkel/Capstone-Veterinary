@@ -80,7 +80,7 @@ const EventSlideshow = ({ events, loading, setEventModalShowing }) => {
                         className="embla_slide"
                         key={index}
                         onClick={() => {
-                          setEventModalShowing(event.title);
+                          setEventModalShowing(event._id);
                         }}
                         aria-label="Show More Event Details"
                       >
