@@ -270,6 +270,16 @@
   }
 }
 
+.nf-div {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  h1{
+    // font-family: 'ABeeZee', sans-serif;
+    font-family: 'Signika', sans-serif;
+  }
+}
+
 @media only screen and (min-width: 768px) {
   html {
     font-size: 1.55rem;

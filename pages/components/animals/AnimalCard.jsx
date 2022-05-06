@@ -26,15 +26,15 @@ const AnimalCard = ({ name, age, type, picURLs, id, gender }) => {
           style={{ color: titleColor }}
           content={name}
         />
-        <Card.Meta className="card-type" content={type} />
-        <Card.Meta className="card-gender" style={{ color: genderColor }}>
+        <Card.Meta className="card-type" content={type} id="type" />
+        <Card.Meta className="card-gender" id="gender" style={{ color: genderColor }}>
           {gender}
           <Icon
             name={gender === "male" ? "man" : "woman"}
             color={gender === "male" ? "blue" : "pink"}
           />
         </Card.Meta>
-        <Card.Meta className="card-age" content={age} />
+        <Card.Meta className="card-age" content={age} id="age" />
       </Card.Content>
     </Card>
   );
