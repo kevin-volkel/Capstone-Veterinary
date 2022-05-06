@@ -1,28 +1,26 @@
-import React from "react";
-import { Card, Image, Button, Icon } from "semantic-ui-react";
-import Router from "next/router";
-import { baseURL } from "../../util/auth";
+import React from 'react';
+import { Card, Image, Button, Icon } from 'semantic-ui-react';
+import Router from 'next/router';
+import { baseURL } from '../../util/auth';
 
 const AnimalCard = ({ name, age, type, picURLs, id, gender }) => {
-
-  const titleColor = (gender === 'male') ? '#5797e6' : '#f06687';
-  const genderColor = (gender === 'male') ? '#3777c6' : '#ce4465';
+  const titleColor = gender === 'male' ? '#5797e6' : '#f06687';
+  const genderColor = gender === 'male' ? '#3777c6' : '#ce4465';
 
   return (
     <Card
-      className="animal-card"
-      as="a"
+      className='animal-card'
+      as='a'
       href={`/${id}`}
       // onClick={() => Router.push(`${baseURL}/${id}`)}
     >
       <Image
         src={picURLs[0]}
         alt={`${name} the ${type}`}
-        aria-label={`${name} the ${type}`}
       />
       <Card.Content>
         <Card.Header
-          className="animal-header"
+          className='animal-header'
           style={{ color: titleColor }}
           content={name}
         />
@@ -30,8 +28,8 @@ const AnimalCard = ({ name, age, type, picURLs, id, gender }) => {
         <Card.Meta className="card-gender" id="gender" style={{ color: genderColor }}>
           {gender}
           <Icon
-            name={gender === "male" ? "man" : "woman"}
-            color={gender === "male" ? "blue" : "pink"}
+            name={gender === 'male' ? 'man' : 'woman'}
+            color={gender === 'male' ? 'blue' : 'pink'}
           />
         </Card.Meta>
         <Card.Meta className="card-age" content={age} id="age" />

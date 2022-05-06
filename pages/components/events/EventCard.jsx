@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import { Image } from 'semantic-ui-react';
 import { convertDate } from '../../util/dateFuncs';
 
-const EventCard = ({ event, setEventModalShowing }) => {
+const EventCard = ({ event }) => {
   return (
     <>
       <Image

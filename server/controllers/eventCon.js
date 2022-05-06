@@ -8,9 +8,10 @@ const addEvent = async (req, res) => {
   const { title, desc, date, type, featured, location, bannerPic } = req.body;
 
   try {
+
     const newEvent = {
       title,
-      date: new Date(date),
+      date: date,
       location,
       user: userId,
       bannerPic,

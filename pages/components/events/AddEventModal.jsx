@@ -1,15 +1,10 @@
-import React, { useState } from "react";
-import {
-  Form,
-  Button,
-  Message,
-  Divider
-} from "semantic-ui-react";
-import axios from "axios";
-import catchErrors from "../../util/catchErrors";
-import EventUpload from "../layout/EventUpload";
-import { addEvent } from "../../util/eventActions";
-import defaultEventPic from "../../../public/media/home-page-banner.jpg";
+import React, { useState } from 'react';
+import { Form, Button, Message, Divider } from 'semantic-ui-react';
+import axios from 'axios';
+import catchErrors from '../../util/catchErrors';
+import EventUpload from '../layout/EventUpload';
+import { addEvent } from '../../util/eventActions';
+import defaultEventPic from '../../../public/media/home-page-banner.jpg';
 
 const AddEventModal = ({ setEvents, setShowModal }) => {
   const [loading, setLoading] = useState(false);
@@ -19,18 +14,20 @@ const AddEventModal = ({ setEvents, setShowModal }) => {
   const [media, setMedia] = useState(null);
 
   const [newEvent, setNewEvent] = useState({
-    title: "",
-    desc: "",
-    date: "",
-    type: "",
-    otherType: "",
+    title: '',
+    desc: '',
+    date: '',
+    type: '',
+    otherType: '',
     featured: false,
-    location: "",
-    bannerPic: "",
+    location: '',
+    bannerPic: '',
   });
 
   const handleChange = (e, data) => {
     const { name, value, files } = e.target;
+    console.log(value)
+    console.log(new Date(value))
 
     if (!name) {
       setNewEvent((prev) => ({
@@ -52,27 +49,30 @@ const AddEventModal = ({ setEvents, setShowModal }) => {
     e.preventDefault();
     setLoading(true);
 
-    let eventPicUrl = "bruh";
+    let eventPicUrl = 'bruh';
 
     try {
       //IMAGES
       if (media !== null) {
         const formData = new FormData();
-        formData.append("image", media, {
+        formData.append('image', media, {
           headers: {
-            "Content-Type": "multipart/form-data",
+            'Content-Type': 'multipart/form-data',
           },
         });
-        const res = await axios.post("/api/v1/upload", formData);
+        const res = await axios.post('/api/v1/upload', formData);
         eventPicUrl = res.data.src;
       } else {
         eventPicUrl = defaultEventPic.src;
       }
-      if (media !== null && !eventPicUrl) throw new Error("Cloudinary Error");
+      if (media !== null && !eventPicUrl) throw new Error('Cloudinary Error');
 
-      let eventDate = new Date(newEvent.date);
+      const [year, month, day] = newEvent.date.split('-')
+      const newDate = `${year}-${month}-${+day + 1}`
 
-      if (newEvent.otherType !== "") {
+      let eventDate = new Date(newDate);
+
+      if (newEvent.otherType !== '') {
         newEvent.type = newEvent.otherType;
       }
 
@@ -86,7 +86,7 @@ const AddEventModal = ({ setEvents, setShowModal }) => {
         newEvent.featured,
         setEvents,
         setNewEvent
-      )
+      );
 
       setMedia(null);
       setMediaPreview(null);
@@ -102,30 +102,30 @@ const AddEventModal = ({ setEvents, setShowModal }) => {
 
   const typeOptions = [
     {
-      text: "Fundraiser",
-      value: "fundraiser",
+      text: 'Fundraiser',
+      value: 'fundraiser',
       key: 0,
     },
     {
-      text: "Adoption",
-      value: "adoption",
+      text: 'Adoption',
+      value: 'adoption',
       key: 1,
     },
     {
-      text: "Other",
-      value: "other",
+      text: 'Other',
+      value: 'other',
       key: 2,
     },
   ];
 
   const featuredOptions = [
     {
-      text: "No",
+      text: 'No',
       value: false,
       key: 0,
     },
     {
-      text: "Yes",
+      text: 'Yes',
       value: true,
       key: 1,
     },
@@ -190,7 +190,7 @@ const AddEventModal = ({ setEvents, setShowModal }) => {
                 onChange={handleChange}
                 label="Type"
               />
-              {newEvent.type === "other" && (
+              {newEvent.type === 'other' && (
                 <Form.Input
                   required
                   placeholder="Other..."
