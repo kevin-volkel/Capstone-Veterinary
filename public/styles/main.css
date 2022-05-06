@@ -109,9 +109,15 @@ a {
   max-width: 250px;
   text-transform: uppercase;
 }
+#admin-animals .ui.grid .ui.card #type {
+  color: rgba(45, 45, 45, 0.933);
+}
+#admin-animals .ui.grid .ui.card #age {
+  color: rgba(45, 45, 45, 0.933);
+}
 #admin-animals .ui.grid .ui.card img {
   width: 100%;
-  height: 180px;
+  height: 200px;
   -o-object-fit: cover;
      object-fit: cover;
 }
@@ -157,11 +163,14 @@ a {
   #admin h1.ui.header,
 #admin h1.ui.header:first-child,
 #admin h1.ui.header:last-child {
-    font-size: 2rem;
+    font-size: 1em;
   }
 
   #admin-animals {
     width: 90vw;
+  }
+  #admin-animals .button {
+    font-size: 0.9rem;
   }
   #admin-animals .sort-div {
     flex-direction: row;
@@ -170,9 +179,20 @@ a {
   }
   #admin-animals .sort-div .ui.selection.dropdown {
     min-width: 2em;
+    font-size: 0.85rem;
+  }
+  #admin-animals .ui.card #type {
+    padding-bottom: 7px;
+    font-size: 0.8rem;
+  }
+  #admin-animals .ui.card #gender {
+    font-size: 0.8rem;
+  }
+  #admin-animals .ui.card #age {
+    font-size: 0.8rem;
   }
   #admin-animals .ui.card .animal-header {
-    font-size: 1.5rem;
+    font-size: 1rem;
     margin-bottom: 0.8rem;
   }
   #admin-animals .ui.pagination.menu .item {
@@ -197,6 +217,9 @@ a {
   }
   #admin #admin-animals .ui.pagination.menu .item {
     min-width: 4em;
+  }
+  #admin .ui.card #type {
+    padding-bottom: 0px;
   }
   #admin #admin-events {
     width: 70%;
@@ -278,7 +301,7 @@ body {
 }
 #adoption .grid .ui.card img {
   width: 100%;
-  height: 150px;
+  height: 200px;
   -o-object-fit: cover;
      object-fit: cover;
 }
@@ -350,15 +373,6 @@ body {
 
 .everything {
   overflow-x: hidden;
-}
-
-.nf-div {
-  margin-top: 1rem;
-  display: flex;
-  justify-content: center;
-}
-.nf-div h1 {
-  font-family: "Signika", sans-serif;
 }
 
 .main {
@@ -558,6 +572,15 @@ body {
   margin-bottom: 2rem;
 }
 
+.nf-div {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+}
+.nf-div h1 {
+  font-family: "Signika", sans-serif;
+}
+
 @media only screen and (min-width: 768px) {
   html {
     font-size: 1.55rem;
@@ -601,7 +624,8 @@ body {
     font-size: 1rem;
   }
   html .adopt-section .ui.orange.button {
-    padding: 1.75% 1.5%;
+    padding: 2% 1.5%;
+    font-size: 1rem;
     margin-bottom: 2%;
   }
 }
@@ -777,7 +801,7 @@ form#register {
 }
 div.animal-wrap {
   margin-top: 1rem;
-  padding-bottom: 10%;
+  padding-bottom: 5%;
   width: 90%;
   border-radius: 4px;
   background-color: white;
@@ -799,6 +823,9 @@ div.animal-wrap {
 }
 .top-btns #edit-2 {
   margin-left: 1rem !important;
+}
+.top-btns div {
+  font-size: 1.2rem;
 }
 
 .page-wrap {
@@ -862,7 +889,7 @@ h3 {
 }
 
 .gallery-title {
-  font-size: 1.71rem;
+  font-size: 1.72rem;
 }
 
 .pet-gallery {
@@ -873,11 +900,12 @@ h3 {
   padding-top: 5% !important;
 }
 .pet-gallery img {
-  width: 80% !important;
+  width: 65% !important;
   height: 250px !important;
   -o-object-fit: cover !important;
      object-fit: cover !important;
   border-radius: 3%;
+  min-width: 30vw;
 }
 
 @media only screen and (min-width: 768px) {
@@ -940,6 +968,11 @@ h3 {
     font-size: 1.35rem;
   }
 
+  .pet-img {
+    width: 53vw;
+    height: 50vw;
+  }
+
   .pet-gallery {
     align-items: center;
     justify-content: center;
@@ -947,15 +980,14 @@ h3 {
   }
   .pet-gallery img {
     padding: 1% !important;
-    width: 38% !important;
-    height: 260px !important;
-    -o-object-fit: cover !important;
-       object-fit: cover !important;
+    width: 35% !important;
+    height: 300px !important;
   }
 }
 @media only screen and (min-width: 1024px) {
   .pet-name {
-    margin-top: 3% !important;
+    margin-top: 2% !important;
+    margin-bottom: 2%;
   }
 
   .top-btns #edit-1 {
@@ -982,18 +1014,19 @@ h3 {
   }
 
   .pet-description {
-    margin-bottom: 7%;
+    margin-bottom: 2.5%;
   }
   .pet-description h3 {
     margin-bottom: 1%;
-    margin-top: 2%;
+    margin-top: 1%;
     font-size: 1.5rem;
   }
   .pet-description p {
-    margin-bottom: 3%;
+    margin-bottom: 1%;
     font-size: 1rem;
   }
   .pet-description .section-1 {
+    margin: 0;
     display: flex;
     flex-direction: column;
     width: 90%;
@@ -1004,6 +1037,7 @@ h3 {
     width: 100%;
   }
   .pet-description .section-2 {
+    margin: 0;
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -1014,6 +1048,7 @@ h3 {
     width: 50%;
   }
   .pet-description .section-3 {
+    margin: 0;
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -1024,15 +1059,24 @@ h3 {
     width: 50%;
   }
 
+  .pet-img {
+    width: 27vw;
+    height: 25vw;
+  }
+
+  .gallery-title {
+    font-size: 2.5rem;
+  }
+
   .pet-gallery {
     align-items: center;
     justify-content: center;
     grid-gap: 1px;
+    padding-top: 0;
   }
   .pet-gallery img {
     padding: 0.5% !important;
-    width: 33% !important;
-    height: 260px !important;
+    height: 300px !important;
     -o-object-fit: cover !important;
        object-fit: cover !important;
   }
@@ -1250,7 +1294,8 @@ h3 {
   }
   .events-map .map-and-text .map {
     width: 65%;
-    height: 40vw;
+    height: 38vw;
+    margin-top: 15px;
   }
 }
 .navbar {
@@ -1608,7 +1653,7 @@ h3 {
   #event-slideshow .embla_slide_inner {
     position: relative;
     overflow: hidden;
-    height: 18rem;
+    height: 54vw;
   }
   #event-slideshow .embla_viewport {
     height: 54vw !important;
@@ -1621,7 +1666,7 @@ h3 {
   #event-slideshow .embla_slide_inner {
     position: relative;
     overflow: hidden;
-    height: 18rem;
+    height: 50vw;
   }
   #event-slideshow .embla_viewport {
     height: 50vw !important;
@@ -1679,17 +1724,9 @@ h3 {
   #event-slideshow .embla_viewport {
     height: 41.25vw !important;
   }
-  #event-slideshow .embla_slide_inner {
-    height: 64vh !important;
-  }
   #event-slideshow .embla_dots {
     padding-top: 0rem;
     padding-bottom: 4rem;
-  }
-}
-@media only screen and (min-width: 1200px) {
-  #event-slideshow .embla_viewport {
-    height: 40vw !important;
   }
 }
 @media only screen and (min-width: 1200px) {
@@ -1697,12 +1734,12 @@ h3 {
     max-width: 95vw;
   }
   #event-slideshow .embla_viewport {
-    height: 38.5vw !important;
+    height: 40vw !important;
   }
 }
 @media only screen and (min-width: 1284px) {
   #event-slideshow .embla_viewport {
-    height: 37.25vw !important;
+    height: 37.8vw !important;
   }
 }
 @media only screen and (min-width: 1300px) {
@@ -1722,12 +1759,20 @@ h3 {
 }
 @media only screen and (min-width: 1360px) {
   #event-slideshow .embla_viewport {
-    height: 32vw !important;
+    height: 37vw !important;
   }
 }
 @media only screen and (min-width: 1380px) {
   #event-slideshow .embla_viewport {
-    height: 31.1vw !important;
+    height: 31vw !important;
+  }
+}
+@media only screen and (min-width: 1400px) {
+  #event-slideshow .embla_slide_inner {
+    height: 34vw !important;
+  }
+  #event-slideshow .embla_viewport {
+    height: 35vw !important;
   }
 }
 #photo-upload {
@@ -1853,8 +1898,8 @@ h3 {
 
 @media only screen and (min-width: 768px) {
   .footer {
-    font-size: 1.15rem;
-    padding: 1.3rem 0 0;
+    font-size: 0.8rem;
+    padding: 1.75rem 0 0rem 0;
   }
 }
 @media only screen and (min-width: 1024px) {

@@ -71,6 +71,7 @@ const AnimalUpload = ({
                     setMedia([]);
                     setMediaPreview([]);
                   }}
+                  aria-label="upload animal"
                 >
                   Empty Input
                 </Button>

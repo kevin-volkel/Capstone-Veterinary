@@ -10,8 +10,9 @@ const AnimalSchema = new Schema(
     },
     age: {
       type: String,
-      enum: ['young', 'adult', 'senior'],
+      enum: ['young', 'adult', 'senior', 'unknown'],
       required: [true, "Please enter the animal's age"],
+      default: 'unknown',
     },
     type: {
       type: String,

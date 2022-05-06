@@ -14,16 +14,6 @@
   overflow-x: hidden;
 }
 
-.nf-div {
-  margin-top: 1rem;
-  display: flex;
-  justify-content: center;
-  h1{
-    // font-family: 'ABeeZee', sans-serif;
-    font-family: 'Signika', sans-serif;
-  }
-}
-
 .main {
   min-height: 100vh;
   padding: 4rem 0;
@@ -267,6 +257,16 @@
   }
 }
 
+.nf-div {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  h1{
+    // font-family: 'ABeeZee', sans-serif;
+    font-family: 'Signika', sans-serif;
+  }
+}
+
 @media only screen and (min-width: 768px) {
   html {
     font-size: 1.55rem;
@@ -323,7 +323,8 @@
     }
 
     .adopt-section .ui.orange.button{
-      padding: 1.75% 1.5%;
+      padding: 2% 1.5%;
+      font-size: 1rem;
       margin-bottom: 2%;
 
     }
