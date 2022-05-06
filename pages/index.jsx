@@ -106,7 +106,7 @@ export default function Home() {
                 position="relative"
                 className="adopt-image"
                 objectFit="contain"
-                alt="adopt-image"
+                alt=""
               />
               <p>
                 At vero eos et accus et iusto odio dignissimos ducimus qui
