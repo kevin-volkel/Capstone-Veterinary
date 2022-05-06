@@ -789,6 +789,9 @@ div.animal-wrap {
 .top-btns #edit-2 {
   margin-left: 1rem !important;
 }
+.top-btns div {
+  font-size: 1.2rem;
+}
 
 .page-wrap {
   display: flex;
@@ -862,11 +865,12 @@ h3 {
   padding-top: 5% !important;
 }
 .pet-gallery img {
-  width: 80% !important;
+  width: 65% !important;
   height: 250px !important;
   -o-object-fit: cover !important;
      object-fit: cover !important;
   border-radius: 3%;
+  min-width: 30vw;
 }
 
 @media only screen and (min-width: 768px) {
@@ -929,6 +933,11 @@ h3 {
     font-size: 1.35rem;
   }
 
+  .pet-img {
+    width: 53vw;
+    height: 50vw;
+  }
+
   .pet-gallery {
     align-items: center;
     justify-content: center;
@@ -936,10 +945,8 @@ h3 {
   }
   .pet-gallery img {
     padding: 1% !important;
-    width: 38% !important;
-    height: 260px !important;
-    -o-object-fit: cover !important;
-       object-fit: cover !important;
+    width: 35% !important;
+    height: 300px !important;
   }
 }
 @media only screen and (min-width: 1024px) {
@@ -1013,6 +1020,11 @@ h3 {
     width: 50%;
   }
 
+  .pet-img {
+    width: 27vw;
+    height: 25vw;
+  }
+
   .pet-gallery {
     align-items: center;
     justify-content: center;
@@ -1020,8 +1032,7 @@ h3 {
   }
   .pet-gallery img {
     padding: 0.5% !important;
-    width: 33% !important;
-    height: 260px !important;
+    height: 300px !important;
     -o-object-fit: cover !important;
        object-fit: cover !important;
   }
