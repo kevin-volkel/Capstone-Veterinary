@@ -82,6 +82,7 @@ const EventSlideshow = ({ events, loading, setEventModalShowing }) => {
                         onClick={() => {
                           setEventModalShowing(event.title);
                         }}
+                        aria-label="Show More Event Details"
                       >
                         <div className="embla_slide_inner">
                           <EventCard event={event} />
@@ -93,8 +94,8 @@ const EventSlideshow = ({ events, loading, setEventModalShowing }) => {
               </div>
               {events.length > 1 && (
                 <>
-                  <PrevButton onClick={scrollPrev} />
-                  <NextButton onClick={scrollNext} />
+                  <PrevButton onClick={scrollPrev} aria-label="next event"/>
+                  <NextButton onClick={scrollNext} aria-label="previous event"/>
                 </>
               )}
             </div>
@@ -105,6 +106,7 @@ const EventSlideshow = ({ events, loading, setEventModalShowing }) => {
                     key={index}
                     selected={index === selectedIndex}
                     onClick={() => scrollTo(index)}
+                    aria-label={`Scroll to event number ${index + 1}`}
                   />
                 ))}
             </div>
