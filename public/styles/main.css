@@ -40,7 +40,7 @@ a {
   font-family: "Oxygen", sans-serif;
 }
 #admin h1.ui.header:hover, #admin h1.ui.header:first-child:hover, #admin h1.ui.header:last-child:hover {
-  color: #df7b05;
+  color: #f06f1a;
 }
 #admin #header {
   display: flex;
@@ -62,8 +62,8 @@ a {
 }
 #admin-animals .button {
   width: 75%;
-  font-size: 1.2rem;
-  background-color: #df7b05;
+  font-size: 1.1rem;
+  background-color: #f06f1a;
   color: #ffffff;
   margin: 0;
   margin-bottom: 2rem;
@@ -76,7 +76,7 @@ a {
   height: 2px;
   bottom: 0;
   left: 0;
-  background-color: #df7b05;
+  background-color: #f06f1a;
   transform-origin: bottom right;
   transition: transform 0.25s ease-out;
 }
@@ -125,27 +125,6 @@ a {
 
 .ui.button > .icon:not(.button) {
   opacity: 1;
-}
-
-#admin-events .ui.button {
-  width: 75%;
-  font-size: 1rem;
-  background-color: #f06f1a;
-  color: #ffffff;
-  margin: 0;
-  margin-bottom: 1rem;
-}
-#admin-events .ui.button::after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  transform: scaleX(0);
-  height: 2px;
-  bottom: 0;
-  left: 0;
-  background-color: #f06f1a;
-  transform-origin: bottom right;
-  transition: transform 0.25s ease-out;
 }
 
 @media only screen and (max-width: 350px) {
@@ -204,6 +183,7 @@ a {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center;
   }
   #admin #admin-events .event-info div {
     margin-bottom: 0.5rem;
@@ -236,7 +216,7 @@ body {
 }
 #adoption h1 {
   font-weight: bold;
-  color: #df7b05;
+  color: #f06f1a;
   margin-bottom: 3rem;
   text-align: center;
 }
@@ -496,7 +476,7 @@ body {
   border: 100px solid rgba(0, 0, 0, 0.119);
   border-radius: 4px;
   box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
-  background-color: #f2711c !important;
+  background-color: #f06f1a !important;
 }
 .events-section h1 {
   display: flex;
@@ -544,13 +524,13 @@ body {
 }
 .adopt-section .nf-wholeSect p {
   margin-top: 1rem;
-  font-family: "merriweather", sans-serif;
+  font-size: 1.1rem;
 }
-.adopt-section .ui.orange.button {
+.adopt-section .ui.button {
   margin-bottom: 4%;
   padding: 5% 3.75%;
   box-shadow: 2px 2px 5px #aaaaaa;
-  background-color: #cd4c00;
+  background-color: #f06f1a;
 }
 
 .ui.segment:first-child h1 {
@@ -573,12 +553,20 @@ body {
   .events-section .nf-sect {
     display: flex;
   }
+
+  .adopt-section .nf-wholeSect p {
+    font-size: 0.8rem;
+  }
+  .adopt-section .nf-wholeSect .ui.button {
+    padding: 0.8rem;
+    font-size: 0.8rem;
+  }
 }
 @media only screen and (min-width: 780px) {
   .nf-wholeSect p {
     font-size: 0.7rem;
   }
-  .nf-wholeSect .ui.orange.button {
+  .nf-wholeSect .ui.button {
     font-size: 0.7rem;
     padding: 3% 3.75%;
   }
@@ -596,11 +584,12 @@ body {
     border-radius: 3%;
   }
   html .adopt-section .nf-wholeSect p {
-    margin-right: 1rem;
+    margin-right: 2rem;
     width: 200%;
     font-size: 1rem;
   }
-  html .adopt-section .ui.orange.button {
+  html .adopt-section .nf-wholeSect .ui.button {
+    font-size: 1rem;
     padding: 1.75% 1.5%;
     margin-bottom: 2%;
   }
@@ -1062,6 +1051,21 @@ h3 {
 #add-animal .field, #add-event .field {
   font-size: 1.1rem;
 }
+#add-animal #event-group, #add-event #event-group {
+  display: flex;
+  margin-bottom: 1em;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+#add-animal #event-group .field, #add-animal #event-group #event-type, #add-event #event-group .field, #add-event #event-group #event-type {
+  width: 100%;
+}
+#add-animal #event-group #event-type, #add-event #event-group #event-type {
+  margin-bottom: 1em;
+}
+#add-animal #event-group #event-type .field:last-child, #add-event #event-group #event-type .field:last-child {
+  margin-top: 0.5em;
+}
 #add-animal .button-div, #add-event .button-div {
   display: flex;
   justify-content: center;
@@ -1122,6 +1126,9 @@ h3 {
 .reset-password {
   font-size: 1.5rem;
   text-align: center;
+}
+.reset-password .ui.button {
+  color: #f06f1a;
 }
 
 .back-to-email {
@@ -1209,6 +1216,9 @@ h3 {
   justify-content: center;
   align-items: center;
 }
+.events-map .map-and-text p {
+  font-size: 1.1rem;
+}
 .events-map .map-and-text .map {
   display: flex;
   justify-content: center;
@@ -1229,6 +1239,7 @@ h3 {
     padding-left: 7%;
     padding-right: 7%;
     padding-bottom: 3%;
+    font-size: 0.8rem;
   }
   .events-map .map-and-text .map {
     width: 80%;
@@ -1241,16 +1252,22 @@ h3 {
     padding-top: 25px;
   }
   .events-map .map-and-text {
+    justify-content: space-evenly;
     display: flex;
     flex-direction: row;
+    margin: 2rem 0;
   }
   .events-map .map-and-text p {
+    padding-left: 5%;
+    padding-right: 5%;
     width: 40%;
-    font-size: 1rem;
+    font-size: 1.1rem;
+    padding-bottom: 0;
+    margin: 0;
   }
   .events-map .map-and-text .map {
-    width: 65%;
-    height: 40vw;
+    width: 50%;
+    height: 30vw;
   }
 }
 .navbar {
@@ -1763,18 +1780,26 @@ h3 {
   width: 95vw;
   margin: 0rem auto 2rem;
   padding: 2rem 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
 }
 #admin-events .ui.button {
   width: 75%;
-  font-size: 1.2rem;
-  background-color: #df7b05;
+  font-size: 1.1rem;
+  background-color: #f06f1a;
   color: #ffffff;
   margin: 0;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
+}
+#admin-events .ui.button::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #f06f1a;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
 }
 #admin-events .events-list {
   padding: 0;
@@ -1798,7 +1823,7 @@ h3 {
   margin-bottom: 1rem;
 }
 #admin-events .events-list .event-card .event-title {
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   font-weight: bold;
 }
 #admin-events .events-list .event-card .event-desc {
@@ -1809,6 +1834,7 @@ h3 {
 }
 #admin-events .events-list .event-pic {
   width: 40%;
+  margin: 0 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1824,15 +1850,53 @@ h3 {
   align-items: center;
   justify-content: flex-end;
 }
+#admin-events .events-list .options i {
+  font-size: 1.2em;
+}
+#admin-events .events-list .options .menu {
+  right: 10px;
+  left: auto;
+}
 
+@media only screen and (max-width: 350px) {
+  #admin-events {
+    min-width: 280px;
+  }
+}
+@media only screen and (min-width: 550px) {
+  #admin-events .events-list .options i {
+    font-size: 1.5em;
+  }
+  #admin-events .events-list .options .menu .item {
+    font-size: 1.1rem;
+  }
+}
 @media only screen and (min-width: 768px) {
-  .event-card {
+  #admin-events {
+    width: 90vw;
+  }
+  #admin-events .event-card {
     line-height: 1.5rem;
+  }
+  #admin-events .events-list .options i {
+    font-size: 1.1em;
+  }
+  #admin-events .events-list .options .menu .item {
+    font-size: 0.8rem;
   }
 }
 @media only screen and (min-width: 1024px) {
-  .event-info {
+  #admin-events {
+    width: 70%;
+  }
+  #admin-events .event-info {
     margin-left: 3%;
+  }
+  #admin-events .events-list .options i {
+    font-size: 1.3em;
+  }
+  #admin-events .events-list .options .menu .item {
+    font-size: 0.9rem;
   }
 }
 .footer {

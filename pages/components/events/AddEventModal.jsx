@@ -180,7 +180,7 @@ const AddEventModal = ({ setEvents, setShowModal }) => {
             type="text"
             placeholder="Location"
           />
-          <Form.Group>
+          <div id="event-group">
             <div id="event-type">
               <Form.Select
                 required
@@ -209,7 +209,7 @@ const AddEventModal = ({ setEvents, setShowModal }) => {
               onChange={handleChange}
               label="Featured"
             />
-          </Form.Group>
+          </div>
           <Form.TextArea
             required
             value={newEvent.desc}

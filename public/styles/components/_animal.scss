@@ -1,3 +1,5 @@
+@use "../themes/defaultTheme" as *;
+
 div.animal-wrap {
   margin-top: 1rem;
   padding-bottom: 10%;
@@ -75,7 +77,7 @@ div.animal-wrap {
     // justify-content: center;
     // align-items: center;
     margin-top: 0%;
-    color: #f06f1a;
+    color: $clr-orange;
     font-size: 1.65rem;
   }
 

@@ -117,7 +117,6 @@ const reset = () => {
                 content="Reset password"
                 type="submit"
                 className="reset-btn"
-                color="orange"
               />
             </>
           ) : step === 2 ? (
@@ -134,7 +133,6 @@ const reset = () => {
                 content="Click to reset password"
                 type="submit"
                 className="reset-btn"
-                color="orange"
               />
               <div className="back-to-email" onClick={() => setStep(1)}>
                 Email not recieved?
@@ -157,7 +155,6 @@ const reset = () => {
               content="Confirm Password"
               type="submit"
               className="reset-btn"
-              color="orange"
             />
           </>}
         </Segment>

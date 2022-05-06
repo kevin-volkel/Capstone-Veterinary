@@ -1,3 +1,5 @@
+@use "../themes/defaultTheme" as *;
+
 .events-map {
     display: flex;
     flex-direction: column;
@@ -10,7 +12,7 @@
     padding-top: 15px;
 
     h1 {
-        color: #f06f1a;
+        color: $clr-orange;
     }
 
     .map-and-text {
@@ -18,6 +20,10 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+
+        p{
+            font-size: 1.1rem;
+        }
 
         .map {
             display: flex;
@@ -49,6 +55,8 @@
                 padding-left: 7%;
                 padding-right: 7%;
                 padding-bottom: 3%;
+                font-size: .8rem;
+                
             }
 
             .map {
@@ -66,17 +74,23 @@
         padding-top: 25px;
 
         .map-and-text {
+            justify-content: space-evenly;
             display: flex;
             flex-direction: row;
+            margin: 2rem 0;
 
             p {
+                padding-left: 5%;
+                padding-right: 5%;
                 width: 40%;
-                font-size: 1rem;
+                font-size: 1.1rem;
+                padding-bottom: 0;
+                margin: 0;
             }
 
             .map {
-                width: 65%;
-                height: 40vw;
+                width: 50%;
+                height: 30vw;
             }
         }
     }

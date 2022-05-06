@@ -1,3 +1,4 @@
+@use "../themes/defaultTheme" as *;
 
 .container {
   padding: 0 2rem;
@@ -18,9 +19,9 @@
   margin-top: 1rem;
   display: flex;
   justify-content: center;
-  h1{
+  h1 {
     // font-family: 'ABeeZee', sans-serif;
-    font-family: 'Signika', sans-serif;
+    font-family: "Signika", sans-serif;
   }
 }
 
@@ -142,25 +143,29 @@
 .img-btn-left {
   left: 0;
   margin-left: 5rem !important;
-  clip-path: polygon(40% 0%,
-      40% 20%,
-      100% 20%,
-      100% 80%,
-      40% 80%,
-      40% 100%,
-      0% 50%);
+  clip-path: polygon(
+    40% 0%,
+    40% 20%,
+    100% 20%,
+    100% 80%,
+    40% 80%,
+    40% 100%,
+    0% 50%
+  );
 }
 
 .img-btn-right {
   right: 0;
   margin-right: 5rem !important;
-  clip-path: polygon(0% 20%,
-      60% 20%,
-      60% 0%,
-      100% 50%,
-      60% 100%,
-      60% 80%,
-      0% 80%);
+  clip-path: polygon(
+    0% 20%,
+    60% 20%,
+    60% 0%,
+    100% 50%,
+    60% 100%,
+    60% 80%,
+    0% 80%
+  );
 }
 
 .arrow {
@@ -169,8 +174,6 @@
   height: 30px;
   width: 40px;
 }
-
-
 
 //everything under the slide show
 
@@ -185,14 +188,13 @@
   padding-right: 3%;
 }
 
-
 .events-section {
   margin-top: 7.5rem !important;
   width: 100%;
   border: 100px solid rgba(0, 0, 0, 0.119);
   border-radius: 4px;
   box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
-  background-color: #f2711c !important; //couldn't find what kept it from turning orange but this made it work
+  background-color: $clr-orange !important; //couldn't find what kept it from turning orange but this made it work
 
   h1 {
     display: flex;
@@ -217,7 +219,7 @@
       margin-bottom: 4%;
       padding: 5% 3.75%;
       box-shadow: 2px 2px 5px #aaaaaa;
-      color: #f06f1a;
+      color: $clr-orange;
       background-color: #fafafa;
     }
   }
@@ -233,7 +235,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #f06f1a;
+    color: $clr-orange;
   }
 
   .nf-wholeSect {
@@ -245,18 +247,19 @@
 
     p {
       margin-top: 1rem;
+      font-size: 1.1rem;
       //font-family: 'Montserrat', sans-serif;
       // font-family: 'Poppins', sans-serif;
       //font-family: 'Raleway', sans-serif;
-      font-family: 'merriweather', sans-serif;
+      // font-family: 'merriweather', sans-serif;
     }
   }
 
-  .ui.orange.button {
+  .ui.button {
     margin-bottom: 4%;
     padding: 5% 3.75%;
     box-shadow: 2px 2px 5px #aaaaaa;
-    background-color: #cd4c00;
+    background-color: $clr-orange;
   }
 }
 
@@ -284,15 +287,27 @@
       display: flex;
     }
   }
+
+  .adopt-section {
+    .nf-wholeSect {
+      p {
+        font-size: 0.8rem;
+      }
+      .ui.button {
+        padding: 0.8rem;
+        font-size: .8rem;
+      }
+    }
+  }
 }
 
 @media only screen and (min-width: 780px) {
   .nf-wholeSect {
     p {
-      font-size: .7rem;
+      font-size: 0.7rem;
     }
-    .ui.orange.button {
-      font-size: .7rem;
+    .ui.button {
+      font-size: 0.7rem;
       padding: 3% 3.75%;
     }
   }
@@ -300,7 +315,7 @@
 
 @media only screen and (min-width: 1024px) {
   html {
-    font-size: 1.10rem;
+    font-size: 1.1rem;
 
     .nf-sect {
       display: flex;
@@ -308,24 +323,24 @@
       padding-bottom: 1.75%;
     }
 
-    .adopt-image{
+    .adopt-image {
       border-radius: 3%;
     }
 
-    .adopt-section{
+    .adopt-section {
       .nf-wholeSect {
         p {
-          margin-right: 1rem;
+          margin-right: 2rem;
           width: 200%;
           font-size: 1rem;
         }
+
+        .ui.button {
+          font-size: 1rem;
+          padding: 1.75% 1.5%;
+          margin-bottom: 2%;
+        }
       }
-    }
-
-    .adopt-section .ui.orange.button{
-      padding: 1.75% 1.5%;
-      margin-bottom: 2%;
-
     }
   }
 }

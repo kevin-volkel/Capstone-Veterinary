@@ -33,6 +33,25 @@
     font-size: 1.1rem;
   }
 
+  #event-group{
+    // style={{ display: "flex", margin: 0, justifyContent: 'space-between'}}
+    display: flex;
+    margin-bottom: 1em;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    // width: 100%;
+    .field, #event-type{
+      width: 100%;
+    }
+
+    #event-type{
+      margin-bottom: 1em;
+      .field:last-child{
+        margin-top: .5em ;
+      }
+    }
+  }
+
   .button-div {
     display: flex;
     justify-content: center;
@@ -45,6 +64,14 @@
     }
   }
 }
+
+// @media only screen and (min-width: 380px) {
+//   #event-type{
+//     width: auto;
+//   }
+// }
+
+
 
 @media only screen and (min-width: 768px) {
   #add-animal, #add-event {

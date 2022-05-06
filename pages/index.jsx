@@ -124,7 +124,6 @@ export default function Home() {
               </p>
             </div>
             <Button
-              color="orange"
               content="Ready To Adopt"
               className="nf-adopt-btn"
               href="/animals"
