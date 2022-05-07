@@ -70,6 +70,7 @@ const VideoUpload = ({
                     setVideo([]);
                     setVideoPreview([]);
                   }}
+                  aria-label="empty input"
                 >
                   Empty Input
                 </Button>

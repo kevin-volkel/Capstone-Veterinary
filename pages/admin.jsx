@@ -61,8 +61,9 @@ admin.getInitialProps = async ({ ctx }) => {
     const animalRes = await axios.get(`${baseURL}/api/v1/animal`);
     pageProps.animals = animalRes.data;
     const eventsRes = await axios.get(`${baseURL}/api/v1/event`);
-    const sortedEvents = eventsRes.data.sort(sortDates);
-    pageProps.events = sortedEvents;
+    // const sortedEvents = eventsRes.data.sort(sortDates);
+    // pageProps.events = sortedEvents;
+    pageProps.events = eventsRes.data;
   } catch (err) {
     console.error(err);
     pageProps.errorLoading = err;

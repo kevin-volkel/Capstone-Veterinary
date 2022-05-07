@@ -45,7 +45,7 @@
 
   .button {
     width: 75%;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     background-color: $clr-orange;
     color: #ffffff;
     margin: 0;
@@ -138,14 +138,6 @@
 
 //TABLET
 @media only screen and (min-width: 768px) {
-  #admin {
-
-    h1.ui.header,
-    h1.ui.header:first-child,
-    h1.ui.header:last-child {
-      font-size: 1em;
-    }
-  }
 
   #admin-animals {
     width: 90vw;
@@ -178,7 +170,7 @@
       }
 
       .animal-header {
-        font-size: 1rem;
+        font-size: 1.5rem;
         margin-bottom: 0.8rem;
       }
     }
@@ -203,6 +195,10 @@
     #admin-animals {
       width: 70%;
       align-self: center;
+
+      .ui.button{
+        font-size: 1.2rem;
+      }
 
       .sort-div {
         .ui.selection.dropdown {

@@ -17,7 +17,7 @@ const AdminEvent = ({ event, setEvents }) => {
         <Image src={event.bannerPic} alt={event.title} />
       </div>
       <div className='options'>
-        <EventDropdown setEvents={setEvents} eventId={event._id} />
+        <EventDropdown setEvents={setEvents} event={event} />
       </div>
     </>
   );

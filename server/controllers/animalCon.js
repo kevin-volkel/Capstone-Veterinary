@@ -70,10 +70,6 @@ const addAnimal = async (req, res) => {
 
 //? gets all animals, no params
 const getAllAnimals = async (req, res) => {
-  // const { page } = req.query;
-
-  // const pageNumber = Number(page);
-  // const size = 6; //! can change later
 
   try {
     let animals = await AnimalModel.find()

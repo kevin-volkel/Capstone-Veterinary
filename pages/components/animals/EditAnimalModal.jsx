@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import { Form, Button, Message } from "semantic-ui-react";
 import axios from "axios";
 import catchErrors from "../../util/catchErrors";
-import Cookies from "js-cookie";
-import { baseURL } from "../../util/auth";
 import VideoUpload from "../layout/VideoUpload";
 import AnimalUpload from "../layout/AnimalUpload";
 import { editAnimal } from "../../util/animalActions";
@@ -96,9 +94,6 @@ const EditAnimalModal = ({ setAnimals, setShowModal, animal }) => {
 
     let animalPicURLs = [];
     let animalVidURLs = [];
-
-    console.log(media); //!error here
-    console.log(video);
 
     try {
       //IMAGES

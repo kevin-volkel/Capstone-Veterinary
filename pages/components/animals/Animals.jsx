@@ -127,7 +127,6 @@ const Animals = ({ animals, isAdmin, user }) => {
           Add Animal
         </Button>
       )}
-
       {showModal && (
         <Modal
           id='add-animal'
@@ -138,7 +137,6 @@ const Animals = ({ animals, isAdmin, user }) => {
         >
           <Modal.Content>
             <AddAnimalModal
-              user={user}
               setAnimals={setFilteredAnimals}
               setShowModal={setShowModal}
             />

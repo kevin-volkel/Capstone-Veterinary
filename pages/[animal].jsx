@@ -62,7 +62,7 @@ const Animal = ({ user, animalObj, errorLoading, animals }) => {
       )}
       {showEdit && (
         <Modal
-          id="add-animal"
+          id="edit-animal"
           open={showEdit}
           closeIcon
           closeOnDimmerClick
@@ -71,7 +71,6 @@ const Animal = ({ user, animalObj, errorLoading, animals }) => {
           <Modal.Content>
             <EditAnimalModal
               animal={animalObj}
-              user={user}
               setAnimals={setAnimals}
               setShowModal={setShowEdit}
             />

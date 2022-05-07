@@ -11,7 +11,7 @@
 
   .ui.button {
     width: 75%;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     background-color: $clr-orange;
     color: #ffffff;
     margin: 0;
@@ -121,6 +121,9 @@
 @media only screen and (min-width: 768px) {
   #admin-events {
     width: 90vw;
+    .ui.button{
+      font-size: .9rem;
+    }
     .event-card {
       line-height: 1.5rem;
     }
@@ -142,6 +145,11 @@
 @media only screen and (min-width: 1024px) {
   #admin-events {
     width: 70%;
+
+    .ui.button{
+      font-size: 1.2rem;
+    }
+    
     .event-info {
       margin-left: 3%;
     }

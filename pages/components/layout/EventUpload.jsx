@@ -48,26 +48,37 @@ const EventUpload = ({
                 </Header>
               </Segment>
             ) : (
-              <Segment
-                placeholder
-                basic
-                style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  justifyContent: "space-evenly",
-                  flexWrap: "wrap",
-                }}
-              >
-                <Image
-                  src={mediaPreview}
-                  style={{
-                    margin: ".3rem",
-                    width: "180px",
-                    objectFit: "scale-down",
+              <div>
+                <Button
+                  onClick={() => {
+                    setMedia(null);
+                    setMediaPreview(null);
                   }}
-                  centered
-                />
-              </Segment>
+                  aria-label="empty input"
+                >
+                  Empty Input
+                </Button>
+                <Segment
+                  placeholder
+                  basic
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent: "space-evenly",
+                    flexWrap: "wrap",
+                  }}
+                >
+                  <Image
+                    src={mediaPreview}
+                    style={{
+                      margin: ".3rem",
+                      width: "180px",
+                      objectFit: "scale-down",
+                    }}
+                    centered
+                  />
+                </Segment>
+              </div>
             )}
           </div>
         </Segment>

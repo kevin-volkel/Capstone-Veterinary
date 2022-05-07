@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   Button,
   Icon,
@@ -8,10 +8,10 @@ import {
   Pagination,
   Modal,
   Divider,
-} from 'semantic-ui-react';
-import AdminEvent from './AdminEvent';
-import AddEventModal from './AddEventModal';
-import EventCard from './EventCard';
+} from "semantic-ui-react";
+import AdminEvent from "./AdminEvent";
+import AddEventModal from "./AddEventModal";
+import EventCard from "./EventCard";
 
 const Events = ({ user, events }) => {
   const [loading, setLoading] = useState(false);
@@ -19,13 +19,15 @@ const Events = ({ user, events }) => {
   const [susEvents, setSusEvents] = useState(events);
   return (
     <>
-      <Button disabled={loading} onClick={() => setShowModal(true)}>
-        <Icon name='plus' />
-        Add Event
-      </Button>
+      {user && (
+        <Button disabled={loading} onClick={() => setShowModal(true)}>
+          <Icon name="plus" />
+          Add Event
+        </Button>
+      )}
       {showModal && (
         <Modal
-          id='add-event'
+          id="add-event"
           open={showModal}
           closeIcon
           closeOnDimmerClick
@@ -33,18 +35,17 @@ const Events = ({ user, events }) => {
         >
           <Modal.Content>
             <AddEventModal
-              user={user}
               setEvents={setSusEvents}
               setShowModal={setShowModal}
             />
           </Modal.Content>
         </Modal>
       )}
-      <Container fluid className='events-list'>
+      <Container fluid className="events-list">
         <Divider />
         {susEvents.map((event, i) => (
           <>
-            <div className='event-card' key={i}>
+            <div className="event-card" key={i}>
               <AdminEvent event={event} setEvents={setSusEvents} />
             </div>
             {i !== susEvents.length - 1 && <Divider />}

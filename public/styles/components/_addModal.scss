@@ -1,6 +1,6 @@
 @use "../themes/defaultTheme" as *;
 
-#add-animal, #add-event {
+#add-animal, #add-event, #edit-animal, #edit-event {
   i.close {
     font-size: 1.5rem;
   }
@@ -74,7 +74,7 @@
 
 
 @media only screen and (min-width: 768px) {
-  #add-animal, #add-event {
+  #add-animal, #add-event, #edit-animal, #edit-event {
     h1{
       font-size: 2rem;
     }
@@ -98,7 +98,7 @@
 }
 
 @media only screen and (min-width: 991px) {
-  #add-animal, #add-event {
+  #add-animal, #add-event, #edit-animal, #edit-event {
     i.close {
       top: 1.0535rem;
       right: 1rem;
@@ -109,7 +109,7 @@
 }
 
 @media only screen and (min-width: 1024px) {
-  #add-animal, #add-event {
+  #add-animal, #add-event, #edit-animal, #edit-event {
     h1 {
       font-size: 2.5rem;
     }

@@ -53,3 +53,31 @@ export const addEvent = async (
     console.log(catchErrors(error));
   }
 };
+
+export const editEvent = async (
+  title,
+  desc,
+  date,
+  type,
+  bannerPic,
+  location,
+  featured,
+  setEvents,
+  eventId
+) => {
+  try {
+    const res = await eventAxios.put(`/${eventId}`, {
+      title: title.trim(),
+      desc: desc.trim(),
+      date,
+      type: type.trim(),
+      bannerPic,
+      location: location.trim(),
+      featured,
+    });
+    setEvents((prev) => prev.filter((event) => event._id !== eventId));
+    setEvents((prev) => [res.data, ...prev]);
+  } catch (error) {
+    console.log(catchErrors(error));
+  }
+};
