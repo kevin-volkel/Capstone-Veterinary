@@ -219,6 +219,10 @@
   box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
   width: 100%;
 
+  .adopt-image{
+    border-radius: 3%;
+  }
+
   h1 {
     display: flex;
     justify-content: center;
@@ -239,6 +243,7 @@
       // font-family: 'Poppins', sans-serif;
       //font-family: 'Raleway', sans-serif;
       font-family: 'merriweather', sans-serif;
+      width: 100%;
     }
   }
 
@@ -308,15 +313,12 @@
       padding-bottom: 1.75%;
     }
 
-    .adopt-image{
-      border-radius: 3%;
-    }
-
     .adopt-section{
       .nf-wholeSect {
         p {
-          margin-right: 1rem;
-          width: 200%;
+          margin-right: 3rem;
+          margin-left: 2rem;
+          width: 75%;
           font-size: 1rem;
         }
       }

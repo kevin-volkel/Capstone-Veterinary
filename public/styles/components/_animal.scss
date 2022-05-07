@@ -74,24 +74,26 @@ div.animal-wrap {
   }
 
   h3 {
-    // display: flex;
-    // justify-content: center;
-    // align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-top: 0%;
     color: #f06f1a;
     font-size: 1.65rem;
+    width: 76.5vw;
   }
 
   p {
-    // display: flex;
-    // justify-content: center;
-    // align-items: center;
-    margin-bottom: 7%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10%;
   }
 }
 
 h3 {
   margin-top: 0;
+  margin-bottom: .25rem;
 }
 
 .content {
@@ -120,10 +122,13 @@ h3 {
 
 @media only screen and (min-width: 768px) {
   div.animal-wrap {
-    font-size: 0.8rem;
+    font-size: 0.65rem;
   }
 
   .top-btns {
+    div{
+      font-size: 1rem;
+    }
     #edit-1 {
       font-size: 1rem;
     }
@@ -138,9 +143,13 @@ h3 {
     font-size: 0.9rem;
   }
 
+  .pet-name {
+    font-size: 1.45rem;
+  }
+
   .pet-title {
     font-size: 1.3rem;
-    margin-bottom: 0%;
+    margin-bottom: 2%;
   }
 
   .pet-description {
@@ -148,16 +157,30 @@ h3 {
       font-size: 1.2rem;
     }
 
+    h3 {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      margin-top: 0%;
+      width: 30vw;
+    }
+  
+    p {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      margin-bottom: 5%;
+    }
+
     .section-1 {
       display: flex;
       flex-direction: column;
-      width: 90%;
+      width: 95%;
 
-      //width: 30%;
       div {
         display: flex;
         flex-direction: column;
-        width: 100%;
+        width: 90%;
       }
     }
 
@@ -209,11 +232,19 @@ h3 {
 }
 
 @media only screen and (min-width: 1024px) {
+  .animal-wrap{
+    width: 74% !important;
+  }
   .pet-name {
     margin-top: 3% !important;
+    font-size: 1.75rem;
   }
 
   .top-btns {
+    div{
+      font-size: 1.15rem;
+    }
+    
     #edit-1 {
       font-size: 1.25rem;
     }
@@ -229,7 +260,7 @@ h3 {
   }
 
   .para-desc {
-    margin-top: 3%;
+    margin-top: 2%;
     width: 70%;
     font-size: 1.1rem;
   }
@@ -237,10 +268,12 @@ h3 {
   .pet-title {
     margin-top: 3%;
     font-size: 1.7rem;
+    margin-bottom: .4%;
   }
 
   .pet-description {
     margin-bottom: 7%;
+    width: 58vw;
 
     h3 {
       margin-bottom: 1%;
@@ -249,7 +282,7 @@ h3 {
     }
 
     p {
-      margin-bottom: 3%;
+      margin-bottom: 1%;
       font-size: 1rem;
     }
 
@@ -269,7 +302,7 @@ h3 {
     .section-2 {
       display: flex;
       flex-direction: row;
-      width: 100%;
+      width: 90%;
 
       div {
         display: flex;
@@ -281,7 +314,7 @@ h3 {
     .section-3 {
       display: flex;
       flex-direction: row;
-      width: 100%;
+      width: 90%;
 
       div {
         display: flex;
