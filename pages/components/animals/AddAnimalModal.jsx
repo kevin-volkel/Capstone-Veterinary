@@ -21,8 +21,7 @@ const AddAnimalModal = ({ setAnimals, setShowModal }) => {
   const [videoPreview, setVideoPreview] = useState([]);
   const [video, setVideo] = useState([]);
 
-  const defaultAnimalPic =
-    {dogDefault};
+  const defaultAnimalPic = dogDefault.src;
 
   const [newAnimal, setNewAnimal] = useState({
     name: "",

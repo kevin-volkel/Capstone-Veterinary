@@ -45,7 +45,7 @@ const Animals = ({ animals, isAdmin, user }) => {
       value: 'young',
     },
     {
-      text: 'Mid',
+      text: 'Middle-Age',
       value: 'mid',
     },
     {
@@ -56,6 +56,10 @@ const Animals = ({ animals, isAdmin, user }) => {
       text: 'Senior',
       value: 'senior',
     },
+    {
+      text: 'Unknown Age',
+      value: 'unknown'
+    }
   ];
 
   const ageRanges = {
@@ -123,7 +127,6 @@ const Animals = ({ animals, isAdmin, user }) => {
           Add Animal
         </Button>
       )}
-
       {showModal && (
         <Modal
           id='add-animal'
@@ -134,7 +137,6 @@ const Animals = ({ animals, isAdmin, user }) => {
         >
           <Modal.Content>
             <AddAnimalModal
-              user={user}
               setAnimals={setFilteredAnimals}
               setShowModal={setShowModal}
             />

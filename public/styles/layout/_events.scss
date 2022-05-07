@@ -1,83 +1,169 @@
-#admin-events{
+@use "../themes/defaultTheme" as *;
+
+#admin-events {
   width: 95vw;
   margin: 0rem auto 2rem;
   padding: 2rem 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  // display: flex;
+  // align-items: center;
+  // justify-content: center;
+  // flex-direction: column;
 
-  .ui.button{
+  .ui.button {
     width: 75%;
     font-size: 1.2rem;
-    background-color: #df7b05;
+    background-color: $clr-orange;
     color: #ffffff;
     margin: 0;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      transform: scaleX(0);
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: $clr-orange;
+      transform-origin: bottom right;
+      transition: transform 0.25s ease-out;
+    }
   }
-  
-  .events-list{
+
+  .events-list {
     padding: 0;
     margin: 0;
     display: flex;
     justify-content: space-between;
     gap: 1rem;
     flex-direction: column;
-    
-    .event-card{
+
+    .event-card {
       min-height: 6rem;
       display: flex;
       text-align: left;
       justify-content: space-between;
       margin: 0 1rem;
-      
-      &:first-of-type{
+
+      &:first-of-type {
         margin-top: 1rem;
       }
-      &:last-of-type{
+      &:last-of-type {
         margin-bottom: 1rem;
       }
 
-      .event-title{
-        font-size: 1.3rem;
+      .event-title {
+        font-size: 1.1rem;
         font-weight: bold;
       }
-      .event-desc{
-        font-size:1.1rem;
+      .event-desc {
+        font-size: 1.1rem;
       }
-      .event-date{
+      .event-date {
         font-size: 0.8rem;
       }
     }
-    .event-pic{
+    .event-pic {
       width: 40%;
+      margin: 0 1rem;
       display: flex;
       flex-direction: column;
       align-items: center;
 
-      img{
+      img {
         height: 100%;
         object-fit: contain;
       }
     }
 
-    .options{
+    .options {
       width: 30px;
       display: flex;
       align-items: center;
       justify-content: flex-end;
+
+      i {
+        font-size: 1.2em;
+      }
+
+      .menu {
+        right: 10px;
+        left: auto;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  #admin-events {
+    min-width: 280px;
+  }
+}
+
+@media only screen and (min-width: 550px) {
+  #admin-events {
+    .events-list {
+      .options {
+        i {
+          font-size: 1.5em;
+        }
+        .menu {
+          .item{
+            font-size: 1.1rem;
+          }
+        }
+      }
     }
   }
 }
 
 @media only screen and (min-width: 768px) {
-  .event-card{
-    line-height: 1.5rem;
+  #admin-events {
+    width: 90vw;
+    .ui.button{
+      font-size: .9rem;
+    }
+    .event-card {
+      line-height: 1.5rem;
+    }
+    .events-list{
+      .options{
+        i {
+          font-size: 1.1em;
+        }
+        .menu {
+          .item{
+            font-size: .8rem;
+          }
+        }
+      }
+    }
   }
 }
 
 @media only screen and (min-width: 1024px) {
-  .event-info{
-    margin-left: 3%;
+  #admin-events {
+    width: 70%;
+
+    .ui.button{
+      font-size: 1.2rem;
+    }
+    
+    .event-info {
+      margin-left: 3%;
+    }
+    .events-list{
+      .options{
+        i {
+          font-size: 1.3em;
+        }
+        .menu {
+          .item{
+            font-size: .9rem;
+          }
+        }
+      }
+    }
   }
 }

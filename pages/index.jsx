@@ -71,9 +71,10 @@ export default function Home() {
     <div className="everything">
       {eventModalShowing !== null &&
         events.map((event) => {
-          if (event.title === eventModalShowing) {
+          if (event._id === eventModalShowing) {
             return (
               <Modal
+                key={event._id}
                 id="event-modal"
                 open={eventModalShowing !== null}
                 closeIcon
@@ -124,7 +125,6 @@ export default function Home() {
               </p>
             </div>
             <Button
-              color="orange"
               content="Ready To Adopt"
               className="nf-adopt-btn"
               href="/animals"

@@ -40,7 +40,7 @@ a {
   font-family: "Oxygen", sans-serif;
 }
 #admin h1.ui.header:hover, #admin h1.ui.header:first-child:hover, #admin h1.ui.header:last-child:hover {
-  color: #df7b05;
+  color: #f06f1a;
 }
 #admin #header {
   display: flex;
@@ -63,7 +63,7 @@ a {
 #admin-animals .button {
   width: 75%;
   font-size: 1.2rem;
-  background-color: #df7b05;
+  background-color: #f06f1a;
   color: #ffffff;
   margin: 0;
   margin-bottom: 2rem;
@@ -76,7 +76,7 @@ a {
   height: 2px;
   bottom: 0;
   left: 0;
-  background-color: #df7b05;
+  background-color: #f06f1a;
   transform-origin: bottom right;
   transition: transform 0.25s ease-out;
 }
@@ -133,39 +133,12 @@ a {
   opacity: 1;
 }
 
-#admin-events .ui.button {
-  width: 75%;
-  font-size: 1rem;
-  background-color: #f06f1a;
-  color: #ffffff;
-  margin: 0;
-  margin-bottom: 1rem;
-}
-#admin-events .ui.button::after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  transform: scaleX(0);
-  height: 2px;
-  bottom: 0;
-  left: 0;
-  background-color: #f06f1a;
-  transform-origin: bottom right;
-  transition: transform 0.25s ease-out;
-}
-
 @media only screen and (max-width: 350px) {
   #admin-animals {
     min-width: 280px;
   }
 }
 @media only screen and (min-width: 768px) {
-  #admin h1.ui.header,
-#admin h1.ui.header:first-child,
-#admin h1.ui.header:last-child {
-    font-size: 1em;
-  }
-
   #admin-animals {
     width: 90vw;
   }
@@ -192,7 +165,7 @@ a {
     font-size: 0.8rem;
   }
   #admin-animals .ui.card .animal-header {
-    font-size: 1rem;
+    font-size: 1.5rem;
     margin-bottom: 0.8rem;
   }
   #admin-animals .ui.pagination.menu .item {
@@ -209,6 +182,9 @@ a {
   #admin #admin-animals {
     width: 70%;
     align-self: center;
+  }
+  #admin #admin-animals .ui.button {
+    font-size: 1.2rem;
   }
   #admin #admin-animals .sort-div .ui.selection.dropdown {
     width: 13em;
@@ -227,6 +203,7 @@ a {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center;
   }
   #admin #admin-events .event-info div {
     margin-bottom: 0.5rem;
@@ -259,7 +236,7 @@ body {
 }
 #adoption h1 {
   font-weight: bold;
-  color: #df7b05;
+  color: #f06f1a;
   margin-bottom: 3rem;
   text-align: center;
 }
@@ -373,6 +350,15 @@ body {
 
 .everything {
   overflow-x: hidden;
+}
+
+.nf-div {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+}
+.nf-div h1 {
+  font-family: "Signika", sans-serif;
 }
 
 .main {
@@ -510,7 +496,7 @@ body {
   border: 100px solid rgba(0, 0, 0, 0.119);
   border-radius: 4px;
   box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
-  background-color: #f2711c !important;
+  background-color: #f06f1a !important;
 }
 .events-section h1 {
   display: flex;
@@ -561,14 +547,18 @@ body {
 }
 .adopt-section .nf-wholeSect p {
   margin-top: 1rem;
+<<<<<<< HEAD
   font-family: "merriweather", sans-serif;
   width: 100%;
+=======
+  font-size: 1.1rem;
+>>>>>>> b2146b22ae4f622f3d833f6d6abac1f57ee3472f
 }
-.adopt-section .ui.orange.button {
+.adopt-section .ui.button {
   margin-bottom: 4%;
   padding: 5% 3.75%;
   box-shadow: 2px 2px 5px #aaaaaa;
-  background-color: #cd4c00;
+  background-color: #f06f1a;
 }
 
 .ui.segment:first-child h1 {
@@ -600,12 +590,20 @@ body {
   .events-section .nf-sect {
     display: flex;
   }
+
+  .adopt-section .nf-wholeSect p {
+    font-size: 0.8rem;
+  }
+  .adopt-section .nf-wholeSect .ui.button {
+    padding: 0.8rem;
+    font-size: 0.8rem;
+  }
 }
 @media only screen and (min-width: 780px) {
   .nf-wholeSect p {
     font-size: 0.7rem;
   }
-  .nf-wholeSect .ui.orange.button {
+  .nf-wholeSect .ui.button {
     font-size: 0.7rem;
     padding: 3% 3.75%;
   }
@@ -620,14 +618,19 @@ body {
     padding-bottom: 1.75%;
   }
   html .adopt-section .nf-wholeSect p {
+<<<<<<< HEAD
     margin-right: 3rem;
     margin-left: 2rem;
     width: 75%;
+=======
+    margin-right: 2rem;
+    width: 200%;
+>>>>>>> b2146b22ae4f622f3d833f6d6abac1f57ee3472f
     font-size: 1rem;
   }
-  html .adopt-section .ui.orange.button {
-    padding: 2% 1.5%;
+  html .adopt-section .nf-wholeSect .ui.button {
     font-size: 1rem;
+    padding: 1.75% 1.5%;
     margin-bottom: 2%;
   }
 }
@@ -803,7 +806,7 @@ form#register {
 }
 div.animal-wrap {
   margin-top: 1rem;
-  padding-bottom: 10%;
+  padding-bottom: 5%;
   width: 90%;
   border-radius: 4px;
   background-color: white;
@@ -1020,8 +1023,13 @@ h3 {
   }
 
   .pet-name {
+<<<<<<< HEAD
     margin-top: 3% !important;
     font-size: 1.75rem;
+=======
+    margin-top: 2% !important;
+    margin-bottom: 2%;
+>>>>>>> b2146b22ae4f622f3d833f6d6abac1f57ee3472f
   }
 
   .top-btns div {
@@ -1052,12 +1060,16 @@ h3 {
   }
 
   .pet-description {
+<<<<<<< HEAD
     margin-bottom: 7%;
     width: 58vw;
+=======
+    margin-bottom: 2.5%;
+>>>>>>> b2146b22ae4f622f3d833f6d6abac1f57ee3472f
   }
   .pet-description h3 {
     margin-bottom: 1%;
-    margin-top: 2%;
+    margin-top: 1%;
     font-size: 1.5rem;
   }
   .pet-description p {
@@ -1065,6 +1077,7 @@ h3 {
     font-size: 1rem;
   }
   .pet-description .section-1 {
+    margin: 0;
     display: flex;
     flex-direction: column;
     width: 90%;
@@ -1075,6 +1088,7 @@ h3 {
     width: 100%;
   }
   .pet-description .section-2 {
+    margin: 0;
     display: flex;
     flex-direction: row;
     width: 90%;
@@ -1085,6 +1099,7 @@ h3 {
     width: 50%;
   }
   .pet-description .section-3 {
+    margin: 0;
     display: flex;
     flex-direction: row;
     width: 90%;
@@ -1101,13 +1116,14 @@ h3 {
   }
 
   .gallery-title {
-    font-size: 1.7rem;
+    font-size: 2.5rem;
   }
 
   .pet-gallery {
     align-items: center;
     justify-content: center;
     grid-gap: 1px;
+    padding-top: 0;
   }
   .pet-gallery img {
     padding: 0.5% !important;
@@ -1116,36 +1132,51 @@ h3 {
        object-fit: cover !important;
   }
 }
-#add-animal i.close, #add-event i.close {
+#add-animal i.close, #add-event i.close, #edit-animal i.close, #edit-event i.close {
   font-size: 1.5rem;
 }
-#add-animal .form-wrap, #add-event .form-wrap {
+#add-animal .form-wrap, #add-event .form-wrap, #edit-animal .form-wrap, #edit-event .form-wrap {
   flex-direction: column;
 }
-#add-animal .form, #add-event .form {
+#add-animal .form, #add-event .form, #edit-animal .form, #edit-event .form {
   width: 100%;
   padding: 0.5rem;
 }
-#add-animal .error.message i.close, #add-event .error.message i.close {
+#add-animal .error.message i.close, #add-event .error.message i.close, #edit-animal .error.message i.close, #edit-event .error.message i.close {
   font-size: 1rem;
 }
-#add-animal h1, #add-event h1 {
+#add-animal h1, #add-event h1, #edit-animal h1, #edit-event h1 {
   color: #f06f1a;
 }
-#add-animal .uploads, #add-event .uploads {
+#add-animal .uploads, #add-event .uploads, #edit-animal .uploads, #edit-event .uploads {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   margin: 1rem 0;
 }
-#add-animal .field, #add-event .field {
+#add-animal .field, #add-event .field, #edit-animal .field, #edit-event .field {
   font-size: 1.1rem;
 }
-#add-animal .button-div, #add-event .button-div {
+#add-animal #event-group, #add-event #event-group, #edit-animal #event-group, #edit-event #event-group {
+  display: flex;
+  margin-bottom: 1em;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+#add-animal #event-group .field, #add-animal #event-group #event-type, #add-event #event-group .field, #add-event #event-group #event-type, #edit-animal #event-group .field, #edit-animal #event-group #event-type, #edit-event #event-group .field, #edit-event #event-group #event-type {
+  width: 100%;
+}
+#add-animal #event-group #event-type, #add-event #event-group #event-type, #edit-animal #event-group #event-type, #edit-event #event-group #event-type {
+  margin-bottom: 1em;
+}
+#add-animal #event-group #event-type .field:last-child, #add-event #event-group #event-type .field:last-child, #edit-animal #event-group #event-type .field:last-child, #edit-event #event-group #event-type .field:last-child {
+  margin-top: 0.5em;
+}
+#add-animal .button-div, #add-event .button-div, #edit-animal .button-div, #edit-event .button-div {
   display: flex;
   justify-content: center;
 }
-#add-animal .button-div .button, #add-event .button-div .button {
+#add-animal .button-div .button, #add-event .button-div .button, #edit-animal .button-div .button, #edit-event .button-div .button {
   margin: 1rem 0 0;
   color: white;
   background-color: #f06f1a;
@@ -1153,24 +1184,24 @@ h3 {
 }
 
 @media only screen and (min-width: 768px) {
-  #add-animal h1, #add-event h1 {
+  #add-animal h1, #add-event h1, #edit-animal h1, #edit-event h1 {
     font-size: 2rem;
   }
-  #add-animal .field, #add-event .field {
+  #add-animal .field, #add-event .field, #edit-animal .field, #edit-event .field {
     font-size: 0.8rem;
   }
-  #add-animal .button-div .button, #add-event .button-div .button {
+  #add-animal .button-div .button, #add-event .button-div .button, #edit-animal .button-div .button, #edit-event .button-div .button {
     font-size: 0.8rem;
   }
-  #add-animal .ui.icon.header, #add-event .ui.icon.header {
+  #add-animal .ui.icon.header, #add-event .ui.icon.header, #edit-animal .ui.icon.header, #edit-event .ui.icon.header {
     font-size: 1.3rem;
   }
-  #add-animal .ui.icon.header .icon, #add-event .ui.icon.header .icon {
+  #add-animal .ui.icon.header .icon, #add-event .ui.icon.header .icon, #edit-animal .ui.icon.header .icon, #edit-event .ui.icon.header .icon {
     font-size: 2.5em;
   }
 }
 @media only screen and (min-width: 991px) {
-  #add-animal i.close, #add-event i.close {
+  #add-animal i.close, #add-event i.close, #edit-animal i.close, #edit-event i.close {
     top: 1.0535rem;
     right: 1rem;
     color: rgba(0, 0, 0, 0.87);
@@ -1178,19 +1209,19 @@ h3 {
   }
 }
 @media only screen and (min-width: 1024px) {
-  #add-animal h1, #add-event h1 {
+  #add-animal h1, #add-event h1, #edit-animal h1, #edit-event h1 {
     font-size: 2.5rem;
   }
-  #add-animal .button-div .button, #add-event .button-div .button {
+  #add-animal .button-div .button, #add-event .button-div .button, #edit-animal .button-div .button, #edit-event .button-div .button {
     font-size: 1.2rem;
   }
-  #add-animal .field, #add-event .field {
+  #add-animal .field, #add-event .field, #edit-animal .field, #edit-event .field {
     font-size: 1.2rem;
   }
-  #add-animal .ui.icon.header, #add-event .ui.icon.header {
+  #add-animal .ui.icon.header, #add-event .ui.icon.header, #edit-animal .ui.icon.header, #edit-event .ui.icon.header {
     font-size: 1.5rem;
   }
-  #add-animal .ui.icon.header .icon, #add-event .ui.icon.header .icon {
+  #add-animal .ui.icon.header .icon, #add-event .ui.icon.header .icon, #edit-animal .ui.icon.header .icon, #edit-event .ui.icon.header .icon {
     font-size: 3em;
   }
 }
@@ -1201,6 +1232,9 @@ h3 {
 .reset-password {
   font-size: 1.5rem;
   text-align: center;
+}
+.reset-password .ui.button {
+  color: #f06f1a;
 }
 
 .back-to-email {
@@ -1288,6 +1322,7 @@ h3 {
   justify-content: center;
   align-items: center;
 }
+<<<<<<< HEAD
 .events-map .map-and-text .allMaps {
   display: flex;
   flex-direction: column;
@@ -1295,6 +1330,12 @@ h3 {
   margin-bottom: 2%;
 }
 .events-map .map-and-text .allMaps .map1 {
+=======
+.events-map .map-and-text p {
+  font-size: 1.1rem;
+}
+.events-map .map-and-text .map {
+>>>>>>> b2146b22ae4f622f3d833f6d6abac1f57ee3472f
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1328,6 +1369,7 @@ h3 {
     padding-left: 7%;
     padding-right: 7%;
     padding-bottom: 3%;
+    font-size: 0.8rem;
   }
   .events-map .map-and-text .allMaps {
     display: flex;
@@ -1369,17 +1411,31 @@ h3 {
     padding-top: 25px;
   }
   .events-map .map-and-text {
+    justify-content: space-evenly;
     display: flex;
     flex-direction: row;
+<<<<<<< HEAD
     margin-top: 1%;
+=======
+    margin: 2rem 0;
+>>>>>>> b2146b22ae4f622f3d833f6d6abac1f57ee3472f
   }
   .events-map .map-and-text p {
+    padding-left: 5%;
+    padding-right: 5%;
     width: 40%;
-    font-size: 1rem;
+    font-size: 1.1rem;
+    padding-bottom: 0;
+    margin: 0;
   }
   .events-map .map-and-text .map {
+<<<<<<< HEAD
     width: 65%;
     height: 15vw;
+=======
+    width: 50%;
+    height: 30vw;
+>>>>>>> b2146b22ae4f622f3d833f6d6abac1f57ee3472f
   }
 }
 .navbar {
@@ -1601,6 +1657,8 @@ h3 {
   min-width: 100%;
   max-width: none;
   transform: translate(-50%, -50%);
+  -o-object-fit: shrink;
+     object-fit: shrink;
 }
 #event-slideshow .embla_button {
   outline: 0;
@@ -1892,18 +1950,26 @@ h3 {
   width: 95vw;
   margin: 0rem auto 2rem;
   padding: 2rem 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
 }
 #admin-events .ui.button {
   width: 75%;
   font-size: 1.2rem;
-  background-color: #df7b05;
+  background-color: #f06f1a;
   color: #ffffff;
   margin: 0;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
+}
+#admin-events .ui.button::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #f06f1a;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
 }
 #admin-events .events-list {
   padding: 0;
@@ -1927,7 +1993,7 @@ h3 {
   margin-bottom: 1rem;
 }
 #admin-events .events-list .event-card .event-title {
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   font-weight: bold;
 }
 #admin-events .events-list .event-card .event-desc {
@@ -1938,6 +2004,7 @@ h3 {
 }
 #admin-events .events-list .event-pic {
   width: 40%;
+  margin: 0 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1953,15 +2020,59 @@ h3 {
   align-items: center;
   justify-content: flex-end;
 }
+#admin-events .events-list .options i {
+  font-size: 1.2em;
+}
+#admin-events .events-list .options .menu {
+  right: 10px;
+  left: auto;
+}
 
+@media only screen and (max-width: 350px) {
+  #admin-events {
+    min-width: 280px;
+  }
+}
+@media only screen and (min-width: 550px) {
+  #admin-events .events-list .options i {
+    font-size: 1.5em;
+  }
+  #admin-events .events-list .options .menu .item {
+    font-size: 1.1rem;
+  }
+}
 @media only screen and (min-width: 768px) {
-  .event-card {
+  #admin-events {
+    width: 90vw;
+  }
+  #admin-events .ui.button {
+    font-size: 0.9rem;
+  }
+  #admin-events .event-card {
     line-height: 1.5rem;
+  }
+  #admin-events .events-list .options i {
+    font-size: 1.1em;
+  }
+  #admin-events .events-list .options .menu .item {
+    font-size: 0.8rem;
   }
 }
 @media only screen and (min-width: 1024px) {
-  .event-info {
+  #admin-events {
+    width: 70%;
+  }
+  #admin-events .ui.button {
+    font-size: 1.2rem;
+  }
+  #admin-events .event-info {
     margin-left: 3%;
+  }
+  #admin-events .events-list .options i {
+    font-size: 1.3em;
+  }
+  #admin-events .events-list .options .menu .item {
+    font-size: 0.9rem;
   }
 }
 .footer {

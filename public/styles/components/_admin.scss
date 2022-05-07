@@ -18,7 +18,7 @@
       font-family: $custom-font-2;
 
       &:hover {
-        color: #df7b05;
+        color: $clr-orange;
       }
     }
   }
@@ -46,7 +46,7 @@
   .button {
     width: 75%;
     font-size: 1.2rem;
-    background-color: #df7b05;
+    background-color: $clr-orange;
     color: #ffffff;
     margin: 0;
     margin-bottom: 2rem;
@@ -59,7 +59,7 @@
       height: 2px;
       bottom: 0;
       left: 0;
-      background-color: #df7b05;
+      background-color: $clr-orange;
       transform-origin: bottom right;
       transition: transform 0.25s ease-out;
     }
@@ -130,30 +130,6 @@
   opacity: 1;
 }
 
-#admin-events {
-  .ui.button {
-    width: 75%;
-    font-size: 1rem;
-    background-color: $clr-orange;
-    color: #ffffff;
-    margin: 0;
-    margin-bottom: 1rem;
-
-    &::after {
-      content: "";
-      position: absolute;
-      width: 100%;
-      transform: scaleX(0);
-      height: 2px;
-      bottom: 0;
-      left: 0;
-      background-color: $clr-orange;
-      transform-origin: bottom right;
-      transition: transform 0.25s ease-out;
-    }
-  }
-}
-
 @media only screen and (max-width: 350px) {
   #admin-animals {
     min-width: 280px;
@@ -162,14 +138,6 @@
 
 //TABLET
 @media only screen and (min-width: 768px) {
-  #admin {
-
-    h1.ui.header,
-    h1.ui.header:first-child,
-    h1.ui.header:last-child {
-      font-size: 1em;
-    }
-  }
 
   #admin-animals {
     width: 90vw;
@@ -202,7 +170,7 @@
       }
 
       .animal-header {
-        font-size: 1rem;
+        font-size: 1.5rem;
         margin-bottom: 0.8rem;
       }
     }
@@ -227,6 +195,10 @@
     #admin-animals {
       width: 70%;
       align-self: center;
+
+      .ui.button{
+        font-size: 1.2rem;
+      }
 
       .sort-div {
         .ui.selection.dropdown {
@@ -253,6 +225,7 @@
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
+      justify-content: center;
 
       .event-info {
         div {

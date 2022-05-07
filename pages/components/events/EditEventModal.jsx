@@ -1,27 +1,31 @@
-import React, { useState } from 'react';
-import { Form, Button, Message, Divider } from 'semantic-ui-react';
-import axios from 'axios';
-import catchErrors from '../../util/catchErrors';
-import EventUpload from '../layout/EventUpload';
-import { addEvent } from '../../util/eventActions';
-import defaultEventPic from '../../../public/media/home-page-banner.jpg';
+import React, { useState } from "react";
+import { Form, Button, Message } from "semantic-ui-react";
+import axios from "axios";
+import catchErrors from "../../util/catchErrors";
+import EventUpload from "../layout/EventUpload";
+import { editEvent } from "../../util/eventActions";
+// import { useRouter } from "next/router";
+import defaultEventPic from "../../../public/media/home-page-banner.jpg";
 
-const AddEventModal = ({ setEvents, setShowModal }) => {
+const EditEventModal = ({ setEvents, setShowModal, event }) => {
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState(null);
 
-  const [mediaPreview, setMediaPreview] = useState(null);
-  const [media, setMedia] = useState(null);
+  const [mediaPreview, setMediaPreview] = useState(event.bannerPic);
+  const [media, setMedia] = useState(event.bannerPic);
 
   const [newEvent, setNewEvent] = useState({
-    title: '',
-    desc: '',
-    date: '',
-    type: '',
-    otherType: '',
-    featured: false,
-    location: '',
-    bannerPic: '',
+    title: event.title,
+    desc: event.desc,
+    date: event.date.substring(0, 10),
+    type: event.type,
+    otherType:
+      event.type !== "adoption" || event.type !== "fundraiser"
+        ? event.type
+        : "",
+    featured: event.featured,
+    location: event.location,
+    bannerPic: event.bannerPic,
   });
 
   const handleChange = (e, data) => {
@@ -32,7 +36,7 @@ const AddEventModal = ({ setEvents, setShowModal }) => {
         ...prev,
         [data.name]: data.value,
       }));
-    } else if (name == 'media' && files.length) {
+    } else if (name == "media" && files.length) {
       setMedia(() => files[0]);
       setMediaPreview(() => URL.createObjectURL(files[0]));
     } else {
@@ -47,34 +51,42 @@ const AddEventModal = ({ setEvents, setShowModal }) => {
     e.preventDefault();
     setLoading(true);
 
-    let eventPicUrl = '';
+    let eventPicUrl = "";
 
     try {
       //IMAGES
       if (media !== null) {
         const formData = new FormData();
-        formData.append('image', media, {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
-        });
-        const res = await axios.post('/api/v1/upload', formData);
-        eventPicUrl = res.data.src;
+        let newImage = false;
+        if (typeof media === "object") {
+          formData.append("image", media, {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          });
+          newImage = true;
+        } else if (typeof media === "string") {
+          eventPicUrl = media;
+        }
+        if (newImage) {
+          const res = await axios.post("/api/v1/upload", formData);
+          eventPicUrl = res.data.src;
+        }
       } else {
         eventPicUrl = defaultEventPic.src;
       }
-      if (media !== null && !eventPicUrl) throw new Error('Cloudinary Error');
+      if (media !== null && !eventPicUrl) throw new Error("Cloudinary Error");
 
-      const [year, month, day] = newEvent.date.split('-')
-      const newDate = `${year}-${month}-${+day}`
+      const [year, month, day] = newEvent.date.split("-");
+      const newDate = `${year}-${month}-${+day}`;
 
       let eventDate = new Date(newDate);
 
-      if (newEvent.otherType !== '' && newEvent.type === "other") {
+      if (newEvent.otherType !== "" && newEvent.type === "other") {
         newEvent.type = newEvent.otherType;
       }
 
-      await addEvent(
+      await editEvent(
         newEvent.title,
         newEvent.desc,
         eventDate,
@@ -83,11 +95,9 @@ const AddEventModal = ({ setEvents, setShowModal }) => {
         newEvent.location,
         newEvent.featured,
         setEvents,
-        setNewEvent
+        event._id
       );
 
-      setMedia(null);
-      setMediaPreview(null);
       setLoading(false);
       setShowModal(false);
     } catch (err) {
@@ -100,30 +110,30 @@ const AddEventModal = ({ setEvents, setShowModal }) => {
 
   const typeOptions = [
     {
-      text: 'Fundraiser',
-      value: 'fundraiser',
+      text: "Fundraiser",
+      value: "fundraiser",
       key: 0,
     },
     {
-      text: 'Adoption',
-      value: 'adoption',
+      text: "Adoption",
+      value: "adoption",
       key: 1,
     },
     {
-      text: 'Other',
-      value: 'other',
+      text: "Other",
+      value: "other",
       key: 2,
     },
   ];
 
   const featuredOptions = [
     {
-      text: 'No',
+      text: "No",
       value: false,
       key: 0,
     },
     {
-      text: 'Yes',
+      text: "Yes",
       value: true,
       key: 1,
     },
@@ -139,7 +149,7 @@ const AddEventModal = ({ setEvents, setShowModal }) => {
           onDismiss={() => setErrorMsg(null)}
         />
         <div>
-          <h1>Add Event</h1>
+          <h1>Edit Event</h1>
         </div>
         <div className="uploads">
           <EventUpload
@@ -183,21 +193,26 @@ const AddEventModal = ({ setEvents, setShowModal }) => {
               <Form.Select
                 required
                 options={typeOptions}
-                value={newEvent.type}
+                value={
+                  newEvent.type == "adoption" || newEvent.type == "fundraiser"
+                    ? newEvent.type
+                    : "other"
+                }
                 name="type"
                 onChange={handleChange}
                 label="Type"
               />
-              {newEvent.type === 'other' && (
-                <Form.Input
-                  required
-                  placeholder="Other..."
-                  value={newEvent.otherType}
-                  name="otherType"
-                  onChange={handleChange}
-                  type="text"
-                />
-              )}
+              {newEvent.type !== "adoption" &&
+                newEvent.type !== "fundraiser" && (
+                  <Form.Input
+                    required
+                    placeholder="Other..."
+                    value={newEvent.otherType}
+                    name="otherType"
+                    onChange={handleChange}
+                    type="text"
+                  />
+                )}
             </div>
             <Form.Select
               required
@@ -226,4 +241,4 @@ const AddEventModal = ({ setEvents, setShowModal }) => {
   );
 };
 
-export default AddEventModal;
+export default EditEventModal;

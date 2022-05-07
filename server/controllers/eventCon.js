@@ -8,9 +8,10 @@ const addEvent = async (req, res) => {
   const { title, desc, date, type, featured, location, bannerPic } = req.body;
 
   try {
+
     const newEvent = {
       title,
-      date: new Date(date),
+      date: date,
       location,
       user: userId,
       bannerPic,
@@ -40,7 +41,7 @@ const addEvent = async (req, res) => {
 const getAllEvents = async (req, res) => {
   try {
     const events = await EventModel.find()
-      .sort({ createdAt: -1 })
+      .sort({ date: 1 })
       .populate("user");
 
     // if (!events.length) return res.status(404).send("No events found...");

@@ -1,3 +1,5 @@
+@use "../themes/defaultTheme" as *;
+
 .events-map {
     display: flex;
     flex-direction: column;
@@ -10,7 +12,7 @@
     padding-top: 15px;
 
     h1 {
-        color: #f06f1a;
+        color: $clr-orange;
     }
 
     .map-and-text {
@@ -19,7 +21,15 @@
         justify-content: center;
         align-items: center;
 
+<<<<<<< HEAD
         .allMaps {
+=======
+        p{
+            font-size: 1.1rem;
+        }
+
+        .map {
+>>>>>>> b2146b22ae4f622f3d833f6d6abac1f57ee3472f
             display: flex;
             flex-direction: column;
             margin-top: 2%;
@@ -70,6 +80,8 @@
                 padding-left: 7%;
                 padding-right: 7%;
                 padding-bottom: 3%;
+                font-size: .8rem;
+                
             }
             .allMaps {
                 display: flex;
@@ -116,18 +128,32 @@
         padding-top: 25px;
 
         .map-and-text {
+            justify-content: space-evenly;
             display: flex;
             flex-direction: row;
+<<<<<<< HEAD
             margin-top: 1%;
+=======
+            margin: 2rem 0;
+>>>>>>> b2146b22ae4f622f3d833f6d6abac1f57ee3472f
 
             p {
+                padding-left: 5%;
+                padding-right: 5%;
                 width: 40%;
-                font-size: 1rem;
+                font-size: 1.1rem;
+                padding-bottom: 0;
+                margin: 0;
             }
 
             .map {
+<<<<<<< HEAD
                 width: 65%;
                 height: 15vw;
+=======
+                width: 50%;
+                height: 30vw;
+>>>>>>> b2146b22ae4f622f3d833f6d6abac1f57ee3472f
             }
         }
     }
