@@ -846,6 +846,7 @@ div.animal-wrap {
   margin-top: 5%;
   width: 80%;
   font-size: 1.3rem;
+  text-transform: capitalize;
 }
 
 .pet-title {
@@ -1317,6 +1318,36 @@ h3 {
   .events-map .map-and-text .map {
     width: 50%;
     height: 30vw;
+  }
+}
+#image-modal {
+  background: none transparent;
+  box-shadow: none;
+}
+#image-modal .content {
+  background: none transparent;
+}
+#image-modal i {
+  display: none;
+}
+#image-modal .ui.card {
+  background: none transparent;
+}
+#image-modal .floated.left.image {
+  cursor: pointer;
+  background: none transparent;
+  width: auto;
+  height: 50vw;
+  margin: 0 auto;
+}
+#image-modal .ui.card > .image > img {
+  height: 100%;
+  width: auto;
+}
+
+@media only screen and (min-width: 1170px) {
+  #image-modal .floated.left.image {
+    height: 35vw;
   }
 }
 .navbar {
@@ -1983,4 +2014,4 @@ h3 {
     font-size: 0.95rem;
     padding: 2rem 0 0rem;
   }
-}/*# sourceMappingURL=main.css.map */
+}

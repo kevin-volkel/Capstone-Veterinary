@@ -50,10 +50,10 @@ const Animal = ({ user, animalObj, errorLoading, animals }) => {
           //   name: "close",
           //   onClick: setShowImageModal(false),
           // }}
+          id="image-modal"
           closeIcon
           closeOnDimmerClick
           onClose={() => setShowImageModal(false)}
-          style={{ marginTop: "2.2rem" }}
         >
           <Modal.Content>
             <ImageModal image={showImage} />

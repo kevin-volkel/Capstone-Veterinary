@@ -1,5 +1,32 @@
+#image-modal {
+  background: none transparent;
+  box-shadow: none;
+  .content {
+    background: none transparent;
+  }
+  i {
+    display: none;
+  }
+  .ui.card {
+    background: none transparent;
+  }
+  .floated.left.image {
+    cursor: pointer;
+    background: none transparent;
+    width: auto;
+    height: 50vw;
+    margin: 0 auto;
+  }
+  .ui.card > .image > img {
+    height: 100%;
+    width: auto;
+  }
+}
+
+@media only screen and (min-width: 1170px) {
 #image-modal{
-    .modals.dimmer .ui.scrolling.modal{
-        background: none transparent;
+    .floated.left.image{
+        height: 35vw;
     }
+}
 }

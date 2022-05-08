@@ -92,7 +92,7 @@ const AnimalUpload = ({
                         src={pic}
                         style={{
                           margin: ".3rem",
-                          width: "180px",
+                          width: "250px",
                           objectFit: "scale-down",
                         }}
                         alt={media.length ? media[i].name : "image"}

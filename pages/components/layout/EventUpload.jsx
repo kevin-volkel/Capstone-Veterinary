@@ -72,7 +72,7 @@ const EventUpload = ({
                     src={mediaPreview}
                     style={{
                       margin: ".3rem",
-                      width: "180px",
+                      width: "250px",
                       objectFit: "scale-down",
                     }}
                     centered

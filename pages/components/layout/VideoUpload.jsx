@@ -88,7 +88,7 @@ const VideoUpload = ({
                     return (
                       <video
                         key={i}
-                        style={{ maxWidth: "180px", objectFit: "scale-down" }}
+                        style={{ maxWidth: "250px", objectFit: "scale-down" }}
                       >
                         <source src={videoPreview[i]} />
                         Your browser does not support the video tag.

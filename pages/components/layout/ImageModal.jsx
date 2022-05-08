@@ -1,16 +1,11 @@
-import {
-  Card,
-  Image,
-  Segment,
-} from "semantic-ui-react";
+import { Card, Image, Segment } from "semantic-ui-react";
 
 const ImageModal = ({ image }) => {
   return (
     <Segment basic>
-      <Card fluid>
+      <Card fluid style={{ boxShadow: "none" }}>
         <Image
           src={image}
-          style={{ cursor: "pointer" }}
           floated="left"
           wrapped
           ui={false}
