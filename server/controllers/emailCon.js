@@ -45,7 +45,7 @@ const resetPassword = async (req, res) => {
 
 const adoptedEmail = async (req, res) => {
   try {
-    const { userId, animalObj } = req.body;
+    const { userId, animalObj, formData } = req.body;
 
     const user = await UserModel.findOneById(userId);
     if (!user) return res.status(400).send('No user found with that id');
@@ -61,11 +61,14 @@ const adoptedEmail = async (req, res) => {
     const mailOptions = {
       from: 'sendtest06@gmail.com',
       to: email,
-      text: `Someone is interested in ${animalObj.name}.`,
+      text: `${formData.fullName} is interested in ${animalObj.name}.`,
     };
 
     transporter.sendMail(
-      { ...mailOptions, subject: `Someone is interested in adopting!` },
+      {
+        ...mailOptions,
+        subject: `${formData.fullName} is interested in ${animalObj.name}!`,
+      },
       function (error, info) {
         if (error) {
           console.log(error);
@@ -78,8 +81,8 @@ const adoptedEmail = async (req, res) => {
     res.status(200).send('Email sent');
   } catch (err) {
     console.log(err);
-    res.status(500).send('error @ resetPassword');
+    res.status(500).send('error @ adoptedEmail');
   }
 };
 
-module.exports = { resetPassword };
+module.exports = { resetPassword, adoptedEmail };

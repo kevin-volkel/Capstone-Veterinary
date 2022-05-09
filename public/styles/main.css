@@ -815,6 +815,13 @@ div.animal-wrap {
   font-size: 1.2rem;
 }
 
+#interested-button {
+  width: 50vw;
+  margin-top: 2rem;
+  background-color: #f06f1a;
+  color: white;
+}
+
 .top-btns {
   display: flex;
   width: 90%;
@@ -990,6 +997,16 @@ h3 {
     height: 300px !important;
   }
 }
+.checkboxes {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-evenly;
+}
+.checkboxes input {
+  height: 1.3rem;
+}
+
 @media only screen and (min-width: 1024px) {
   .pet-name {
     margin-top: 2% !important;
@@ -2087,4 +2104,4 @@ h3 {
     font-size: 0.95rem;
     padding: 2rem 0 0rem;
   }
-}
+}/*# sourceMappingURL=main.css.map */
