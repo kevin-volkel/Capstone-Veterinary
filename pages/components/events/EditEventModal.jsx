@@ -78,7 +78,9 @@ const EditEventModal = ({ setEvents, setShowModal, event }) => {
       if (media !== null && !eventPicUrl) throw new Error("Cloudinary Error");
 
       const [year, month, day] = newEvent.date.split("-");
-      const newDate = `${year}-${month}-${+day}`;
+      const newDate = `${year}-${month}-${day}`;
+
+      console.log(newDate);
 
       let eventDate = new Date(newDate);
 

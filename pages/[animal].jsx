@@ -116,7 +116,7 @@ const Animal = ({ user, animalObj, errorLoading, animals }) => {
                       inverted
                       id="edit-2"
                       color="red"
-                      name="trash alternate"
+                      name="trash"
                       style={{ cursor: "pointer" }}
                     />
                   }

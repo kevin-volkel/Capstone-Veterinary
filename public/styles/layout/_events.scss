@@ -124,10 +124,16 @@
     .ui.button{
       font-size: .9rem;
     }
-    .event-card {
-      line-height: 1.5rem;
-    }
     .events-list{
+      .event-card {
+        line-height: 1.5rem;
+        .event-title {
+          font-size: 1.3rem;
+        }
+        .event-date{
+          font-size: .9rem;
+        }
+      }
       .options{
         i {
           font-size: 1.1em;
@@ -160,7 +166,7 @@
         }
         .menu {
           .item{
-            font-size: .9rem;
+            font-size: 1rem;
           }
         }
       }

@@ -14,7 +14,7 @@
     cursor: pointer;
     background: none transparent;
     width: auto;
-    height: 50vw;
+    height: 45vw;
     margin: 0 auto;
   }
   .ui.card > .image > img {
@@ -23,10 +23,26 @@
   }
 }
 
-@media only screen and (min-width: 1170px) {
-#image-modal{
-    .floated.left.image{
-        height: 35vw;
+@media only screen and (min-width: 768px) {
+    #image-modal {
+      .floated.left.image {
+        height: 40vw;
+      }
     }
+  }
+
+@media only screen and (min-width: 1024px) {
+  #image-modal {
+    .floated.left.image {
+      height: 35vw;
+    }
+  }
 }
+
+@media only screen and (min-width: 1170px) {
+  #image-modal {
+    .floated.left.image {
+      height: 30vw;
+    }
+  }
 }

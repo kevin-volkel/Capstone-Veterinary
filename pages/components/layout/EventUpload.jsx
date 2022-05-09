@@ -54,9 +54,11 @@ const EventUpload = ({
                     setMedia(null);
                     setMediaPreview(null);
                   }}
-                  aria-label="empty input"
+                  color="red"
+                  aria-label="clear button"
                 >
-                  Empty Input
+                  <Icon name="trash" />
+                  Clear
                 </Button>
                 <Segment
                   placeholder
