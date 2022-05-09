@@ -110,6 +110,7 @@ const Animal = ({ user, animalObj, errorLoading, animals }) => {
                 <Popup
                   on="click"
                   position="top right"
+                  className="delete-popup"
                   trigger={
                     <Icon
                       circular

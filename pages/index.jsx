@@ -1,20 +1,21 @@
-import Image from 'next/image';
-import { Button, Segment, Modal } from 'semantic-ui-react';
-import Footer from './components/layout/Footer';
-import adopt from '../public/media/adoption.png';
-import eventImg from '../public/media/event.png';
-import fEvents from '../public/media/CAT.png';
-import EventSlideshow from './components/events/EventSlideshow';
-import EventsSection from './components/events/EventsSection';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
-import { sortDates } from './util/dateFuncs';
-import EventModal from './components/events/EventModal';
+import Image from "next/image";
+import { Button, Segment, Modal } from "semantic-ui-react";
+import Footer from "./components/layout/Footer";
+import adopt from "../public/media/adoption.png";
+import eventImg from "../public/media/event.png";
+import fEvents from "../public/media/CAT.png";
+import EventSlideshow from "./components/events/EventSlideshow";
+import EventsSection from "./components/events/EventsSection";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { sortDates } from "./util/dateFuncs";
+import EventModal from "./components/events/EventModal";
+import HomeUpload from "./components/layout/HomeUpload";
 
 //import "../styles/home.css";
 // import bannerPic from "../public/media/home-page-banner.jpg";
 
-export default function Home() {
+export default function Home({ user }) {
   // const konamiCode = [
   //   'ArrowUp',
   //   'ArrowUp',
@@ -55,6 +56,22 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [events, setEvents] = useState([]);
 
+  const [mediaPreview, setMediaPreview] = useState(null);
+  const [media, setMedia] = useState(null);
+
+  const handleChange = async (e) => {
+    const { name, files } = e.target;
+    if (name == "media" && files.length) {
+      setMedia(() => files[0]);
+      setMediaPreview(() => URL.createObjectURL(files[0]));
+    }
+  };
+
+  const handleSubmit = async () => {
+    console.log(media);
+    console.log(mediaPreview);
+  }
+
   useEffect(async () => {
     setLoading(true);
     await fetchEvents();
@@ -82,7 +99,7 @@ export default function Home() {
                 onClose={() => setEventModalShowing(null)}
               >
                 <Modal.Content>
-                  <EventModal event={event}/>
+                  <EventModal event={event} />
                 </Modal.Content>
               </Modal>
             );
@@ -90,7 +107,11 @@ export default function Home() {
         })}
 
       <div className="slideshow">
-        <EventSlideshow events={events} loading={loading} setEventModalShowing={setEventModalShowing}/>
+        <EventSlideshow
+          events={events}
+          loading={loading}
+          setEventModalShowing={setEventModalShowing}
+        />
       </div>
 
       <div className="es-div">
@@ -102,13 +123,23 @@ export default function Home() {
           <h1 className="nf-title">Find a New Friend!</h1>
           <div className="nf-wholeSect">
             <div className="nf-sect">
-              <Image
-                src={adopt}
-                position="relative"
-                className="adopt-image"
-                objectFit="contain"
-                alt=""
-              />
+              {user ? (
+                <HomeUpload
+                  media={media}
+                  handleChange={handleChange}
+                  mediaPreview={mediaPreview}
+                  defaultHomePic={adopt.src}
+                  handleSubmit={handleSubmit}
+                />
+              ) : (
+                <Image
+                  src={mediaPreview === null ? adopt : mediaPreview}
+                  position="relative"
+                  className="adopt-image"
+                  objectFit="contain"
+                  alt="adopt image"
+                />
+              )}
               <p>
                 At vero eos et accus et iusto odio dignissimos ducimus qui
                 blanditiis praesentium voluptatum deleniti atque corrupti quosi

@@ -489,6 +489,9 @@ body {
   padding-left: 3%;
   padding-right: 3%;
 }
+.nf-sect span:first-child {
+  max-height: 50vw;
+}
 
 .events-section {
   margin-top: 7.5rem !important;
@@ -523,32 +526,33 @@ body {
   background-color: #fafafa;
 }
 
-.adopt-section {
+.ui.segment.adopt-section {
+  border-radius: 0;
   border: 1px solid rgba(0, 0, 0, 0.119);
-  border-radius: 4px;
   box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
   width: 100%;
 }
-.adopt-section h1 {
+.ui.segment.adopt-section h1 {
   display: flex;
   justify-content: center;
   align-items: center;
   color: #f06f1a;
 }
-.adopt-section .nf-wholeSect {
+.ui.segment.adopt-section .nf-wholeSect {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   grid-gap: 1.5rem;
 }
-.adopt-section .nf-wholeSect p {
+.ui.segment.adopt-section .nf-wholeSect p {
   margin-top: 1rem;
   font-size: 1.1rem;
 }
-.adopt-section .ui.button {
+.ui.segment.adopt-section .nf-adopt-btn {
   margin-bottom: 4%;
   padding: 5% 3.75%;
+  color: white;
   box-shadow: 2px 2px 5px #aaaaaa;
   background-color: #f06f1a;
 }
@@ -583,10 +587,10 @@ body {
     display: flex;
   }
 
-  .adopt-section .nf-wholeSect p {
+  .ui.segment.adopt-section .nf-wholeSect p {
     font-size: 0.8rem;
   }
-  .adopt-section .nf-wholeSect .ui.button {
+  .ui.segment.adopt-section .nf-wholeSect .ui.button {
     padding: 0.8rem;
     font-size: 0.8rem;
   }
@@ -609,15 +613,18 @@ body {
     flex-direction: row-reverse;
     padding-bottom: 1.75%;
   }
+  html .nf-sect #home-upload img {
+    max-width: 40vw;
+  }
   html .adopt-image {
     border-radius: 3%;
   }
-  html .adopt-section .nf-wholeSect p {
+  html .ui.segment.adopt-section .nf-wholeSect p {
     margin-right: 2rem;
     width: 200%;
     font-size: 1rem;
   }
-  html .adopt-section .nf-wholeSect .ui.button {
+  html .ui.segment.adopt-section .nf-wholeSect .ui.button {
     font-size: 1rem;
     padding: 1.75% 1.5%;
     margin-bottom: 2%;
@@ -820,6 +827,10 @@ div.animal-wrap {
 }
 .top-btns div {
   font-size: 1.2rem;
+}
+
+.delete-popup button.ui.red.button {
+  width: 100%;
 }
 
 .page-wrap {
@@ -1741,7 +1752,7 @@ h3 {
     height: 22.75rem;
   }
 }
-@media only screen and (min-width: 764px) {
+@media only screen and (min-width: 766px) {
   #event-slideshow .embla_slide_inner {
     position: relative;
     overflow: hidden;

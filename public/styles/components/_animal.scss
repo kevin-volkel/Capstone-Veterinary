@@ -30,6 +30,12 @@ div.animal-wrap {
   }
 }
 
+.delete-popup{
+  button.ui.red.button{ 
+    width: 100%;
+  }
+}
+
 .page-wrap {
   display: flex;
   justify-content: center;
