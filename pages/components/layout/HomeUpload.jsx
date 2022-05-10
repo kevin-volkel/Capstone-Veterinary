@@ -13,14 +13,13 @@ const HomeUpload = ({ mediaPreview, defaultHomePic, handleChange, media, handleS
     <div id="home-upload">
       {mediaPreview == null || type === "image" || media === null ? (
         <Image
-          style={{maxHeight: "50vw"}}
           position="relative"
           className="adopt-image"
-          objectFit="contain"
+          objectfit="contain"
           src={mediaPreview === null ? defaultHomePic : mediaPreview}
         />
       ) : (
-        <video style={{maxHeight: "50vw"}}>
+        <video className="adopt-video">
           <source src={mediaPreview} />
           Your browser does not support the video tag.
         </video>
@@ -39,12 +38,6 @@ const HomeUpload = ({ mediaPreview, defaultHomePic, handleChange, media, handleS
           <Button
             onClick={(e) => inputRef.current.click()}
             style={{
-              borderRadius: "50%",
-              padding: "0.5rem",
-              margin: "0px",
-              bottom: "-10px",
-              cursor: "pointer",
-              position: "absolute",
               right: "-10px",
             }}
             icon="pencil"
@@ -56,13 +49,7 @@ const HomeUpload = ({ mediaPreview, defaultHomePic, handleChange, media, handleS
             <Button
               onClick={(e) => inputRef.current.click()}
               style={{
-                borderRadius: "50%",
-                padding: "0.5rem",
-                margin: "0px",
-                bottom: "-10px",
-                cursor: "pointer",
-                position: "absolute",
-                right: "30px",
+                right: "40px",
               }}
               icon="pencil"
               color="blue"
@@ -71,12 +58,6 @@ const HomeUpload = ({ mediaPreview, defaultHomePic, handleChange, media, handleS
             <Button
               onClick={handleSubmit}
               style={{
-                borderRadius: "50%",
-                padding: "0.5rem",
-                margin: "0px",
-                bottom: "-10px",
-                cursor: "pointer",
-                position: "absolute",
                 right: "-10px",
               }}
               icon="check"

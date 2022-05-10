@@ -15,7 +15,7 @@ import HomeUpload from "./components/layout/HomeUpload";
 //import "../styles/home.css";
 // import bannerPic from "../public/media/home-page-banner.jpg";
 
-export default function Home({ user }) {
+export default function Home({ user, image }) {
   // const konamiCode = [
   //   'ArrowUp',
   //   'ArrowUp',
@@ -56,6 +56,7 @@ export default function Home({ user }) {
   const [loading, setLoading] = useState(false);
   const [events, setEvents] = useState([]);
 
+  const [adoptImage, setAdoptImage] = useState(image);
   const [mediaPreview, setMediaPreview] = useState(null);
   const [media, setMedia] = useState(null);
 
@@ -67,9 +68,46 @@ export default function Home({ user }) {
     }
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     console.log(media);
     console.log(mediaPreview);
+
+    setLoading(true);
+
+    let adoptPicUrl = "";
+
+    try{
+      if(media !== null) {
+        const formData = new FormData();
+        formData.append("image", media, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
+        const res = await axios.post("/api/v1/upload", formData);
+        adoptPicUrl = res.data.src;
+      } else{
+        adoptPicUrl = adopt.src;
+      }
+
+      if(media !== null && !adoptPicUrl) throw new Error("Cloudinary Error");
+
+      // const res = await axios.post("/api/v1/user", {media},
+      // {
+      //   headers: { Authorization: `Bearer ${Cookies.get("token")}`},
+      // });
+
+      setAdoptImage(res.data);
+
+      setMedia(null)
+      setMediaPreview(null)
+    } catch(err) {
+      console.log(err);
+      let caughtErr = catchErrors(err);
+      setErrorMsg(caughtErr);
+    }
+    setLoading(false);
   }
 
   useEffect(async () => {
@@ -133,7 +171,7 @@ export default function Home({ user }) {
                 />
               ) : (
                 <Image
-                  src={mediaPreview === null ? adopt : mediaPreview}
+                  src={adoptImage === null ? adopt : adoptImage}
                   position="relative"
                   className="adopt-image"
                   objectFit="contain"
@@ -168,3 +206,15 @@ export default function Home({ user }) {
     </div>
   );
 }
+
+Home.getInitialProps = async ({ ctx }) => {
+  let pageProps = {};
+  try {
+    const res = await axios.post(`${baseURL}/api/v1/user`);
+    pageProps.image = res.data;
+  } catch (err) {
+    console.error(err);
+    pageProps.errorLoading = err;
+  }
+  return pageProps;
+};

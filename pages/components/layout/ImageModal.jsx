@@ -1,4 +1,5 @@
 import { Card, Image, Segment } from "semantic-ui-react";
+import bannerPic from "../../../public/media/dog-trans.png";
 
 const ImageModal = ({ image }) => {
   return (

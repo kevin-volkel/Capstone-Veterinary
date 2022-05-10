@@ -19,6 +19,7 @@ const LogSchema = new Schema(
         'deleted event',
         'changed event',
         'cleared log',
+        'changed media'
       ],
       required: [true, 'Must include an action'],
     },

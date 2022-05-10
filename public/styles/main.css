@@ -492,6 +492,19 @@ body {
 .nf-sect span:first-child {
   max-height: 50vw;
 }
+.nf-sect #home-upload .adopt-image,
+.nf-sect #home-upload .adopt-video {
+  max-height: 50vw;
+}
+.nf-sect #home-upload .edit .ui.button {
+  font-size: 1.1rem;
+  border-radius: 50%;
+  padding: 0.5rem;
+  margin: 0px;
+  bottom: -10px;
+  cursor: pointer;
+  position: absolute;
+}
 
 .events-section {
   margin-top: 7.5rem !important;
@@ -583,8 +596,17 @@ body {
   .events-section {
     margin-top: 4.25rem !important;
   }
-  .events-section .nf-sect {
+
+  .nf-sect {
     display: flex;
+  }
+  .nf-sect #home-upload .adopt-image,
+.nf-sect #home-upload .adopt-video {
+    max-height: 40vw;
+  }
+  .nf-sect #home-upload .edit .ui.button {
+    bottom: -12px;
+    font-size: 0.6rem;
   }
 
   .ui.segment.adopt-section .nf-wholeSect p {
@@ -613,11 +635,15 @@ body {
     flex-direction: row-reverse;
     padding-bottom: 1.75%;
   }
-  html .nf-sect #home-upload img {
-    max-width: 40vw;
-  }
-  html .adopt-image {
+  html .nf-sect #home-upload .adopt-image,
+html .nf-sect #home-upload .adopt-video {
     border-radius: 3%;
+    max-width: 40vw;
+    max-height: 30vw;
+  }
+  html .nf-sect #home-upload .edit .ui.button {
+    bottom: -15px;
+    font-size: 1.2rem;
   }
   html .ui.segment.adopt-section .nf-wholeSect p {
     margin-right: 2rem;
@@ -1409,7 +1435,7 @@ h3 {
 }
 #image-modal .floated.left.image {
   cursor: pointer;
-  background: none transparent;
+  background: white;
   width: auto;
   height: 45vw;
   margin: 0 auto;
