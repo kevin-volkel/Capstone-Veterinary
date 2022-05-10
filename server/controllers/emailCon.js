@@ -45,10 +45,33 @@ const resetPassword = async (req, res) => {
 
 const adoptedEmail = async (req, res) => {
   try {
-    const { userId, animalObj, formData } = req.body;
+    const { animalObj, formData } = req.body;
+    const userId = animalObj.user._id;
+    const {
+      fullName,
+      phoneNumber,
+      email,
+      haveOtherAnimals,
+      otherAnimals,
+      haveSmallChildren,
+      smallChildren,
+      aboutYou,
+    } = formData;
 
-    const user = await UserModel.findOneById(userId);
-    if (!user) return res.status(400).send('No user found with that id');
+    const student = await UserModel.findById(userId);
+    if (!student) return res.status(400).send('No user found with that id');
+
+    const campus = student.class.campus;
+
+    const teacher = await UserModel.find({
+      role: 'teacher',
+      class: {
+        campus: campus,
+      },
+    });
+
+    if (!teacher)
+      return res.status(400).send('No teacher found at this campus');
 
     const transporter = nodemailer.createTransport({
       service: 'gmail',
@@ -58,10 +81,47 @@ const adoptedEmail = async (req, res) => {
       },
     });
 
+
+
+    let mailText = `${fullName} is interested in ${animalObj.name}. You can contact them via phone at ${phoneNumber} or email at ${email}.`;
+    if (haveOtherAnimals) {
+      const animalArr = otherAnimals.split(',').map((animal) => animal.trim())
+      mailText += `They have ${animalArr.length} other animal${
+        animalArr.length > 1
+          ? `s. These are ${animalArr.map((animal, i) => {
+              if (i === animalArr.length - 1) {
+                return `and a ${animal}`;
+              } else {
+                return `a ${animal}, `;
+              }
+            })}`
+          : `, a ${animalArr[0]}. `
+      }`;
+    }
+    if (haveSmallChildren) {
+      const childrenArr = smallChildren.split(',').map((age) => age.trim())
+      mailText += `They have ${childrenArr.length} ${
+        childrenArr.length > 1
+          ? `small children, ${childrenArr.map((age, i) => {
+              if (i === childrenArr.length - 1) {
+                return `and a ${age} year old`;
+              } else {
+                return `a ${age} year old, `;
+              }
+            })}`
+          : `small child, a ${childrenArr[0]} year old.`
+      }`;
+    }
+    mailText += `\n"${aboutYou}"`
+
+
+    console.log(`Student: ${student.email}`)
+    console.log(`Teacher: ${teacher.email}`)
     const mailOptions = {
       from: 'sendtest06@gmail.com',
-      to: email,
-      text: `${formData.fullName} is interested in ${animalObj.name}.`,
+      to: student.email,
+      cc: teacher.email,
+      text: mailText
     };
 
     transporter.sendMail(

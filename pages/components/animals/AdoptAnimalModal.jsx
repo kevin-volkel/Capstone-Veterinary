@@ -6,7 +6,7 @@ import catchErrors from '../../util/catchErrors';
 import EventUpload from '../layout/EventUpload';
 import { addEvent } from '../../util/eventActions';
 
-const AdoptAnimalModal = ({ setEvents, setShowModal }) => {
+const AdoptAnimalModal = ({ animalObj }) => {
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState(null);
 
@@ -14,18 +14,20 @@ const AdoptAnimalModal = ({ setEvents, setShowModal }) => {
     fullName: '',
     phoneNumber: '',
     email: '',
-    otherAnimals: false,
-    smallChildren: false,
+    haveOtherAnimals: false,
+    otherAnimals: '',
+    haveSmallChildren: false,
+    smallChildren: '',
     aboutYou: '',
   });
 
-  const handleChange = (e, data) => {
-    const { name, value, files } = e.target;
+  const handleChange = (e) => {
+    const { name, value, checked } = e.target;
 
-    if (!name) {
+    if (name === "haveOtherAnimals" || name === "haveSmallChildren") {
       setNewAdopt((prev) => ({
         ...prev,
-        [data.name]: data.value,
+        [name]: checked,
       }));
     } else {
       setNewAdopt((prev) => ({
@@ -40,19 +42,11 @@ const AdoptAnimalModal = ({ setEvents, setShowModal }) => {
     setLoading(true);
 
     try {
-      if (newAdopt.otherType !== '' && newAdopt.type === 'other') {
-        newAdopt.type = newAdopt.otherType.trim();
-      }
-      await addEvent(
-        newAdopt.name,
-        newAdopt.phoneNumber,
-        newAdopt.email,
-        newAdopt.otherAnimals,
-        newAdopt.smallChildren,
-        newAdopt.aboutYou
-      );
-      setLoading(false);
-      setShowModal(false);
+      const res = await axios.post('/api/v1/email/adopt', {
+        animalObj: animalObj,
+        formData: newAdopt,
+      });
+      console.log(res.data);
     } catch (err) {
       console.log(err);
       let caughtErr = catchErrors(err);
@@ -75,72 +69,98 @@ const AdoptAnimalModal = ({ setEvents, setShowModal }) => {
   ];
 
   return (
-    <div className='form-wrap'>
+    <div className="form-wrap" id="adopt-modal">
       <Form loading={loading} error={errorMsg !== null} onSubmit={handleSubmit}>
         <Message
           error
-          header='Oops!'
+          header="Oops!"
           content={errorMsg}
           onDismiss={() => setErrorMsg(null)}
         />
         <div>
           <h1>Contact Us!</h1>
         </div>
-        <div id='form-group'>
+        <div id="form-group">
           <Form.Input
-            label='Name'
+            label="Name"
             required
-            placeholder='Full Name'
+            placeholder="Full Name"
             value={newAdopt.fullName}
-            name='fullName'
+            name="fullName"
             onChange={handleChange}
-            type='text'
+            type="text"
           />
           <Form.Input
-            label='Phone Number'
+            label="Phone Number"
             required
-            placeholder='000-000-0000'
+            placeholder="000-000-0000"
             value={newAdopt.phoneNumber}
-            name='phoneNumber'
+            name="phoneNumber"
             onChange={handleChange}
-            type='text'
+            type="text"
           />
           <Form.Input
-            label='Email'
+            label="Email"
             required
             value={newAdopt.email}
-            name='email'
+            name="email"
             onChange={handleChange}
-            type='email'
-            placeholder='Email'
+            type="email"
+            placeholder="Email"
           />
           <Form.TextArea
-            label='About You'
-            placeholder='Tell us about you!'
+            label="About You"
+            placeholder="Tell us about you!"
             value={newAdopt.aboutYou}
-            name='aboutYou'
+            name="aboutYou"
             onChange={handleChange}
-            type='text'
+            type="text"
           />
-          <div className='checkboxes'>
-            <Form.Input
-              label='Other Animals'
-              value={newAdopt.otherAnimals}
-              name='otherAnimals'
-              onChange={handleChange}
-              type='checkbox'
-            />
-            <Form.Input
-              label='Small Children'
-              value={newAdopt.smallChildren}
-              name='smallChildren'
-              onChange={handleChange}
-              type='checkbox'
-            />
+          <div className="checkboxes">
+            <div className="checkbox-combo">
+              <Form.Input
+                label="Other Animals"
+                value={newAdopt.haveOtherAnimals}
+                name="haveOtherAnimals"
+                onChange={handleChange}
+                type="checkbox"
+              />
+              <Form.Input
+                label="Small Children"
+                value={newAdopt.haveSmallChildren}
+                name="haveSmallChildren"
+                onChange={handleChange}
+                type="checkbox"
+              />
+            </div>
           </div>
+            <div className="checkbox-inputs">
+              {newAdopt.haveOtherAnimals && (
+                <Form.Input
+                  label="What types of animals do you have? (separate with a comma)"
+                  checked={newAdopt.otherAnimals}
+                  name="otherAnimals"
+                  onChange={handleChange}
+                  type="text"
+                  placeholder="Ex: Dog, Cat, Bird, etc."
+                  required
+                />
+              )}
+              {newAdopt.haveSmallChildren && (
+                <Form.Input
+                  label="What are the ages of these children? (separate with a comma)"
+                  checked={newAdopt.smallChildren}
+                  name="smallChildren"
+                  onChange={handleChange}
+                  type="text"
+                  placeholder="Ex: 4, 6, 7, 8"
+                  required
+                />
+              )}
+            </div>
         </div>
-        <div className='button-div'>
-          <Button disabled={loading} id='add-event-btn' content='Done' fluid />
+        <div className="button-div">
+          <Button disabled={loading} id="add-event-btn" content="Done" fluid />
         </div>
       </Form>
     </div>
