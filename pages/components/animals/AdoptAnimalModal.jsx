@@ -21,7 +21,7 @@ const AdoptAnimalModal = ({ setEvents, setShowModal }) => {
 
   const handleChange = (e, data) => {
     const { name, value, files } = e.target;
-
+    console.log(value);
     if (!name) {
       setNewAdopt((prev) => ({
         ...prev,
