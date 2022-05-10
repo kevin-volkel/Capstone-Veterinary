@@ -85,7 +85,7 @@ const EventSlideshow = ({ events, loading, setEventModalShowing }) => {
                         aria-label="Show More Event Details"
                       >
                         <div className="embla_slide_inner">
-                          <EventCard event={event} />
+                          <EventCard event={event}/>
                         </div>
                       </div>
                     ))

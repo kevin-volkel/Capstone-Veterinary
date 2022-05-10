@@ -5,7 +5,7 @@ import { convertDate } from '../../util/dateFuncs';
 const EventCard = ({ event }) => {
   return (
     <>
-      <Image
+      <img
         className="embla_slide_img"
         src={event.bannerPic}
         alt={event.title}

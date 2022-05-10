@@ -1375,33 +1375,44 @@ h3 {
     height: 30vw;
   }
 }
-#event-modal i.close {
-  font-size: 1.5rem;
+#event-modal {
+  width: 90vw;
 }
 
 .event-modal-wrap {
   display: flex;
   flex-direction: column;
   font-size: 1.1rem;
-  margin-top: 2rem;
+}
+.event-modal-wrap .title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.event-modal-wrap .title-row .event-modal-title {
+  color: #f06f1a;
+  text-transform: capitalize;
+  margin-bottom: 0.5rem;
+  text-align: center;
+  width: 100%;
 }
 .event-modal-wrap .event-modal-img {
   align-self: center;
   border-radius: 0.3rem;
 }
-.event-modal-wrap .event-modal-title {
-  color: #f06f1a;
-  text-transform: capitalize;
-  margin-bottom: 0.5rem;
-}
 .event-modal-wrap .event-modal-date {
+  color: #4D4D4D;
   margin: 0;
+  margin-top: 1rem;
 }
 .event-modal-wrap .event-modal-location {
-  margin: 1rem 0;
+  color: #4D4D4D;
+  margin: 0;
+  margin-top: 0.5rem;
 }
 .event-modal-wrap .event-modal-desc {
-  font-size: 1.1rem;
+  color: #000;
+  margin-top: 1.5rem;
 }
 
 @media only screen and (min-width: 768px) {
@@ -1674,13 +1685,11 @@ h3 {
   display: block;
   top: 50%;
   left: 50%;
-  width: auto;
   min-height: 100%;
-  min-width: 100%;
-  max-width: none;
+  width: 100%;
   transform: translate(-50%, -50%);
-  -o-object-fit: shrink;
-     object-fit: shrink;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 #event-slideshow .embla_button {
   outline: 0;

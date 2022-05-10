@@ -11,6 +11,7 @@ import axios from "axios";
 import { sortDates } from "./util/dateFuncs";
 import EventModal from "./components/events/EventModal";
 import HomeUpload from "./components/layout/HomeUpload";
+import { baseURL } from './util/auth'
 
 //import "../styles/home.css";
 // import bannerPic from "../public/media/home-page-banner.jpg";
@@ -56,7 +57,8 @@ export default function Home({ user, image }) {
   const [loading, setLoading] = useState(false);
   const [events, setEvents] = useState([]);
 
-  const [adoptImage, setAdoptImage] = useState(image);
+  // const [adoptImage, setAdoptImage] = useState(image);
+  const [adoptImage, setAdoptImage] = useState(null);
   const [mediaPreview, setMediaPreview] = useState(null);
   const [media, setMedia] = useState(null);
 
@@ -132,12 +134,11 @@ export default function Home({ user, image }) {
                 key={event._id}
                 id="event-modal"
                 open={eventModalShowing !== null}
-                closeIcon
                 closeOnDimmerClick
                 onClose={() => setEventModalShowing(null)}
               >
                 <Modal.Content>
-                  <EventModal event={event} />
+                  <EventModal event={event} setEventModalShowing={setEventModalShowing}/>
                 </Modal.Content>
               </Modal>
             );
@@ -171,7 +172,8 @@ export default function Home({ user, image }) {
                 />
               ) : (
                 <Image
-                  src={adoptImage === null ? adopt : adoptImage}
+                  // src={adoptImage === null ? adopt : adoptImage}
+                  src={adopt}
                   position="relative"
                   className="adopt-image"
                   objectFit="contain"
@@ -209,12 +211,12 @@ export default function Home({ user, image }) {
 
 Home.getInitialProps = async ({ ctx }) => {
   let pageProps = {};
-  try {
-    const res = await axios.post(`${baseURL}/api/v1/user`);
-    pageProps.image = res.data;
-  } catch (err) {
-    console.error(err);
-    pageProps.errorLoading = err;
-  }
+  // try {
+  //   const res = await axios.post(`${baseURL}/api/v1/user`);
+  //   pageProps.image = res.data;
+  // } catch (err) {
+  //   console.error(err);
+  //   pageProps.errorLoading = err;
+  // }
   return pageProps;
 };
