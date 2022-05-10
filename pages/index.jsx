@@ -1,17 +1,17 @@
-import Image from "next/image";
-import { Button, Segment, Modal } from "semantic-ui-react";
-import Footer from "./components/layout/Footer";
-import adopt from "../public/media/adoption.png";
-import eventImg from "../public/media/event.png";
-import fEvents from "../public/media/CAT.png";
-import EventSlideshow from "./components/events/EventSlideshow";
-import EventsSection from "./components/events/EventsSection";
-import { useEffect, useState } from "react";
-import axios from "axios";
-import { sortDates } from "./util/dateFuncs";
-import EventModal from "./components/events/EventModal";
-import HomeUpload from "./components/layout/HomeUpload";
-import { baseURL } from './util/auth'
+import Image from 'next/image';
+import { Button, Segment, Modal } from 'semantic-ui-react';
+import Footer from './components/layout/Footer';
+import adopt from '../public/media/adoption.png';
+import eventImg from '../public/media/event.png';
+import fEvents from '../public/media/CAT.png';
+import EventSlideshow from './components/events/EventSlideshow';
+import EventsSection from './components/events/EventsSection';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import { sortDates } from './util/dateFuncs';
+import EventModal from './components/events/EventModal';
+import HomeUpload from './components/layout/HomeUpload';
+import { baseURL } from './util/auth';
 
 //import "../styles/home.css";
 // import bannerPic from "../public/media/home-page-banner.jpg";
@@ -64,7 +64,7 @@ export default function Home({ user, image }) {
 
   const handleChange = async (e) => {
     const { name, files } = e.target;
-    if (name == "media" && files.length) {
+    if (name == 'media' && files.length) {
       setMedia(() => files[0]);
       setMediaPreview(() => URL.createObjectURL(files[0]));
     }
@@ -77,23 +77,23 @@ export default function Home({ user, image }) {
 
     setLoading(true);
 
-    let adoptPicUrl = "";
+    let adoptPicUrl = '';
 
-    try{
-      if(media !== null) {
+    try {
+      if (media !== null) {
         const formData = new FormData();
-        formData.append("image", media, {
+        formData.append('image', media, {
           headers: {
-            "Content-Type": "multipart/form-data",
+            'Content-Type': 'multipart/form-data',
           },
         });
-        const res = await axios.post("/api/v1/upload", formData);
+        const res = await axios.post('/api/v1/upload', formData);
         adoptPicUrl = res.data.src;
-      } else{
+      } else {
         adoptPicUrl = adopt.src;
       }
 
-      if(media !== null && !adoptPicUrl) throw new Error("Cloudinary Error");
+      if (media !== null && !adoptPicUrl) throw new Error('Cloudinary Error');
 
       // const res = await axios.post("/api/v1/user", {media},
       // {
@@ -102,15 +102,15 @@ export default function Home({ user, image }) {
 
       setAdoptImage(res.data);
 
-      setMedia(null)
-      setMediaPreview(null)
-    } catch(err) {
+      setMedia(null);
+      setMediaPreview(null);
+    } catch (err) {
       console.log(err);
       let caughtErr = catchErrors(err);
       setErrorMsg(caughtErr);
     }
     setLoading(false);
-  }
+  };
 
   useEffect(async () => {
     setLoading(true);
@@ -125,27 +125,30 @@ export default function Home({ user, image }) {
   };
 
   return (
-    <div className="everything">
+    <div className='everything'>
       {eventModalShowing !== null &&
         events.map((event) => {
           if (event._id === eventModalShowing) {
             return (
               <Modal
                 key={event._id}
-                id="event-modal"
+                id='event-modal'
                 open={eventModalShowing !== null}
                 closeOnDimmerClick
                 onClose={() => setEventModalShowing(null)}
               >
                 <Modal.Content>
-                  <EventModal event={event} setEventModalShowing={setEventModalShowing}/>
+                  <EventModal
+                    event={event}
+                    setEventModalShowing={setEventModalShowing}
+                  />
                 </Modal.Content>
               </Modal>
             );
           }
         })}
 
-      <div className="slideshow">
+      <div className='slideshow'>
         <EventSlideshow
           events={events}
           loading={loading}
@@ -153,15 +156,15 @@ export default function Home({ user, image }) {
         />
       </div>
 
-      <div className="es-div">
+      <div className='es-div'>
         <EventsSection />
       </div>
 
-      <div className="nf-div">
-        <Segment className="adopt-section">
-          <h1 className="nf-title">Find a New Friend!</h1>
-          <div className="nf-wholeSect">
-            <div className="nf-sect">
+      <div className='nf-div'>
+        <Segment className='adopt-section'>
+          <h1 className='nf-title'>Find a New Friend!</h1>
+          <div className='nf-wholeSect'>
+            <div className='nf-sect'>
               {user ? (
                 <HomeUpload
                   media={media}
@@ -174,10 +177,10 @@ export default function Home({ user, image }) {
                 <Image
                   // src={adoptImage === null ? adopt : adoptImage}
                   src={adopt}
-                  position="relative"
-                  className="adopt-image"
-                  objectFit="contain"
-                  alt="adopt image"
+                  position='relative'
+                  className='adopt-image'
+                  objectFit='contain'
+                  alt='adopt image'
                 />
               )}
               <p>
@@ -196,10 +199,10 @@ export default function Home({ user, image }) {
               </p>
             </div>
             <Button
-              content="Ready To Adopt"
-              className="nf-adopt-btn"
-              href="/animals"
-              role="link"
+              content='Ready To Adopt'
+              className='nf-adopt-btn'
+              href='/animals'
+              role='link'
               // onClick=''
             />
           </div>
@@ -211,12 +214,12 @@ export default function Home({ user, image }) {
 
 Home.getInitialProps = async ({ ctx }) => {
   let pageProps = {};
-  // try {
-  //   const res = await axios.post(`${baseURL}/api/v1/user`);
-  //   pageProps.image = res.data;
-  // } catch (err) {
-  //   console.error(err);
-  //   pageProps.errorLoading = err;
-  // }
+  try {
+    const res = await axios.post(`${baseURL}/api/v1/user`);
+    pageProps.image = res.data;
+  } catch (err) {
+    console.error(err);
+    pageProps.errorLoading = err;
+  }
   return pageProps;
 };

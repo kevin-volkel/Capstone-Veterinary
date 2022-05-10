@@ -1,15 +1,11 @@
-import React, { useState } from "react";
-import {
-  Form,
-  Button,
-  Message,
-} from "semantic-ui-react";
-import axios from "axios";
-import catchErrors from "../../util/catchErrors";
-import Cookies from "js-cookie";
-import VideoUpload from "../layout/VideoUpload";
-import AnimalUpload from "../layout/AnimalUpload";
-import dogDefault from "../../../public/media/dog-profile.svg"
+import React, { useState } from 'react';
+import { Form, Button, Message } from 'semantic-ui-react';
+import axios from 'axios';
+import catchErrors from '../../util/catchErrors';
+import Cookies from 'js-cookie';
+import VideoUpload from '../layout/VideoUpload';
+import AnimalUpload from '../layout/AnimalUpload';
+import dogDefault from '../../../public/media/dog-profile.svg';
 
 const AddAnimalModal = ({ setAnimals, setShowModal }) => {
   const [loading, setLoading] = useState(false);
@@ -24,19 +20,19 @@ const AddAnimalModal = ({ setAnimals, setShowModal }) => {
   const defaultAnimalPic = dogDefault.src;
 
   const [newAnimal, setNewAnimal] = useState({
-    name: "",
-    location: "northeast",
-    type: "dog",
-    gender: "male",
-    age: "young",
-    breed: "",
+    name: '',
+    location: 'northeast',
+    type: 'dog',
+    gender: 'male',
+    age: 'young',
+    breed: '',
     neutered: false,
     vaccs: false,
-    colors: "",
-    desc: "",
-    details: "",
+    colors: '',
+    desc: '',
+    details: '',
     needs: false,
-    specialNeeds: "",
+    specialNeeds: '',
     picURLs: [],
     vidURLs: [],
   });
@@ -49,7 +45,7 @@ const AddAnimalModal = ({ setAnimals, setShowModal }) => {
         ...prev,
         [data.name]: data.value,
       }));
-    } else if (name === "media" && files.length) {
+    } else if (name === 'media' && files.length) {
       if (files.length === 1) {
         let droppedFiles = Object.values(files);
         setMedia((prev) => [...prev, droppedFiles[0]]);
@@ -64,7 +60,7 @@ const AddAnimalModal = ({ setAnimals, setShowModal }) => {
           setMediaPreview((prev) => [...prev, URL.createObjectURL(file)]);
         });
       }
-    } else if (name === "video" && files.length) {
+    } else if (name === 'video' && files.length) {
       if (files.length === 1) {
         let droppedFiles = Object.values(files);
         setVideo((prev) => [...prev, droppedFiles[0]]);
@@ -99,38 +95,38 @@ const AddAnimalModal = ({ setAnimals, setShowModal }) => {
       if (media.length !== 0) {
         const formData = new FormData();
         media.forEach((image) => {
-          formData.append("image", image, {
+          formData.append('image', image, {
             headers: {
-              "Content-Type": "multipart/form-data",
+              'Content-Type': 'multipart/form-data',
             },
           });
         });
-        const res = await axios.post("/api/v1/upload/images", formData);
+        const res = await axios.post('/api/v1/upload/images', formData);
         animalPicURLs = res.data.sources;
       } else {
         animalPicURLs = [defaultAnimalPic];
       }
       if (media.length !== 0 && !animalPicURLs.length)
-        throw new Error("Error while uploading image(s).");
+        throw new Error('Error while uploading image(s).');
 
       //VIDEOS
       if (video.length !== 0) {
         const formData = new FormData();
         video.forEach((vid) => {
-          formData.append("video", vid, {
+          formData.append('video', vid, {
             headers: {
-              "Content-Type": "multipart/form-data",
+              'Content-Type': 'multipart/form-data',
             },
           });
         });
-        const res = await axios.post("/api/v1/upload/videos", formData);
+        const res = await axios.post('/api/v1/upload/videos', formData);
         animalVidURLs = res.data.sources;
       }
       if (video.length !== 0 && !animalVidURLs.length)
-        throw new Error("Error while uploading video(s)");
+        throw new Error('Error while uploading video(s)');
 
       const res = await axios.post(
-        "/api/v1/animal",
+        '/api/v1/animal',
         {
           name: newAnimal.name.trim(),
           age: newAnimal.age,
@@ -149,26 +145,26 @@ const AddAnimalModal = ({ setAnimals, setShowModal }) => {
           location: newAnimal.location,
         },
         {
-          headers: { Authorization: `Bearer ${Cookies.get("token")}` },
+          headers: { Authorization: `Bearer ${Cookies.get('token')}` },
         }
       );
 
       setAnimals((prev) => [res.data, ...prev]);
 
       setNewAnimal({
-        name: "",
-        location: "northeast",
-        type: "dog",
-        gender: "male",
-        age: "young",
-        breed: "",
+        name: '',
+        location: 'northeast',
+        type: 'dog',
+        gender: 'male',
+        age: 'young',
+        breed: '',
         neutered: false,
         vaccs: false,
-        colors: "",
-        desc: "",
-        details: "",
+        colors: '',
+        desc: '',
+        details: '',
         needs: false,
-        specialNeeds: "",
+        specialNeeds: '',
         picURLs: [],
         vidURLs: [],
       });
@@ -189,74 +185,74 @@ const AddAnimalModal = ({ setAnimals, setShowModal }) => {
 
   const typeOptions = [
     {
-      text: "Dog",
-      value: "dog",
+      text: 'Dog',
+      value: 'dog',
       key: 0,
     },
     {
-      text: "Cat",
-      value: "cat",
+      text: 'Cat',
+      value: 'cat',
       key: 1,
     },
   ];
 
   const ageOptions = [
     {
-      text: "Young",
-      value: "young",
+      text: 'Young',
+      value: 'young',
       key: 0,
     },
     {
-      text: "Adult",
-      value: "adult",
+      text: 'Adult',
+      value: 'adult',
       key: 1,
     },
     {
-      text: "Senior",
-      value: "senior",
+      text: 'Senior',
+      value: 'senior',
       key: 2,
     },
   ];
 
   const genderOptions = [
     {
-      text: "Male",
-      value: "male",
+      text: 'Male',
+      value: 'male',
       key: 0,
     },
     {
-      text: "Female",
-      value: "female",
+      text: 'Female',
+      value: 'female',
       key: 1,
     },
   ];
 
   const locationOptions = [
     {
-      text: "Northeast Campus",
-      value: "northeast",
+      text: 'Northeast Campus',
+      value: 'northeast',
       key: 0,
     },
     {
-      text: "Northwest Campus",
-      value: "northwest",
+      text: 'Northwest Campus',
+      value: 'northwest',
       key: 1,
     },
     {
-      text: "Southwest Campus",
-      value: "southwest",
+      text: 'Southwest Campus',
+      value: 'southwest',
       key: 2,
     },
   ];
 
   const neuteredOptions = [
     {
-      text: "No",
+      text: 'No',
       value: false,
       key: 0,
     },
     {
-      text: "Yes",
+      text: 'Yes',
       value: true,
       key: 1,
     },
@@ -264,12 +260,12 @@ const AddAnimalModal = ({ setAnimals, setShowModal }) => {
 
   const vaccsOptions = [
     {
-      text: "No",
+      text: 'No',
       value: false,
       key: 0,
     },
     {
-      text: "Yes",
+      text: 'Yes',
       value: true,
       key: 1,
     },
@@ -277,30 +273,30 @@ const AddAnimalModal = ({ setAnimals, setShowModal }) => {
 
   const needsOptions = [
     {
-      text: "No",
+      text: 'No',
       value: false,
       key: 0,
     },
     {
-      text: "Yes",
+      text: 'Yes',
       value: true,
       key: 1,
     },
   ];
 
   return (
-    <div className="form-wrap">
+    <div className='form-wrap add-animal'>
       <Form loading={loading} error={errorMsg !== null} onSubmit={handleSubmit}>
         <Message
           error
-          header="Oops!"
+          header='Oops!'
           content={errorMsg}
           onDismiss={() => setErrorMsg(null)}
         />
         <div>
           <h1>Add Animal</h1>
         </div>
-        <div className="uploads">
+        <div className='uploads'>
           <AnimalUpload
             handleChange={handleChange}
             media={media}
@@ -316,116 +312,135 @@ const AddAnimalModal = ({ setAnimals, setShowModal }) => {
             video={video}
           />
         </div>
-        <div id="form-group">
-          <Form.Input
-            label="Name"
-            required
-            placeholder="Name"
-            value={newAnimal.name}
-            name="name"
-            onChange={handleChange}
-            type="text"
-          />
-          <Form.Select
-            required
-            options={locationOptions}
-            value={newAnimal.location}
-            name="location"
-            onChange={handleChange}
-            label="Location"
-          />
-          <Form.Select
-            required
-            options={typeOptions}
-            value={newAnimal.type}
-            onChange={handleChange}
-            name="type"
-            label="Type"
-          />
-          <Form.Select
-            required
-            options={genderOptions}
-            value={newAnimal.gender}
-            onChange={handleChange}
-            name="gender"
-            label="Gender"
-          />
-          <Form.Select
-            required
-            options={ageOptions}
-            value={newAnimal.age}
-            onChange={handleChange}
-            name="age"
-            label="Age"
-          />
-          <Form.Input
-            label="Breed"
-            placeholder="Breed"
-            value={newAnimal.breed}
-            name="breed"
-            onChange={handleChange}
-            type="text"
-          />
-          <Form.Select
-            required
-            options={neuteredOptions}
-            value={newAnimal.neutered}
-            onChange={handleChange}
-            name="neutered"
-            label="Neutured?"
-          />
-          <Form.Select
-            required
-            options={vaccsOptions}
-            value={newAnimal.vaccs}
-            onChange={handleChange}
-            name="vaccs"
-            label="Vaccinations Up to Date?"
-          />
-          <Form.Input
-            label="Colors"
-            placeholder="Colors"
-            value={newAnimal.colors}
-            name="colors"
-            onChange={handleChange}
-            type="text"
-          />
+        <div id='form-group'>
+          <div className='line line1'>
+            <Form.Input
+              label='Name'
+              required
+              placeholder='Name'
+              value={newAnimal.name}
+              name='name'
+              onChange={handleChange}
+              type='text'
+            />
+            <Form.Select
+              required
+              options={locationOptions}
+              value={newAnimal.location}
+              name='location'
+              onChange={handleChange}
+              label='Location'
+            />
+          </div>
+          <div className='line line2'>
+            <Form.Select
+              required
+              options={typeOptions}
+              value={newAnimal.type}
+              onChange={handleChange}
+              name='type'
+              label='Type'
+            />
+            <Form.Select
+              required
+              options={genderOptions}
+              value={newAnimal.gender}
+              onChange={handleChange}
+              name='gender'
+              label='Gender'
+            />
+          </div>
+          <div className='line line3'>
+            <Form.Select
+              required
+              options={ageOptions}
+              value={newAnimal.age}
+              onChange={handleChange}
+              name='age'
+              label='Age'
+            />
+            <Form.Input
+              label='Breed'
+              placeholder='Breed'
+              value={newAnimal.breed}
+              name='breed'
+              onChange={handleChange}
+              type='text'
+            />
+          </div>
+          <div className='line line4'>
+            <Form.Select
+              required
+              options={neuteredOptions}
+              value={newAnimal.neutered}
+              onChange={handleChange}
+              name='neutered'
+              label='Neutured?'
+            />
+            <Form.Select
+              required
+              options={vaccsOptions}
+              value={newAnimal.vaccs}
+              onChange={handleChange}
+              name='vaccs'
+              label='Vaccinations Up to Date?'
+            />
+          </div>
+          <div className='line line5'>
+            <Form.Input
+              label='Colors'
+              placeholder='Colors'
+              value={newAnimal.colors}
+              name='colors'
+              onChange={handleChange}
+              type='text'
+            />
+            <Form.Input
+              label='Ȩ͔̫͚̦̯͍̟̓ͥR̨̺̲̠̭̳̖̣̀̄̏͗ͦ̃̿̎̿R̊ͥ̓ͩ͏̖͙͍͍Ó̹͕̞̳͙̱͓͐̀̕R̢̗̰̔̓̍ͪ͆͞
+              '
+              placeholder='Y̳̪̦͓͋͗͘ō̘͉̱̪̃̉̑̄̅̚u͚̲̍̋̆ ̻̩̜́ḧ̴̖́͆̔̂a͍̤̱ͪ̈͊̅̓͂͟v̜͖̼̬̰͑̓̽̉̄̄͐ͅȇ̯̹̮̍ ̝͛̃ͧ̑̈́̓̉f̩̫͎͓̭ͣ͆͗̚o̹̪͎̰̳̥u̠͔̖̪̫͔n͓ͅd ̸͔tͯͫ̀̋ͦ͢h̼̖̞ͯͯ͆ͭͬͨ͞ͅe͉͚͈̽̋̅ͧ ͋̋̋̌̂̽ͪ͟s̸̩͚̏̌͌e̞ͨc̜ͭr̶̮̾e̻͢ẗ̥͌ͨͯͫ̕'
+              className='invisible'
+              value={newAnimal.colors}
+              name='colors'
+              type='text'
+            />
+          </div>
           <Form.TextArea
-            label="Description"
-            placeholder="Add a short description of the animal..."
+            label='Description'
+            placeholder='Add a short description of the animal...'
             value={newAnimal.desc}
-            name="desc"
+            name='desc'
             onChange={handleChange}
-            type="text"
+            type='text'
           />
           <Form.TextArea
-            label="Details"
+            label='Details'
             placeholder="List some of the animal's characteristics..."
             value={newAnimal.details}
-            name="details"
+            name='details'
             onChange={handleChange}
-            type="text"
+            type='text'
           />
           <Form.Select
             required
             options={needsOptions}
             value={newAnimal.needs}
             onChange={handleChange}
-            name="needs"
-            label="Any Special Needs?"
+            name='needs'
+            label='Any Special Needs?'
           />
           {newAnimal.needs === true && (
             <Form.TextArea
-              placeholder="Special Needs..."
+              placeholder='Special Needs...'
               value={newAnimal.specialNeeds}
-              name="specialNeeds"
+              name='specialNeeds'
               onChange={handleChange}
-              type="text"
+              type='text'
             />
           )}
         </div>
-        <div className="button-div">
-          <Button disabled={loading} id="add-animal-btn" content="Done" fluid />
+        <div className='button-div'>
+          <Button disabled={loading} id='add-animal-btn' content='Done' fluid />
         </div>
       </Form>
     </div>

@@ -1208,6 +1208,28 @@ h3 {
   #add-animal h1, #add-event h1, #edit-animal h1, #edit-event h1 {
     font-size: 2.5rem;
   }
+  #add-animal .line, #add-event .line, #edit-animal .line, #edit-event .line {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+  #add-animal .line div, #add-event .line div, #edit-animal .line div, #edit-event .line div {
+    min-width: 27vw;
+    margin: 0;
+    width: 23vw;
+  }
+  #add-animal .line input, #add-event .line input, #edit-animal .line input, #edit-event .line input {
+    margin: 0;
+  }
+  #add-animal .invisible, #add-event .invisible, #edit-animal .invisible, #edit-event .invisible {
+    opacity: 0;
+    font-size: 0.7rem;
+  }
+  #add-animal .invisible input, #add-event .invisible input, #edit-animal .invisible input, #edit-event .invisible input {
+    cursor: default;
+  }
   #add-animal .button-div .button, #add-event .button-div .button, #edit-animal .button-div .button, #edit-event .button-div .button {
     font-size: 1.2rem;
   }
