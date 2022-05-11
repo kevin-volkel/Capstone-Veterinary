@@ -71,9 +71,11 @@ const AnimalUpload = ({
                     setMedia([]);
                     setMediaPreview([]);
                   }}
-                  aria-label="empty input"
+                  color="red"
+                  aria-label="clear button"
                 >
-                  Empty Input
+                  <Icon name="trash" />
+                  Clear
                 </Button>
                 <Segment
                   placeholder
@@ -92,7 +94,7 @@ const AnimalUpload = ({
                         src={pic}
                         style={{
                           margin: ".3rem",
-                          width: "180px",
+                          width: "250px",
                           objectFit: "scale-down",
                         }}
                         alt={media.length ? media[i].name : "image"}

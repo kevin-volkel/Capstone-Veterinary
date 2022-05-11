@@ -53,13 +53,11 @@
     display: block;
     top: 50%;
     left: 50%;
-    width: auto;
     min-height: 100%;
-    min-width: 100%;
-    max-width: none;
+    width: 100%;
     transform: translate(-50%, -50%);
 
-    object-fit: shrink;
+    object-fit: cover;
   }
 
   .embla_button {
@@ -197,7 +195,7 @@
   }
 }
 
-@media only screen and (min-width: 764px) {
+@media only screen and (min-width: 766px) {
   #event-slideshow {
     .embla_slide_inner {
       position: relative;

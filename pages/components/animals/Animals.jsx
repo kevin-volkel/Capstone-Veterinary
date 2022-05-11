@@ -11,7 +11,7 @@ import {
 import AnimalCard from './AnimalCard';
 import AddAnimalModal from './AddAnimalModal';
 
-const Animals = ({ animals, isAdmin, user }) => {
+const Animals = ({ animals, isAdmin }) => {
   const [currPage, setCurrPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
@@ -45,20 +45,12 @@ const Animals = ({ animals, isAdmin, user }) => {
       value: 'young',
     },
     {
-      text: 'Middle-Age',
-      value: 'mid',
-    },
-    {
       text: 'Adult',
       value: 'adult',
     },
     {
       text: 'Senior',
       value: 'senior',
-    },
-    {
-      text: 'Unknown Age',
-      value: 'unknown'
     }
   ];
 

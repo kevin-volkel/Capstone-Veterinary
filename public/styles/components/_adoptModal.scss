@@ -1,0 +1,22 @@
+#adopt-modal{
+  form{
+    #form-group{
+
+
+
+      .checkboxes{
+        display: flex;
+        flex-direction: column;
+
+        .checkbox-combo{
+          display: flex;
+          flex-direction: row;
+          justify-content: space-evenly;
+        }
+        .checkbox-inputs .field .input{
+          height: 1.3rem;
+        }
+      }
+    }
+  }
+}

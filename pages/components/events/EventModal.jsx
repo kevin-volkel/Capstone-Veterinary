@@ -1,19 +1,36 @@
-import React from 'react';
-import { Image } from 'semantic-ui-react';
-import { convertDate } from '../../util/dateFuncs';
+import React from "react";
+import { Divider, Icon, Image } from "semantic-ui-react";
+import { convertDate } from "../../util/dateFuncs";
 
-const EventModal = ({ event }) => {
+const EventModal = ({ event, setEventModalShowing }) => {
   return (
     <div className="event-modal-wrap">
-      <Image
-        className="event-modal-img"
-        alt={`${event.title} Image`}
-        src={event.bannerPic}
-      />
-      <h2 className="event-modal-title">{event.title}</h2>
-      <h5 className="event-modal-date">{convertDate(event.date)}</h5>
-      <h5 className="event-modal-location">{event.location}</h5>
-      <p className='event-modal-desc'>{event.desc}</p>
+      <div className="title-row">
+        <h2 className="event-modal-title">{event.title}</h2>
+        <Icon
+          name="close"
+          onClick={() => {
+            setEventModalShowing(null);
+          }}
+          style={{
+            cursor: 'pointer'
+          }}
+          size="large"
+        />
+      </div>
+      <div className="event-modal-content">
+        <Image
+          className="event-modal-img"
+          alt={`${event.title} Image`}
+          src={event.bannerPic}
+        />
+        <div className="event-modal-text">
+          <h5 className="event-modal-date event-meta">{convertDate(event.date)}</h5>
+          <h5 className="event-modal-location event-meta">{event.location}</h5>
+          <Divider />
+          <p className="event-modal-desc">{event.desc}</p>
+        </div>
+      </div>
     </div>
   );
 };

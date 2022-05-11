@@ -1,5 +1,48 @@
-#image-modal{
-    .modals.dimmer .ui.scrolling.modal{
-        background: none transparent;
+#image-modal {
+  background: none transparent;
+  box-shadow: none;
+  .content {
+    background: none transparent;
+  }
+  i {
+    display: none;
+  }
+  .ui.card {
+    background: none transparent;
+  }
+  .floated.left.image {
+    cursor: pointer;
+    background: white;
+    width: auto;
+    height: 45vw;
+    margin: 0 auto;
+  }
+  .ui.card > .image > img {
+    height: 100%;
+    width: auto;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+    #image-modal {
+      .floated.left.image {
+        height: 40vw;
+      }
     }
+  }
+
+@media only screen and (min-width: 1024px) {
+  #image-modal {
+    .floated.left.image {
+      height: 35vw;
+    }
+  }
+}
+
+@media only screen and (min-width: 1170px) {
+  #image-modal {
+    .floated.left.image {
+      height: 30vw;
+    }
+  }
 }

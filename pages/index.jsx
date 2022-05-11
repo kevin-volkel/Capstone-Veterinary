@@ -1,20 +1,22 @@
-import Image from 'next/image';
-import { Button, Segment, Modal } from 'semantic-ui-react';
-import Footer from './components/layout/Footer';
-import adopt from '../public/media/adoption.png';
-import eventImg from '../public/media/event.png';
-import fEvents from '../public/media/CAT.png';
-import EventSlideshow from './components/events/EventSlideshow';
-import EventsSection from './components/events/EventsSection';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
-import { sortDates } from './util/dateFuncs';
-import EventModal from './components/events/EventModal';
+import Image from "next/image";
+import { Button, Segment, Modal } from "semantic-ui-react";
+import Footer from "./components/layout/Footer";
+import adopt from "../public/media/adoption.png";
+import eventImg from "../public/media/event.png";
+import fEvents from "../public/media/CAT.png";
+import EventSlideshow from "./components/events/EventSlideshow";
+import EventsSection from "./components/events/EventsSection";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { sortDates } from "./util/dateFuncs";
+import EventModal from "./components/events/EventModal";
+import HomeUpload from "./components/layout/HomeUpload";
+import { baseURL } from "./util/auth";
 
 //import "../styles/home.css";
 // import bannerPic from "../public/media/home-page-banner.jpg";
 
-export default function Home() {
+export default function Home({ user }) {
   // const konamiCode = [
   //   'ArrowUp',
   //   'ArrowUp',
@@ -55,9 +57,70 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [events, setEvents] = useState([]);
 
+  const [adoptMedia, setAdoptMedia] = useState(null); // media
+  const [mediaPreview, setMediaPreview] = useState(null);
+  const [media, setMedia] = useState(null);
+
+  const handleChange = async (e) => {
+    const { name, files } = e.target;
+    if (name == "media" && files.length) {
+      setMedia(() => files[0]);
+      setMediaPreview(() => URL.createObjectURL(files[0]));
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log(adoptImage);
+    console.log(media);
+    console.log(mediaPreview);
+
+    // setLoading(true);
+
+    // let adoptPicUrl = "";
+
+    // try {
+    //   if (media !== null) {
+    //     const formData = new FormData();
+    //     formData.append("image", media, {
+    //       headers: {
+    //         "Content-Type": "multipart/form-data",
+    //       },
+    //     });
+    //     const res = await axios.post("/api/v1/upload", formData);
+    //     adoptPicUrl = res.data.src;
+    //   } else {
+    //     adoptPicUrl = adopt.src;
+    //   }
+
+    //   if (media !== null && !adoptPicUrl) throw new Error("Cloudinary Error");
+
+    //   const res = await axios.post(
+    //     "/api/v1/upload/media",
+    //     { media },
+    //     {
+    //       headers: { Authorization: `Bearer ${Cookies.get("token")}` },
+    //     }
+    //   );
+
+    //  console.log(res.data);
+
+    //   setAdoptMedia(res.data);
+
+    //   setMedia(null);
+    //   setMediaPreview(null);
+    // } catch (err) {
+    //   console.log(err);
+    //   let caughtErr = catchErrors(err);
+    //   setErrorMsg(caughtErr);
+    // }
+    // setLoading(false);
+  };
+
   useEffect(async () => {
     setLoading(true);
     await fetchEvents();
+    await fetchMedia();
     setLoading(false);
   }, []);
 
@@ -65,6 +128,14 @@ export default function Home() {
     const res = await axios.get(`/api/v1/event`);
     const events = res.data.sort(sortDates);
     setEvents(events);
+  };
+
+  const fetchMedia = async () => {
+    // const res = await axios.get(`/api/v1/upload/media`);
+    // const media = res.data;
+    // console.log(media);
+    // if(media === null) return;
+    // setAdoptMedia(media);
   };
 
   return (
@@ -77,12 +148,14 @@ export default function Home() {
                 key={event._id}
                 id="event-modal"
                 open={eventModalShowing !== null}
-                closeIcon
                 closeOnDimmerClick
                 onClose={() => setEventModalShowing(null)}
               >
                 <Modal.Content>
-                  <EventModal event={event}/>
+                  <EventModal
+                    event={event}
+                    setEventModalShowing={setEventModalShowing}
+                  />
                 </Modal.Content>
               </Modal>
             );
@@ -90,7 +163,11 @@ export default function Home() {
         })}
 
       <div className="slideshow">
-        <EventSlideshow events={events} loading={loading} setEventModalShowing={setEventModalShowing}/>
+        <EventSlideshow
+          events={events}
+          loading={loading}
+          setEventModalShowing={setEventModalShowing}
+        />
       </div>
 
       <div className="es-div">
@@ -102,13 +179,27 @@ export default function Home() {
           <h1 className="nf-title">Find a New Friend!</h1>
           <div className="nf-wholeSect">
             <div className="nf-sect">
-              <Image
-                src={adopt}
-                position="relative"
-                className="adopt-image"
-                objectFit="contain"
-                alt=""
-              />
+              {user ? (
+                // <HomeUpload
+                //   adoptMedia={adoptMedia}
+                //   media={media}
+                //   mediaType={adoptMedia.type}
+                //   handleChange={handleChange}
+                //   mediaPreview={mediaPreview}
+                //   defaultHomePic={adopt.src}
+                //   handleSubmit={handleSubmit}
+                // />
+                <></>
+              ) : (
+                <Image
+                  src={adoptMedia === null ? adopt : adoptMedia}
+                  // src={adopt}
+                  position="relative"
+                  className="adopt-image"
+                  objectFit="contain"
+                  alt="adopt image"
+                />
+              )}
               <p>
                 At vero eos et accus et iusto odio dignissimos ducimus qui
                 blanditiis praesentium voluptatum deleniti atque corrupti quosi

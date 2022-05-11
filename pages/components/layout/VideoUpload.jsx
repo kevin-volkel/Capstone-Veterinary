@@ -70,9 +70,11 @@ const VideoUpload = ({
                     setVideo([]);
                     setVideoPreview([]);
                   }}
-                  aria-label="empty input"
+                  color="red"
+                  aria-label="clear button"
                 >
-                  Empty Input
+                  <Icon name="trash" />
+                  Clear
                 </Button>
                 <Segment
                   placeholder
@@ -88,7 +90,7 @@ const VideoUpload = ({
                     return (
                       <video
                         key={i}
-                        style={{ maxWidth: "180px", objectFit: "scale-down" }}
+                        style={{ maxWidth: "250px", objectFit: "scale-down" }}
                       >
                         <source src={videoPreview[i]} />
                         Your browser does not support the video tag.

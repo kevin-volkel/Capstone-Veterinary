@@ -1,4 +1,4 @@
-@use "../themes/defaultTheme" as *;
+@use '../themes/defaultTheme' as *;
 
 #admin-events {
   width: 95vw;
@@ -18,7 +18,7 @@
     margin-bottom: 1rem;
 
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       width: 100%;
       transform: scaleX(0);
@@ -53,88 +53,106 @@
         margin-bottom: 1rem;
       }
 
-      .event-title {
-        font-size: 1.1rem;
-        font-weight: bold;
-      }
-      .event-desc {
-        font-size: 1.1rem;
-      }
-      .event-date {
-        font-size: 0.8rem;
-      }
-    }
-    .event-pic {
-      width: 40%;
-      margin: 0 1rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      .event-content {
+        display: flex;
+        flex-direction: column;
 
-      img {
-        height: 100%;
-        object-fit: contain;
-      }
-    }
+        .event-pic {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          margin-bottom: 1rem;
 
-    .options {
-      width: 30px;
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-
-      i {
-        font-size: 1.2em;
-      }
-
-      .menu {
-        right: 10px;
-        left: auto;
-      }
-    }
-  }
-}
-
-@media only screen and (max-width: 350px) {
-  #admin-events {
-    min-width: 280px;
-  }
-}
-
-@media only screen and (min-width: 550px) {
-  #admin-events {
-    .events-list {
-      .options {
-        i {
-          font-size: 1.5em;
+          img {
+            width: 80%;
+            max-height: 10rem;
+            object-fit: contain;
+          }
         }
-        .menu {
-          .item{
+
+        .event-info {
+          .event-title {
             font-size: 1.1rem;
+            font-weight: bold;
+            font-family: $bold-font;
+          }
+          .event-desc {
+            font-size: 1.1rem;
+            font-family: $text-font-2;
+          }
+          .event-date {
+            font-size: 0.9rem;
+            font-family: $text-font-1;
+            margin-bottom: 0.5rem;
           }
         }
       }
+
+      .options {
+        width: 0px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-end;
+
+        i {
+          font-size: 1.2em;
+        }
+
+        .menu {
+          right: 10px;
+          left: auto;
+        }
+      }
     }
   }
 }
+
+// @media only screen and (max-width: 350px) {
+//   #admin-events {
+//     min-width: 280px;
+//   }
+// }
+
+// @media only screen and (min-width: 550px) {
+//   #admin-events {
+//     .events-list {
+//       .options {
+//         i {
+//           font-size: 1.5em;
+//         }
+//         .menu {
+//           .item {
+//             font-size: 1.1rem;
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
 
 @media only screen and (min-width: 768px) {
   #admin-events {
     width: 90vw;
-    .ui.button{
-      font-size: .9rem;
+    .ui.button {
+      font-size: 0.9rem;
     }
-    .event-card {
-      line-height: 1.5rem;
-    }
-    .events-list{
-      .options{
+    .events-list {
+      .event-card {
+        line-height: 1.5rem;
+        .event-title {
+          font-size: 1.3rem;
+        }
+        .event-date {
+          font-size: 0.9rem;
+        }
+      }
+      .options {
         i {
           font-size: 1.1em;
         }
         .menu {
-          .item{
-            font-size: .8rem;
+          .item {
+            font-size: 0.8rem;
           }
         }
       }
@@ -146,21 +164,21 @@
   #admin-events {
     width: 70%;
 
-    .ui.button{
+    .ui.button {
       font-size: 1.2rem;
     }
-    
+
     .event-info {
       margin-left: 3%;
     }
-    .events-list{
-      .options{
+    .events-list {
+      .options {
         i {
           font-size: 1.3em;
         }
         .menu {
-          .item{
-            font-size: .9rem;
+          .item {
+            font-size: 1rem;
           }
         }
       }

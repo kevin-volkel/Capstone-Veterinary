@@ -15,6 +15,13 @@ div.animal-wrap {
   font-size: 1.2rem;
 }
 
+#interested-button{
+  width: 50vw;
+  margin-top: 2rem;
+  background-color: #f06f1a;
+  color: white;
+}
+
 .top-btns {
   display: flex;
   width: 90%;
@@ -27,6 +34,12 @@ div.animal-wrap {
   }
   div {
     font-size: 1.2rem;
+  }
+}
+
+.delete-popup{
+  button.ui.red.button{ 
+    width: 100%;
   }
 }
 
@@ -54,6 +67,7 @@ div.animal-wrap {
   margin-top: 5%;
   width: 80%;
   font-size: 1.3rem;
+  text-transform: capitalize;
 }
 
 .pet-title {
@@ -230,6 +244,16 @@ h3 {
       width: 35% !important;
       height: 300px !important;
     }
+  }
+}
+
+.checkboxes {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-evenly;
+  input {
+    height: 1.3rem
   }
 }
 

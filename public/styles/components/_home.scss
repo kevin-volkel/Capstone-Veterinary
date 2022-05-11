@@ -186,6 +186,28 @@
   padding-bottom: 4%;
   padding-left: 3%;
   padding-right: 3%;
+  span:first-child {
+    max-height: 50vw;
+  }
+
+  #home-upload {
+    .adopt-image,
+    .adopt-video {
+      max-height: 50vw;
+    }
+
+    .edit {
+      .ui.button {
+        font-size: 1.1rem;
+        border-radius: 50%;
+        padding: 0.5rem;
+        margin: 0px;
+        bottom: -10px;
+        cursor: pointer;
+        position: absolute;
+      }
+    }
+  }
 }
 
 .events-section {
@@ -225,9 +247,9 @@
   }
 }
 
-.adopt-section {
+.ui.segment.adopt-section {
+  border-radius: 0;
   border: 1px solid rgba(0, 0, 0, 0.119);
-  border-radius: 4px;
   box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
   width: 100%;
 
@@ -259,9 +281,10 @@
     }
   }
 
-  .ui.button {
+  .nf-adopt-btn {
     margin-bottom: 4%;
     padding: 5% 3.75%;
+    color: white;
     box-shadow: 2px 2px 5px #aaaaaa;
     background-color: $clr-orange;
   }
@@ -278,9 +301,9 @@
   margin-top: 1rem;
   display: flex;
   justify-content: center;
-  h1{
+  h1 {
     // font-family: 'ABeeZee', sans-serif;
-    font-family: 'Signika', sans-serif;
+    font-family: "Signika", sans-serif;
   }
 }
 
@@ -296,20 +319,34 @@
 
   .events-section {
     margin-top: 4.25rem !important;
+  }
 
-    .nf-sect {
-      display: flex;
+  .nf-sect {
+    display: flex;
+
+    #home-upload {
+      .adopt-image,
+      .adopt-video {
+        max-height: 40vw;
+      }
+
+      .edit {
+        .ui.button {
+          bottom: -12px;
+          font-size: 0.6rem;
+        }
+      }
     }
   }
 
-  .adopt-section {
+  .ui.segment.adopt-section {
     .nf-wholeSect {
       p {
         font-size: 0.8rem;
       }
       .ui.button {
         padding: 0.8rem;
-        font-size: .8rem;
+        font-size: 0.8rem;
       }
     }
   }
@@ -335,9 +372,29 @@
       display: flex;
       flex-direction: row-reverse;
       padding-bottom: 1.75%;
+
+<<<<<<< HEAD
+    .adopt-section{
+=======
+      #home-upload {
+        .adopt-image,
+        .adopt-video {
+          border-radius: 3%;
+          max-width: 40vw;
+          max-height: 30vw;
+        }
+
+        .edit {
+          .ui.button {
+            bottom: -15px;
+            font-size: 1.2rem;
+          }
+        }
+      }
     }
 
-    .adopt-section{
+    .ui.segment.adopt-section {
+>>>>>>> 0038d863796fb7d2ac525981a13ae2ecfad67b80
       .nf-wholeSect {
         p {
           margin-right: 3rem;

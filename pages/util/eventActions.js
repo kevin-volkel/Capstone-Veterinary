@@ -39,6 +39,7 @@ export const addEvent = async (
       featured,
     });
     setEvents((prev) => [res.data, ...prev]);
+    // setEvents((prev) => prev.sort((a, b) => a.date - b.date));
     setNewEvent({
       title: "",
       desc: "",
@@ -63,7 +64,7 @@ export const editEvent = async (
   location,
   featured,
   setEvents,
-  eventId
+  eventId,
 ) => {
   try {
     const res = await eventAxios.put(`/${eventId}`, {
@@ -77,6 +78,7 @@ export const editEvent = async (
     });
     setEvents((prev) => prev.filter((event) => event._id !== eventId));
     setEvents((prev) => [res.data, ...prev]);
+    // setEvents((prev) => prev.sort((a,b) => a.date - b.date));
   } catch (error) {
     console.log(catchErrors(error));
   }

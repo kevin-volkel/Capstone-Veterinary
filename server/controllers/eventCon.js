@@ -5,23 +5,25 @@ const LogModel = require('../models/LogModel');
 
 const addEvent = async (req, res) => {
   const { userId } = req.user;
+
   const { title, desc, date, type, featured, location, bannerPic } = req.body;
 
   try {
 
     const newEvent = {
       title,
-      date: date,
+      date,
       location,
       user: userId,
-      bannerPic,
       type,
       featured,
       desc
     };
 
+    if(bannerPic) newEvent.bannerPic = bannerPic;
+
     const event = await new EventModel(newEvent).save();
-    const eventCreated = await EventModel.findOne(event._id).populate("user");
+    const eventCreated = await EventModel.findById(event._id).populate("user");
 
     const user = await UserModel.findById(userId)
 
@@ -30,6 +32,7 @@ const addEvent = async (req, res) => {
       action: 'added event',
       details: `${user.name} created the event ${title}`
     })
+    // console.log(newLog)
 
     return res.status(200).json(eventCreated);
   } catch (error) {

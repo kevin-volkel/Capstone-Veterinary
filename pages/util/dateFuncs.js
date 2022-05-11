@@ -2,7 +2,7 @@ export const convertDate = (date) => {
   const dateObj = new Date(date);
   return `${
     dateObj.getMonth() + 1
-  }/${dateObj.getDate()}/${dateObj.getFullYear()}`;
+  }/${dateObj.getDate()+1}/${dateObj.getFullYear()}`;
 };
 
 export const getLogDate = (date) => {

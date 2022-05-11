@@ -1,89 +1,34 @@
 import React, { useState } from 'react';
-import { Form, Button, Message } from 'semantic-ui-react';
+import { Form, Button, Message, Divider } from 'semantic-ui-react';
 import axios from 'axios';
-import catchErrors from '../../util/catchErrors';
 import Cookies from 'js-cookie';
-import { baseURL } from '../../util/auth';
-import VideoUpload from '../layout/VideoUpload';
-import AnimalUpload from '../layout/AnimalUpload';
-import { editAnimal } from '../../util/animalActions';
-import { useRouter } from 'next/router';
+import catchErrors from '../../util/catchErrors';
 
-const EditAnimalModal = ({ setAnimals, setShowModal, animal }) => {
+const AdoptAnimalModal = ({ animalObj, setShowModal }) => {
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState(null);
 
-  const router = useRouter();
-
-  const defaultAnimalPic =
-    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7h1BiFC8Ot5v_yD14xO4Bz4vIVZDFChrIkFtN-XxtnMQAn73Srlyv-vznS5pXLGT-ywE&usqp=CAU';
-
-  const [mediaPreview, setMediaPreview] = useState(animal.picURLs);
-  const [media, setMedia] = useState(animal.picURLs);
-
-  const [videoPreview, setVideoPreview] = useState(animal.vidURLs);
-  const [video, setVideo] = useState(animal.vidURLs);
-
-  const [newAnimal, setNewAnimal] = useState({
-    name: animal.name,
-    location: animal.location,
-    type: animal.type,
-    gender: animal.gender,
-    age: animal.age,
-    breed: animal.breed,
-    neutered: animal.neutered,
-    vaccs: animal.vaccs,
-    colors: animal.colors || '',
-    desc: animal.desc || '',
-    details: animal.details || '',
-    needs: animal.needs,
-    specialNeeds: animal.specialNeeds || '',
-    picURLs: [],
-    vidURLs: [],
+  const [newAdopt, setNewAdopt] = useState({
+    fullName: '',
+    phoneNumber: '',
+    email: '',
+    haveOtherAnimals: false,
+    otherAnimals: '',
+    haveSmallChildren: false,
+    smallChildren: '',
+    aboutYou: '',
   });
 
-  const handleChange = (e, data) => {
-    const { name, value, files } = e.target;
+  const handleChange = (e) => {
+    const { name, value, checked } = e.target;
 
-    if (!name) {
-      setNewAnimal((prev) => ({
+    if (name === 'haveOtherAnimals' || name === 'haveSmallChildren') {
+      setNewAdopt((prev) => ({
         ...prev,
-        [data.name]: data.value,
+        [name]: checked,
       }));
-    } else if (name === 'media' && files.length) {
-      if (files.length === 1) {
-        let droppedFiles = Object.values(files);
-        setMedia((prev) => [...prev, droppedFiles[0]]);
-        setMediaPreview((prev) => [
-          ...prev,
-          URL.createObjectURL(droppedFiles[0]),
-        ]);
-      } else {
-        let droppedFiles = Object.values(files);
-        droppedFiles.map((file) => {
-          setMedia((prev) => [...prev, file]);
-          setMediaPreview((prev) => [...prev, URL.createObjectURL(file)]);
-        });
-      }
-      console.log(media);
-    } else if (name === 'video' && files.length) {
-      if (files.length === 1) {
-        let droppedFiles = Object.values(files);
-        setVideo((prev) => [...prev, droppedFiles[0]]);
-        setVideoPreview((prev) => [
-          ...prev,
-          URL.createObjectURL(droppedFiles[0]),
-        ]);
-      } else {
-        let droppedFiles = Object.values(files);
-        droppedFiles.map((file) => {
-          setVideo((prev) => [...prev, file]);
-          setVideoPreview((prev) => [...prev, URL.createObjectURL(file)]);
-        });
-      }
-      console.log(video);
     } else {
-      setNewAnimal((prev) => ({
+      setNewAdopt((prev) => ({
         ...prev,
         [name]: value,
       }));
@@ -94,102 +39,23 @@ const EditAnimalModal = ({ setAnimals, setShowModal, animal }) => {
     e.preventDefault();
     setLoading(true);
 
-    let animalPicURLs = [];
-    let animalVidURLs = [];
-
-    console.log(media); //!error here
-    console.log(video);
-
     try {
-      //IMAGES
-      if (media.length !== 0) {
-        const formData = new FormData();
-        let newImages = false;
-        media.forEach((image) => {
-          if (typeof image === 'object') {
-            formData.append('image', image, {
-              headers: {
-                'Content-Type': 'multipart/form-data',
-              },
-            });
-            newImages = true;
-          } else if (typeof image === 'string') {
-            animalPicURLs.push(image);
-          }
-        });
-        if (newImages) {
-          const res = await axios.post('/api/v1/upload/images', formData);
-          res.data.sources.forEach((src) => {
-            animalPicURLs.push(src);
-          });
-        }
-        console.log(animalPicURLs);
-      } else {
-        animalPicURLs = [defaultAnimalPic];
-      }
-      if (media.length !== 0 && !animalPicURLs.length)
-        throw new Error('Error while uploading image(s).');
-
-      //VIDEOS
-      if (video.length !== 0) {
-        const formData = new FormData();
-        let newVideos = false;
-        video.forEach((vid) => {
-          if (typeof vid === 'object') {
-            formData.append('video', vid, {
-              headers: {
-                'Content-Type': 'multipart/form-data',
-              },
-            });
-            newVideos = true;
-          } else if (typeof vid === 'string') {
-            animalVidURLs.push(vid);
-          }
-        });
-        if (newVideos) {
-          const res = await axios.post('/api/v1/upload/videos', formData);
-          res.data.sources.forEach((src) => {
-            animalVidURLs.push(src);
-          });
-        }
-        console.log(animalVidURLs);
-      }
-      if (video.length !== 0 && !animalVidURLs.length)
-        throw new Error('Error while uploading video(s)');
-
-      await editAnimal(
-        newAnimal.name,
-        newAnimal.location,
-        newAnimal.type,
-        newAnimal.gender,
-        newAnimal.age,
-        newAnimal.breed,
-        newAnimal.neutered,
-        newAnimal.vaccs,
-        newAnimal.colors,
-        newAnimal.desc,
-        newAnimal.details,
-        newAnimal.needs,
-        newAnimal.specialNeeds,
-        animalPicURLs,
-        animalVidURLs,
-        setAnimals,
-        animal._id
-      );
-
-      setLoading(false);
-      setShowModal(false);
-      router.push('/admin');
+      const res = await axios.post('/api/v1/email/adopt', {
+        animalObj: animalObj,
+        formData: newAdopt,
+      });
+      console.log(res.data);
     } catch (err) {
       console.log(err);
       let caughtErr = catchErrors(err);
       setErrorMsg(caughtErr);
     }
     setLoading(false);
+    setShowModal(false);
   };
 
   return (
-    <div className='form-wrap'>
+    <div className='form-wrap' id='adopt-modal'>
       <Form loading={loading} error={errorMsg !== null} onSubmit={handleSubmit}>
         <Message
           error
@@ -198,138 +64,101 @@ const EditAnimalModal = ({ setAnimals, setShowModal, animal }) => {
           onDismiss={() => setErrorMsg(null)}
         />
         <div>
-          <h1>Edit Animal</h1>
-        </div>
-        <div className='uploads'>
-          <AnimalUpload
-            handleChange={handleChange}
-            media={media}
-            mediaPreview={mediaPreview}
-            setMediaPreview={setMediaPreview}
-            setMedia={setMedia}
-          />
-          <VideoUpload
-            handleChange={handleChange}
-            videoPreview={videoPreview}
-            setVideoPreview={setVideoPreview}
-            setVideo={setVideo}
-            video={video}
-          />
+          <h1>Contact Us!</h1>
         </div>
         <div id='form-group'>
           <Form.Input
             label='Name'
             required
-            placeholder='Name'
-            value={newAnimal.name}
-            name='name'
+            placeholder='Full Name'
+            value={newAdopt.fullName}
+            name='fullName'
             onChange={handleChange}
             type='text'
-          />
-          <Form.Select
-            required
-            options={locationOptions}
-            value={newAnimal.location}
-            name='location'
-            onChange={handleChange}
-            label='Location'
-          />
-          <Form.Select
-            required
-            options={typeOptions}
-            value={newAnimal.type}
-            onChange={handleChange}
-            name='type'
-            label='Type'
-          />
-          <Form.Select
-            required
-            options={genderOptions}
-            value={newAnimal.gender}
-            onChange={handleChange}
-            name='gender'
-            label='Gender'
-          />
-          <Form.Select
-            required
-            options={ageOptions}
-            value={newAnimal.age}
-            onChange={handleChange}
-            name='age'
-            label='Age'
+            aria-label='Full Name Entry Box'
           />
           <Form.Input
-            label='Breed'
-            placeholder='Breed'
-            value={newAnimal.breed === 'unspecified' ? '' : newAnimal.breed}
-            name='breed'
+            label='Phone Number'
+            required
+            placeholder='000-000-0000'
+            value={newAdopt.phoneNumber}
+            name='phoneNumber'
             onChange={handleChange}
             type='text'
-          />
-          <Form.Select
-            required
-            options={neuteredOptions}
-            value={newAnimal.neutered}
-            onChange={handleChange}
-            name='neutered'
-            label='Neutured?'
-          />
-          <Form.Select
-            required
-            options={vaccsOptions}
-            value={newAnimal.vaccs}
-            onChange={handleChange}
-            name='vaccs'
-            label='Vaccinations Up to Date?'
+            aria-label='Phone number entry box'
           />
           <Form.Input
-            label='Colors'
-            placeholder='Colors'
-            value={newAnimal.colors}
-            name='colors'
-            onChange={handleChange}
-            type='text'
-          />
-          <Form.TextArea
-            label='Description'
-            placeholder='Add a short description of the animal...'
-            value={newAnimal.desc}
-            name='desc'
-            onChange={handleChange}
-            type='text'
-          />
-          <Form.TextArea
-            label='Details'
-            placeholder="List some of the animal's characteristics..."
-            value={newAnimal.details}
-            name='details'
-            onChange={handleChange}
-            type='text'
-          />
-          <Form.Select
+            label='Email'
             required
-            options={needsOptions}
-            value={newAnimal.needs}
+            value={newAdopt.email}
+            name='email'
             onChange={handleChange}
-            name='needs'
-            label='Any Special Needs?'
+            type='email'
+            placeholder='Email'
+            aria-label='email entry box'
           />
-          {newAnimal.needs === true && (
-            <Form.TextArea
-              placeholder='Special Needs...'
-              value={newAnimal.specialNeeds}
-              name='specialNeeds'
-              onChange={handleChange}
-              type='text'
-            />
-          )}
+          <Form.TextArea
+            label='About You'
+            placeholder='Tell us about you!'
+            value={newAdopt.aboutYou}
+            name='aboutYou'
+            onChange={handleChange}
+            type='text'
+            aria-label='about you entry box'
+          />
+          <div className='checkboxes'>
+            <div className='checkbox-combo'>
+              <Form.Input
+                label='Other Animals'
+                value={newAdopt.haveOtherAnimals}
+                name='haveOtherAnimals'
+                onChange={handleChange}
+                type='checkbox'
+                aria-label='check box for if you have other animals'
+              />
+              <Form.Input
+                label='Small Children'
+                value={newAdopt.haveSmallChildren}
+                name='haveSmallChildren'
+                onChange={handleChange}
+                type='checkbox'
+                aria-label='check box for if you have small children'
+              />
+            </div>
+          </div>
+          <div className='checkbox-inputs'>
+            {newAdopt.haveOtherAnimals && (
+              <Form.Input
+                label='What types of animals do you have? (separate with a comma)'
+                checked={newAdopt.otherAnimals}
+                name='otherAnimals'
+                onChange={handleChange}
+                type='text'
+                placeholder='Ex: Dog, Cat, Bird, etc.'
+                required
+                aria-label='What other animals do you have'
+              />
+            )}
+            {newAdopt.haveSmallChildren && (
+              <Form.Input
+                label='What are the ages of these children? (separate with a comma)'
+                checked={newAdopt.smallChildren}
+                name='smallChildren'
+                onChange={handleChange}
+                type='text'
+                placeholder='Ex: 4, 6, 7, 8'
+                required
+                aria-label='what are the ages of the children'
+              />
+            )}
+          </div>
         </div>
         <div className='button-div'>
-          <Button disabled={loading} id='add-animal-btn' content='Done' fluid />
+          <Button disabled={loading} id='add-event-btn' content='Done' fluid />
         </div>
       </Form>
     </div>
   );
 };
 
-export default EditAnimalModal;
+export default AdoptAnimalModal;

@@ -82,10 +82,13 @@ const EventSlideshow = ({ events, loading, setEventModalShowing }) => {
                         onClick={() => {
                           setEventModalShowing(event._id);
                         }}
+                        style={{
+                          cursor: 'pointer'
+                        }}
                         aria-label="Show More Event Details"
                       >
                         <div className="embla_slide_inner">
-                          <EventCard event={event} />
+                          <EventCard event={event}/>
                         </div>
                       </div>
                     ))
