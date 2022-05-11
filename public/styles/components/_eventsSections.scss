@@ -21,15 +21,11 @@
         justify-content: center;
         align-items: center;
 
-<<<<<<< HEAD
-        .allMaps {
-=======
         p{
             font-size: 1.1rem;
         }
 
         .map {
->>>>>>> b2146b22ae4f622f3d833f6d6abac1f57ee3472f
             display: flex;
             flex-direction: column;
             margin-top: 2%;
@@ -131,11 +127,7 @@
             justify-content: space-evenly;
             display: flex;
             flex-direction: row;
-<<<<<<< HEAD
-            margin-top: 1%;
-=======
             margin: 2rem 0;
->>>>>>> b2146b22ae4f622f3d833f6d6abac1f57ee3472f
 
             p {
                 padding-left: 5%;
@@ -147,13 +139,8 @@
             }
 
             .map {
-<<<<<<< HEAD
-                width: 65%;
-                height: 15vw;
-=======
                 width: 50%;
                 height: 30vw;
->>>>>>> b2146b22ae4f622f3d833f6d6abac1f57ee3472f
             }
         }
     }
