@@ -1,5 +1,8 @@
 const fs = require("fs");
 const cloudinary = require("cloudinary").v2;
+const MediaModel = require("../models/MediaModel");
+const LogModel = require('../models/LogModel');
+const UserModel = require("../models/UserModel");
 
 const uploadProfilePic = async (req, res) => {
   try {
@@ -91,4 +94,55 @@ const uploadVids = async (req, res) => {
   return res.status(200).json({ sources });
 };
 
-module.exports = { uploadProfilePic, uploadPics, uploadVids };
+const getMedia = async (req, res) => {
+  try{
+    let media = await MediaModel.find().populate("user");
+
+    if(!media.length) return res.status(200).json(null);
+
+    return res.status(200).json(media[0]);
+  }catch(error){
+    console.log(error);
+    return res.status(500).send("error at getMedia")
+  }
+}
+
+const changeMedia = async(req, res) => {
+  const {userId} = req.user;
+  if (!userId) return res.status(404).send("no user with that ID");
+
+  const {
+    media,
+    type
+  } = req.body;
+
+  // console.log(`${media} media`);
+  // console.log(`${type} type`)
+
+  try{
+    const oldMedia = await MediaModel.findOne();
+    // console.log(`${oldMedia} oldMedia`);
+
+    if(oldMedia !== null){
+      await oldMedia.remove();
+    }
+
+    const newMedia = await new MediaModel({media, type}).save();
+    const mediaCreated = await MediaModel.findById(newMedia._id).populate("user");
+
+    const user = await UserModel.findById(userId);
+
+    await LogModel.create({
+      user: userId,
+      action: 'changed adoption media',
+      details: `${user.name} changed the adoption ${type}`
+    })
+
+    return res.status(200).json(mediaCreated);
+  }catch(error){
+    console.log(error);
+    return res.status(500).send('error at changeMedia')
+  }
+}
+
+module.exports = { uploadProfilePic, uploadPics, uploadVids, getMedia, changeMedia };

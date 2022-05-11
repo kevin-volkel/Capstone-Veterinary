@@ -64,7 +64,7 @@ const addAnimal = async (req, res) => {
     return res.status(200).json(animalCreated);
   } catch (error) {
     console.log(error);
-    res.status(500).send("error at addAnimal");
+    return res.status(500).send("error at addAnimal");
   }
 };
 
@@ -92,8 +92,7 @@ const getAllAnimals = async (req, res) => {
     return res.status(200).json(animals);
   } catch (error) {
     console.log(error);
-    res.status(500).send("Error at getAnimals");
-    console.log(error);
+    return res.status(500).send("Error at getAnimals");
   }
 };
 
@@ -110,7 +109,7 @@ const getAnimal = async (req, res) => {
     return res.status(200).json(animal);
   } catch (error) {
     console.log(error);
-    res.status(500).send("error at getAnimal");
+    return res.status(500).send("error at getAnimal");
   }
 };
 
@@ -145,7 +144,7 @@ const deleteAnimal = async (req, res) => {
     return res.status(200).send("animal succesfully removed");
   } catch (error) {
     console.log(error);
-    res.status(500).send("error at deleteAnimal");
+    return res.status(500).send("error at deleteAnimal");
   }
 };
 
@@ -174,7 +173,7 @@ const editAnimal = async (req, res) => {
     return res.status(200).json(animal);
   } catch (error) {
     console.log(error);
-    res.status(500).send("error at editAnimal");
+    return res.status(500).send("error at editAnimal");
   }
 };
 

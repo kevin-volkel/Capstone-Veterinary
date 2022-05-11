@@ -7,6 +7,14 @@ const MediaSchema = new Schema(
     media: {
       type: String,
       required: [true, 'Must provide a picture'],
+    },
+    type: {
+      type: String,
+      enum: [
+        "image",
+        "video"
+      ],
+      required: [true, 'Must provide a media type'],
     }
   },
   { timestamps: true }
