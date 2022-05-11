@@ -237,7 +237,8 @@ const Animal = ({ user, animalObj, errorLoading, animals }) => {
               onClose={() => setShowModal(false)}
             >
               <Modal.Content>
-                <AdoptAnimalModal 
+                <AdoptAnimalModal
+                  setShowModal={setShowModal}
                   animalObj={animalObj}
                 />
               </Modal.Content>
