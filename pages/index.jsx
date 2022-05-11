@@ -120,7 +120,7 @@ export default function Home({ user }) {
   useEffect(async () => {
     setLoading(true);
     await fetchEvents();
-    await fetchMedia();
+    // await fetchMedia();
     setLoading(false);
   }, []);
 
@@ -130,13 +130,13 @@ export default function Home({ user }) {
     setEvents(events);
   };
 
-  const fetchMedia = async () => {
-    // const res = await axios.get(`/api/v1/upload/media`);
-    // const media = res.data;
-    // console.log(media);
-    // if(media === null) return;
-    // setAdoptMedia(media);
-  };
+  // const fetchMedia = async () => {
+  //   const res = await axios.get(`/api/v1/upload/media`);
+  //   const media = res.data;
+  //   console.log(media);
+  //   if(media === null) return;
+  //   setAdoptMedia(media);
+  // };
 
   return (
     <div className="everything">
