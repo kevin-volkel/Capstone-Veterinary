@@ -1,6 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=ABeeZee&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Oxygen&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Space+Mono&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cabin&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Arimo&display=swap");
 html,
 body {
   height: 100vh;
@@ -118,8 +121,7 @@ a {
 #admin-animals .ui.grid .ui.card img {
   width: 100%;
   height: 200px;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 #admin-animals .no-animals {
   margin: 1.5rem;
@@ -279,8 +281,7 @@ body {
 #adoption .grid .ui.card img {
   width: 100%;
   height: 200px;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 #adoption .grid .ui.card .animal-header {
   font-size: 2rem;
@@ -409,8 +410,7 @@ body {
 
 .img-container {
   margin: 0;
-  -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
   overflow: hidden;
   margin: auto;
   display: flex;
@@ -461,15 +461,13 @@ body {
 .img-btn-left {
   left: 0;
   margin-left: 5rem !important;
-  -webkit-clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
-          clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
+  clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
 }
 
 .img-btn-right {
   right: 0;
   margin-right: 5rem !important;
-  -webkit-clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
-          clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
+  clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
 }
 
 .arrow {
@@ -658,7 +656,11 @@ html .nf-sect #home-upload .adopt-video {
 }
 /* LOGIN & REGISTER FORM CSS */
 .form-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
 }
 
@@ -742,6 +744,8 @@ html .nf-sect #home-upload .adopt-video {
 form#register {
     display: flex;
     flex-direction: column;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
   }
 }
@@ -878,8 +882,7 @@ div.animal-wrap {
 .pet-img {
   width: 70vw;
   height: 70vw;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 
 .para-desc {
@@ -941,8 +944,7 @@ h3 {
 .pet-gallery img {
   width: 65% !important;
   height: 250px !important;
-  -o-object-fit: cover !important;
-     object-fit: cover !important;
+  object-fit: cover !important;
   border-radius: 3%;
   min-width: 30vw;
 }
@@ -1126,8 +1128,7 @@ h3 {
   .pet-gallery img {
     padding: 0.5% !important;
     height: 300px !important;
-    -o-object-fit: cover !important;
-       object-fit: cover !important;
+    object-fit: cover !important;
   }
 }
 #add-animal i.close, #add-event i.close, #edit-animal i.close, #edit-event i.close, #adopt-modal i.close {
@@ -1293,7 +1294,6 @@ h3 {
 .changelog-container .log-container::-webkit-scrollbar {
   width: 10px;
   margin-right: 5px;
-  -webkit-transition: all 2s linear;
   transition: all 2s linear;
 }
 .changelog-container .log-container::-webkit-scrollbar-track {
@@ -1413,44 +1413,43 @@ h3 {
 }
 .event-modal-wrap .title-row .event-modal-title {
   color: #f06f1a;
-  text-transform: capitalize;
+  text-transform: uppercase;
   margin-bottom: 0.5rem;
   text-align: center;
   width: 100%;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 2rem;
 }
 .event-modal-wrap .event-modal-img {
   align-self: center;
   border-radius: 0.3rem;
 }
-.event-modal-wrap .event-modal-date {
-  color: #4D4D4D;
+.event-modal-wrap .event-meta {
+  color: #000000;
   margin: 0;
+  font-size: 1.1rem;
+  font-family: "Cabin", sans-serif;
+  letter-spacing: 0.6px;
+}
+.event-modal-wrap .event-modal-date {
   margin-top: 1rem;
 }
 .event-modal-wrap .event-modal-location {
-  color: #4D4D4D;
-  margin: 0;
   margin-top: 0.5rem;
 }
 .event-modal-wrap .event-modal-desc {
   color: #000;
-  margin-top: 1.5rem;
 }
 
-@media only screen and (min-width: 768px) {
-  #event-modal i.close {
-    font-size: 1.5rem;
-  }
-  #event-modal .event-modal-wrap {
-    margin-top: 2.5rem;
-  }
-}
 @media only screen and (min-width: 991px) {
-  #event-modal i.close {
-    top: 1.0535rem;
-    right: 1rem;
-    color: rgba(0, 0, 0, 0.87);
-    font-size: 1.8rem;
+  #event-modal .content .event-modal-wrap .event-modal-content {
+    display: flex;
+  }
+  #event-modal .content .event-modal-wrap .event-modal-content .event-modal-img {
+    width: 50%;
+  }
+  #event-modal .content .event-modal-wrap .event-modal-content .event-modal-text {
+    margin-left: 1rem;
   }
 }
 #image-modal {
@@ -1687,19 +1686,14 @@ h3 {
 }
 #event-slideshow .embla_viewport.is-draggable {
   cursor: move;
-  cursor: -webkit-grab;
   cursor: grab;
 }
 #event-slideshow .embla_viewport.is-dragging {
-  cursor: -webkit-grabbing;
   cursor: grabbing;
 }
 #event-slideshow .embla_container {
   display: flex;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  user-select: none;
   -webkit-touch-callout: none;
   -khtml-user-select: none;
   -webkit-tap-highlight-color: transparent;
@@ -1723,8 +1717,7 @@ h3 {
   min-height: 100%;
   width: 100%;
   transform: translate(-50%, -50%);
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 #event-slideshow .embla_button {
   outline: 0;
@@ -1992,8 +1985,7 @@ h3 {
   height: 70px;
 }
 #photo-upload img {
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   width: 70px;
   height: 70px;
 }
@@ -2058,55 +2050,49 @@ h3 {
 #admin-events .events-list .event-card:last-of-type {
   margin-bottom: 1rem;
 }
-#admin-events .events-list .event-card .event-title {
-  font-size: 1.1rem;
-  font-weight: bold;
-}
-#admin-events .events-list .event-card .event-desc {
-  font-size: 1.1rem;
-}
-#admin-events .events-list .event-card .event-date {
-  font-size: 0.8rem;
-}
-#admin-events .events-list .event-pic {
-  width: 40%;
-  margin: 0 1rem;
+#admin-events .events-list .event-card .event-content {
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
-#admin-events .events-list .event-pic img {
-  height: 100%;
-  -o-object-fit: contain;
-     object-fit: contain;
-}
-#admin-events .events-list .options {
-  width: 30px;
+#admin-events .events-list .event-card .event-content .event-pic {
+  width: 100%;
   display: flex;
-  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+#admin-events .events-list .event-card .event-content .event-pic img {
+  width: 80%;
+  max-height: 10rem;
+  object-fit: contain;
+}
+#admin-events .events-list .event-card .event-content .event-info .event-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  font-family: "Ubuntu", sans-serif;
+}
+#admin-events .events-list .event-card .event-content .event-info .event-desc {
+  font-size: 1.1rem;
+  font-family: "Arimo", sans-serif;
+}
+#admin-events .events-list .event-card .event-content .event-info .event-date {
+  font-size: 0.9rem;
+  font-family: "Cabin", sans-serif;
+  margin-bottom: 0.5rem;
+}
+#admin-events .events-list .event-card .options {
+  width: 0px;
+  display: flex;
+  align-items: flex-start;
   justify-content: flex-end;
 }
-#admin-events .events-list .options i {
+#admin-events .events-list .event-card .options i {
   font-size: 1.2em;
 }
-#admin-events .events-list .options .menu {
+#admin-events .events-list .event-card .options .menu {
   right: 10px;
   left: auto;
 }
 
-@media only screen and (max-width: 350px) {
-  #admin-events {
-    min-width: 280px;
-  }
-}
-@media only screen and (min-width: 550px) {
-  #admin-events .events-list .options i {
-    font-size: 1.5em;
-  }
-  #admin-events .events-list .options .menu .item {
-    font-size: 1.1rem;
-  }
-}
 @media only screen and (min-width: 768px) {
   #admin-events {
     width: 90vw;

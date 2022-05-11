@@ -16,10 +16,12 @@
     
     .event-modal-title{
       color: $clr-orange;
-      text-transform: capitalize;
+      text-transform: uppercase;
       margin-bottom: .5rem;
       text-align: center;
       width: 100%;
+      font-family: $bold-font;
+      font-size: 2rem;
     }
   }
 
@@ -28,41 +30,41 @@
     border-radius: .3rem;
   }
 
-  .event-modal-date{
-    color: #4D4D4D;
+  .event-meta{
+    color: #000000;
     margin: 0;
+    font-size: 1.1rem;
+    font-family: $text-font-1;
+    letter-spacing: 0.6px;
+  }
+
+  .event-modal-date{
     margin-top: 1rem;
   }
   .event-modal-location{
-    color: #4D4D4D;
-    margin: 0;
     margin-top: 0.5rem;
   }
   .event-modal-desc{
-    color: #000;
-    margin-top: 1.5rem;
+    color: #000; 
   }
 }
 
-@media only screen and (min-width: 768px) {
-  #event-modal{
-    i.close {
-      font-size: 1.5rem;
-    }
-
-    .event-modal-wrap{
-      margin-top: 2.5rem;
-    }
-  }
-}
 
 @media only screen and (min-width: 991px) {
   #event-modal{
-    i.close {
-      top: 1.0535rem;
-      right: 1rem;
-      color: rgba(0, 0, 0, 0.87);
-      font-size: 1.8rem;
+    .content{
+      .event-modal-wrap{
+        .event-modal-content{
+          display: flex;
+
+          .event-modal-img{
+            width: 50%;
+          }
+          .event-modal-text{
+            margin-left: 1rem;
+          }
+        }
+      }
     }
   }
 }

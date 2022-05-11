@@ -63,15 +63,15 @@ const adoptedEmail = async (req, res) => {
 
     const campus = student.class.campus;
 
-    const teacher = await UserModel.find({
+    const teachers = await UserModel.find({
       role: 'teacher',
       class: {
         campus: campus,
       },
     });
 
-    if (!teacher)
-      return res.status(400).send('No teacher found at this campus');
+    if (!teachers)
+      return res.status(400).send('No teachers found at this campus');
 
     const transporter = nodemailer.createTransport({
       service: 'gmail',
@@ -88,7 +88,7 @@ const adoptedEmail = async (req, res) => {
       const animalArr = otherAnimals.split(',').map((animal) => animal.trim())
       mailText += `They have ${animalArr.length} other animal${
         animalArr.length > 1
-          ? `s. These are ${animalArr.map((animal, i) => {
+          ? `s: ${animalArr.map((animal, i) => {
               if (i === animalArr.length - 1) {
                 return `and a ${animal}`;
               } else {
@@ -102,7 +102,7 @@ const adoptedEmail = async (req, res) => {
       const childrenArr = smallChildren.split(',').map((age) => age.trim())
       mailText += `They have ${childrenArr.length} ${
         childrenArr.length > 1
-          ? `small children, ${childrenArr.map((age, i) => {
+          ? `small children: ${childrenArr.map((age, i) => {
               if (i === childrenArr.length - 1) {
                 return `and a ${age} year old`;
               } else {
@@ -114,13 +114,12 @@ const adoptedEmail = async (req, res) => {
     }
     mailText += `\n"${aboutYou}"`
 
-
-    console.log(`Student: ${student.email}`)
-    console.log(`Teacher: ${teacher.email}`)
+    const emails = teachers.map( (teacher) => teacher.email)
+    
     const mailOptions = {
       from: 'sendtest06@gmail.com',
       to: student.email,
-      cc: teacher.email,
+      cc: emails,
       text: mailText
     };
 

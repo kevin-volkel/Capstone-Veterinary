@@ -55,19 +55,6 @@ const AdoptAnimalModal = ({ animalObj }) => {
     setLoading(false);
   };
 
-  const featuredOptions = [
-    {
-      text: 'No',
-      value: false,
-      key: 0,
-    },
-    {
-      text: 'Yes',
-      value: true,
-      key: 1,
-    },
-  ];
-
   return (
     <div className="form-wrap" id="adopt-modal">
       <Form loading={loading} error={errorMsg !== null} onSubmit={handleSubmit}>

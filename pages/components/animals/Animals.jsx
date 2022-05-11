@@ -45,20 +45,12 @@ const Animals = ({ animals, isAdmin }) => {
       value: 'young',
     },
     {
-      text: 'Middle-Age',
-      value: 'mid',
-    },
-    {
       text: 'Adult',
       value: 'adult',
     },
     {
       text: 'Senior',
       value: 'senior',
-    },
-    {
-      text: 'Unknown Age',
-      value: 'unknown'
     }
   ];
 
