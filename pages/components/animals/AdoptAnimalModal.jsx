@@ -75,6 +75,7 @@ const AdoptAnimalModal = ({ animalObj, setShowModal }) => {
             name='fullName'
             onChange={handleChange}
             type='text'
+            aria-label='Full Name Entry Box'
           />
           <Form.Input
             label='Phone Number'
@@ -84,6 +85,7 @@ const AdoptAnimalModal = ({ animalObj, setShowModal }) => {
             name='phoneNumber'
             onChange={handleChange}
             type='text'
+            aria-label='Phone number entry box'
           />
           <Form.Input
             label='Email'
@@ -93,6 +95,7 @@ const AdoptAnimalModal = ({ animalObj, setShowModal }) => {
             onChange={handleChange}
             type='email'
             placeholder='Email'
+            aria-label='email entry box'
           />
           <Form.TextArea
             label='About You'
@@ -101,6 +104,7 @@ const AdoptAnimalModal = ({ animalObj, setShowModal }) => {
             name='aboutYou'
             onChange={handleChange}
             type='text'
+            aria-label='about you entry box'
           />
           <div className='checkboxes'>
             <div className='checkbox-combo'>
@@ -110,6 +114,7 @@ const AdoptAnimalModal = ({ animalObj, setShowModal }) => {
                 name='haveOtherAnimals'
                 onChange={handleChange}
                 type='checkbox'
+                aria-label='check box for if you have other animals'
               />
               <Form.Input
                 label='Small Children'
@@ -117,6 +122,7 @@ const AdoptAnimalModal = ({ animalObj, setShowModal }) => {
                 name='haveSmallChildren'
                 onChange={handleChange}
                 type='checkbox'
+                aria-label='check box for if you have small children'
               />
             </div>
           </div>
@@ -130,6 +136,7 @@ const AdoptAnimalModal = ({ animalObj, setShowModal }) => {
                 type='text'
                 placeholder='Ex: Dog, Cat, Bird, etc.'
                 required
+                aria-label='What other animals do you have'
               />
             )}
             {newAdopt.haveSmallChildren && (
@@ -141,6 +148,7 @@ const AdoptAnimalModal = ({ animalObj, setShowModal }) => {
                 type='text'
                 placeholder='Ex: 4, 6, 7, 8'
                 required
+                aria-label='what are the ages of the children'
               />
             )}
           </div>
