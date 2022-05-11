@@ -3,10 +3,8 @@ import { Form, Button, Message, Divider } from 'semantic-ui-react';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import catchErrors from '../../util/catchErrors';
-import EventUpload from '../layout/EventUpload';
-import { addEvent } from '../../util/eventActions';
 
-const AdoptAnimalModal = ({ animalObj }) => {
+const AdoptAnimalModal = ({ animalObj, setShowModal }) => {
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState(null);
 
@@ -24,7 +22,7 @@ const AdoptAnimalModal = ({ animalObj }) => {
   const handleChange = (e) => {
     const { name, value, checked } = e.target;
 
-    if (name === "haveOtherAnimals" || name === "haveSmallChildren") {
+    if (name === 'haveOtherAnimals' || name === 'haveSmallChildren') {
       setNewAdopt((prev) => ({
         ...prev,
         [name]: checked,
@@ -53,114 +51,102 @@ const AdoptAnimalModal = ({ animalObj }) => {
       setErrorMsg(caughtErr);
     }
     setLoading(false);
+    setShowModal(false);
   };
 
-  const featuredOptions = [
-    {
-      text: 'No',
-      value: false,
-      key: 0,
-    },
-    {
-      text: 'Yes',
-      value: true,
-      key: 1,
-    },
-  ];
-
   return (
-    <div className="form-wrap" id="adopt-modal">
+    <div className='form-wrap' id='adopt-modal'>
       <Form loading={loading} error={errorMsg !== null} onSubmit={handleSubmit}>
         <Message
           error
-          header="Oops!"
+          header='Oops!'
           content={errorMsg}
           onDismiss={() => setErrorMsg(null)}
         />
         <div>
           <h1>Contact Us!</h1>
         </div>
-        <div id="form-group">
+        <div id='form-group'>
           <Form.Input
-            label="Name"
+            label='Name'
             required
-            placeholder="Full Name"
+            placeholder='Full Name'
             value={newAdopt.fullName}
-            name="fullName"
+            name='fullName'
             onChange={handleChange}
-            type="text"
+            type='text'
           />
           <Form.Input
-            label="Phone Number"
+            label='Phone Number'
             required
-            placeholder="000-000-0000"
+            placeholder='000-000-0000'
             value={newAdopt.phoneNumber}
-            name="phoneNumber"
+            name='phoneNumber'
             onChange={handleChange}
-            type="text"
+            type='text'
           />
           <Form.Input
-            label="Email"
+            label='Email'
             required
             value={newAdopt.email}
-            name="email"
+            name='email'
             onChange={handleChange}
-            type="email"
-            placeholder="Email"
+            type='email'
+            placeholder='Email'
           />
           <Form.TextArea
-            label="About You"
-            placeholder="Tell us about you!"
+            label='About You'
+            placeholder='Tell us about you!'
             value={newAdopt.aboutYou}
-            name="aboutYou"
+            name='aboutYou'
             onChange={handleChange}
-            type="text"
+            type='text'
           />
-          <div className="checkboxes">
-            <div className="checkbox-combo">
+          <div className='checkboxes'>
+            <div className='checkbox-combo'>
               <Form.Input
-                label="Other Animals"
+                label='Other Animals'
                 value={newAdopt.haveOtherAnimals}
-                name="haveOtherAnimals"
+                name='haveOtherAnimals'
                 onChange={handleChange}
-                type="checkbox"
+                type='checkbox'
               />
               <Form.Input
-                label="Small Children"
+                label='Small Children'
                 value={newAdopt.haveSmallChildren}
-                name="haveSmallChildren"
+                name='haveSmallChildren'
                 onChange={handleChange}
-                type="checkbox"
+                type='checkbox'
               />
             </div>
           </div>
-            <div className="checkbox-inputs">
-              {newAdopt.haveOtherAnimals && (
-                <Form.Input
-                  label="What types of animals do you have? (separate with a comma)"
-                  checked={newAdopt.otherAnimals}
-                  name="otherAnimals"
-                  onChange={handleChange}
-                  type="text"
-                  placeholder="Ex: Dog, Cat, Bird, etc."
-                  required
-                />
-              )}
-              {newAdopt.haveSmallChildren && (
-                <Form.Input
-                  label="What are the ages of these children? (separate with a comma)"
-                  checked={newAdopt.smallChildren}
-                  name="smallChildren"
-                  onChange={handleChange}
-                  type="text"
-                  placeholder="Ex: 4, 6, 7, 8"
-                  required
-                />
-              )}
-            </div>
+          <div className='checkbox-inputs'>
+            {newAdopt.haveOtherAnimals && (
+              <Form.Input
+                label='What types of animals do you have? (separate with a comma)'
+                checked={newAdopt.otherAnimals}
+                name='otherAnimals'
+                onChange={handleChange}
+                type='text'
+                placeholder='Ex: Dog, Cat, Bird, etc.'
+                required
+              />
+            )}
+            {newAdopt.haveSmallChildren && (
+              <Form.Input
+                label='What are the ages of these children? (separate with a comma)'
+                checked={newAdopt.smallChildren}
+                name='smallChildren'
+                onChange={handleChange}
+                type='text'
+                placeholder='Ex: 4, 6, 7, 8'
+                required
+              />
+            )}
+          </div>
         </div>
-        <div className="button-div">
-          <Button disabled={loading} id="add-event-btn" content="Done" fluid />
+        <div className='button-div'>
+          <Button disabled={loading} id='add-event-btn' content='Done' fluid />
         </div>
       </Form>
     </div>
