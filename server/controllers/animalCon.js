@@ -57,7 +57,7 @@ const addAnimal = async (req, res) => {
     const newLog = await LogModel.create({
       user: userId,
       action: 'added animal',
-      details: `${user.name} added the animal ${name}`
+      details: `${user.name} from ${user.class.campus} campus added the animal ${name}`
     })
 
 
@@ -137,7 +137,7 @@ const deleteAnimal = async (req, res) => {
     const newLog = await LogModel.create({
       user: userId,
       action: 'deleted animal',
-      details: `${user.name} deleted the animal ${animal.name}`
+      details: `${user.name} from ${user.class.campus} campus deleted the animal ${animal.name}`
     })
     console.log(newLog)
 
@@ -167,7 +167,7 @@ const editAnimal = async (req, res) => {
     const newLog = await LogModel.create({
       user: userId,
       action: 'changed animal',
-      details: `${user.name} changed the animal ${animal.name}`
+      details: `${user.name} from ${user.class.campus} campus changed the animal ${animal.name}`
     })
 
     return res.status(200).json(animal);
