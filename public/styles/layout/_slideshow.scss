@@ -259,6 +259,8 @@
 
 @media only screen and (min-width: 1024px) {
   #event-slideshow {
+    width: 70vw;
+    margin: auto;
     .embla_viewport {
       height: 44vw !important;
     }

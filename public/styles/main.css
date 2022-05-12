@@ -35,6 +35,8 @@ a {
 }
 #admin h1 {
   font-weight: bold;
+  display: inline-block;
+  position: relative;
 }
 #admin h1.ui.header, #admin h1.ui.header:first-child, #admin h1.ui.header:last-child {
   margin: 0;
@@ -45,13 +47,35 @@ a {
 #admin h1.ui.header:hover, #admin h1.ui.header:first-child:hover, #admin h1.ui.header:last-child:hover {
   color: #f06f1a;
 }
+#admin h1::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #f06f1a;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+#admin h1:hover::after, #admin h1.active::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+#admin h1.active {
+  color: #f06f1a;
+}
 #admin #header {
   display: flex;
   width: 80vw;
   margin: 1.75rem auto;
   flex-direction: row;
   justify-content: space-evenly;
-  gap: 5rem;
+  gap: 3rem;
+}
+#admin #header .header {
+  font-size: 1.6rem;
 }
 #admin #header h1.active {
   color: #f06f1a;
@@ -580,7 +604,7 @@ body {
   padding: 5% 3.75%;
   color: white;
   box-shadow: 2px 2px 5px #aaaaaa;
-  background-color: #f06f1a;
+  background-color: #d14900;
 }
 
 .ui.segment:first-child h1 {
@@ -2036,6 +2060,10 @@ h3 {
   }
 }
 @media only screen and (min-width: 1024px) {
+  #event-slideshow {
+    width: 70vw;
+    margin: auto;
+  }
   #event-slideshow .embla_viewport {
     height: 44vw !important;
   }
