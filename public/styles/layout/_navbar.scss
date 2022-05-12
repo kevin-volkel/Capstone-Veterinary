@@ -11,7 +11,7 @@
   align-items: center;
   // padding-top: 0.5rem;
   // border-bottom: 3px solid $clr-orange;
-  background: $clr-white-1;
+  background: white;
   transition: border 0.1s linear;
 
   &.showing {
@@ -37,7 +37,7 @@
   flex-direction: column;
   width: 100%;
   text-align: center;
-  background: $clr-white-1;
+  background: white;
   z-index: 9;
   border-bottom: solid 3px $clr-orange;
   position: absolute;
@@ -136,6 +136,8 @@
     align-items: center;
     padding: 0.1%;
     border-bottom: 2px solid $clr-orange;
+    background-color: white;
+    box-shadow: 10px 0 10px rgba(0, 0, 0, 0.269);
 
       .vet-logo{
         width: 6%;
