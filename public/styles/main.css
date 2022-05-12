@@ -1538,7 +1538,7 @@ h3 {
   .events-map .map-and-text p {
     padding-left: 5%;
     padding-right: 5%;
-    width: 40%;
+    width: 60%;
     font-size: 1.1rem;
     padding-bottom: 0;
     margin: 0;
@@ -1546,6 +1546,14 @@ h3 {
   .events-map .map-and-text .map {
     width: 50%;
     height: 30vw;
+  }
+  .events-map .map-and-text .allMaps .map1 {
+    width: 100%;
+    height: 32.75vw;
+  }
+  .events-map .map-and-text .allMaps .map2 {
+    width: 100%;
+    height: 32.75vw;
   }
 }
 #event-modal {
