@@ -77,10 +77,6 @@ a {
 #admin #header .header {
   font-size: 1.6rem;
 }
-#admin #header h1.active {
-  color: #f06f1a;
-  border-bottom: 2px solid #f06f1a;
-}
 
 #admin-animals {
   width: 95vw;
