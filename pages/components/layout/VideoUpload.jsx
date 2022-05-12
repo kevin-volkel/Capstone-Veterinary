@@ -89,6 +89,7 @@ const VideoUpload = ({
                   {videoPreview.map((video, i) => {
                     return (
                       <video
+                        controls
                         key={i}
                         style={{ maxWidth: "250px", objectFit: "scale-down" }}
                       >

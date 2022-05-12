@@ -100,14 +100,17 @@ const getMedia = async (req, res) => {
 
     if(!media.length) return res.status(200).json(null);
 
-    return res.status(200).json(media[0]);
+    let mediaSrc = media[0].media;
+    let mediaType = media[0].type;
+    // console.log(media[0]);
+    return res.status(200).json({media: mediaSrc, type: mediaType});;
   }catch(error){
     console.log(error);
     return res.status(500).send("error at getMedia")
   }
 }
 
-const changeMedia = async(req, res) => {
+const changeMedia = async (req, res) => {
   const {userId} = req.user;
   if (!userId) return res.status(404).send("no user with that ID");
 
@@ -116,12 +119,12 @@ const changeMedia = async(req, res) => {
     type
   } = req.body;
 
-  // console.log(`${media} media`);
-  // console.log(`${type} type`)
+  // console.log(media);
+  // console.log(type);
 
   try{
     const oldMedia = await MediaModel.findOne();
-    // console.log(`${oldMedia} oldMedia`);
+    // console.log(oldMedia);
 
     if(oldMedia !== null){
       await oldMedia.remove();
@@ -137,6 +140,8 @@ const changeMedia = async(req, res) => {
       action: 'changed adoption media',
       details: `${user.name} changed the adoption ${type}`
     })
+
+    // console.log(mediaCreated);
 
     return res.status(200).json(mediaCreated);
   }catch(error){
