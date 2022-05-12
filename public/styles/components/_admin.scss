@@ -29,8 +29,11 @@
     margin: 1.75rem auto;
     flex-direction: row;
     justify-content: space-evenly;
-    gap: 5rem;
-
+    gap: 3rem;
+    .header{
+      font-size: 1.6rem;
+    }
+    
     h1.active {
       color: $clr-orange;
       border-bottom: 2px solid $clr-orange;

@@ -6,10 +6,11 @@ import axios from 'axios';
 import { Header, Segment } from 'semantic-ui-react';
 import Animals from './components/animals/Animals';
 import Events from './components/events/Events';
+import Users from './components/users/Users'
 import { sortDates } from './util/dateFuncs';
 
-const admin = ({ user, animals, events }) => {
-  const [showEvents, setShowEvents] = useState(false);
+const admin = ({ user, animals, events, users }) => {
+  const [activePage, setActivePage] = useState('animals');
 
   return (
     <div id="admin">
@@ -18,38 +19,47 @@ const admin = ({ user, animals, events }) => {
           as="h1"
           role="link"
           tabIndex={1}
-          className={
-            !showEvents
-              ? "active"
-              : ""
-          }
-          onClick={() => setShowEvents(false)}
+          className={activePage === 'animals' ? 'active' : ''}
+          onClick={() => setActivePage('animals')}
         >
           Animals
         </Header>
+        {user.role === 'teacher' && (
+          <Header
+            as="h1"
+            role="link"
+            tabIndex={2}
+            className={activePage === 'users' ? 'active' : ''}
+            onClick={() => setActivePage('users')}
+          >
+            Users
+          </Header>
+        )}
 
         <Header
           as="h1"
           role="link"
-          tabIndex={2}
-          className={
-            showEvents
-              ? "active"
-              : ""
-          }
-          onClick={() => setShowEvents(true)}
+          tabIndex={3}
+          className={activePage === 'events' ? 'active' : ''}
+          onClick={() => setActivePage('events')}
         >
           Events
         </Header>
       </div>
-      {!showEvents ? (
+      {activePage === 'animals' ? (
         <Segment id="admin-animals">
           <Animals isAdmin={true} user={user} animals={animals} />
         </Segment>
-      ) : (
+      ) : activePage === 'events' ? (
         <Segment id="admin-events">
           <Events user={user} events={events} />
         </Segment>
+      ) : activePage === 'users' ? (
+        <Segment id="admin-users">
+          <Users users={users} />
+        </Segment>
+      ) : (
+        <></>
       )}
     </div>
   );
@@ -61,9 +71,9 @@ admin.getInitialProps = async ({ ctx }) => {
     const animalRes = await axios.get(`${baseURL}/api/v1/animal`);
     pageProps.animals = animalRes.data;
     const eventsRes = await axios.get(`${baseURL}/api/v1/event`);
-    // const sortedEvents = eventsRes.data.sort(sortDates);
-    // pageProps.events = sortedEvents;
     pageProps.events = eventsRes.data;
+    const usersRes = await axios.get(`${baseURL}/api/v1/user`);
+    pageProps.users = usersRes.data;
   } catch (err) {
     console.error(err);
     pageProps.errorLoading = err;
