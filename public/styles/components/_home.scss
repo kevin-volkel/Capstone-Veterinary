@@ -253,6 +253,10 @@
   box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
   width: 100%;
 
+  .adopt-image{
+    border-radius: 3%;
+  }
+
   h1 {
     display: flex;
     justify-content: center;
@@ -389,8 +393,9 @@
     .ui.segment.adopt-section {
       .nf-wholeSect {
         p {
-          margin-right: 2rem;
-          width: 200%;
+          margin-right: 3rem;
+          margin-left: 2rem;
+          width: 75%;
           font-size: 1rem;
         }
 

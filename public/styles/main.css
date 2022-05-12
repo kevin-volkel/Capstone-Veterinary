@@ -142,6 +142,15 @@ a {
   }
 }
 @media only screen and (min-width: 768px) {
+  #admin #header {
+    margin: 1.25rem auto;
+  }
+  #admin h1.ui.header,
+#admin h1.ui.header:first-child,
+#admin h1.ui.header:last-child {
+    font-size: 1.5rem;
+  }
+
   #admin-animals {
     width: 90vw;
   }
@@ -177,10 +186,8 @@ a {
   }
 }
 @media only screen and (min-width: 1024px) {
-  #admin h1.ui.header,
-#admin h1.ui.header:first-child,
-#admin h1.ui.header:last-child {
-    font-size: 2.8rem;
+  #admin #header {
+    margin: 2rem auto;
   }
   #admin #admin-animals {
     width: 70%;
@@ -548,6 +555,9 @@ body {
   box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
   width: 100%;
 }
+.ui.segment.adopt-section .adopt-image {
+  border-radius: 3%;
+}
 .ui.segment.adopt-section h1 {
   display: flex;
   justify-content: center;
@@ -649,8 +659,9 @@ html .nf-sect #home-upload .adopt-video {
     font-size: 1.2rem;
   }
   html .ui.segment.adopt-section .nf-wholeSect p {
-    margin-right: 2rem;
-    width: 200%;
+    margin-right: 3rem;
+    margin-left: 2rem;
+    width: 75%;
     font-size: 1rem;
   }
   html .ui.segment.adopt-section .nf-wholeSect .ui.button {
@@ -921,6 +932,19 @@ div.animal-wrap {
 .pet-description p {
   margin-bottom: 7%;
 }
+.pet-description .section-2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.pet-description .section-3 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
 
 h3 {
   margin-top: 0;
@@ -1066,6 +1090,7 @@ h3 {
   }
 
   .pet-description {
+    margin-left: 3rem;
     margin-bottom: 2.5%;
   }
   .pet-description h3 {
@@ -1078,7 +1103,7 @@ h3 {
     font-size: 1rem;
   }
   .pet-description .section-1 {
-    margin: 0;
+    margin: 0.5rem 0;
     display: flex;
     flex-direction: column;
     width: 90%;
@@ -1087,9 +1112,11 @@ h3 {
     display: flex;
     flex-direction: column;
     width: 100%;
+    justify-content: center;
+    align-items: center;
   }
   .pet-description .section-2 {
-    margin: 0;
+    margin: 0.5rem 0;
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -1098,9 +1125,11 @@ h3 {
     display: flex;
     flex-direction: column;
     width: 50%;
+    justify-content: center;
+    align-items: center;
   }
   .pet-description .section-3 {
-    margin: 0;
+    margin: 0.5rem 0;
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -1109,6 +1138,8 @@ h3 {
     display: flex;
     flex-direction: column;
     width: 50%;
+    justify-content: center;
+    align-items: center;
   }
 
   .pet-img {
@@ -1419,9 +1450,29 @@ h3 {
 }
 .events-map .map-and-text .map {
   display: flex;
+  flex-direction: column;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+.events-map .map-and-text .map .map1 {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-right: 0;
+  border: 1px solid rgb(183, 183, 183);
+  box-shadow: 2px 2px 4px rgb(213, 213, 213);
+  width: 100%;
+  height: 60vw;
+  border-radius: 3%;
+}
+.events-map .map-and-text .map .map2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-right: 0;
+  margin-top: 5%;
   border: 1px solid rgb(183, 183, 183);
   box-shadow: 2px 2px 4px rgb(213, 213, 213);
   width: 100%;
@@ -1439,9 +1490,38 @@ h3 {
     padding-bottom: 3%;
     font-size: 0.8rem;
   }
-  .events-map .map-and-text .map {
-    width: 80%;
-    height: 45vw;
+  .events-map .map-and-text .allMaps {
+    display: flex;
+    flex-direction: column;
+    margin-top: 0%;
+    margin-bottom: 0%;
+    width: 80vw;
+    height: 70vw;
+  }
+  .events-map .map-and-text .allMaps .map1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right: 0;
+    border: 1px solid rgb(183, 183, 183);
+    box-shadow: 2px 2px 4px rgb(213, 213, 213);
+    width: 100%;
+    height: 60vw;
+    border-radius: 3%;
+  }
+  .events-map .map-and-text .allMaps .map2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right: 0;
+    margin-top: 5%;
+    border: 1px solid rgb(183, 183, 183);
+    box-shadow: 2px 2px 4px rgb(213, 213, 213);
+    width: 100%;
+    height: 60vw;
+    border-radius: 3%;
   }
 }
 @media only screen and (min-width: 1024px) {
@@ -2174,9 +2254,6 @@ h3 {
 }
 
 @media only screen and (min-width: 768px) {
-  #admin-events {
-    width: 90vw;
-  }
   #admin-events .ui.button {
     font-size: 0.9rem;
   }
@@ -2188,6 +2265,13 @@ h3 {
   }
   #admin-events .events-list .event-card .event-date {
     font-size: 0.9rem;
+  }
+  #admin-events .events-list .event-card .event-desc {
+    line-height: 1rem;
+    font-size: 0.7rem !important;
+  }
+  #admin-events .events-list .event-content .event-pic {
+    width: 85vw;
   }
   #admin-events .events-list .options i {
     font-size: 1.1em;

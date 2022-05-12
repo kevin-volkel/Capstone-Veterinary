@@ -99,10 +99,21 @@ div.animal-wrap {
   }
 
   p {
-    // display: flex;
-    // justify-content: center;
-    // align-items: center;
     margin-bottom: 7%;
+  }
+
+  .section-2{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  .section-3{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
   }
 }
 
@@ -267,6 +278,7 @@ h3 {
   }
 
   .pet-description {
+    margin-left: 3rem;
     margin-bottom: 2.5%;
 
     h3 {
@@ -281,7 +293,7 @@ h3 {
     }
 
     .section-1 {
-      margin: 0;
+      margin: .5rem 0;
       display: flex;
       flex-direction: column;
       width: 90%;
@@ -291,11 +303,13 @@ h3 {
         display: flex;
         flex-direction: column;
         width: 100%;
+        justify-content: center;
+        align-items: center;
       }
     }
 
     .section-2 {
-      margin: 0;
+      margin: .5rem 0;
       display: flex;
       flex-direction: row;
       width: 100%;
@@ -304,11 +318,13 @@ h3 {
         display: flex;
         flex-direction: column;
         width: 50%;
+        justify-content: center;
+        align-items: center;
       }
     }
 
     .section-3 {
-      margin: 0;
+      margin: .5rem 0;
       display: flex;
       flex-direction: row;
       width: 100%;
@@ -317,6 +333,8 @@ h3 {
         display: flex;
         flex-direction: column;
         width: 50%;
+        justify-content: center;
+        align-items: center;
       }
     }
   }
@@ -344,3 +362,12 @@ h3 {
     }
   }
 }
+
+
+
+
+
+
+
+
+
