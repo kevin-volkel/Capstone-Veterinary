@@ -1164,51 +1164,108 @@ h3 {
        object-fit: cover !important;
   }
 }
-#add-animal i.close, #add-event i.close, #edit-animal i.close, #edit-event i.close, #adopt-modal i.close {
+#add-animal i.close,
+#add-event i.close,
+#edit-animal i.close,
+#edit-event i.close,
+#adopt-modal i.close {
   font-size: 1.5rem;
 }
-#add-animal .form-wrap, #add-event .form-wrap, #edit-animal .form-wrap, #edit-event .form-wrap, #adopt-modal .form-wrap {
+#add-animal .form-wrap,
+#add-event .form-wrap,
+#edit-animal .form-wrap,
+#edit-event .form-wrap,
+#adopt-modal .form-wrap {
   flex-direction: column;
 }
-#add-animal .form, #add-event .form, #edit-animal .form, #edit-event .form, #adopt-modal .form {
+#add-animal .form,
+#add-event .form,
+#edit-animal .form,
+#edit-event .form,
+#adopt-modal .form {
   width: 100%;
   padding: 0.5rem;
 }
-#add-animal .error.message i.close, #add-event .error.message i.close, #edit-animal .error.message i.close, #edit-event .error.message i.close, #adopt-modal .error.message i.close {
+#add-animal .error.message i.close,
+#add-event .error.message i.close,
+#edit-animal .error.message i.close,
+#edit-event .error.message i.close,
+#adopt-modal .error.message i.close {
   font-size: 1rem;
 }
-#add-animal h1, #add-event h1, #edit-animal h1, #edit-event h1, #adopt-modal h1 {
+#add-animal h1,
+#add-event h1,
+#edit-animal h1,
+#edit-event h1,
+#adopt-modal h1 {
   color: #f06f1a;
 }
-#add-animal .uploads, #add-event .uploads, #edit-animal .uploads, #edit-event .uploads, #adopt-modal .uploads {
+#add-animal .uploads,
+#add-event .uploads,
+#edit-animal .uploads,
+#edit-event .uploads,
+#adopt-modal .uploads {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   margin: 1rem 0;
 }
-#add-animal .field, #add-event .field, #edit-animal .field, #edit-event .field, #adopt-modal .field {
+#add-animal .field,
+#add-event .field,
+#edit-animal .field,
+#edit-event .field,
+#adopt-modal .field {
   font-size: 1.1rem;
 }
-#add-animal #event-group, #add-event #event-group, #edit-animal #event-group, #edit-event #event-group, #adopt-modal #event-group {
+#add-animal #event-group,
+#add-event #event-group,
+#edit-animal #event-group,
+#edit-event #event-group,
+#adopt-modal #event-group {
   display: flex;
   margin-bottom: 1em;
   justify-content: space-between;
   flex-wrap: wrap;
 }
-#add-animal #event-group .field, #add-animal #event-group #event-type, #add-event #event-group .field, #add-event #event-group #event-type, #edit-animal #event-group .field, #edit-animal #event-group #event-type, #edit-event #event-group .field, #edit-event #event-group #event-type, #adopt-modal #event-group .field, #adopt-modal #event-group #event-type {
+#add-animal #event-group .field,
+#add-animal #event-group #event-type,
+#add-event #event-group .field,
+#add-event #event-group #event-type,
+#edit-animal #event-group .field,
+#edit-animal #event-group #event-type,
+#edit-event #event-group .field,
+#edit-event #event-group #event-type,
+#adopt-modal #event-group .field,
+#adopt-modal #event-group #event-type {
   width: 100%;
 }
-#add-animal #event-group #event-type, #add-event #event-group #event-type, #edit-animal #event-group #event-type, #edit-event #event-group #event-type, #adopt-modal #event-group #event-type {
+#add-animal #event-group #event-type,
+#add-event #event-group #event-type,
+#edit-animal #event-group #event-type,
+#edit-event #event-group #event-type,
+#adopt-modal #event-group #event-type {
   margin-bottom: 1em;
 }
-#add-animal #event-group #event-type .field:last-child, #add-event #event-group #event-type .field:last-child, #edit-animal #event-group #event-type .field:last-child, #edit-event #event-group #event-type .field:last-child, #adopt-modal #event-group #event-type .field:last-child {
+#add-animal #event-group #event-type .field:last-child,
+#add-event #event-group #event-type .field:last-child,
+#edit-animal #event-group #event-type .field:last-child,
+#edit-event #event-group #event-type .field:last-child,
+#adopt-modal #event-group #event-type .field:last-child {
   margin-top: 0.5em;
 }
-#add-animal .button-div, #add-event .button-div, #edit-animal .button-div, #edit-event .button-div, #adopt-modal .button-div {
+#add-animal .button-div,
+#add-event .button-div,
+#edit-animal .button-div,
+#edit-event .button-div,
+#adopt-modal .button-div {
   display: flex;
   justify-content: center;
 }
-#add-animal .button-div .button, #add-event .button-div .button, #edit-animal .button-div .button, #edit-event .button-div .button, #adopt-modal .button-div .button {
+#add-animal .button-div .button,
+#add-event .button-div .button,
+#edit-animal .button-div .button,
+#edit-event .button-div .button,
+#adopt-modal .button-div .button {
   margin: 1rem 0 0;
   color: white;
   background-color: #f06f1a;
@@ -1216,24 +1273,42 @@ h3 {
 }
 
 @media only screen and (min-width: 768px) {
-  #add-animal h1, #add-event h1, #edit-animal h1, #edit-event h1 {
+  #add-animal h1,
+#add-event h1,
+#edit-animal h1,
+#edit-event h1 {
     font-size: 2rem;
   }
-  #add-animal .field, #add-event .field, #edit-animal .field, #edit-event .field {
+  #add-animal .field,
+#add-event .field,
+#edit-animal .field,
+#edit-event .field {
     font-size: 0.8rem;
   }
-  #add-animal .button-div .button, #add-event .button-div .button, #edit-animal .button-div .button, #edit-event .button-div .button {
+  #add-animal .button-div .button,
+#add-event .button-div .button,
+#edit-animal .button-div .button,
+#edit-event .button-div .button {
     font-size: 0.8rem;
   }
-  #add-animal .ui.icon.header, #add-event .ui.icon.header, #edit-animal .ui.icon.header, #edit-event .ui.icon.header {
+  #add-animal .ui.icon.header,
+#add-event .ui.icon.header,
+#edit-animal .ui.icon.header,
+#edit-event .ui.icon.header {
     font-size: 1.3rem;
   }
-  #add-animal .ui.icon.header .icon, #add-event .ui.icon.header .icon, #edit-animal .ui.icon.header .icon, #edit-event .ui.icon.header .icon {
+  #add-animal .ui.icon.header .icon,
+#add-event .ui.icon.header .icon,
+#edit-animal .ui.icon.header .icon,
+#edit-event .ui.icon.header .icon {
     font-size: 2.5em;
   }
 }
 @media only screen and (min-width: 991px) {
-  #add-animal i.close, #add-event i.close, #edit-animal i.close, #edit-event i.close {
+  #add-animal i.close,
+#add-event i.close,
+#edit-animal i.close,
+#edit-event i.close {
     top: 1.0535rem;
     right: 1rem;
     color: rgba(0, 0, 0, 0.87);
@@ -1241,41 +1316,34 @@ h3 {
   }
 }
 @media only screen and (min-width: 1024px) {
-  #add-animal h1, #add-event h1, #edit-animal h1, #edit-event h1 {
+  #add-animal h1,
+#add-event h1,
+#edit-animal h1,
+#edit-event h1 {
     font-size: 2.5rem;
   }
-  #add-animal .line, #add-event .line, #edit-animal .line, #edit-event .line {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    width: 100%;
-    margin-top: 0.5rem;
-  }
-  #add-animal .line div, #add-event .line div, #edit-animal .line div, #edit-event .line div {
-    min-width: 27vw;
-    margin: 0;
-    width: 23vw;
-  }
-  #add-animal .line input, #add-event .line input, #edit-animal .line input, #edit-event .line input {
-    margin: 0;
-  }
-  #add-animal .invisible, #add-event .invisible, #edit-animal .invisible, #edit-event .invisible {
-    opacity: 0;
-    font-size: 0.7rem;
-  }
-  #add-animal .invisible input, #add-event .invisible input, #edit-animal .invisible input, #edit-event .invisible input {
-    cursor: default;
-  }
-  #add-animal .button-div .button, #add-event .button-div .button, #edit-animal .button-div .button, #edit-event .button-div .button {
+  #add-animal .button-div .button,
+#add-event .button-div .button,
+#edit-animal .button-div .button,
+#edit-event .button-div .button {
     font-size: 1.2rem;
   }
-  #add-animal .field, #add-event .field, #edit-animal .field, #edit-event .field {
+  #add-animal .field,
+#add-event .field,
+#edit-animal .field,
+#edit-event .field {
     font-size: 1.2rem;
   }
-  #add-animal .ui.icon.header, #add-event .ui.icon.header, #edit-animal .ui.icon.header, #edit-event .ui.icon.header {
+  #add-animal .ui.icon.header,
+#add-event .ui.icon.header,
+#edit-animal .ui.icon.header,
+#edit-event .ui.icon.header {
     font-size: 1.5rem;
   }
-  #add-animal .ui.icon.header .icon, #add-event .ui.icon.header .icon, #edit-animal .ui.icon.header .icon, #edit-event .ui.icon.header .icon {
+  #add-animal .ui.icon.header .icon,
+#add-event .ui.icon.header .icon,
+#edit-animal .ui.icon.header .icon,
+#edit-event .ui.icon.header .icon {
     font-size: 3em;
   }
 }

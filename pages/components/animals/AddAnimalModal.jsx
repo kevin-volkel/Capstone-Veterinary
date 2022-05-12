@@ -395,15 +395,6 @@ const AddAnimalModal = ({ setAnimals, setShowModal }) => {
               onChange={handleChange}
               type='text'
             />
-            <Form.Input
-              label='Ȩ͔̫͚̦̯͍̟̓ͥR̨̺̲̠̭̳̖̣̀̄̏͗ͦ̃̿̎̿R̊ͥ̓ͩ͏̖͙͍͍Ó̹͕̞̳͙̱͓͐̀̕R̢̗̰̔̓̍ͪ͆͞
-              '
-              placeholder='Y̳̪̦͓͋͗͘ō̘͉̱̪̃̉̑̄̅̚u͚̲̍̋̆ ̻̩̜́ḧ̴̖́͆̔̂a͍̤̱ͪ̈͊̅̓͂͟v̜͖̼̬̰͑̓̽̉̄̄͐ͅȇ̯̹̮̍ ̝͛̃ͧ̑̈́̓̉f̩̫͎͓̭ͣ͆͗̚o̹̪͎̰̳̥u̠͔̖̪̫͔n͓ͅd ̸͔tͯͫ̀̋ͦ͢h̼̖̞ͯͯ͆ͭͬͨ͞ͅe͉͚͈̽̋̅ͧ ͋̋̋̌̂̽ͪ͟s̸̩͚̏̌͌e̞ͨc̜ͭr̶̮̾e̻͢ẗ̥͌ͨͯͫ̕'
-              className='invisible'
-              value={newAnimal.colors}
-              name='colors'
-              type='text'
-            />
           </div>
           <Form.TextArea
             label='Description'

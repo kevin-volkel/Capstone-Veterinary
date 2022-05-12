@@ -1,6 +1,10 @@
 @use "../themes/defaultTheme" as *;
 
-#add-animal, #add-event, #edit-animal, #edit-event, #adopt-modal {
+#add-animal,
+#add-event,
+#edit-animal,
+#edit-event,
+#adopt-modal {
   i.close {
     font-size: 1.5rem;
   }
@@ -33,21 +37,22 @@
     font-size: 1.1rem;
   }
 
-  #event-group{
+  #event-group {
     // style={{ display: "flex", margin: 0, justifyContent: 'space-between'}}
     display: flex;
     margin-bottom: 1em;
     justify-content: space-between;
     flex-wrap: wrap;
     // width: 100%;
-    .field, #event-type{
+    .field,
+    #event-type {
       width: 100%;
     }
 
-    #event-type{
+    #event-type {
       margin-bottom: 1em;
-      .field:last-child{
-        margin-top: .5em ;
+      .field:last-child {
+        margin-top: 0.5em;
       }
     }
   }
@@ -71,11 +76,12 @@
 //   }
 // }
 
-
-
 @media only screen and (min-width: 768px) {
-  #add-animal, #add-event, #edit-animal, #edit-event {
-    h1{
+  #add-animal,
+  #add-event,
+  #edit-animal,
+  #edit-event {
+    h1 {
       font-size: 2rem;
     }
 
@@ -84,21 +90,24 @@
     }
     .button-div {
       .button {
-        font-size: .8rem;
+        font-size: 0.8rem;
       }
     }
 
     .ui.icon.header {
       font-size: 1.3rem;
       .icon {
-      font-size: 2.5em;
+        font-size: 2.5em;
       }
     }
   }
 }
 
 @media only screen and (min-width: 991px) {
-  #add-animal, #add-event, #edit-animal, #edit-event {
+  #add-animal,
+  #add-event,
+  #edit-animal,
+  #edit-event {
     i.close {
       top: 1.0535rem;
       right: 1rem;
@@ -114,42 +123,42 @@
   //   margin-right: 2.5rem;
   //   justify-content: center;
   // }
-  #add-animal, #add-event, #edit-animal, #edit-event {
+  #add-animal,
+  #add-event,
+  #edit-animal,
+  #edit-event {
     h1 {
       font-size: 2.5rem;
     }
-    
-    .line{
-      display: flex;
-      flex-direction: row;
-      justify-content: space-evenly;
-      width: 100%;
-      margin-top: 0.5rem;
 
-      // min-width: 27vw;
-      
-      div {
-        min-width: 27vw;
-        margin: 0;
-        // margin-top: 0.5rem;
-        width: 23vw
-        
-      }
-      input {
-        margin: 0;
-        // width: 50%;
-      }
-    }
-    
-    .invisible{
-      opacity: 0;
-      font-size: 0.7rem;
-      input{
-        cursor: default
-      };
+    // .line {
+    //   display: flex;
+    //   flex-direction: row;
+    //   justify-content: space-between;
+    //   width: 100%;
+    //   margin-top: 0.5rem;
 
-    }
-    
+    //   // min-width: 27vw;
+
+    //   div {
+    //     min-width: 27vw;
+    //     margin: 0;
+    //     // margin-top: 0.5rem;
+    //     width: 23vw;
+    //   }
+    //   input {
+    //     margin: 0;
+    //     // width: 50%;
+    //   }
+    // }
+
+    // .invisible {
+    //   opacity: 0;
+    //   font-size: 0.7rem;
+    //   input {
+    //     cursor: default;
+    //   }
+    // }
 
     .button-div {
       .button {
@@ -161,9 +170,9 @@
       font-size: 1.2rem;
     }
 
-    .ui.icon.header{
+    .ui.icon.header {
       font-size: 1.5rem;
-      .icon{
+      .icon {
         font-size: 3em;
       }
     }

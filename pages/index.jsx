@@ -8,10 +8,11 @@ import EventSlideshow from "./components/events/EventSlideshow";
 import EventsSection from "./components/events/EventsSection";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Cookies from "js-cookie";
 import { sortDates } from "./util/dateFuncs";
 import EventModal from "./components/events/EventModal";
 import HomeUpload from "./components/layout/HomeUpload";
-import { baseURL } from "./util/auth";
+import catchErrors from "./util/catchErrors";
 
 //import "../styles/home.css";
 // import bannerPic from "../public/media/home-page-banner.jpg";
@@ -57,7 +58,9 @@ export default function Home({ user }) {
   const [loading, setLoading] = useState(false);
   const [events, setEvents] = useState([]);
 
-  const [adoptMedia, setAdoptMedia] = useState(null); // media
+  const [mediaURL, setMediaURL] = useState(null);
+  const [mediaType, setMediaType] = useState(null);
+
   const [mediaPreview, setMediaPreview] = useState(null);
   const [media, setMedia] = useState(null);
 
@@ -71,56 +74,68 @@ export default function Home({ user }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(adoptImage);
-    console.log(media);
-    console.log(mediaPreview);
 
-    // setLoading(true);
+    setLoading(true);
 
-    // let adoptPicUrl = "";
+    let newMediaUrl;
 
-    // try {
-    //   if (media !== null) {
-    //     const formData = new FormData();
-    //     formData.append("image", media, {
-    //       headers: {
-    //         "Content-Type": "multipart/form-data",
-    //       },
-    //     });
-    //     const res = await axios.post("/api/v1/upload", formData);
-    //     adoptPicUrl = res.data.src;
-    //   } else {
-    //     adoptPicUrl = adopt.src;
-    //   }
+    let type;
+    if (media !== null) {
+      type = media.type.substring(0, 5);
+    }
 
-    //   if (media !== null && !adoptPicUrl) throw new Error("Cloudinary Error");
+    try {
+      if (media !== null && type === "image") {
+        const formData = new FormData();
+        formData.append("image", media, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
+        const res = await axios.post("/api/v1/upload", formData);
+        newMediaUrl = res.data.src;
+      }
 
-    //   const res = await axios.post(
-    //     "/api/v1/upload/media",
-    //     { media },
-    //     {
-    //       headers: { Authorization: `Bearer ${Cookies.get("token")}` },
-    //     }
-    //   );
+      if (media !== null && type === "video") {
+        const formData = new FormData();
+        formData.append("video", media, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
+        const res = await axios.post("/api/v1/upload/videos", formData);
+        newMediaUrl = res.data.sources[0];
+      }
 
-    //  console.log(res.data);
+      if (media !== null && !newMediaUrl) throw new Error("Cloudinary Error");
 
-    //   setAdoptMedia(res.data);
+      const res = await axios.post(
+        "/api/v1/upload/media",
+        { media: newMediaUrl, type },
+        {
+          headers: { Authorization: `Bearer ${Cookies.get("token")}` },
+        }
+      );
 
-    //   setMedia(null);
-    //   setMediaPreview(null);
-    // } catch (err) {
-    //   console.log(err);
-    //   let caughtErr = catchErrors(err);
-    //   setErrorMsg(caughtErr);
-    // }
-    // setLoading(false);
+      console.log(res.data);
+
+      setMediaURL(res.data.media);
+      setMediaType(res.data.type);
+
+      setMedia(null);
+      setMediaPreview(null);
+    } catch (err) {
+      console.log(err);
+      catchErrors(err);
+    }
+
+    setLoading(false);
   };
 
   useEffect(async () => {
     setLoading(true);
     await fetchEvents();
-    // await fetchMedia();
+    await fetchMedia();
     setLoading(false);
   }, []);
 
@@ -130,13 +145,19 @@ export default function Home({ user }) {
     setEvents(events);
   };
 
-  // const fetchMedia = async () => {
-  //   const res = await axios.get(`/api/v1/upload/media`);
-  //   const media = res.data;
-  //   console.log(media);
-  //   if(media === null) return;
-  //   setAdoptMedia(media);
-  // };
+  const fetchMedia = async () => {
+    const res = await axios.get(`/api/v1/upload/media`);
+    if (res.data === null) return;
+
+    let media = res.data.media;
+    let type = res.data.type;
+
+    console.log(media);
+    console.log(type);
+
+    setMediaURL(media);
+    setMediaType(type);
+  };
 
   return (
     <div className="everything">
@@ -179,27 +200,16 @@ export default function Home({ user }) {
           <h1 className="nf-title">Find a New Friend!</h1>
           <div className="nf-wholeSect">
             <div className="nf-sect">
-              {user ? (
-                // <HomeUpload
-                //   adoptMedia={adoptMedia}
-                //   media={media}
-                //   mediaType={adoptMedia.type}
-                //   handleChange={handleChange}
-                //   mediaPreview={mediaPreview}
-                //   defaultHomePic={adopt.src}
-                //   handleSubmit={handleSubmit}
-                // />
-                <></>
-              ) : (
-                <Image
-                  src={adoptMedia === null ? adopt : adoptMedia}
-                  // src={adopt}
-                  position="relative"
-                  className="adopt-image"
-                  objectFit="contain"
-                  alt="adopt image"
-                />
-              )}
+              <HomeUpload
+                user={user || null}
+                mediaURL={mediaURL}
+                media={media}
+                mediaType={mediaType}
+                handleChange={handleChange}
+                mediaPreview={mediaPreview}
+                defaultHomePic={adopt.src}
+                handleSubmit={handleSubmit}
+              />
               <p>
                 At vero eos et accus et iusto odio dignissimos ducimus qui
                 blanditiis praesentium voluptatum deleniti atque corrupti quosi
