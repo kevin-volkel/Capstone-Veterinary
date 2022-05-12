@@ -1,8 +1,8 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import { baseURL } from './util/auth';
-import { useRouter } from 'next/router';
-import { deleteAnimal } from './util/animalActions';
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { baseURL } from "./util/auth";
+import { useRouter } from "next/router";
+import { deleteAnimal } from "./util/animalActions";
 
 import {
   Grid,
@@ -12,10 +12,10 @@ import {
   Modal,
   Header,
   Popup,
-} from 'semantic-ui-react';
-import ImageModal from './components/layout/ImageModal';
-import AdoptAnimalModal from './components/animals/AdoptAnimalModal';
-import EditAnimalModal from './components/animals/EditAnimalModal';
+} from "semantic-ui-react";
+import ImageModal from "./components/layout/ImageModal";
+import AdoptAnimalModal from "./components/animals/AdoptAnimalModal";
+import EditAnimalModal from "./components/animals/EditAnimalModal";
 
 const Animal = ({ user, animalObj, errorLoading, animals }) => {
   const router = useRouter();
@@ -30,13 +30,13 @@ const Animal = ({ user, animalObj, errorLoading, animals }) => {
 
   useEffect(() => {
     if (errorLoading !== null) {
-      router.push('/');
+      router.push("/");
     }
   }, []);
 
   const handleKeyPress = (e, pic) => {
     const { code } = e;
-    if (code === 'Enter') {
+    if (code === "Enter") {
       setShowImage(pic);
       setShowImageModal(true);
     }
@@ -52,7 +52,7 @@ const Animal = ({ user, animalObj, errorLoading, animals }) => {
           //   name: "close",
           //   onClick: setShowImageModal(false),
           // }}
-          id='image-modal'
+          id="image-modal"
           closeIcon
           closeOnDimmerClick
           onClose={() => setShowImageModal(false)}
@@ -64,7 +64,7 @@ const Animal = ({ user, animalObj, errorLoading, animals }) => {
       )}
       {showEdit && (
         <Modal
-          id='edit-animal'
+          id="edit-animal"
           open={showEdit}
           closeIcon
           closeOnDimmerClick
@@ -79,24 +79,24 @@ const Animal = ({ user, animalObj, errorLoading, animals }) => {
           </Modal.Content>
         </Modal>
       )}
-      <div className='page-wrap'>
-        <div className='animal-wrap'>
+      <div className="page-wrap">
+        <div className="animal-wrap">
           <div
-            className='top-btns'
-            style={{ display: 'flex', justifyContent: 'space-between' }}
+            className="top-btns"
+            style={{ display: "flex", justifyContent: "space-between" }}
           >
             {user ? (
               <div
-                onClick={() => router.push('/admin')}
-                style={{ cursor: 'pointer' }}
+                onClick={() => router.push("/admin")}
+                style={{ cursor: "pointer" }}
               >
-                <Icon name='arrow left' />
+                <Icon name="arrow left" />
                 Back to Admin
               </div>
             ) : (
-              <div style={{ cursor: 'pointer' }}>
-                <Icon name='arrow left' />
-                <a href='/animals'>Back to Adoption</a>
+              <div style={{ cursor: "pointer" }}>
+                <Icon name="arrow left" />
+                <a href="/animals">Back to Adoption</a>
               </div>
             )}
             {user && (
@@ -104,59 +104,59 @@ const Animal = ({ user, animalObj, errorLoading, animals }) => {
                 <Icon
                   circular
                   inverted
-                  id='edit-1'
-                  name='pencil alternate'
-                  style={{ cursor: 'pointer' }}
+                  id="edit-1"
+                  name="pencil alternate"
+                  style={{ cursor: "pointer" }}
                   onClick={() => setShowEdit(true)}
                 />
                 <Popup
-                  on='click'
-                  position='top right'
-                  className='delete-popup'
+                  on="click"
+                  position="top right"
+                  className="delete-popup"
                   trigger={
                     <Icon
                       circular
                       inverted
-                      id='edit-2'
-                      color='red'
-                      name='trash'
-                      style={{ cursor: 'pointer' }}
+                      id="edit-2"
+                      color="red"
+                      name="trash"
+                      style={{ cursor: "pointer" }}
                     />
                   }
                 >
-                  <Header as='h4' content='Are you sure?' />
+                  <Header as="h4" content="Are you sure?" />
                   <p>This action is irreversable!</p>
 
                   <Button
-                    color='red'
-                    icon='trash'
-                    content='Delete'
+                    color="red"
+                    icon="trash"
+                    content="Delete"
                     onClick={() => {
                       deleteAnimal(animalObj._id, setAnimals);
-                      router.push('/admin');
+                      router.push("/admin");
                     }}
                   />
                 </Popup>
               </div>
             )}
           </div>
-          <h1 className='pet-name'>{animalObj.name}</h1>
+          <h1 className="pet-name">{animalObj.name}</h1>
           <img
             src={animalObj.picURLs[0]}
             alt={`${animalObj.name} image`}
-            className='pet-img'
+            className="pet-img"
           />
-          <div className='para-desc' style={{ flexDirection: 'column' }}>
-            {user && <p>Cared for by {animalObj.user.name}</p>}
+          <div className="para-desc" style={{ flexDirection: "column" }}>
+            {user && <p>Added by {animalObj.user.name}</p>}
             <p>
-              {animalObj.type} | {animalObj.gender} | {animalObj.age} |{' '}
-              {animalObj.breed !== 'unspecified' && `${animalObj.breed} | `}
+              {animalObj.type} | {animalObj.gender} | {animalObj.age} |{" "}
+              {animalObj.breed !== "unspecified" && `${animalObj.breed} | `}
               {animalObj.location} campus
             </p>
           </div>
-          <h2 className='pet-title'>About me!</h2>
-          <div className='pet-description'>
-            <div className='section-1'>
+          <h2 className="pet-title">About me!</h2>
+          <div className="pet-description">
+            <div className="section-1">
               {animalObj.desc && (
                 <div>
                   <h3>Description</h3>
@@ -170,7 +170,7 @@ const Animal = ({ user, animalObj, errorLoading, animals }) => {
                 </div>
               )}
             </div>
-            <div className='section-2'>
+            <div className="section-2">
               {animalObj.colors && (
                 <div>
                   <h3>Color(s)</h3>
@@ -179,36 +179,36 @@ const Animal = ({ user, animalObj, errorLoading, animals }) => {
               )}
               <div>
                 <h3>Vaccinations Up To Date?</h3>
-                <p>{animalObj.vaccs === true ? 'Yes' : 'No'}</p>
+                <p>{animalObj.vaccs === true ? "Yes" : "No"}</p>
               </div>
             </div>
-            <div className='section-3'>
+            <div className="section-3">
               <div>
                 <h3>Neutered or Spayed?</h3>
-                <p>{animalObj.neutered === true ? 'Yes' : 'No'}</p>
+                <p>{animalObj.neutered === true ? "Yes" : "No"}</p>
               </div>
               {animalObj.needs === true && (
                 <div>
-                  <h3>{animalObj.specialNeeds ? 'Special Needs' : ''}</h3>
+                  <h3>{animalObj.specialNeeds ? "Special Needs" : ""}</h3>
                   <p>{animalObj.specialNeeds}</p>
                 </div>
               )}
             </div>
           </div>
 
-          <h3 className='gallery-title'>Gallery</h3>
+          <h3 className="gallery-title">Gallery</h3>
 
           {animalObj.picURLs.length && (
-            <Grid className='pet-gallery' style={{ display: 'flex' }}>
+            <Grid className="pet-gallery" style={{ display: "flex" }}>
               {animalObj.picURLs.map((pic, index) => {
                 return (
                   <Image
                     tabIndex={0}
                     key={index}
                     style={{
-                      width: '250px',
-                      height: 'auto',
-                      cursor: 'pointer',
+                      width: "250px",
+                      height: "auto",
+                      cursor: "pointer",
                     }}
                     src={pic}
                     onKeyDown={(e) => handleKeyPress(e, pic)}
@@ -222,15 +222,36 @@ const Animal = ({ user, animalObj, errorLoading, animals }) => {
               })}
             </Grid>
           )}
+
+          {animalObj.vidURLs.length !== 0 && (
+            <>
+              <h3 className="gallery-title" style={{marginTop: "4rem"}}>Videos</h3>
+              <Grid className="pet-gallery" style={{ display: "flex" }}>
+                {animalObj.vidURLs.map((vid, index) => {
+                  return (
+                    <video
+                      tabIndex={0}
+                      controls
+                      key={index}
+                      style={{ maxWidth: "250px", objectFit: "scale-down" }}
+                    >
+                      <source src={vid} key={index} />
+                      Your browser does not support the video tag.
+                    </video>
+                  );
+                })}
+              </Grid>
+            </>
+          )}
           <Button
-            id='interested-button'
+            id="interested-button"
             onClick={() => setShowModal(true)}
-            content='Adopt'
+            content="Adopt"
             fluid
           />
           {showModal && (
             <Modal
-              id='add-event'
+              id="add-event"
               open={showModal}
               closeIcon
               closeOnDimmerClick

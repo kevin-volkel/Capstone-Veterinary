@@ -2131,6 +2131,7 @@ h3 {
 #admin-events .events-list .event-card .event-content {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 #admin-events .events-list .event-card .event-content .event-pic {
   width: 100%;
