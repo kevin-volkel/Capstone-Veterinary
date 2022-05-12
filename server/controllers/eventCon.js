@@ -22,6 +22,7 @@ const addEvent = async (req, res) => {
 
     if(bannerPic) newEvent.bannerPic = bannerPic;
 
+
     const event = await new EventModel(newEvent).save();
     const eventCreated = await EventModel.findById(event._id).populate("user");
 

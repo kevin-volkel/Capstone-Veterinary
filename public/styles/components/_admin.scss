@@ -139,10 +139,21 @@
 //TABLET
 @media only screen and (min-width: 768px) {
 
+  #admin {
+    #header{
+      margin: 1.25rem auto;
+    }
+    h1.ui.header,
+    h1.ui.header:first-child,
+    h1.ui.header:last-child {
+      font-size: 1.5rem;
+    }
+  }
+
   #admin-animals {
     width: 90vw;
 
-    .button{
+    .button {
       font-size: .9rem;
     }
 
@@ -162,10 +173,12 @@
         padding-bottom: 7px;
         font-size: .80rem;
       }
-      #gender{
+
+      #gender {
         font-size: .80rem;
       }
-      #age{
+
+      #age {
         font-size: .80rem;
       }
 
@@ -186,17 +199,21 @@
 @media only screen and (min-width: 1024px) {
   #admin {
 
-    h1.ui.header,
-    h1.ui.header:first-child,
-    h1.ui.header:last-child {
-      font-size: 2.8rem;
+    // h1.ui.header,
+    // h1.ui.header:first-child,
+    // h1.ui.header:last-child {
+    //   font-size: 2.8rem;
+    // }
+
+    #header{
+      margin: 2rem auto;
     }
 
     #admin-animals {
       width: 70%;
       align-self: center;
 
-      .ui.button{
+      .ui.button {
         font-size: 1.2rem;
       }
 

@@ -9,6 +9,7 @@ const EventSchema = new Schema(
     },
     desc: {
       type: String,
+      minLength: [25, 'must be at least 25 characters'],
     },
     date: {
       type: Date,
