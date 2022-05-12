@@ -1,4 +1,4 @@
-@use "../themes/defaultTheme"as *;
+@use "../themes/defaultTheme" as *;
 
 #admin {
   display: flex;
@@ -8,6 +8,8 @@
 
   h1 {
     font-weight: bold;
+    display: inline-block;
+    position: relative;
 
     &.ui.header,
     &.ui.header:first-child,
@@ -21,6 +23,27 @@
         color: $clr-orange;
       }
     }
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      transform: scaleX(0);
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: $clr-orange;
+      transform-origin: bottom right;
+      transition: transform 0.25s ease-out;
+    }
+    &:hover::after,
+    &.active::after {
+      transform: scaleX(1);
+      transform-origin: bottom left;
+    }
+    &.active {
+      color: $clr-orange;
+    }
   }
 
   #header {
@@ -30,11 +53,6 @@
     flex-direction: row;
     justify-content: space-evenly;
     gap: 5rem;
-
-    h1.active {
-      color: $clr-orange;
-      border-bottom: 2px solid $clr-orange;
-    }
   }
 }
 
@@ -126,7 +144,7 @@
   }
 }
 
-.ui.button>.icon:not(.button) {
+.ui.button > .icon:not(.button) {
   opacity: 1;
 }
 
@@ -138,9 +156,8 @@
 
 //TABLET
 @media only screen and (min-width: 768px) {
-
   #admin {
-    #header{
+    #header {
       margin: 1.25rem auto;
     }
     h1.ui.header,
@@ -154,7 +171,7 @@
     width: 90vw;
 
     .button {
-      font-size: .9rem;
+      font-size: 0.9rem;
     }
 
     .sort-div {
@@ -164,22 +181,22 @@
 
       .ui.selection.dropdown {
         min-width: 2em;
-        font-size: .85rem;
+        font-size: 0.85rem;
       }
     }
 
     .ui.card {
       #type {
         padding-bottom: 7px;
-        font-size: .80rem;
+        font-size: 0.8rem;
       }
 
       #gender {
-        font-size: .80rem;
+        font-size: 0.8rem;
       }
 
       #age {
-        font-size: .80rem;
+        font-size: 0.8rem;
       }
 
       .animal-header {
@@ -198,14 +215,13 @@
 //DESKTOP
 @media only screen and (min-width: 1024px) {
   #admin {
-
     // h1.ui.header,
     // h1.ui.header:first-child,
     // h1.ui.header:last-child {
     //   font-size: 2.8rem;
     // }
 
-    #header{
+    #header {
       margin: 2rem auto;
     }
 

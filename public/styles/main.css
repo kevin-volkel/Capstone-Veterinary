@@ -35,6 +35,8 @@ a {
 }
 #admin h1 {
   font-weight: bold;
+  display: inline-block;
+  position: relative;
 }
 #admin h1.ui.header, #admin h1.ui.header:first-child, #admin h1.ui.header:last-child {
   margin: 0;
@@ -45,6 +47,25 @@ a {
 #admin h1.ui.header:hover, #admin h1.ui.header:first-child:hover, #admin h1.ui.header:last-child:hover {
   color: #f06f1a;
 }
+#admin h1::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #f06f1a;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+#admin h1:hover::after, #admin h1.active::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+#admin h1.active {
+  color: #f06f1a;
+}
 #admin #header {
   display: flex;
   width: 80vw;
@@ -52,10 +73,6 @@ a {
   flex-direction: row;
   justify-content: space-evenly;
   gap: 5rem;
-}
-#admin #header h1.active {
-  color: #f06f1a;
-  border-bottom: 2px solid #f06f1a;
 }
 
 #admin-animals {
