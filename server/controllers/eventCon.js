@@ -1,5 +1,6 @@
 const EventModel = require('../models/EventModel');
 const UserModel = require('../models/UserModel');
+const { addLog } = require('../middleware/addLog');
 const LogModel = require('../models/LogModel');
 
 const addEvent = async (req, res) => {
@@ -25,11 +26,11 @@ const addEvent = async (req, res) => {
 
     const user = await UserModel.findById(userId);
 
-    const newLog = await LogModel.create({
-      user: userId,
-      action: 'added event',
-      details: `${user.name} from ${user.class.campus} campus created the event ${title}`,
-    });
+    const newLog = await addLog(
+      userId,
+      'added event',
+      `${user.name} from ${user.class.campus} campus created the event ${title}`
+    );
     // console.log(newLog)
 
     return res.status(200).json(eventCreated);
@@ -99,13 +100,11 @@ const deleteEvent = async (req, res) => {
     }
     await event.remove();
 
-    const newLog = await LogModel.create({
-      user: userId,
-      action: 'deleted event',
-      details: `${user.name} from ${user.class.campus} campus deleted the event ${event.title}`,
-    });
-
-    console.log(newLog);
+    const newLog = await addLog(
+      userId,
+      'deleted event',
+      `${user.name} from ${user.class.campus} campus deleted the event ${event.title}`
+    );
 
     return res.status(200).send('event succesfully removed');
   } catch (error) {
@@ -128,11 +127,12 @@ const editEvent = async (req, res) => {
     const user = await UserModel.findById(userId);
 
     if (!event) return res.status(404).send('event not found');
-    const newLog = await LogModel.create({
-      user: userId,
-      action: 'changed event',
-      details: `${user.name} from ${user.class.campus} campus changed the event  ${event.title}`,
-    });
+
+    const newLog = await addLog(
+      userId,
+      'changed event',
+      `${user.name} from ${user.class.campus} campus changed the event  ${event.title}`
+    );
 
     return res.status(200).json(event);
   } catch (error) {

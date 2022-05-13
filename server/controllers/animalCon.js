@@ -1,13 +1,13 @@
-const AnimalModel = require("../models/AnimalModel");
-const UserModel = require("../models/UserModel");
+const AnimalModel = require('../models/AnimalModel');
+const UserModel = require('../models/UserModel');
 const LogModel = require('../models/LogModel');
-
+const { addLog } = require('../middleware/addLog');
 
 //? adds an animal, no params
 const addAnimal = async (req, res) => {
   const userId = req.user.userId;
 
-  if (!userId) return res.status(404).send("no user with that ID");
+  if (!userId) return res.status(404).send('no user with that ID');
 
   const {
     name,
@@ -49,32 +49,30 @@ const addAnimal = async (req, res) => {
 
     const animal = await new AnimalModel(newAnimal).save();
     const animalCreated = await AnimalModel.findById(animal._id).populate(
-      "user"
+      'user'
     );
 
-    const user = await UserModel.findById(userId)
+    const user = await UserModel.findById(userId);
 
-    const newLog = await LogModel.create({
-      user: userId,
-      action: 'added animal',
-      details: `${user.name} from ${user.class.campus} campus added the animal ${name}`
-    })
-
+    const newLog = await addLog(
+      userId,
+      'added animal',
+      `${user.name} from ${user.class.campus} campus added the animal ${name}`
+    );
 
     return res.status(200).json(animalCreated);
   } catch (error) {
     console.log(error);
-    return res.status(500).send("error at addAnimal");
+    return res.status(500).send('error at addAnimal');
   }
 };
 
 //? gets all animals, no params
 const getAllAnimals = async (req, res) => {
-
   try {
     let animals = await AnimalModel.find()
       .sort({ createdAt: -1 })
-      .populate("user");
+      .populate('user');
     // if (pageNumber === 1) {
     //   animals = await AnimalModel.find()
     //     .limit(size)
@@ -92,7 +90,7 @@ const getAllAnimals = async (req, res) => {
     return res.status(200).json(animals);
   } catch (error) {
     console.log(error);
-    return res.status(500).send("Error at getAnimals");
+    return res.status(500).send('Error at getAnimals');
   }
 };
 
@@ -102,14 +100,14 @@ const getAllAnimals = async (req, res) => {
 const getAnimal = async (req, res) => {
   const { id: animalId } = req.params;
   try {
-    const animal = await AnimalModel.findById(animalId).populate("user");
+    const animal = await AnimalModel.findById(animalId).populate('user');
 
-    if (!animal) return res.status(404).send("animal not found");
+    if (!animal) return res.status(404).send('animal not found');
 
     return res.status(200).json(animal);
   } catch (error) {
     console.log(error);
-    return res.status(500).send("error at getAnimal");
+    return res.status(500).send('error at getAnimal');
   }
 };
 
@@ -120,31 +118,30 @@ const deleteAnimal = async (req, res) => {
     const { id: animalId } = req.params;
 
     const animal = await AnimalModel.findById(animalId);
-    if (!animal) return res.status(404).send("animal not found");
+    if (!animal) return res.status(404).send('animal not found');
 
     const user = await UserModel.findById(userId);
 
     if (animal.user.toString() !== userId) {
-      if (user.role === "student" || user.role === "teacher") {
+      if (user.role === 'student' || user.role === 'teacher') {
         await animal.remove();
-        return res.status(200).send("animal succesfully removed");
+        return res.status(200).send('animal succesfully removed');
       } else {
-        return res.status(401).send("Unauthorized");
+        return res.status(401).send('Unauthorized');
       }
     }
     await animal.remove();
 
-    const newLog = await LogModel.create({
-      user: userId,
-      action: 'deleted animal',
-      details: `${user.name} from ${user.class.campus} campus deleted the animal ${animal.name}`
-    })
-    console.log(newLog)
+    const newLog = await addLog(
+      userId,
+      'deleted animal',
+      `${user.name} from ${user.class.campus} campus deleted the animal ${animal.name}`
+    );
 
-    return res.status(200).send("animal succesfully removed");
+    return res.status(200).send('animal succesfully removed');
   } catch (error) {
     console.log(error);
-    return res.status(500).send("error at deleteAnimal");
+    return res.status(500).send('error at deleteAnimal');
   }
 };
 
@@ -158,22 +155,22 @@ const editAnimal = async (req, res) => {
       { _id: animalId, createdBy: userId },
       req.body,
       { new: true, runValidators: true }
-    ).populate("user");
+    ).populate('user');
 
-    if (!animal) return res.status(404).send("animal not found");
+    if (!animal) return res.status(404).send('animal not found');
 
-    const user = await UserModel.findById(userId)
+    const user = await UserModel.findById(userId);
 
-    const newLog = await LogModel.create({
-      user: userId,
-      action: 'changed animal',
-      details: `${user.name} from ${user.class.campus} campus changed the animal ${animal.name}`
-    })
+    const newLog = await addLog(
+      userId,
+      'changed animal',
+      `${user.name} from ${user.class.campus} campus changed the animal ${animal.name}`
+    );
 
     return res.status(200).json(animal);
   } catch (error) {
     console.log(error);
-    return res.status(500).send("error at editAnimal");
+    return res.status(500).send('error at editAnimal');
   }
 };
 
