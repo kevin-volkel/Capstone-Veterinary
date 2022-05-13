@@ -1,11 +1,13 @@
-import React from 'react'
+import React from "react";
+import UserCard from "./UserCard";
 
-const Users = ({users}) => {
+const Users = ({users, user}) => {
   return <>
-    {users.map( (user) => (
-      <h2>{user.name}</h2>
+    <h4>{user.name}</h4>
+    {users.map((student) => (
+      <UserCard user={student} />
     ))}
   </>
 }
 
-export default Users
+export default Users;

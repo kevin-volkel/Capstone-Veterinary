@@ -1,4 +1,4 @@
-@use '../themes/defaultTheme' as *;
+@use "../themes/defaultTheme" as *;
 
 #admin-events {
   width: 95vw;
@@ -18,7 +18,7 @@
     margin-bottom: 1rem;
 
     &::after {
-      content: '';
+      content: "";
       position: absolute;
       width: 100%;
       transform: scaleX(0);
@@ -139,19 +139,21 @@
     .events-list {
       .event-card {
         line-height: 1.5rem;
-        .event-title {
-          font-size: 1.3rem;
-        }
-        .event-date {
-          font-size: 0.9rem;
-        }
-        .event-desc{
-          line-height: 1rem;
-          font-size: .7rem !important;
+        .event-content .event-info {
+          .event-title {
+            font-size: 1.3rem;
+          }
+          .event-date {
+            font-size: 0.9rem;
+          }
+          .event-desc {
+            line-height: 1rem;
+            font-size: 0.7rem;
+          }
         }
       }
-      .event-content{
-        .event-pic{
+      .event-content {
+        .event-pic {
           width: 85vw;
         }
       }
@@ -177,10 +179,20 @@
       font-size: 1.2rem;
     }
 
-    .event-info {
+    .event-content .event-info .event-info {
       margin-left: 3%;
+      .event-desc{
+        font-size: 1.2rem;
+      }
     }
     .events-list {
+      .event-card .event-content .event-info {
+        margin-left: 3%;
+        .event-desc{
+          font-size: 1.2rem;
+          line-height: 1.4rem;
+        }
+      }
       .options {
         i {
           font-size: 1.3em;

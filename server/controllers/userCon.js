@@ -128,7 +128,7 @@ const deleteUser = async (req, res) => {
 };
 
 const getUsers = async (req, res) => {
-  const users = await UserModel.find({});
+  const users = await UserModel.find({role: 'student'})
   return res.status(200).json(users);
 };
 
