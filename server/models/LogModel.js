@@ -19,7 +19,8 @@ const LogSchema = new Schema(
         'deleted event',
         'changed event',
         'cleared log',
-        'changed adoption media'
+        'changed adoption media',
+        'edited user',
       ],
       required: [true, 'Must include an action'],
     },
@@ -29,6 +30,6 @@ const LogSchema = new Schema(
     },
   },
   { timestamps: true }
-);
+)
 
 module.exports = mongoose.models.Log || mongoose.model('Log', LogSchema);

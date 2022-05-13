@@ -35,6 +35,8 @@ a {
 }
 #admin h1 {
   font-weight: bold;
+  display: inline-block;
+  position: relative;
 }
 #admin h1.ui.header, #admin h1.ui.header:first-child, #admin h1.ui.header:last-child {
   margin: 0;
@@ -45,17 +47,35 @@ a {
 #admin h1.ui.header:hover, #admin h1.ui.header:first-child:hover, #admin h1.ui.header:last-child:hover {
   color: #f06f1a;
 }
+#admin h1::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #f06f1a;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+#admin h1:hover::after, #admin h1.active::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+#admin h1.active {
+  color: #f06f1a;
+}
 #admin #header {
   display: flex;
   width: 80vw;
   margin: 1.75rem auto;
   flex-direction: row;
   justify-content: space-evenly;
-  gap: 5rem;
+  gap: 3rem;
 }
-#admin #header h1.active {
-  color: #f06f1a;
-  border-bottom: 2px solid #f06f1a;
+#admin #header .header {
+  font-size: 1.6rem;
 }
 
 #admin-animals {
@@ -580,7 +600,7 @@ body {
   padding: 5% 3.75%;
   color: white;
   box-shadow: 2px 2px 5px #aaaaaa;
-  background-color: #f06f1a;
+  background-color: #d14900;
 }
 
 .ui.segment:first-child h1 {
@@ -1672,7 +1692,7 @@ h3 {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  background: #F6F7F8;
+  background: white;
   transition: border 0.1s linear;
 }
 .navbar.showing {
@@ -1696,7 +1716,7 @@ h3 {
   flex-direction: column;
   width: 100%;
   text-align: center;
-  background: #F6F7F8;
+  background: white;
   z-index: 9;
   border-bottom: solid 3px #f06f1a;
   position: absolute;
@@ -1789,6 +1809,8 @@ h3 {
     align-items: center;
     padding: 0.1%;
     border-bottom: 2px solid #f06f1a;
+    background-color: white;
+    box-shadow: 10px 0 10px rgba(0, 0, 0, 0.269);
   }
   .navbar2 .vet-logo {
     width: 6%;
@@ -2042,6 +2064,10 @@ h3 {
   }
 }
 @media only screen and (min-width: 1024px) {
+  #event-slideshow {
+    width: 70vw;
+    margin: auto;
+  }
   #event-slideshow .embla_viewport {
     height: 44vw !important;
   }
@@ -2219,6 +2245,7 @@ h3 {
 #admin-events .events-list .event-card .event-content {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 #admin-events .events-list .event-card .event-content .event-pic {
   width: 100%;

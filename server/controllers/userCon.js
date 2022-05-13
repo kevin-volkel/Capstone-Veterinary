@@ -93,8 +93,8 @@ const createUser = async (req, res) => {
     const newLog = LogModel.create({
       user: user._id,
       action: 'registered',
-      details: `${name} created an account`
-    })
+      details: `${name} from ${user.class.campus} campus created an account with the email ${email}`,
+    });
 
     const payload = { userId: user._id, role: user.role };
     jwt.sign(
@@ -114,13 +114,16 @@ const createUser = async (req, res) => {
 
 const deleteUser = async (req, res) => {
   const { userId } = req.params;
+  const { role } = req.user;
 
-  try {
-    const deletedUser = await UserModel.findByIdAndDelete(userId);
-    return res.status(200).json(deletedUser);
-  } catch (err) {
-    console.log(err);
-    return res.status(500).send('Error @ deleteUser');
+  if (role === 'teacher') {
+    try {
+      const deletedUser = await UserModel.findByIdAndDelete(userId);
+      return res.status(200).json(deletedUser);
+    } catch (err) {
+      console.log(err);
+      return res.status(500).send('Error @ deleteUser');
+    }
   }
 };
 
@@ -141,24 +144,67 @@ const resetPassword = async (req, res) => {
           'Password must have eight characters including one uppercase letter, one lowercase letter, and one number'
         );
     }
-  
+
     const userToChange = await UserModel.findOne({ email: email }).select(
       '+password'
     );
 
-    if(!userToChange) return res.status(400).send('User not found?')
+    if (!userToChange) return res.status(400).send('User not found?');
 
+    const samePassword = await bcrypt.compare(
+      newPassword,
+      userToChange.password
+    );
+    if (samePassword)
+      return res
+        .status(400)
+        .send('New password cannot be the same as the old password');
 
-    const samePassword = await bcrypt.compare(newPassword, userToChange.password)
-    if(samePassword) return res.status(400).send('New password cannot be the same as the old password')
-  
     userToChange.password = await bcrypt.hash(newPassword, 10);
     userToChange.save();
-    return res.status(200).send('Password Changed')
+    return res.status(200).send('Password Changed');
   } catch (err) {
-    console.log(err)
-    return res.status(500).send('error @ resetPassword')
+    console.log(err);
+    return res.status(500).send('error @ resetPassword');
   }
 };
 
-module.exports = { postUserLogin, createUser, deleteUser, getUsers, resetPassword };
+const editUser = async (req, res) => {
+  const { userId } = req.params;
+  const { role } = req.user;
+
+  if (role !== 'teacher') {
+    return console.log('You do not have the required permissions.');
+  }
+  try {
+    const userObj = await UserModel.findByIdAndUpdate(
+      { _id: userId },
+      req.body,
+      { new: true, runValidators: true }
+    );
+
+    if (!userObj) return res.status(404).send('user not found');
+
+    const user = await UserModel.findById(userId);
+
+    const newLog = await LogModel.create({
+      user: userId,
+      action: 'edited user',
+      details: `${user.name} from ${user.class.campus} has edited ${user.name}'s profile`,
+    });
+
+    return res.status(200).json(userObj);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send('error at editUser');
+  }
+};
+
+module.exports = {
+  postUserLogin,
+  createUser,
+  editUser,
+  deleteUser,
+  getUsers,
+  resetPassword,
+};

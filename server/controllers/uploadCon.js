@@ -138,7 +138,7 @@ const changeMedia = async (req, res) => {
     await LogModel.create({
       user: userId,
       action: 'changed adoption media',
-      details: `${user.name} changed the adoption ${type}`
+      details: `${user.name} from ${user.class.campus} campus changed the adoption ${type}`
     })
 
     // console.log(mediaCreated);
