@@ -21,6 +21,7 @@ const LogSchema = new Schema(
         'cleared log',
         'changed adoption media',
         'edited user',
+        'deleted user',
       ],
       required: [true, 'Must include an action'],
     },
@@ -30,6 +31,6 @@ const LogSchema = new Schema(
     },
   },
   { timestamps: true }
-)
+);
 
 module.exports = mongoose.models.Log || mongoose.model('Log', LogSchema);

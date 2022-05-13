@@ -119,6 +119,11 @@ const deleteUser = async (req, res) => {
   if (role === 'teacher') {
     try {
       const deletedUser = await UserModel.findByIdAndDelete(userId);
+      const newLog = await AddLog(
+        userId,
+        'deleted user',
+        `${user.name} from ${user.class.campus} has deleted ${user.name}'s profile`
+      );
       return res.status(200).json(deletedUser);
     } catch (err) {
       console.log(err);
