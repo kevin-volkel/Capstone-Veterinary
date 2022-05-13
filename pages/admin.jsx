@@ -10,7 +10,7 @@ import Users from "./components/users/Users";
 import { sortDates } from "./util/dateFuncs";
 import Cookies from "js-cookie";
 
-const admin = ({ user, animals, events, users }) => {
+const admin = ({ user, animals, events, students, teachers }) => {
   const [activePage, setActivePage] = useState("animals");
 
   return (
@@ -57,7 +57,7 @@ const admin = ({ user, animals, events, users }) => {
         </Segment>
       ) : activePage === "users" ? (
         <Segment id="admin-users">
-          <Users user={user} users={users} />
+          <Users user={user} students={students} teachers={teachers}/>
         </Segment>
       ) : (
         <></>
@@ -74,8 +74,9 @@ admin.getInitialProps = async ({ ctx }) => {
     const eventsRes = await axios.get(`${baseURL}/api/v1/event`);
     pageProps.events = eventsRes.data;
     const usersRes = await axios.get(`${baseURL}/api/v1/user`);
-    console.log(usersRes.data);
-    pageProps.users = usersRes.data;
+    const data = usersRes.data;
+    pageProps.students = data.students;
+    pageProps.teachers = data.teachers;
   } catch (err) {
     console.error(err);
     pageProps.errorLoading = err;

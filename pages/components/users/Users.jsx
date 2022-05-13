@@ -1,11 +1,14 @@
 import React from "react";
 import UserCard from "./UserCard";
 
-const Users = ({users, user}) => {
+const Users = ({students, teachers, user}) => {
   return <>
     <h4>{user.name}</h4>
-    {users.map((student) => (
+    {students.map((student) => (
       <UserCard user={student} />
+    ))}
+    {teachers.map((teacher) => (
+      <UserCard user={teacher} />
     ))}
   </>
 }

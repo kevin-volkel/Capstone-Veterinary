@@ -3,7 +3,7 @@ const UserModel = require('../models/UserModel');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const isEmail = require('validator/lib/isEmail');
-const LogModel = require('../models/LogModel');
+const { addLog } = require('../middleware/addLog');
 
 const passwordReg = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/g;
 const emailReg = /^[a-z0-9](\.?[a-z0-9]){3,}@west-mec\.(edu|org)$/gi;
@@ -90,11 +90,11 @@ const createUser = async (req, res) => {
     user.password = await bcrypt.hash(password, 10);
     user = await user.save();
 
-    const newLog = LogModel.create({
-      user: user._id,
-      action: 'registered',
-      details: `${name} from ${user.class.campus} campus created an account with the email ${email}`,
-    });
+    const newLog = await addLog(
+      user._id,
+      'registered',
+      `${name} from ${user.class.campus} campus created an account with the email ${email}`
+    );
 
     const payload = { userId: user._id, role: user.role };
     jwt.sign(
@@ -128,8 +128,9 @@ const deleteUser = async (req, res) => {
 };
 
 const getUsers = async (req, res) => {
-  const users = await UserModel.find({role: 'student'})
-  return res.status(200).json(users);
+  const students = await UserModel.find({ role: 'student' });
+  const teachers = await UserModel.find({ role: 'teacher' });
+  return res.status(200).json({ students, teachers });
 };
 
 const resetPassword = async (req, res) => {
@@ -187,11 +188,11 @@ const editUser = async (req, res) => {
 
     const user = await UserModel.findById(userId);
 
-    const newLog = await LogModel.create({
-      user: userId,
-      action: 'edited user',
-      details: `${user.name} from ${user.class.campus} has edited ${user.name}'s profile`,
-    });
+    const newLog = await AddLog(
+      userId,
+      'edited user',
+      `${user.name} from ${user.class.campus} has edited ${user.name}'s profile`
+    );
 
     return res.status(200).json(userObj);
   } catch (error) {
