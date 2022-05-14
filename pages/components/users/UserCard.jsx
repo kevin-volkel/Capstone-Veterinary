@@ -1,20 +1,47 @@
-import React, {useState} from 'react';
-import { Image, Dropdown, Form, Icon } from 'semantic-ui-react';
-import { deleteUser, editUser } from '../../util/userActions';
+import React, { useState } from "react";
+import { Image, Dropdown, Form, Icon } from "semantic-ui-react";
+import { deleteUser, editUser } from "../../util/userActions";
+import Users from "./Users";
 
 const UserCard = ({ user, currentUser }) => {
-  const [emailEditing, setEmailEditing] = useState(false);
-  const [newEmail, setNewEmail] = useState(user.email);
-  const handleEdit = () => {};
+  const [editing, setEditing] = useState(false);
+  const [newUser, setNewUser] = useState({
+    email: user.email,
+  });
+
+  const handleChange = (e, data) => {
+    const { name, value } = e.target;
+
+    if (!name) {
+      setNewUser((prev) => ({
+        ...prev,
+        [data.name]: data.value,
+      }));
+    } else {
+      setNewUser((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    await editUser(newUser.email, user._id, setNewUser);
+
+    setEditing(false);
+  };
 
   return (
-    <div className={'user-card'}>
+    <div className={"user-card"}>
       <div className="profile-pic">
         <Image src={user.profilePicURL} avatar />
       </div>
       <div className="text">
         <div className="user-card-top">
           <p className="user-name">{user.name}</p>
+          <p className="user-role">{user.role}</p>
           {currentUser.class.campus === user.class.campus && (
             <div className="options">
               <Dropdown
@@ -24,8 +51,8 @@ const UserCard = ({ user, currentUser }) => {
               >
                 <Dropdown.Menu>
                   <Dropdown.Item
-                    text="Change Email"
-                    onClick={() => setEmailEditing((prev) => !prev)}
+                    text="Edit User"
+                    onClick={() => setEditing(true)}
                   />
                   <Dropdown.Item
                     text="Delete User"
@@ -39,16 +66,31 @@ const UserCard = ({ user, currentUser }) => {
         {/* <h1>{user._id}</h1> */}
         <div className="user-card-mid">{user.class.campus}</div>
         <div className="user-card-bottom">
-          {emailEditing ? (
+          {editing ? (
             <div className="edit-email">
               <input
-                value={newEmail}
-                onChange={(e) => setNewEmail(e.target.value)}
+                value={newUser.email}
+                name="email"
+                onChange={handleChange}
               />
-              <Icon name="edit outline"/>
+              <Icon
+                name="checkmark"
+                color="green"
+                style={{ cursor: "pointer" }}
+                onClick={handleSubmit}
+              />
+              <Icon
+                name="x"
+                color="red"
+                style={{ cursor: "pointer" }}
+                onClick={() => {
+                  setNewUser({ email: user.email });
+                  setEditing(false);
+                }}
+              />
             </div>
           ) : (
-            user.email
+            newUser.email
           )}
         </div>
       </div>
