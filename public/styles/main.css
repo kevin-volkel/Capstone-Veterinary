@@ -209,6 +209,9 @@ a {
   #admin #header {
     margin: 2rem auto;
   }
+  #admin #header .header {
+    font-size: 2rem;
+  }
   #admin #admin-animals {
     width: 70%;
     align-self: center;
@@ -1684,6 +1687,116 @@ h3 {
   height: 1.3rem;
 }
 
+#admin-users {
+  display: flex;
+  flex-direction: column;
+  margin-top: 0;
+}
+#admin-users .campus-group {
+  margin-bottom: 1.25rem;
+}
+#admin-users .campus-group .student-group {
+  border-left: solid #F7931D 3px;
+  padding-left: 0.55rem;
+  margin-left: 1.85rem;
+}
+#admin-users .campus-group .user-card {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.75rem 0 0 0;
+  background: #dadada;
+  padding: 5px;
+  border-radius: 0.28571429rem;
+}
+#admin-users .campus-group .user-card .profile-pic {
+  width: 20vw;
+  height: 20vw;
+}
+#admin-users .campus-group .user-card .profile-pic img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 100%;
+  width: 100%;
+  margin: 0 0 0 0.25em;
+}
+#admin-users .campus-group .user-card .text {
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  margin-left: 5%;
+  justify-content: center;
+}
+#admin-users .campus-group .user-card .text .user-card-top {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.1rem;
+  padding-right: 3%;
+  height: 1.5rem;
+}
+#admin-users .campus-group .user-card .text .user-card-top .user-role {
+  text-transform: capitalize;
+}
+#admin-users .campus-group .user-card .text .user-card-top .user-name {
+  font-weight: bold;
+}
+#admin-users .campus-group .user-card .text .user-card-top .options {
+  margin-top: 18px;
+}
+#admin-users .campus-group .user-card .text .user-card-mid {
+  text-transform: capitalize;
+}
+#admin-users .campus-group .user-card .text .edit-email {
+  display: flex;
+}
+#admin-users .campus-group .user-card .text .edit-email input {
+  width: 90%;
+}
+
+@media only screen and (min-width: 540px) {
+  #admin-users {
+    width: 90vw;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+@media only screen and (min-width: 1000px) {
+  #admin-users .campus-group .user-card {
+    height: 15vw;
+  }
+  #admin-users .campus-group .user-card .profile-pic img {
+    margin-top: 3.5%;
+    width: 65%;
+    height: 65%;
+    margin-left: 0%;
+  }
+}
+@media only screen and (min-width: 1220px) {
+  #admin-users {
+    width: 70%;
+  }
+  #admin-users .campus-group .student-group {
+    border-left: solid #F7931D 4px;
+    padding-left: 0.4rem;
+    margin-left: 2.25rem;
+  }
+  #admin-users .campus-group .user-card {
+    height: 13vw;
+  }
+  #admin-users .campus-group .user-card .profile-pic img {
+    width: 55%;
+    height: 55%;
+  }
+  #admin-users .campus-group .user-card .text {
+    margin-left: 2%;
+  }
+  #admin-users .campus-group .user-card .text .user-card-top {
+    font-size: 1.15rem;
+  }
+  #admin-users .campus-group .user-card .text .options {
+    font-size: 1.5rem;
+  }
+}
 .navbar {
   position: relative;
   width: 100%;
@@ -2294,15 +2407,15 @@ h3 {
   #admin-events .events-list .event-card {
     line-height: 1.5rem;
   }
-  #admin-events .events-list .event-card .event-title {
+  #admin-events .events-list .event-card .event-content .event-info .event-title {
     font-size: 1.3rem;
   }
-  #admin-events .events-list .event-card .event-date {
+  #admin-events .events-list .event-card .event-content .event-info .event-date {
     font-size: 0.9rem;
   }
-  #admin-events .events-list .event-card .event-desc {
+  #admin-events .events-list .event-card .event-content .event-info .event-desc {
     line-height: 1rem;
-    font-size: 0.7rem !important;
+    font-size: 0.7rem;
   }
   #admin-events .events-list .event-content .event-pic {
     width: 85vw;
@@ -2321,8 +2434,18 @@ h3 {
   #admin-events .ui.button {
     font-size: 1.2rem;
   }
-  #admin-events .event-info {
+  #admin-events .event-content .event-info .event-info {
     margin-left: 3%;
+  }
+  #admin-events .event-content .event-info .event-info .event-desc {
+    font-size: 1.2rem;
+  }
+  #admin-events .events-list .event-card .event-content .event-info {
+    margin-left: 3%;
+  }
+  #admin-events .events-list .event-card .event-content .event-info .event-desc {
+    font-size: 1.2rem;
+    line-height: 1.4rem;
   }
   #admin-events .events-list .options i {
     font-size: 1.3em;

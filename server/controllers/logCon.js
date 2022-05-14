@@ -1,5 +1,6 @@
 const LogModel = require('../models/LogModel');
 const UserModel = require('../models/UserModel');
+const { addLog } = require('../middleware/addLog');
 
 const getEntireLog = async (req, res) => {
   try {
@@ -21,11 +22,12 @@ const clearLog = async (req, res) => {
 
     const user = await UserModel.findById(userId);
 
-    const newLog = await LogModel.create({
-      user: userId,
-      action: 'cleared log',
-      details: `${user.name} from ${user.class.campus} campus cleared the log`,
-    });
+    const newLog = await addLog(
+      userId,
+      'cleared log',
+      `${user.name} from ${user.class.campus} campus cleared the log`
+    );
+
     return res.status(200).send(`${deletedEntries.length} entries clear`);
   } catch (err) {
     console.log(err);

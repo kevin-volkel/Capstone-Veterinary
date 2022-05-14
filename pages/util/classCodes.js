@@ -33,12 +33,17 @@ export const classCodes = {
 
 export const teacherCodes = {
   74396793: {
-    campus: 'northwest'
+    campus: 'northwest',
+    year: 1,
+  },
+  38239458: {
+    campus: 'northwest',
+    year: 2,
   },
   14750323: {
-    campus: 'northeast'
+    campus: 'northeast',
   },
   46485971: {
-    campus: 'southwest'
+    campus: 'southwest',
   }
 }

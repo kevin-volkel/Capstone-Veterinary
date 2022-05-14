@@ -151,6 +151,8 @@
   opacity: 1;
 }
 
+
+
 @media only screen and (max-width: 350px) {
   #admin-animals {
     min-width: 280px;
@@ -218,14 +220,12 @@
 //DESKTOP
 @media only screen and (min-width: 1024px) {
   #admin {
-    // h1.ui.header,
-    // h1.ui.header:first-child,
-    // h1.ui.header:last-child {
-    //   font-size: 2.8rem;
-    // }
 
     #header {
       margin: 2rem auto;
+      .header{
+        font-size: 2rem;
+      }
     }
 
     #admin-animals {
