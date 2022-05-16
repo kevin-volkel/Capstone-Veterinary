@@ -18,42 +18,6 @@ import catchErrors from "./util/catchErrors";
 // import bannerPic from "../public/media/home-page-banner.jpg";
 
 export default function Home({ user }) {
-  // const konamiCode = [
-  //   'ArrowUp',
-  //   'ArrowUp',
-  //   'ArrowDown',
-  //   'ArrowDown',
-  //   'ArrowLeft',
-  //   'ArrowRight',
-  //   'ArrowLeft',
-  //   'ArrowRight',
-  //   'b',
-  //   'a',
-  //   'Enter',
-  // ];
-  // const [currKey, setCurrKey] = useState(0);
-
-  // const handleKeyDown = (e) => {
-  //   const { key } = e;
-  //   if (key !== konamiCode[currKey]) {
-  //     console.log('fail');
-  //     return setCurrKey(0);
-  //   }
-  //   if (key === konamiCode[currKey] && currKey === 10) {
-  //     setCurrKey(0);
-  //     return console.log('KONAMI');
-  //   }
-  //   console.log(currKey);
-  //   if (key === konamiCode[currKey]) {
-  //     console.log('success');
-  //     return setCurrKey(currKey + 1);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   document.onkeydown = handleKeyDown;
-  // }, []);
-
   const [eventModalShowing, setEventModalShowing] = useState(null);
   const [loading, setLoading] = useState(false);
   const [events, setEvents] = useState([]);

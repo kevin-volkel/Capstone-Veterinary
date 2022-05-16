@@ -14,13 +14,13 @@ const resetPassword = async (req, res) => {
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: 'sendtest06@gmail.com',
+        user: 'westmecvetscience@gmail.com',
         pass: process.env.NODEMAILERPASS,
       },
     });
 
     const mailOptions = {
-      from: 'sendtest06@gmail.com',
+      from: 'westmecvetscience@gmail.com',
       to: email,
       text: 'Your code to reset your password it ' + code,
     };
@@ -76,7 +76,7 @@ const adoptedEmail = async (req, res) => {
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: 'sendtest06@gmail.com',
+        user: 'westmecvetscience@gmail.com',
         pass: process.env.NODEMAILERPASS,
       },
     });
@@ -117,7 +117,7 @@ const adoptedEmail = async (req, res) => {
     const emails = teachers.map( (teacher) => teacher.email)
     
     const mailOptions = {
-      from: 'sendtest06@gmail.com',
+      from: 'westmecvetscience@gmail.com',
       to: student.email,
       cc: emails,
       text: mailText
