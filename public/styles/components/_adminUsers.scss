@@ -1,0 +1,143 @@
+#admin-users {
+  display: flex;
+  flex-direction: column;
+  margin-top: 0;
+
+  .campus-group {
+    margin-bottom: 1.25rem;
+
+    .student-group {
+      border-left: solid #F7931D 3px;
+      padding-left: 0.55rem;
+      margin-left: 1.85rem;
+    }
+
+    .user-card {
+      display: flex;
+      justify-content: space-between;
+      margin: .75rem 0 0 0;
+      background: #dadada;
+      padding: 5px;
+      border-radius: .28571429rem;
+
+      .profile-pic {
+        width: 20vw;
+        height: 20vw;
+
+        img {
+          object-fit: cover;
+          height: 100%;
+          width: 100%;
+          margin: 0 0 0 0.25em;
+        }
+      }
+
+      .text {
+        width: 75%;
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        margin-left: 5%;
+        justify-content: center;
+
+        .user-card-top {
+          display: flex;
+          justify-content: space-between;
+          font-size: 1.1rem;
+          padding-right: 3%;
+          height: 1.5rem;
+
+          .user-role {
+            text-transform: capitalize;
+          }
+
+          .user-name {
+            font-weight: bold;
+          }
+
+          .options {
+            margin-top: 18px;
+          }
+        }
+
+        .user-card-mid {
+          text-transform: capitalize;
+        }
+
+        .edit-email {
+          display: flex;
+
+          input {
+            width: 90%;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+//TABLET
+@media only screen and (min-width: 540px) {
+  #admin-users {
+    width: 90vw;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  #admin-users {
+    .campus-group {
+      .user-card {
+        .profile-pic {
+          img {
+            margin-top: 3.5%;
+            width: 65%;
+            height: 65%;
+            margin-left: 0%;
+          }
+        }
+
+        height: 15vw;
+      }
+    }
+  }
+}
+
+
+@media only screen and (min-width: 1220px) {
+  #admin-users {
+    width: 70%;
+
+    .campus-group {
+      .student-group {
+        border-left: solid #F7931D 4px;
+        padding-left: 0.4rem;
+        margin-left: 2.25rem;
+      }
+
+      .user-card {
+        .profile-pic {
+          img {
+            width: 55%;
+            height: 55%;
+          }
+        }
+
+        height: 13vw;
+
+        .text {
+          margin-left: 2%;
+          .user-card-top{
+            font-size: 1.15rem;
+          }
+          .options {
+            font-size: 1.5rem;
+          }
+        }
+      }
+    }
+  }
+}

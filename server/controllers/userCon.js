@@ -119,6 +119,11 @@ const deleteUser = async (req, res) => {
   if (role === 'teacher') {
     try {
       const deletedUser = await UserModel.findByIdAndDelete(userId);
+      const newLog = await addLog(
+        userId,
+        'deleted user',
+        `${user.name} from ${user.class.campus} has deleted ${user.name}'s profile`
+      );
       return res.status(200).json(deletedUser);
     } catch (err) {
       console.log(err);
@@ -174,27 +179,34 @@ const editUser = async (req, res) => {
   const { userId } = req.params;
   const { role } = req.user;
 
+  // console.log(userId);
+  // console.log(req.user);
+
   if (role !== 'teacher') {
     return console.log('You do not have the required permissions.');
   }
   try {
-    const userObj = await UserModel.findByIdAndUpdate(
+    const newUser = await UserModel.findByIdAndUpdate(
       { _id: userId },
       req.body,
       { new: true, runValidators: true }
     );
 
-    if (!userObj) return res.status(404).send('user not found');
+    if (!newUser) return res.status(404).send('user not found');
 
     const user = await UserModel.findById(userId);
 
-    const newLog = await AddLog(
-      userId,
+    const teacher = await UserModel.findById(req.user.userId)
+
+    const newLog = await addLog(
+      teacher._id,
       'edited user',
-      `${user.name} from ${user.class.campus} has edited ${user.name}'s profile`
+      `${teacher.name} from ${teacher.class.campus} has edited ${user.name}'s profile`
     );
 
-    return res.status(200).json(userObj);
+    console.log(newLog);
+
+    return res.status(200).json(newUser);
   } catch (error) {
     console.log(error);
     return res.status(500).send('error at editUser');

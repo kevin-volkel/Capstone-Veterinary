@@ -603,7 +603,7 @@ body {
   padding: 5% 3.75%;
   color: white;
   box-shadow: 2px 2px 5px #aaaaaa;
-  background-color: #d14900;
+  background-color: #f06f1a;
 }
 
 .ui.segment:first-child h1 {
@@ -1561,7 +1561,7 @@ h3 {
   .events-map .map-and-text p {
     padding-left: 5%;
     padding-right: 5%;
-    width: 40%;
+    width: 60%;
     font-size: 1.1rem;
     padding-bottom: 0;
     margin: 0;
@@ -1569,6 +1569,14 @@ h3 {
   .events-map .map-and-text .map {
     width: 50%;
     height: 30vw;
+  }
+  .events-map .map-and-text .allMaps .map1 {
+    width: 100%;
+    height: 32.75vw;
+  }
+  .events-map .map-and-text .allMaps .map2 {
+    width: 100%;
+    height: 32.75vw;
   }
 }
 #event-modal {
@@ -1679,6 +1687,116 @@ h3 {
   height: 1.3rem;
 }
 
+#admin-users {
+  display: flex;
+  flex-direction: column;
+  margin-top: 0;
+}
+#admin-users .campus-group {
+  margin-bottom: 1.25rem;
+}
+#admin-users .campus-group .student-group {
+  border-left: solid #F7931D 3px;
+  padding-left: 0.55rem;
+  margin-left: 1.85rem;
+}
+#admin-users .campus-group .user-card {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.75rem 0 0 0;
+  background: #dadada;
+  padding: 5px;
+  border-radius: 0.28571429rem;
+}
+#admin-users .campus-group .user-card .profile-pic {
+  width: 20vw;
+  height: 20vw;
+}
+#admin-users .campus-group .user-card .profile-pic img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 100%;
+  width: 100%;
+  margin: 0 0 0 0.25em;
+}
+#admin-users .campus-group .user-card .text {
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  margin-left: 5%;
+  justify-content: center;
+}
+#admin-users .campus-group .user-card .text .user-card-top {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.1rem;
+  padding-right: 3%;
+  height: 1.5rem;
+}
+#admin-users .campus-group .user-card .text .user-card-top .user-role {
+  text-transform: capitalize;
+}
+#admin-users .campus-group .user-card .text .user-card-top .user-name {
+  font-weight: bold;
+}
+#admin-users .campus-group .user-card .text .user-card-top .options {
+  margin-top: 18px;
+}
+#admin-users .campus-group .user-card .text .user-card-mid {
+  text-transform: capitalize;
+}
+#admin-users .campus-group .user-card .text .edit-email {
+  display: flex;
+}
+#admin-users .campus-group .user-card .text .edit-email input {
+  width: 90%;
+}
+
+@media only screen and (min-width: 540px) {
+  #admin-users {
+    width: 90vw;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+@media only screen and (min-width: 1000px) {
+  #admin-users .campus-group .user-card {
+    height: 15vw;
+  }
+  #admin-users .campus-group .user-card .profile-pic img {
+    margin-top: 3.5%;
+    width: 65%;
+    height: 65%;
+    margin-left: 0%;
+  }
+}
+@media only screen and (min-width: 1220px) {
+  #admin-users {
+    width: 70%;
+  }
+  #admin-users .campus-group .student-group {
+    border-left: solid #F7931D 4px;
+    padding-left: 0.4rem;
+    margin-left: 2.25rem;
+  }
+  #admin-users .campus-group .user-card {
+    height: 13vw;
+  }
+  #admin-users .campus-group .user-card .profile-pic img {
+    width: 55%;
+    height: 55%;
+  }
+  #admin-users .campus-group .user-card .text {
+    margin-left: 2%;
+  }
+  #admin-users .campus-group .user-card .text .user-card-top {
+    font-size: 1.15rem;
+  }
+  #admin-users .campus-group .user-card .text .options {
+    font-size: 1.5rem;
+  }
+}
 .navbar {
   position: relative;
   width: 100%;
@@ -1916,7 +2034,7 @@ h3 {
   height: 30px;
   justify-content: center;
   align-items: center;
-  fill: #f4a005;
+  fill: #f06f1a;
   padding: 0;
 }
 #event-slideshow .embla_button:disabled {
@@ -1962,7 +2080,7 @@ h3 {
   content: "";
 }
 #event-slideshow .embla_dot.is-selected:after {
-  background-color: #f4a005;
+  background-color: #f06f1a;
   opacity: 1;
 }
 #event-slideshow .slideshow .img-container {
@@ -2259,6 +2377,11 @@ h3 {
   font-weight: bold;
   font-family: "Ubuntu", sans-serif;
 }
+#admin-events .events-list .event-card .event-content .event-info .event-featured {
+  color: #f06f1a;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
 #admin-events .events-list .event-card .event-content .event-info .event-desc {
   font-size: 1.1rem;
   font-family: "Arimo", sans-serif;
@@ -2324,6 +2447,9 @@ h3 {
   }
   #admin-events .events-list .event-card .event-content .event-info {
     margin-left: 3%;
+  }
+  #admin-events .events-list .event-card .event-content .event-info .event-featured {
+    font-size: 1rem;
   }
   #admin-events .events-list .event-card .event-content .event-info .event-desc {
     font-size: 1.2rem;
