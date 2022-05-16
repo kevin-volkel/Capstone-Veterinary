@@ -141,7 +141,8 @@ a {
 #admin-animals .ui.grid .ui.card img {
   width: 100%;
   height: 200px;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 #admin-animals .no-animals {
   margin: 1.5rem;
@@ -311,7 +312,8 @@ body {
 #adoption .grid .ui.card img {
   width: 100%;
   height: 200px;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 #adoption .grid .ui.card .animal-header {
   font-size: 2rem;
@@ -440,7 +442,8 @@ body {
 
 .img-container {
   margin: 0;
-  object-fit: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
   overflow: hidden;
   margin: auto;
   display: flex;
@@ -491,13 +494,15 @@ body {
 .img-btn-left {
   left: 0;
   margin-left: 5rem !important;
-  clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
+  -webkit-clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
+          clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
 }
 
 .img-btn-right {
   right: 0;
   margin-right: 5rem !important;
-  clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
+  -webkit-clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
+          clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
 }
 
 .arrow {
@@ -690,11 +695,7 @@ html .nf-sect #home-upload .adopt-video {
 }
 /* LOGIN & REGISTER FORM CSS */
 .form-wrap {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
   justify-content: center;
 }
 
@@ -778,8 +779,6 @@ html .nf-sect #home-upload .adopt-video {
 form#register {
     display: flex;
     flex-direction: column;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
     justify-content: center;
   }
 }
@@ -916,7 +915,8 @@ div.animal-wrap {
 .pet-img {
   width: 70vw;
   height: 70vw;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .para-desc {
@@ -991,7 +991,8 @@ h3 {
 .pet-gallery img {
   width: 65% !important;
   height: 250px !important;
-  object-fit: cover !important;
+  -o-object-fit: cover !important;
+     object-fit: cover !important;
   border-radius: 3%;
   min-width: 30vw;
 }
@@ -1182,7 +1183,8 @@ h3 {
   .pet-gallery img {
     padding: 0.5% !important;
     height: 300px !important;
-    object-fit: cover !important;
+    -o-object-fit: cover !important;
+       object-fit: cover !important;
   }
 }
 #add-animal i.close,
@@ -1416,6 +1418,7 @@ h3 {
 .changelog-container .log-container::-webkit-scrollbar {
   width: 10px;
   margin-right: 5px;
+  -webkit-transition: all 2s linear;
   transition: all 2s linear;
 }
 .changelog-container .log-container::-webkit-scrollbar-track {
@@ -1713,7 +1716,8 @@ h3 {
   height: 20vw;
 }
 #admin-users .campus-group .user-card .profile-pic img {
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   height: 100%;
   width: 100%;
   margin: 0 0 0 0.25em;
@@ -1979,14 +1983,19 @@ h3 {
 }
 #event-slideshow .embla_viewport.is-draggable {
   cursor: move;
+  cursor: -webkit-grab;
   cursor: grab;
 }
 #event-slideshow .embla_viewport.is-dragging {
+  cursor: -webkit-grabbing;
   cursor: grabbing;
 }
 #event-slideshow .embla_container {
   display: flex;
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   -webkit-touch-callout: none;
   -khtml-user-select: none;
   -webkit-tap-highlight-color: transparent;
@@ -2010,7 +2019,8 @@ h3 {
   min-height: 100%;
   width: 100%;
   transform: translate(-50%, -50%);
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 #event-slideshow .embla_button {
   outline: 0;
@@ -2282,7 +2292,8 @@ h3 {
   height: 70px;
 }
 #photo-upload img {
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   width: 70px;
   height: 70px;
 }
@@ -2361,14 +2372,15 @@ h3 {
 #admin-events .events-list .event-card .event-content .event-pic img {
   width: 80%;
   max-height: 10rem;
-  object-fit: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 #admin-events .events-list .event-card .event-content .event-info .event-title {
   font-size: 1.1rem;
   font-weight: bold;
   font-family: "Ubuntu", sans-serif;
 }
-#admin-events .events-list .event-card .event-content .event-info .event-featured {
+#admin-events .events-list .event-card .event-content .event-info .event-featured, #admin-events .events-list .event-card .event-content .event-info .event-type {
   color: #f06f1a;
   font-size: 0.9rem;
   font-weight: bold;
@@ -2439,7 +2451,7 @@ h3 {
   #admin-events .events-list .event-card .event-content .event-info {
     margin-left: 3%;
   }
-  #admin-events .events-list .event-card .event-content .event-info .event-featured {
+  #admin-events .events-list .event-card .event-content .event-info .event-featured, #admin-events .events-list .event-card .event-content .event-info .event-type {
     font-size: 1rem;
   }
   #admin-events .events-list .event-card .event-content .event-info .event-desc {

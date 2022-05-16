@@ -77,7 +77,7 @@
             font-weight: bold;
             font-family: $bold-font;
           }
-          .event-featured{
+          .event-featured, .event-type{
             color: $clr-orange;
             font-size: .9rem;
             font-weight: bold;
@@ -193,7 +193,7 @@
     .events-list {
       .event-card .event-content .event-info {
         margin-left: 3%;
-        .event-featured{
+        .event-featured, .event-type{
           font-size: 1rem;
         }
         .event-desc{
