@@ -1,9 +1,5 @@
-import Image from "next/image";
 import { Button, Segment, Modal } from "semantic-ui-react";
-import Footer from "./components/layout/Footer";
-import adopt from "../public/media/adoption.png";
-import eventImg from "../public/media/event.png";
-import fEvents from "../public/media/CAT.png";
+import adopt from "media/adoption.png";
 import EventSlideshow from "./components/events/EventSlideshow";
 import EventsSection from "./components/events/EventsSection";
 import { useEffect, useState } from "react";
@@ -13,9 +9,6 @@ import { sortDates } from "./util/dateFuncs";
 import EventModal from "./components/events/EventModal";
 import HomeUpload from "./components/layout/HomeUpload";
 import catchErrors from "./util/catchErrors";
-
-//import "../styles/home.css";
-// import bannerPic from "../public/media/home-page-banner.jpg";
 
 export default function Home({ user }) {
   const [eventModalShowing, setEventModalShowing] = useState(null);

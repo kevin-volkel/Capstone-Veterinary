@@ -5,7 +5,7 @@ import Cookies from "js-cookie";
 import catchErrors from "../../util/catchErrors";
 import EventUpload from "../layout/EventUpload";
 import { addEvent } from "../../util/eventActions";
-import defaultEventPic from "../../../public/media/home-page-banner.jpg";
+import defaultEventPic from "media/home-page-banner.jpg";
 
 const AddEventModal = ({ setEvents, setShowModal }) => {
   const [loading, setLoading] = useState(false);

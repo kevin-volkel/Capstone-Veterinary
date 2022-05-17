@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Icon } from 'semantic-ui-react';
 import Link from 'next/link';
 import Image from 'next/image';
-import wmLogo from '/media/WMlogo.png';
-import vetLogo from '/media/vetLogo.png';
+import wmLogo from 'media/WMlogo.png';
+import vetLogo from 'media/vetLogo.png';
 import { logoutUser } from '../../util/auth';
 import { useRouter } from 'next/router';
 
