@@ -5,6 +5,6 @@ export {
     Map,
     MapContext
 }
-export default DefaultExport = () => (
+export default MIndex = () => (
   <></>
 )

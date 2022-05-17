@@ -33,6 +33,6 @@ export const NextButton = ({ onClick }) => (
   </button>
 );
 
-export default Button = ({ onClick }) => (
+export default SlideshowButtons = ({ onClick }) => (
   <button></button>
 )
