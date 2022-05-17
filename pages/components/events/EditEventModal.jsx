@@ -5,7 +5,7 @@ import catchErrors from "../../util/catchErrors";
 import EventUpload from "../layout/EventUpload";
 import { editEvent } from "../../util/eventActions";
 // import { useRouter } from "next/router";
-import defaultEventPic from "media/home-page-banner.jpg";
+import defaultEventPic from "../../../public/media/home-page-banner.jpg";
 
 const EditEventModal = ({ setEvents, setShowModal, event }) => {
   const [loading, setLoading] = useState(false);

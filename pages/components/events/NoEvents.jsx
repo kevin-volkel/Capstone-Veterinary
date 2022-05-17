@@ -1,6 +1,6 @@
 import React from 'react';
 import { Image } from 'semantic-ui-react';
-import bannerPic from "media/home-page-banner.jpg";
+import bannerPic from "../../../public/media/home-page-banner.jpg";
 const NoEvents = () => {
 
   const event = {

@@ -5,7 +5,7 @@ import catchErrors from '../../util/catchErrors';
 import Cookies from 'js-cookie';
 import VideoUpload from '../layout/VideoUpload';
 import AnimalUpload from '../layout/AnimalUpload';
-import dogDefault from 'media/dog-profile.svg';
+import dogDefault from '../../../public/media/dog-profile.svg';
 
 const AddAnimalModal = ({ setAnimals, setShowModal }) => {
   const [loading, setLoading] = useState(false);
