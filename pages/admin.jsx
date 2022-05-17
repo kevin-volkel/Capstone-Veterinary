@@ -4,7 +4,7 @@ import { redirectUser, baseURL } from "./util/auth";
 import axios from "axios";
 // import Footer from "./components/layout/Footer";
 import { Header, Segment } from "semantic-ui-react";
-import Animals from "./components/animals/Animals";
+import AnimalGrid from "./components/animals/AnimalGrid";
 import Events from "./components/events/Events";
 import Users from "./components/users/Users";
 import { sortDates } from "./util/dateFuncs";
@@ -49,7 +49,7 @@ const Admin = ({ user, animals, events, students, teachers }) => {
       </div>
       {activePage === "animals" ? (
         <Segment id="admin-animals">
-          <Animals isAdmin={true} user={user} animals={animals} />
+          <AnimalGrid isAdmin={true} user={user} animals={animals} />
         </Segment>
       ) : activePage === "events" ? (
         <Segment id="admin-events">

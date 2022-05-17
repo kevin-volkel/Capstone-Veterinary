@@ -11,7 +11,7 @@ import {
 import AnimalCard from './AnimalCard';
 import AddAnimalModal from './AddAnimalModal';
 
-const Animals = ({ animals, isAdmin }) => {
+const AnimalGrid = ({ animals, isAdmin }) => {
   const [currPage, setCurrPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
@@ -212,4 +212,4 @@ const Animals = ({ animals, isAdmin }) => {
   );
 };
 
-export default Animals;
+export default AnimalGrid;

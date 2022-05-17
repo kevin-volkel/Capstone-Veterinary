@@ -5,14 +5,14 @@ import {
   Header,
 } from 'semantic-ui-react';
 import AnimalCard from './components/animals/AnimalCard';
-import Animals from './components/animals/Animals';
+import AnimalGrid from './components/animals/AnimalGrid';
 // import Footer from './components/layout/Footer';
 
-const Animals = ({ animals }) => {
+const Animals= ({ animals }) => {
   return (
     <div id="adoption">
       <Header as="h1">Adopt A Pet Today!</Header>
-      <Animals isAdmin={false} animals={animals} />
+      <AnimalGrid isAdmin={false} animals={animals} />
     </div>
   );
 };

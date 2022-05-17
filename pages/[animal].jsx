@@ -32,7 +32,7 @@ const Animal = ({ user, animalObj, errorLoading, animals }) => {
     if (errorLoading !== null) {
       router.push("/");
     }
-  }, [errorLoading]);
+  }, [errorLoading, router]);
 
   const handleKeyPress = (e, pic) => {
     const { code } = e;
