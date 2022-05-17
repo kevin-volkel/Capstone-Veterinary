@@ -3,7 +3,7 @@ import { Icon } from 'semantic-ui-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import wmLogo from '../../../public/media/WMlogo.png';
-// import vetLogo from '../../../public/media/vetLogo.png'
+import vetLogo from '../../../public/media/vetLogo.png';
 import { logoutUser } from '../../util/auth';
 import { useRouter } from 'next/router';
 
@@ -22,14 +22,14 @@ const Navbar = ({ user }) => {
     <>
       <div className="navbar">
         <div className="vet-logo" aria-label="West-mec vet logo">
-          {/* <Link href="/">
+          <Link href="/">
             <Image
               src={vetLogo}
               objectFit="contain"
               alt="West Mec Vertinary Sciences"
               aria-label="West-Mec Vet Logo"
             />
-          </Link> */}
+          </Link>
         </div>
 
         <div className="wm-logo" aria-label="West-mec logo">
@@ -71,18 +71,24 @@ const Navbar = ({ user }) => {
           }`}
           aria-label="Home"
         >
-          <Link href="/" tabIndex="2">Home</Link>
+          <Link href="/" tabIndex="2">
+            Home
+          </Link>
         </div>
         <div
           className={`menu-item ${isActive('/animals') ? 'active' : ''}`}
           aria-label="Adoption"
         >
-          <Link href="/animals" tabIndex="3">Adoption</Link>
+          <Link href="/animals" tabIndex="3">
+            Adoption
+          </Link>
         </div>
         {user !== null && (
           <>
             <div className={`menu-item ${isActive('/admin') ? 'active' : ''}`}>
-              <Link href="/admin" tabIndex="4">Admin</Link>
+              <Link href="/admin" tabIndex="4">
+                Admin
+              </Link>
             </div>
             {user.role === 'teacher' && (
               <div
@@ -90,7 +96,9 @@ const Navbar = ({ user }) => {
                   isActive('/changelog') ? 'active' : ''
                 }`}
               >
-                <Link href="/changelog" tabIndex="5">Changelog</Link>
+                <Link href="/changelog" tabIndex="5">
+                  Changelog
+                </Link>
               </div>
             )}
             <div
@@ -103,16 +111,15 @@ const Navbar = ({ user }) => {
           </>
         )}
       </div>
-      {/* </div> */}
 
       <div className="navbar2">
         <div className="vet-logo">
-          {/* <Image
+          <Image
             src={vetLogo}
             objectFit="contain"
             alt="West Mec Vertinary Sciences"
             aria-label="West-Mec Vet Logo"
-          /> */}
+          />
         </div>
         <div className="wm-logo">
           <Image
@@ -132,20 +139,26 @@ const Navbar = ({ user }) => {
             }`}
             aria-label="Home"
           >
-            <Link href="/" tabIndex="2">Home</Link>
+            <Link href="/" tabIndex="2">
+              Home
+            </Link>
           </div>
           <div
             className={`menu-item ${isActive('/animals') ? 'active' : ''}`}
             aria-label="Adoption"
           >
-            <Link href="/animals" tabIndex="3">Adoption</Link>
+            <Link href="/animals" tabIndex="3">
+              Adoption
+            </Link>
           </div>
           {user !== null && (
             <>
               <div
                 className={`menu-item ${isActive('/admin') ? 'active' : ''}`}
               >
-                <Link href="/admin" tabIndex="4">Admin</Link>
+                <Link href="/admin" tabIndex="4">
+                  Admin
+                </Link>
               </div>
               {user.role === 'teacher' && (
                 <div
@@ -153,7 +166,9 @@ const Navbar = ({ user }) => {
                     isActive('/changelog') ? 'active' : ''
                   }`}
                 >
-                  <Link href="/changelog" tabIndex="5">Changelog</Link>
+                  <Link href="/changelog" tabIndex="5">
+                    Changelog
+                  </Link>
                 </div>
               )}
               <div
@@ -161,7 +176,9 @@ const Navbar = ({ user }) => {
                 style={{ cursor: 'pointer' }}
                 onClick={logoutUser}
               >
-                <a href="#" tabIndex="6">Logout</a>
+                <a href="#" tabIndex="6">
+                  Logout
+                </a>
               </div>
             </>
           )}
