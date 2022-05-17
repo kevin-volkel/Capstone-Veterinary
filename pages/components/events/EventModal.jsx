@@ -26,6 +26,7 @@ const EventModal = ({ event, setEventModalShowing }) => {
         />
         <div className="event-modal-text">
           <h5 className="event-modal-date event-meta">{convertDate(event.date)}</h5>
+          {event.featured === true ? <h5 className="event-modal-featured">FEATURED | {event.type.toUpperCase()}</h5> : <h5 className="event-modal-type">{event.type.toUpperCase()}</h5>}
           <h5 className="event-modal-location event-meta">{event.location}</h5>
           <Divider />
           <p className="event-modal-desc">{event.desc}</p>

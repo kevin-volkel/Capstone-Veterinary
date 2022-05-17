@@ -1,4 +1,4 @@
-@use "../themes/defaultTheme" as *;
+@use "../themes/defaultTheme"as *;
 
 .events-map {
     display: flex;
@@ -13,6 +13,8 @@
 
     h1 {
         color: $clr-orange;
+        font-size: 2.25rem;
+        margin-bottom: .5rem;
     }
 
     .map-and-text {
@@ -21,52 +23,51 @@
         justify-content: center;
         align-items: center;
 
-        p{
-            font-size: 1.1rem;
+        .event-text {
+            margin-bottom: 1.25rem !important;
         }
 
-        .map {
+        .event-date{
+            font-weight: 635;
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+
+        .ui.hidden.divider {
+            display: none;
+        }
+
+        .allMaps {
             display: flex;
             flex-direction: column;
-            margin-top: 2%;
+            margin-top: 4%;
             margin-bottom: 2%;
+            box-shadow: 2px 2px 4px rgb(213, 213, 213);
+            margin-bottom: 2rem;
+            border-radius: 3%;
+
             .map1 {
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
-                margin-right: 0;
                 border: 1px solid rgb(183, 183, 183);
                 box-shadow: 2px 2px 4px rgb(213, 213, 213);
-                width: 100%;
+                width: 90vw;
                 height: 60vw;
                 border-radius: 3%;
-            }
-
-            .map2 {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
                 margin-right: 0;
-                margin-top: 5%;
-                border: 1px solid rgb(183, 183, 183);
-                box-shadow: 2px 2px 4px rgb(213, 213, 213);
-                width: 100%;
-                height: 60vw;
-                border-radius: 3%;
             }
         }
     }
 }
 
-// @media only screen and (min-width: 280px) {
-//     .events-map {
-//         margin-top: 40vw;
-//     }
-// }
 
-
+//TABLET
 @media only screen and (min-width: 768px) {
     .events-map {
         margin-top: 5vw;
@@ -75,17 +76,22 @@
             p {
                 padding-left: 7%;
                 padding-right: 7%;
-                padding-bottom: 3%;
                 font-size: .8rem;
-                
             }
+
+            h2 {
+                margin-top: 1.5rem;
+                padding-left: 7%;
+                font-size: 1rem;
+            }
+
             .allMaps {
                 display: flex;
                 flex-direction: column;
                 margin-top: 0%;
                 margin-bottom: 0%;
                 width: 80vw;
-                height: 70vw;
+
                 .map1 {
                     display: flex;
                     flex-direction: column;
@@ -98,49 +104,50 @@
                     height: 60vw;
                     border-radius: 3%;
                 }
-    
-                .map2 {
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: center;
-                    margin-right: 0;
-                    margin-top: 5%;
-                    border: 1px solid rgb(183, 183, 183);
-                    box-shadow: 2px 2px 4px rgb(213, 213, 213);
-                    width: 100%;
-                    height: 60vw;
-                    border-radius: 3%;
-                }
             }
         }
     }
 
 }
 
+
+//DESKTOP
 @media only screen and (min-width: 1024px) {
     .events-map {
         margin-top: 15vw;
         padding-top: 25px;
 
         .map-and-text {
-            justify-content: space-evenly;
+            justify-content: center;
             display: flex;
-            flex-direction: row;
-            margin: 2rem 0;
+            flex-direction: column;
+            //margin: 2rem 0;
+
+            h2 {
+                margin-top: 1.5rem;
+                padding-left: 5%;
+                font-size: 1.5rem;
+            }
 
             p {
                 padding-left: 5%;
                 padding-right: 5%;
-                width: 40%;
+                width: 100%;
                 font-size: 1.1rem;
-                padding-bottom: 0;
                 margin: 0;
             }
 
             .map {
                 width: 50%;
-                height: 30vw;
+                height: 20vw;
+            }
+
+            .allMaps {
+                height: auto;
+
+                .map1 {
+                    height: 50vh;
+                }
             }
         }
     }

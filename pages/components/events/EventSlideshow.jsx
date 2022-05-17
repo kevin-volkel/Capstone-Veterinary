@@ -72,7 +72,14 @@ const EventSlideshow = ({ events, loading, setEventModalShowing }) => {
                 <div className="embla_container">
                   {events.length === 0 ? (
                     <>
-                      <NoEvents />
+                      <div
+                        className="embla_slide"
+                        aria-label="Show More Event Details"
+                      >
+                        <div className="embla_slide_inner">
+                          <NoEvents />
+                        </div>
+                      </div>
                     </>
                   ) : (
                     events.map((event, index) => (

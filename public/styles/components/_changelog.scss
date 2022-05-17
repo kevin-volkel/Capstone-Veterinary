@@ -1,9 +1,21 @@
-@use '../themes/defaultTheme' as *;
+@use '../themes/defaultTheme'as *;
 
 .changelog-container {
   width: 95vw;
   margin: auto;
   margin-top: 1rem;
+
+  .sort-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .ui.selection.dropdown {
+      min-width: 30%;
+      margin-right: 3%;
+      margin-left: 3%;
+    }
+  }
 
   .changelog-title {
     font-size: 1.5rem;
@@ -35,7 +47,7 @@
     &::-webkit-scrollbar-thumb {
       background: rgb(224, 224, 224);
     }
-    
+
     /* Handle on hover */
     &::-webkit-scrollbar-thumb:hover {
       background: rgb(149, 149, 149);
@@ -48,17 +60,39 @@
       .log-date {
         color: greenyellow;
       }
+
       &.error {
         color: rgb(189, 0, 0);
       }
     }
   }
 
-  .clear-btn-container{
+  .clear-btn-container {
     display: flex;
     justify-content: center;
-    .clear-btn{
+
+    .clear-btn {
       margin-top: 1rem;
+    }
+  }
+}
+
+
+//TABLET
+@media only screen and (min-width: 760px) {
+  .changelog-container {
+    .sort-div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 2rem;
+
+      .ui.selection.dropdown {
+        min-width: 30%;
+        margin-right: 5%;
+        margin-left: 5%;
+        font-size: .90rem;
+      }
     }
   }
 }

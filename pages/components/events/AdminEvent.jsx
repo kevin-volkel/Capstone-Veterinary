@@ -12,7 +12,9 @@ const AdminEvent = ({ event, setEvents }) => {
         </div>
         <div className="event-info">
           <div className="event-title">{event.title.toUpperCase()}</div>
+          {event.featured === true ? <div className="event-featured">FEATURED | {event.type.toUpperCase()}</div> : <div className="event-type">{event.type.toUpperCase()}</div>}
           <div className="event-date">{convertDate(event.date)}</div>
+          <Divider hidden/>
           <div className="event-desc">{event.desc}</div>
         </div>
       </div>

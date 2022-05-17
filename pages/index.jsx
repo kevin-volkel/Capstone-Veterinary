@@ -18,45 +18,10 @@ import catchErrors from "./util/catchErrors";
 // import bannerPic from "../public/media/home-page-banner.jpg";
 
 export default function Home({ user }) {
-  // const konamiCode = [
-  //   'ArrowUp',
-  //   'ArrowUp',
-  //   'ArrowDown',
-  //   'ArrowDown',
-  //   'ArrowLeft',
-  //   'ArrowRight',
-  //   'ArrowLeft',
-  //   'ArrowRight',
-  //   'b',
-  //   'a',
-  //   'Enter',
-  // ];
-  // const [currKey, setCurrKey] = useState(0);
-
-  // const handleKeyDown = (e) => {
-  //   const { key } = e;
-  //   if (key !== konamiCode[currKey]) {
-  //     console.log('fail');
-  //     return setCurrKey(0);
-  //   }
-  //   if (key === konamiCode[currKey] && currKey === 10) {
-  //     setCurrKey(0);
-  //     return console.log('KONAMI');
-  //   }
-  //   console.log(currKey);
-  //   if (key === konamiCode[currKey]) {
-  //     console.log('success');
-  //     return setCurrKey(currKey + 1);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   document.onkeydown = handleKeyDown;
-  // }, []);
-
   const [eventModalShowing, setEventModalShowing] = useState(null);
   const [loading, setLoading] = useState(false);
   const [events, setEvents] = useState([]);
+  // const [featuredEvents, setFeaturedEvents] = useState([]);
 
   const [mediaURL, setMediaURL] = useState(null);
   const [mediaType, setMediaType] = useState(null);
@@ -135,6 +100,7 @@ export default function Home({ user }) {
   useEffect(async () => {
     setLoading(true);
     await fetchEvents();
+    // await fetchFeaturedEvents();
     await fetchMedia();
     setLoading(false);
   }, []);
@@ -144,6 +110,13 @@ export default function Home({ user }) {
     const events = res.data.sort(sortDates);
     setEvents(events);
   };
+
+  // const fetchFeaturedEvents = async () => {
+  //   const res = await axios.get(`/api/v1/event/featured`);
+  //   const featuredEvents = res.data;
+  //   console.log(featuredEvents);
+  //   setFeaturedEvents(featuredEvents);
+  // };
 
   const fetchMedia = async () => {
     const res = await axios.get(`/api/v1/upload/media`);
@@ -192,7 +165,14 @@ export default function Home({ user }) {
       </div>
 
       <div className="es-div">
-        <EventsSection />
+        <div className="events-map">
+        <h1>Featured Events</h1>
+          {/* {featuredEvents.length &&
+            featuredEvents.map((event, index) => {
+              return <EventsSection event={event} index={index} user={user} />;
+            })} */}
+          <EventsSection />;
+        </div>
       </div>
 
       <div className="nf-div">
