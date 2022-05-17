@@ -147,6 +147,7 @@ const Animal = ({ user, animalObj, errorLoading, animals }) => {
             className="pet-img"
           />
           <div className="para-desc" style={{ flexDirection: "column" }}>
+            {/* {user && <p>Added by {animalObj.user.name ? animalObj.user.name : "Admin"}</p>} */}
             <p>
               {animalObj.type} | {animalObj.gender} | {animalObj.age} |{" "}
               {animalObj.breed !== "unspecified" && `${animalObj.breed} | `}

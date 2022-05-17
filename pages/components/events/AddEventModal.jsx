@@ -216,7 +216,7 @@ const AddEventModal = ({ setEvents, setShowModal }) => {
             name="desc"
             label="Description"
             type="text"
-            placeholder="Minimum 25 characters. Add a short description of the event..."
+            placeholder="Minimum 120 characters. Add a short description of the event..."
           />
         </div>
         <div className="button-div">

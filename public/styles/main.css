@@ -1485,6 +1485,8 @@ h3 {
 }
 .events-map h1 {
   color: #f06f1a;
+  font-size: 2.25rem;
+  margin-bottom: 0.5rem;
 }
 .events-map .map-and-text {
   display: flex;
@@ -1492,40 +1494,40 @@ h3 {
   justify-content: center;
   align-items: center;
 }
+.events-map .map-and-text .event-text {
+  margin-bottom: 1.25rem !important;
+}
+.events-map .map-and-text .event-date {
+  font-weight: 635;
+}
 .events-map .map-and-text p {
   font-size: 1.1rem;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.events-map .map-and-text .ui.hidden.divider {
+  display: none;
 }
 .events-map .map-and-text .allMaps {
   display: flex;
   flex-direction: column;
-  margin-top: 2%;
+  margin-top: 4%;
   margin-bottom: 2%;
   box-shadow: 2px 2px 4px rgb(213, 213, 213);
+  margin-bottom: 2rem;
+  border-radius: 3%;
 }
 .events-map .map-and-text .allMaps .map1 {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-right: 0;
   border: 1px solid rgb(183, 183, 183);
   box-shadow: 2px 2px 4px rgb(213, 213, 213);
-  width: 100%;
+  width: 90vw;
   height: 60vw;
   border-radius: 3%;
-}
-.events-map .map-and-text .allMaps .map2 {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   margin-right: 0;
-  margin-top: 5%;
-  border: 1px solid rgb(183, 183, 183);
-  box-shadow: 2px 2px 4px rgb(213, 213, 213);
-  width: 100%;
-  height: 60vw;
-  border-radius: 3%;
 }
 
 @media only screen and (min-width: 768px) {
@@ -1535,8 +1537,12 @@ h3 {
   .events-map .map-and-text p {
     padding-left: 7%;
     padding-right: 7%;
-    padding-bottom: 3%;
     font-size: 0.8rem;
+  }
+  .events-map .map-and-text h2 {
+    margin-top: 1.5rem;
+    padding-left: 7%;
+    font-size: 1rem;
   }
   .events-map .map-and-text .allMaps {
     display: flex;
@@ -1544,7 +1550,6 @@ h3 {
     margin-top: 0%;
     margin-bottom: 0%;
     width: 80vw;
-    height: 70vw;
   }
   .events-map .map-and-text .allMaps .map1 {
     display: flex;
@@ -1565,33 +1570,31 @@ h3 {
     padding-top: 25px;
   }
   .events-map .map-and-text {
-    justify-content: space-evenly;
+    justify-content: center;
     display: flex;
-    flex-direction: row;
-    margin: 2rem 0;
+    flex-direction: column;
+  }
+  .events-map .map-and-text h2 {
+    margin-top: 1.5rem;
+    padding-left: 5%;
+    font-size: 1.5rem;
   }
   .events-map .map-and-text p {
     padding-left: 5%;
     padding-right: 5%;
-    width: 60%;
+    width: 100%;
     font-size: 1.1rem;
-    padding-bottom: 0;
     margin: 0;
   }
   .events-map .map-and-text .map {
     width: 50%;
-    height: 30vw;
+    height: 20vw;
   }
   .events-map .map-and-text .allMaps {
     height: auto;
   }
   .events-map .map-and-text .allMaps .map1 {
-    width: 100%;
-    height: 60vh;
-  }
-  .events-map .map-and-text .allMaps .map2 {
-    width: 100%;
-    height: 32.75vw;
+    height: 50vh;
   }
 }
 #event-modal {
@@ -1628,16 +1631,37 @@ h3 {
   font-family: "Cabin", sans-serif;
   letter-spacing: 0.6px;
 }
+.event-modal-wrap .event-modal-featured {
+  margin-top: 1rem;
+}
 .event-modal-wrap .event-modal-date {
   margin-top: 1rem;
 }
 .event-modal-wrap .event-modal-location {
   margin-top: 0.5rem;
+  font-size: 1.5rem;
 }
 .event-modal-wrap .event-modal-desc {
   color: #000;
 }
 
+@media only screen and (min-width: 768px) {
+  .event-modal-wrap .event-modal-featured {
+    margin-top: 1rem;
+  }
+  .event-modal-wrap .event-modal-date {
+    margin-top: 1rem;
+    font-size: 0.95rem;
+  }
+  .event-modal-wrap .event-modal-location {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+  }
+  .event-modal-wrap .event-modal-desc {
+    color: #000;
+    font-size: 0.75rem;
+  }
+}
 @media only screen and (min-width: 991px) {
   #event-modal .content .event-modal-wrap .event-modal-content {
     display: flex;
@@ -1647,6 +1671,17 @@ h3 {
   }
   #event-modal .content .event-modal-wrap .event-modal-content .event-modal-text {
     margin-left: 1rem;
+  }
+  #event-modal .content .event-modal-wrap .event-modal-content .event-modal-date {
+    font-size: 0.95rem;
+  }
+  #event-modal .content .event-modal-wrap .event-modal-content .event-modal-location {
+    margin-top: 0.5rem;
+    font-size: 1rem;
+  }
+  #event-modal .content .event-modal-wrap .event-modal-content .event-modal-desc {
+    color: #000;
+    font-size: 1rem;
   }
 }
 #image-modal {
@@ -2392,7 +2427,7 @@ h3 {
   font-weight: bold;
   font-family: "Ubuntu", sans-serif;
 }
-#admin-events .events-list .event-card .event-content .event-info .event-featured {
+#admin-events .events-list .event-card .event-content .event-info .event-featured, #admin-events .events-list .event-card .event-content .event-info .event-type {
   color: #f06f1a;
   font-size: 0.9rem;
   font-weight: bold;
@@ -2463,7 +2498,7 @@ h3 {
   #admin-events .events-list .event-card .event-content .event-info {
     margin-left: 3%;
   }
-  #admin-events .events-list .event-card .event-content .event-info .event-featured {
+  #admin-events .events-list .event-card .event-content .event-info .event-featured, #admin-events .events-list .event-card .event-content .event-info .event-type {
     font-size: 1rem;
   }
   #admin-events .events-list .event-card .event-content .event-info .event-desc {

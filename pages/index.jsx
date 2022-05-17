@@ -21,6 +21,7 @@ export default function Home({ user }) {
   const [eventModalShowing, setEventModalShowing] = useState(null);
   const [loading, setLoading] = useState(false);
   const [events, setEvents] = useState([]);
+  const [featuredEvents, setFeaturedEvents] = useState([]);
 
   const [mediaURL, setMediaURL] = useState(null);
   const [mediaType, setMediaType] = useState(null);
@@ -99,6 +100,7 @@ export default function Home({ user }) {
   useEffect(async () => {
     setLoading(true);
     await fetchEvents();
+    await fetchFeaturedEvents();
     await fetchMedia();
     setLoading(false);
   }, []);
@@ -107,6 +109,13 @@ export default function Home({ user }) {
     const res = await axios.get(`/api/v1/event`);
     const events = res.data.sort(sortDates);
     setEvents(events);
+  };
+
+  const fetchFeaturedEvents = async () => {
+    const res = await axios.get(`/api/v1/event/featured`);
+    const featuredEvents = res.data;
+    console.log(featuredEvents);
+    setFeaturedEvents(featuredEvents);
   };
 
   const fetchMedia = async () => {
@@ -156,7 +165,13 @@ export default function Home({ user }) {
       </div>
 
       <div className="es-div">
-        <EventsSection />
+        <div className="events-map">
+        <h1>Featured Events</h1>
+          {featuredEvents.length &&
+            featuredEvents.map((event) => {
+              return <EventsSection event={event} />;
+            })}
+        </div>
       </div>
 
       <div className="nf-div">

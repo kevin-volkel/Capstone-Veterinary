@@ -1,122 +1,38 @@
-import axios from 'axios';
-import React from 'react';
-import { baseURL } from './util/auth';
-import { parseCookies } from 'nookies';
-import Cookies from 'js-cookie';
+import axios from "axios";
+import React from "react";
+import { baseURL } from "./util/auth";
+import { parseCookies } from "nookies";
+import Cookies from "js-cookie";
 import {
   convertDate,
   extractTime,
   getLogDate,
   sortDates,
-} from './util/dateFuncs';
-import { Button, Dropdown } from 'semantic-ui-react';
-import { useRouter } from 'next/router';
-import { useState } from 'react';
+} from "./util/dateFuncs";
+import { Button, Dropdown } from "semantic-ui-react";
+import { useRouter } from "next/router";
+import { useState } from "react";
 
 const changelog = ({ log, errorLoading, user }) => {
   const router = useRouter();
 
-  const [filterObj, setFilterObj] = useState({
-    campus: 'all',
-    session: 'all',
-    user: 'all',
-  });
-
-  const sessionOptions = [
-    {
-      text: 'Session One',
-      value: '1',
-    },
-    {
-      text: 'Session Two',
-      value: '2'
-    }
-  ];
-
-  const campusOptions = [
-    {
-      text: 'Northwest',
-      value: 'northwest',
-    },
-    {
-      text: 'Northeast',
-      value: 'northeast',
-    },
-    {
-      text: 'Southwest',
-      value: 'southwest',
-    },
-    
-  ];
-
-  
-  const [filteredLogs, setFilteredLogs] = useState(log);
-
-  const handleChange = (_, data) => {
-    const { name, value } = data;
-    const newFilterObj = { ...filterObj, [name]: value };
-    setFilterObj(newFilterObj);
-    filterResults(newFilterObj);
-  };
-
-  const filterResults = (obj) => {
-    setFilteredLogs(log);
-
-    const { campus, session, user } = obj;
-    if (campus !== 'any') {
-      setFilteredLogs((prev) =>
-        prev.filter((log) => entry.campus === campus)
-      );
-    }
-    if (session !== 'any') {
-      setFilteredLogs((prev) =>
-        prev.filter((log) => log.session === session)
-      );
-    }
-    if (user !== 'any') {
-      setFilteredLogs((prev) => prev.filter((log) => log.user === user));
-    }
-  };
-
   const clearLog = async () => {
     try {
-      const token = Cookies.get('token');
-      const deleted = await axios.delete('/api/v1/log', {
+      const token = Cookies.get("token");
+      const deleted = await axios.delete("/api/v1/log", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
       console.log(deleted);
-      router.reload('/changelog');
+      router.reload("/changelog");
     } catch (err) {
       console.log(err);
     }
   };
 
   return (
-
-    
     <div className="changelog-container">
-
-<div className='sort-div'>
-        <Dropdown
-          placeholder='Campus'
-          name='campus'
-          selection
-          options={campusOptions}
-          onChange={handleChange}
-          value={filterObj.campus}
-        />
-        <Dropdown
-          placeholder='Session'
-          name='session'
-          selection
-          options={sessionOptions}
-          onChange={handleChange}
-          value={filterObj.session}
-        />
-      </div>
-
       <h1 className="changelog-title"> Changelog </h1>
       <div className="log-container">
         {errorLoading !== null ? (
