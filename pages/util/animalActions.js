@@ -60,7 +60,3 @@ export const editAnimal = async (
     console.log(catchErrors(error));
   }
 };
-
-export default DefaultExport = () => (
-  <></>
-)

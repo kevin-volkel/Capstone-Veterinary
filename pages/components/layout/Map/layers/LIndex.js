@@ -7,6 +7,3 @@ export {
     TileLayer,
     vectorLayers
 }
-export default DefaultExport = () => (
-  <></>
-)

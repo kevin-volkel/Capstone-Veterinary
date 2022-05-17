@@ -27,7 +27,3 @@ export const editUser = async (email, userId, setNewUser) => {
     console.log(catchErrors(err));
   }
 };
-
-export default DefaultExport = () => (
-  <></>
-)

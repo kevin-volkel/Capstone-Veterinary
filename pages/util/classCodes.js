@@ -47,7 +47,3 @@ export const teacherCodes = {
     campus: 'southwest',
   }
 }
-
-export default DefaultExport = () => (
-  <></>
-)

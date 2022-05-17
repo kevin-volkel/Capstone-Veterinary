@@ -83,7 +83,3 @@ export const editEvent = async (
     console.log(catchErrors(error));
   }
 };
-
-export default DefaultExport = () => (
-  <></>
-)

@@ -4,7 +4,4 @@ import MapContext from "./mapContext";
 export {
     Map,
     MapContext
-}
-export default MIndex = () => (
-  <></>
-)
+} 

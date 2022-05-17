@@ -5,6 +5,3 @@ export {
     osm,
     vector
 }
-export default DefaultExport = () => (
-  <></>
-)

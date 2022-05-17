@@ -24,6 +24,3 @@ export const redirectUser = (ctx, location) => {
   }
 }
 
-export default DefaultExport = () => (
-  <></>
-)

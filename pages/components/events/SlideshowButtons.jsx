@@ -32,7 +32,3 @@ export const NextButton = ({ onClick }) => (
     </svg>
   </button>
 );
-
-export default SlideshowButtons = ({ onClick }) => (
-  <button></button>
-)
