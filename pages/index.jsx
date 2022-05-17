@@ -21,7 +21,7 @@ export default function Home({ user }) {
   const [eventModalShowing, setEventModalShowing] = useState(null);
   const [loading, setLoading] = useState(false);
   const [events, setEvents] = useState([]);
-  const [featuredEvents, setFeaturedEvents] = useState([]);
+  // const [featuredEvents, setFeaturedEvents] = useState([]);
 
   const [mediaURL, setMediaURL] = useState(null);
   const [mediaType, setMediaType] = useState(null);
@@ -100,7 +100,7 @@ export default function Home({ user }) {
   useEffect(async () => {
     setLoading(true);
     await fetchEvents();
-    await fetchFeaturedEvents();
+    // await fetchFeaturedEvents();
     await fetchMedia();
     setLoading(false);
   }, []);
@@ -111,12 +111,12 @@ export default function Home({ user }) {
     setEvents(events);
   };
 
-  const fetchFeaturedEvents = async () => {
-    const res = await axios.get(`/api/v1/event/featured`);
-    const featuredEvents = res.data;
-    console.log(featuredEvents);
-    setFeaturedEvents(featuredEvents);
-  };
+  // const fetchFeaturedEvents = async () => {
+  //   const res = await axios.get(`/api/v1/event/featured`);
+  //   const featuredEvents = res.data;
+  //   console.log(featuredEvents);
+  //   setFeaturedEvents(featuredEvents);
+  // };
 
   const fetchMedia = async () => {
     const res = await axios.get(`/api/v1/upload/media`);
@@ -167,10 +167,11 @@ export default function Home({ user }) {
       <div className="es-div">
         <div className="events-map">
         <h1>Featured Events</h1>
-          {featuredEvents.length &&
-            featuredEvents.map((event) => {
-              return <EventsSection event={event} />;
-            })}
+          {/* {featuredEvents.length &&
+            featuredEvents.map((event, index) => {
+              return <EventsSection event={event} index={index} user={user} />;
+            })} */}
+          <EventsSection />;
         </div>
       </div>
 
