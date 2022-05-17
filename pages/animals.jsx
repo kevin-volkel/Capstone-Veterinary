@@ -4,7 +4,6 @@ import { baseURL } from './util/auth';
 import {
   Header,
 } from 'semantic-ui-react';
-import AnimalCard from './components/animals/AnimalCard';
 import AnimalGrid from './components/animals/AnimalGrid';
 // import Footer from './components/layout/Footer';
 
@@ -29,4 +28,4 @@ Animals.getInitialProps = async ({ ctx }) => {
   return pageProps;
 };
 
-export default animals;
+export default Animals;
