@@ -3,7 +3,6 @@ import { useRouter } from 'next/router';
 import React, { useState, useEffect } from 'react';
 import { Button, Form, Message, Segment } from 'semantic-ui-react';
 import catchErrors from './util/catchErrors';
-import { resetPassword } from './util/email';
 import { emailReg } from './util/regi';
 
 const Reset = () => {
