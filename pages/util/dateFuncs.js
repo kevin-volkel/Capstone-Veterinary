@@ -29,3 +29,8 @@ export const extractTime = (d) => {
   const time = `${hrs}:${mins}`;
   return time;
 };
+
+
+export default DefaultExport = () => (
+  <></>
+)

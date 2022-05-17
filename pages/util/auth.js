@@ -23,3 +23,7 @@ export const redirectUser = (ctx, location) => {
     Router.push(location)
   }
 }
+
+export default DefaultExport = () => (
+  <></>
+)

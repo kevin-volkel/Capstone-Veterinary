@@ -5,3 +5,6 @@ export {
     Controls,
     FullScreenControl
 }
+export default DefaultExport = () => (
+  <></>
+)

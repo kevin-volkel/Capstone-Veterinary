@@ -32,3 +32,7 @@ export const NextButton = ({ onClick }) => (
     </svg>
   </button>
 );
+
+export default Button = ({ onClick }) => (
+  <button></button>
+)

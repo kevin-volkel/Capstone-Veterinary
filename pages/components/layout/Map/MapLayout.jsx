@@ -65,3 +65,7 @@
 // };
 
 // export default MapLayout;
+
+export default MapLayout = () => (
+  <></>
+)

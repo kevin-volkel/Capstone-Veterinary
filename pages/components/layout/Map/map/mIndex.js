@@ -5,3 +5,6 @@ export {
     Map,
     MapContext
 }
+export default DefaultExport = () => (
+  <></>
+)
