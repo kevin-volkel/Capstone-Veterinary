@@ -163,7 +163,7 @@ const AnimalGrid = ({ animals, isAdmin }) => {
         />
       </div>
 
-      {filteredAnimals.length ? (
+      {filteredAnimals.length > 0 ? (
         <Container fluid className='animal-list'>
           <Grid columns='3' centered relaxed>
             {filteredAnimals
