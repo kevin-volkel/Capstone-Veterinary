@@ -13,7 +13,7 @@ import { Button, Dropdown } from "semantic-ui-react";
 import { useRouter } from "next/router";
 import { useState } from "react";
 
-const changelog = ({ log, errorLoading, user }) => {
+const Changelog = ({ log, errorLoading, user }) => {
   const router = useRouter();
 
   const clearLog = async () => {
@@ -64,7 +64,7 @@ const changelog = ({ log, errorLoading, user }) => {
   );
 };
 
-changelog.getInitialProps = async (ctx) => {
+Changelog.getInitialProps = async (ctx) => {
   try {
     const { token } = parseCookies(ctx);
     const res = await axios.get(`${baseURL}/api/v1/log`, {
@@ -81,4 +81,4 @@ changelog.getInitialProps = async (ctx) => {
   }
 };
 
-export default changelog;
+export default Changelog;

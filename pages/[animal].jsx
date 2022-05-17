@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { baseURL } from "./util/auth";
 import { useRouter } from "next/router";
 import { deleteAnimal } from "./util/animalActions";
-
+import Link from 'next/link'
 import {
   Grid,
   Icon,
@@ -32,7 +32,7 @@ const Animal = ({ user, animalObj, errorLoading, animals }) => {
     if (errorLoading !== null) {
       router.push("/");
     }
-  }, []);
+  }, [errorLoading]);
 
   const handleKeyPress = (e, pic) => {
     const { code } = e;
@@ -96,7 +96,8 @@ const Animal = ({ user, animalObj, errorLoading, animals }) => {
             ) : (
               <div style={{ cursor: "pointer" }}>
                 <Icon name="arrow left" />
-                <a href="/animals">Back to Adoption</a>
+                {/* <a href="/animals">Back to Adoption</a> */}
+                <Link href="/animals">Back to Adoption</Link>
               </div>
             )}
             {user && (
@@ -141,7 +142,7 @@ const Animal = ({ user, animalObj, errorLoading, animals }) => {
             )}
           </div>
           <h1 className="pet-name">{animalObj.name}</h1>
-          <img
+          <Image
             src={animalObj.picURLs[0]}
             alt={`${animalObj.name} image`}
             className="pet-img"

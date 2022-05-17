@@ -6,7 +6,7 @@ import catchErrors from './util/catchErrors';
 import { resetPassword } from './util/email';
 import { emailReg } from './util/regi';
 
-const reset = () => {
+const Reset = () => {
   const [email, setEmail] = useState('');
   const [errorMsg, setErrorMsg] = useState(null);
   const [step, setStep] = useState(1)
@@ -163,4 +163,4 @@ const reset = () => {
   );
 };
 
-export default reset;
+export default Reset;

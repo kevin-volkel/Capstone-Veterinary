@@ -11,7 +11,7 @@ const NoEvents = () => {
 
   return (
     <>
-      <img
+      <Image
         className="embla_slide_img"
         src={event.bannerPic.src}
         alt={event.title}

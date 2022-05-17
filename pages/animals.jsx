@@ -8,7 +8,7 @@ import AnimalCard from './components/animals/AnimalCard';
 import Animals from './components/animals/Animals';
 // import Footer from './components/layout/Footer';
 
-const animals = ({ animals }) => {
+const Animals = ({ animals }) => {
   return (
     <div id="adoption">
       <Header as="h1">Adopt A Pet Today!</Header>
@@ -17,7 +17,7 @@ const animals = ({ animals }) => {
   );
 };
 
-animals.getInitialProps = async ({ ctx }) => {
+Animals.getInitialProps = async ({ ctx }) => {
   let pageProps = {};
   try {
     const res = await axios.get(`${baseURL}/api/v1/animal`);

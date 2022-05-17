@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import LoginForm from './components/login/LoginForm';
 import RegisterForm from './components/login/RegisterForm';
 
-const login = ({}) => {
+const Login = ({}) => {
   const [isLogin, setIsLogin] = useState(true);
   const [user, setUser] = useState({
     firstName: '',
@@ -62,4 +62,4 @@ const login = ({}) => {
   );
 };
 
-export default login;
+export default Login;

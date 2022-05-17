@@ -10,7 +10,7 @@ import Users from "./components/users/Users";
 import { sortDates } from "./util/dateFuncs";
 import Cookies from "js-cookie";
 
-const admin = ({ user, animals, events, students, teachers }) => {
+const Admin = ({ user, animals, events, students, teachers }) => {
   const [activePage, setActivePage] = useState("animals");
 
   return (
@@ -66,7 +66,7 @@ const admin = ({ user, animals, events, students, teachers }) => {
   );
 };
 
-admin.getInitialProps = async ({ ctx }) => {
+Admin.getInitialProps = async ({ ctx }) => {
   let pageProps = {};
   try {
     const animalRes = await axios.get(`${baseURL}/api/v1/animal`);
@@ -84,4 +84,4 @@ admin.getInitialProps = async ({ ctx }) => {
   return pageProps;
 };
 
-export default admin;
+export default Admin;
