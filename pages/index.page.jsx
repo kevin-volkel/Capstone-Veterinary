@@ -96,18 +96,26 @@ export default function Home({ user }) {
   useEffect(async () => {
     console.log(window.location.href);
     setLoading(true);
-    await fetchEvents();
+
+    const res = await axios.get(`/api/v1/event`, {
+      headers: {Authorization: `Bearer ${Cookies.get("token")}`}
+    });
+
+    console.log(res.data)
+    // await fetchEvents();
     // await fetchFeaturedEvents();
     await fetchMedia();
     setLoading(false);
   }, []);
 
-  const fetchEvents = async () => {
-    const res = await axios.get(`/api/v1/event`);
-    console.log(res.data);
-    const events = res.data.sort(sortDates);
-    setEvents(events);
-  };
+  // const fetchEvents = async () => {
+  //   // const res = await axios.get(`/api/v1/event`, {
+  //   //   headers: {Authorization: `Bearer ${Cookies.get("token")}`}
+  //   // });
+  //   console.log(res.data);
+  //   const events = res.data.sort(sortDates);
+  //   setEvents(events);
+  // };
 
   // const fetchFeaturedEvents = async () => {
   //   const res = await axios.get(`/api/v1/event/featured`);
