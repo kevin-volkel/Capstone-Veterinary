@@ -94,6 +94,7 @@ export default function Home({ user }) {
   };
 
   useEffect(async () => {
+    console.log(window.location.href);
     setLoading(true);
     await fetchEvents();
     // await fetchFeaturedEvents();
@@ -103,6 +104,7 @@ export default function Home({ user }) {
 
   const fetchEvents = async () => {
     const res = await axios.get(`/api/v1/event`);
+    console.log(res.data);
     const events = res.data.sort(sortDates);
     setEvents(events);
   };
