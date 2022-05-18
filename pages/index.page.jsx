@@ -1,7 +1,7 @@
 import { Button, Segment, Modal } from "semantic-ui-react";
 import adopt from "../public/media/adoption.png";
 import EventSlideshow from "./components/events/EventSlideshow";
-import EventsSection from "./components/events/EventsSection";
+// import EventsSection from "./components/events/EventsSection";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
@@ -160,16 +160,16 @@ export default function Home({ user }) {
         />
       </div>
 
-      <div className="es-div">
-        <div className="events-map">
-        <h1>Featured Events</h1>
+      {/* <div className="es-div"> */}
+        {/* <div className="events-map"> */}
+        {/* <h1>Featured Events</h1> */}
           {/* {featuredEvents.length &&
             featuredEvents.map((event, index) => {
               return <EventsSection event={event} index={index} user={user} />;
             })} */}
-          <EventsSection />;
-        </div>
-      </div>
+          {/* <EventsSection />; */}
+        {/* </div> */}
+      {/* </div> */}
 
       <div className="nf-div">
         <Segment className="adopt-section">

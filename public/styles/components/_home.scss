@@ -364,9 +364,20 @@
   }
 }
 
+@media only screen and (min-width: 768px) {
+  .nf-div{
+    margin-top: 5vw;
+  }
+}
+
 @media only screen and (min-width: 1024px) {
   html {
     font-size: 1.1rem;
+
+    .nf-div{
+      margin-top: 14vw;
+      padding-top: 25px;
+    }
 
     .nf-sect {
       display: flex;
