@@ -23,7 +23,8 @@ Animals.getInitialProps = async ({ ctx }) => {
     pageProps.animals = res.data;
   } catch (err) {
     console.error(err);
-    pageProps.errorLoading = res.data;
+    pageProps.errorLoading = err;
+    pageProps.animals = [];
   }
   return pageProps;
 };
