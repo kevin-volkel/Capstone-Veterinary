@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Icon } from 'semantic-ui-react';
 import Link from 'next/link';
 import Image from 'next/image';
-import wmLogo from '../../../public/media/WMlogo.png';
-// import vetLogo from '../../../public/media/vetLogo.png';
 import { logoutUser } from '../../util/auth';
 import { useRouter } from 'next/router';
 
@@ -22,23 +20,27 @@ const Navbar = ({ user }) => {
     <>
       <div className="navbar">
         <div className="vet-logo" aria-label="West-mec vet logo">
-          {/* <Link href="/">
+          <Link href="/">
             <Image
-              src={vetLogo}
-              objectFit="contain"
+              src="/media/vetLogo.png"
+              width={5}
+              height={5}
+              // layout="fill"
               alt="West Mec Vertinary Sciences"
               aria-label="West-Mec Vet Logo"
             />
-          </Link> */}
+          </Link>
         </div>
 
         <div className="wm-logo" aria-label="West-mec logo">
           <Link href="/">
             <Image
-              src={wmLogo}
+              src="/media/WMlogo.png"
+              width={5}
+              height={5}
               objectFit="contain"
               alt="West Mec"
-              aria-label="West-Mec Vet Logo"
+              aria-label="West-Mec Logo"
             />
           </Link>
         </div>
@@ -114,16 +116,22 @@ const Navbar = ({ user }) => {
 
       <div className="navbar2">
         <div className="vet-logo">
-          {/* <Image
-            src={vetLogo}
+          <Image
+            // layout="fill"
+            src="/media/vetLogo.png"
+            width={5}
+            height={5}
             objectFit="contain"
             alt="West Mec Vertinary Sciences"
             aria-label="West-Mec Vet Logo"
-          /> */}
+          />
         </div>
         <div className="wm-logo">
           <Image
-            src={wmLogo}
+            // layout="fill"
+            src="/media/WMlogo.png"
+            width={5}
+            height={5}
             objectFit="contain"
             alt="West Mec"
             aria-label="West-Mec Logo"
