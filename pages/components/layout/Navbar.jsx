@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Icon } from 'semantic-ui-react';
 import Link from 'next/link';
 import Image from 'next/image';
-import wmLogo from '../../../public/media/WMlogo.png';
-// import vetLogo from '../../../public/media/vetLogo.png';
 import { logoutUser } from '../../util/auth';
 import { useRouter } from 'next/router';
 
@@ -35,7 +33,7 @@ const Navbar = ({ user }) => {
         <div className="wm-logo" aria-label="West-mec logo">
           <Link href="/">
             <Image
-              src={wmLogo}
+              src='./media/WMlogo.png'
               objectFit="contain"
               alt="West Mec"
               aria-label="West-Mec Logo"
@@ -123,7 +121,7 @@ const Navbar = ({ user }) => {
         </div>
         <div className="wm-logo">
           <Image
-            src={wmLogo}
+            src='./media/WMlogo.png'
             objectFit="contain"
             alt="West Mec"
             aria-label="West-Mec Logo"
