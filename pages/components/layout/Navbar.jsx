@@ -22,8 +22,10 @@ const Navbar = ({ user }) => {
         <div className="vet-logo" aria-label="West-mec vet logo">
           <Link href="/">
             <Image
-              src='./media/vetLogo.png'
-              objectFit="contain"
+              src="/media/vetLogo.png"
+              width={5}
+              height={5}
+              // layout="fill"
               alt="West Mec Vertinary Sciences"
               aria-label="West-Mec Vet Logo"
             />
@@ -33,7 +35,9 @@ const Navbar = ({ user }) => {
         <div className="wm-logo" aria-label="West-mec logo">
           <Link href="/">
             <Image
-              src='./media/WMlogo.png'
+              src="/media/WMlogo.png"
+              width={5}
+              height={5}
               objectFit="contain"
               alt="West Mec"
               aria-label="West-Mec Logo"
@@ -113,7 +117,10 @@ const Navbar = ({ user }) => {
       <div className="navbar2">
         <div className="vet-logo">
           <Image
-            src='./media/vetLogo.png'
+            // layout="fill"
+            src="/media/vetLogo.png"
+            width={5}
+            height={5}
             objectFit="contain"
             alt="West Mec Vertinary Sciences"
             aria-label="West-Mec Vet Logo"
@@ -121,7 +128,10 @@ const Navbar = ({ user }) => {
         </div>
         <div className="wm-logo">
           <Image
-            src='./media/WMlogo.png'
+            // layout="fill"
+            src="/media/WMlogo.png"
+            width={5}
+            height={5}
             objectFit="contain"
             alt="West Mec"
             aria-label="West-Mec Logo"
