@@ -159,8 +159,11 @@
     position: relative;
     margin-top: 10px;
     padding-bottom: 10px;
-    a:hover {
+    a{
       color: black;
+    }
+    a:hover {
+      color: $clr-orange;
     }
     &::after {
       content: "";

@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { logoutUser } from "../../util/auth";
 import { useRouter } from "next/router";
+import vetlogo from '../../../public/media/vetlogo.png'
 
 const Navbar = ({ user }) => {
   const router = useRouter();
@@ -22,7 +23,7 @@ const Navbar = ({ user }) => {
         <div className="vet-logo" aria-label="West-mec vet logo">
           <Link href="/">
             <Image
-              src="/media/vetlogo.png"
+              src={vetlogo.src}
               width={5}
               height={5}
               // layout="fill"

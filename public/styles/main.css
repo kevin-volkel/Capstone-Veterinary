@@ -2027,8 +2027,11 @@ h3 {
     margin-top: 10px;
     padding-bottom: 10px;
   }
-  .menu-item a:hover {
+  .menu-item a {
     color: black;
+  }
+  .menu-item a:hover {
+    color: #f06f1a;
   }
   .menu-item::after {
     content: "";
