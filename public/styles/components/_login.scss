@@ -75,12 +75,6 @@ div.visible.menu span {
   }
 }
 
-#register{
-  .form-link{
-    margin: 0.5rem 0;
-  }
-}
-
 .reset-password-link{
   display: flex;
   justify-content: center;
@@ -90,6 +84,12 @@ div.visible.menu span {
   font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
   font-weight: 700;
 }
+}
+
+#register{
+  .form-link{
+    margin: 0.5rem 0;
+  }
 }
 
 @media only screen and (min-height: 750px) and (min-width: 350px) {

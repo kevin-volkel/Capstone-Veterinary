@@ -806,10 +806,6 @@ html .nf-sect #home-upload .adopt-video {
   background: none;
   color: rgba(0, 0, 0, 0.6);
 }
-#login #register .form-link,
-#register #register .form-link {
-  margin: 0.5rem 0;
-}
 #login .reset-password-link,
 #register .reset-password-link {
   display: flex;
@@ -819,6 +815,10 @@ html .nf-sect #home-upload .adopt-video {
   font-size: 1rem;
   font-family: Lato, "Helvetica Neue", Arial, Helvetica, sans-serif;
   font-weight: 700;
+}
+
+#register .form-link {
+  margin: 0.5rem 0;
 }
 
 @media only screen and (min-height: 750px) and (min-width: 350px) {
