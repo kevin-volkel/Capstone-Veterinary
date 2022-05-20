@@ -35,7 +35,7 @@ const resetPassword = async (req, res) => {
         }
       }
     );
-    console.log('EMAIL SENT');
+    // console.log('EMAIL SENT');
     res.status(200).send('Email sent');
   } catch (err) {
     console.log(err);
@@ -136,7 +136,7 @@ const adoptedEmail = async (req, res) => {
         }
       }
     );
-    console.log('EMAIL SENT');
+    // console.log('EMAIL SENT');
     res.status(200).send('Email sent');
   } catch (err) {
     console.log(err);

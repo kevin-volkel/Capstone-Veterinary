@@ -80,7 +80,7 @@ const EditEventModal = ({ setEvents, setShowModal, event }) => {
       const [year, month, day] = newEvent.date.split("-");
       const newDate = `${year}-${month}-${day}`;
 
-      console.log(newDate);
+      // console.log(newDate);
 
       let eventDate = new Date(newDate);
 

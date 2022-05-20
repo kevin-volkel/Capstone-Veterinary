@@ -63,7 +63,7 @@ const EditAnimalModal = ({ setAnimals, setShowModal, animal }) => {
           setMediaPreview((prev) => [...prev, URL.createObjectURL(file)]);
         });
       }
-      console.log(media);
+      // console.log(media);
     } else if (name === "video" && files.length) {
       if (files.length === 1) {
         let droppedFiles = Object.values(files);
@@ -79,7 +79,7 @@ const EditAnimalModal = ({ setAnimals, setShowModal, animal }) => {
           setVideoPreview((prev) => [...prev, URL.createObjectURL(file)]);
         });
       }
-      console.log(video);
+      // console.log(video);
     } else {
       setNewAnimal((prev) => ({
         ...prev,
@@ -118,7 +118,7 @@ const EditAnimalModal = ({ setAnimals, setShowModal, animal }) => {
             animalPicURLs.push(src);
           });
         }
-        console.log(animalPicURLs);
+        // console.log(animalPicURLs);
       }else{
         animalPicURLs = [defaultAnimalPic];
       }
@@ -147,7 +147,7 @@ const EditAnimalModal = ({ setAnimals, setShowModal, animal }) => {
             animalVidURLs.push(src);
           });
         }
-        console.log(animalVidURLs);
+        // console.log(animalVidURLs);
       }
       if (video.length !== 0 && !animalVidURLs.length)
         throw new Error("Error while uploading video(s)");

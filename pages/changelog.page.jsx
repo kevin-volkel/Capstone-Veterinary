@@ -24,7 +24,6 @@ const Changelog = ({ log, errorLoading, user }) => {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log(deleted);
       router.reload("/changelog");
     } catch (err) {
       console.log(err);

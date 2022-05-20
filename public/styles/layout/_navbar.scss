@@ -3,6 +3,7 @@
 .navbar {
   position: relative;
   width: 100%;
+  padding: 0.5rem 0;
   z-index: 100;
   // height: 3rem;
   display: flex;
@@ -22,11 +23,11 @@
     width: 40%;
   }
   .vet-logo {
-    width: 20%;
+    width: 15%;
   }
   i.icon.hamburger {
     width: 15%;
-    font-size: 1.9rem;
+    font-size: 2.1rem;
   }
 }
 
@@ -47,10 +48,7 @@
     // font-weight: ;
     font-size: 1.5rem;
     line-height: 3rem;
-
-    &:hover {
-      color: $clr-orange;
-    }
+    color: black;
   }
   &.taller {
     transform: translateY(-15rem);
@@ -90,13 +88,16 @@
       width: 10%;
     }
     i.icon.hamburger {
-      font-size: 2rem;
+      font-size: 3rem;
     }
   }
   .hamburger.items {
     .menu-item a {
-      font-size: 1.2rem;
-      line-height: 2.6rem;
+      font-size: 1.26rem;
+      line-height: 2.8rem;
+    }
+    a:hover{
+      color: $clr-orange;
     }
     &.hide.tall {
       transform: translateY(-16rem);
@@ -128,7 +129,7 @@
   }
   .navbar2 {
     width: 100%;
-    height: 4.5rem;
+    height: 12vh;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -141,24 +142,27 @@
 
     .vet-logo {
       width: 6%;
-      margin-left: 5%;
+      margin-left: 2%;
     }
     .wm-logo {
-      width: 19%;
+      width: 20%;
       margin-right: 20%;
     }
   }
 
   .menu-item {
     margin-right: 30px;
-    font-size: 135%;
+    font-size: 1.4rem;
     color: black;
     display: inline-block;
     position: relative;
     margin-top: 10px;
     padding-bottom: 10px;
-    a:hover {
+    a{
       color: black;
+      &:hover{
+        color: black;
+      }
     }
     &::after {
       content: "";

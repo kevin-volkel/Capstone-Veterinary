@@ -8,8 +8,8 @@ const addLog = async (userId, action, details) => {
   });
 
   const log = await LogModel.find({});
-  console.log(log);
-  console.log(log.length);
+  // console.log(log);
+  // console.log(log.length);
   if (log.length > 100) {
     const deletedLog = log.shift();
     await LogModel.findByIdAndDelete(deletedLog._id);

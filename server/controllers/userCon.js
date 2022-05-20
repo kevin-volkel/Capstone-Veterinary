@@ -204,7 +204,7 @@ const editUser = async (req, res) => {
       `${teacher.name} from ${teacher.class.campus} has edited ${user.name}'s profile`
     );
 
-    console.log(newLog);
+    // console.log(newLog);
 
     return res.status(200).json(newUser);
   } catch (error) {
