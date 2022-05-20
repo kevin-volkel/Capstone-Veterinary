@@ -1,0 +1,216 @@
+@use "../themes/defaultTheme" as *;
+
+#admin-events {
+  width: 95vw;
+  margin: 0rem auto 2rem;
+  padding: 2rem 0;
+  // display: flex;
+  // align-items: center;
+  // justify-content: center;
+  // flex-direction: column;
+
+  .ui.button {
+    width: 75%;
+    font-size: 1.2rem;
+    background-color: $clr-orange;
+    color: #ffffff;
+    margin: 0;
+    margin-bottom: 1rem;
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      transform: scaleX(0);
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: $clr-orange;
+      transform-origin: bottom right;
+      transition: transform 0.25s ease-out;
+    }
+  }
+
+  .events-list {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-direction: column;
+
+    .event-card {
+      min-height: 6rem;
+      display: flex;
+      text-align: left;
+      justify-content: space-between;
+      margin: 0 1rem;
+
+      &:first-of-type {
+        margin-top: 1rem;
+      }
+      &:last-of-type {
+        margin-bottom: 1rem;
+      }
+
+      .event-content {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+        .event-pic {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          margin-bottom: 1rem;
+
+          img {
+            width: 80%;
+            max-height: 10rem;
+            object-fit: contain;
+          }
+        }
+
+        .event-info {
+          .event-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            font-family: $bold-font;
+          }
+          .event-featured, .event-type{
+            color: $clr-orange;
+            font-size: .9rem;
+            font-weight: bold;
+          }
+          .event-desc {
+            font-size: 1.1rem;
+            font-family: $text-font-2;
+          }
+          .event-date {
+            font-size: 0.9rem;
+            font-family: $text-font-1;
+            margin-bottom: 0.5rem;
+          }
+        }
+      }
+
+      .options {
+        width: 0px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-end;
+
+        i {
+          font-size: 1.2em;
+        }
+
+        .menu {
+          right: 10px;
+          left: auto;
+        }
+      }
+    }
+  }
+}
+
+// @media only screen and (max-width: 350px) {
+//   #admin-events {
+//     min-width: 280px;
+//   }
+// }
+
+// @media only screen and (min-width: 550px) {
+//   #admin-events {
+//     .events-list {
+//       .options {
+//         i {
+//           font-size: 1.5em;
+//         }
+//         .menu {
+//           .item {
+//             font-size: 1.1rem;
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
+
+@media only screen and (min-width: 768px) {
+  #admin-events {
+    .ui.button {
+      font-size: 0.9rem;
+    }
+    .events-list {
+      .event-card {
+        line-height: 1.5rem;
+        .event-content .event-info {
+          .event-title {
+            font-size: 1.3rem;
+          }
+          .event-date {
+            font-size: 0.9rem;
+          }
+          .event-desc {
+            line-height: 1rem;
+            font-size: 0.7rem;
+          }
+        }
+      }
+      .event-content {
+        .event-pic {
+          width: 85vw;
+        }
+      }
+      .options {
+        i {
+          font-size: 1.1em;
+        }
+        .menu {
+          .item {
+            font-size: 0.8rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  #admin-events {
+    width: 70%;
+
+    .ui.button {
+      font-size: 1.2rem;
+    }
+
+    .event-content .event-info .event-info {
+      margin-left: 3%;
+      .event-desc{
+        font-size: 1.2rem;
+      }
+    }
+    .events-list {
+      .event-card .event-content .event-info {
+        margin-left: 3%;
+        .event-featured, .event-type{
+          font-size: 1rem;
+        }
+        .event-desc{
+          font-size: 1.2rem;
+          line-height: 1.4rem;
+        }
+      }
+      .options {
+        i {
+          font-size: 1.3em;
+        }
+        .menu {
+          .item {
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+  }
+}
