@@ -7,6 +7,8 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+
+  margin-top: 2rem;
 }
 
 #login,
@@ -73,6 +75,12 @@ div.visible.menu span {
   }
 }
 
+#register{
+  .form-link{
+    margin: 0.5rem 0;
+  }
+}
+
 .reset-password-link{
   display: flex;
   justify-content: center;
@@ -106,8 +114,16 @@ div.visible.menu span {
       font-size: 1.8rem;
     }
 
+    label{
+      font-size: 1.2em;
+    }
+
+    .ui.input{
+      font-size: 1.5em;
+    }
+
     .upload-image {
-      margin-bottom: 2rem;
+      margin-bottom: 4rem;
     }
 
     #photo-upload {
@@ -126,13 +142,13 @@ div.visible.menu span {
     }
 
     i.pencil.icon {
-      font-size: .8rem;
+      font-size: 1.2rem;
     }
 
     /* form fields */
-    div.field {
-      font-size: .85rem;
-    }
+    // div.field {
+    //   font-size: .85rem;
+    // }
 
     div.visible.menu span {
       font-size: 1.1rem;
@@ -144,6 +160,10 @@ div.visible.menu span {
       padding: 15px;
       font-size: 1.3rem;
     }
+
+    .form-link, .reset-password-link{
+      font-size: 1.2rem;
+    }
   }
 }
 
@@ -154,8 +174,8 @@ div.visible.menu span {
   form#register {
     width: 70vw;
 
-    div.field {
-      font-size: 1.3rem;
+    div.field, .ui.selection.dropdown {
+      font-size: 1.2em;
     }
 
     #login-btn,

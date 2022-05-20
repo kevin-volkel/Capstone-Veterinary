@@ -739,6 +739,7 @@ html .nf-sect #home-upload .adopt-video {
 .form-wrap {
   display: flex;
   justify-content: center;
+  margin-top: 2rem;
 }
 
 #login,
@@ -805,6 +806,10 @@ html .nf-sect #home-upload .adopt-video {
   background: none;
   color: rgba(0, 0, 0, 0.6);
 }
+#login #register .form-link,
+#register #register .form-link {
+  margin: 0.5rem 0;
+}
 #login .reset-password-link,
 #register .reset-password-link {
   display: flex;
@@ -837,9 +842,17 @@ form#register {
 form#register .ui.segment h1 {
     font-size: 1.8rem;
   }
+  form#login label,
+form#register label {
+    font-size: 1.2em;
+  }
+  form#login .ui.input,
+form#register .ui.input {
+    font-size: 1.5em;
+  }
   form#login .upload-image,
 form#register .upload-image {
-    margin-bottom: 2rem;
+    margin-bottom: 4rem;
   }
   form#login #photo-upload,
 form#register #photo-upload {
@@ -858,11 +871,7 @@ form#register div.edit button {
   }
   form#login i.pencil.icon,
 form#register i.pencil.icon {
-    font-size: 0.8rem;
-  }
-  form#login div.field,
-form#register div.field {
-    font-size: 0.85rem;
+    font-size: 1.2rem;
   }
   form#login div.visible.menu span,
 form#register div.visible.menu span {
@@ -875,6 +884,11 @@ form#register #register-btn {
     padding: 15px;
     font-size: 1.3rem;
   }
+  form#login .form-link, form#login .reset-password-link,
+form#register .form-link,
+form#register .reset-password-link {
+    font-size: 1.2rem;
+  }
 }
 /* LARGE & DESKTOP STYLES */
 /* 1024px | 1280px */
@@ -883,9 +897,10 @@ form#register #register-btn {
 form#register {
     width: 70vw;
   }
-  form#login div.field,
-form#register div.field {
-    font-size: 1.3rem;
+  form#login div.field, form#login .ui.selection.dropdown,
+form#register div.field,
+form#register .ui.selection.dropdown {
+    font-size: 1.2em;
   }
   form#login #login-btn,
 form#login #register-btn,
