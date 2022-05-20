@@ -2213,6 +2213,7 @@ h3 {
 }
 #event-slideshow .text .card-title {
   font-size: 1.8rem;
+  line-height: 2rem;
   color: white;
   margin-bottom: 0.5rem;
   margin-left: 0.5rem;
@@ -2224,7 +2225,7 @@ h3 {
   margin-left: 0.5rem;
 }
 #event-slideshow .text .card-desc {
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: white;
   margin-bottom: 1rem;
   margin-left: 0.5rem;

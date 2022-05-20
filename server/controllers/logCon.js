@@ -18,7 +18,7 @@ const clearLog = async (req, res) => {
     console.log(role);
     if (role !== 'teacher') return res.status(401).send('Invalid Permissions');
     const deletedEntries = await LogModel.deleteMany({});
-    console.log(deletedEntries);
+    // console.log(deletedEntries);
 
     const user = await UserModel.findById(userId);
 

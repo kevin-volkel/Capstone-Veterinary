@@ -3,7 +3,7 @@ import { Image, Dropdown, Form, Icon } from "semantic-ui-react";
 import { deleteUser, editUser } from "../../util/userActions";
 import Users from "./Users";
 
-const UserCard = ({ user, currentUser }) => {
+const UserCard = ({ user, currentUser, setLoading }) => {
   const [editing, setEditing] = useState(false);
   const [newUser, setNewUser] = useState({
     email: user.email,
@@ -56,7 +56,7 @@ const UserCard = ({ user, currentUser }) => {
                   />
                   <Dropdown.Item
                     text="Delete User"
-                    onClick={() => deleteUser(user._id)}
+                    onClick={() => deleteUser(user._id, setLoading, currentUser._id)}
                   />
                 </Dropdown.Menu>
               </Dropdown>

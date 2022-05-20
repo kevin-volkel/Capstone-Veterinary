@@ -44,7 +44,7 @@ const AdoptAnimalModal = ({ animalObj, setShowModal }) => {
         animalObj: animalObj,
         formData: newAdopt,
       });
-      console.log(res.data);
+      // console.log(res.data);
     } catch (err) {
       console.log(err);
       let caughtErr = catchErrors(err);

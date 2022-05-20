@@ -78,7 +78,7 @@ export default function Home({ user }) {
         }
       );
 
-      console.log(res.data);
+      // console.log(res.data);
 
       setMediaURL(res.data.media);
       setMediaType(res.data.type);
@@ -94,7 +94,7 @@ export default function Home({ user }) {
   };
 
   useEffect(async () => {
-    console.log(window.location.href);
+    // console.log(window.location.href);
     setLoading(true);
     await fetchEvents();
     // await fetchFeaturedEvents();
@@ -106,7 +106,7 @@ export default function Home({ user }) {
     const res = await axios.get(`/api/v1/event`, {
       headers: {Authorization: `Bearer ${Cookies.get("token")}`}
     });
-    console.log(res.data);
+    // console.log(res.data);
     const events = res.data.sort(sortDates);
     setEvents(events);
   };
@@ -125,8 +125,8 @@ export default function Home({ user }) {
     let media = res.data.media;
     let type = res.data.type;
 
-    console.log(media);
-    console.log(type);
+    // console.log(media);
+    // console.log(type);
 
     setMediaURL(media);
     setMediaType(type);

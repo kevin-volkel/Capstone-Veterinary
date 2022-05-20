@@ -40,7 +40,9 @@ const Users = ({ students, teachers, user }) => {
   return (
     <>
       {loading ? (
-        <Loader />
+        <div className="loader" style={{height: '10rem', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+          <Loader active/>
+        </div>
       ) : (
         campuses.map((campus, i) => (
           <div className="campus-group" key={i}>
@@ -48,7 +50,12 @@ const Users = ({ students, teachers, user }) => {
               {teachers.map((teacher, i) => {
                 if (teacher.class.campus === campus)
                   return (
-                      <UserCard key={teacher._id} user={teacher} currentUser={user}/>
+                    <UserCard
+                      key={teacher._id}
+                      user={teacher}
+                      currentUser={user}
+                      setLoading={setLoading}
+                    />
                   );
               })}
             </div>
@@ -56,7 +63,12 @@ const Users = ({ students, teachers, user }) => {
               {students.map((student, i) => {
                 if (student.class.campus === campus)
                   return (
-                      <UserCard key={student._id} user={student} currentUser={user}/>
+                    <UserCard
+                      key={student._id}
+                      user={student}
+                      currentUser={user}
+                      setLoading={setLoading}
+                    />
                   );
               })}
             </div>
