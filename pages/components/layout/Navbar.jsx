@@ -22,9 +22,9 @@ const Navbar = ({ user }) => {
         <div className="vet-logo" aria-label="West-mec vet logo">
           <Link href="/">
             <Image
-              src="/media/vetSciLogo.png"
-              width={50}
-              height={50}
+              src="/media/vetLogo.png"
+              width={75}
+              height={75}
               // layout="fill"
               alt="West Mec Vertinary Sciences"
               aria-label="West-Mec Vet Logo"
@@ -118,7 +118,7 @@ const Navbar = ({ user }) => {
         <div className="vet-logo">
           <Image
             // layout="fill"
-            src="/media/vetSciLogo.png"
+            src="/media/vetLogo.png"
             width={100}
             height={100}
             objectFit="contain"
