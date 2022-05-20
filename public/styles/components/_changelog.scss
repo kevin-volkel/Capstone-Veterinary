@@ -1,0 +1,98 @@
+@use '../themes/defaultTheme'as *;
+
+.changelog-container {
+  width: 95vw;
+  margin: auto;
+  margin-top: 1rem;
+
+  .sort-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .ui.selection.dropdown {
+      min-width: 30%;
+      margin-right: 3%;
+      margin-left: 3%;
+    }
+  }
+
+  .changelog-title {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .log-container {
+    background: black;
+    color: white;
+    font-family: $custom-monospace;
+    padding: 0.75rem 5px;
+    display: flex;
+    flex-direction: column;
+    height: 70vh;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+      width: 10px;
+      margin-right: 5px;
+      transition: all 2s linear;
+    }
+
+    /* Track */
+    &::-webkit-scrollbar-track {
+      background: #000000;
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+      background: rgb(224, 224, 224);
+    }
+
+    /* Handle on hover */
+    &::-webkit-scrollbar-thumb:hover {
+      background: rgb(149, 149, 149);
+    }
+
+    .log-text {
+      font-size: 0.85rem;
+      margin: 0.25rem 0;
+
+      .log-date {
+        color: greenyellow;
+      }
+
+      &.error {
+        color: rgb(189, 0, 0);
+      }
+    }
+  }
+
+  .clear-btn-container {
+    display: flex;
+    justify-content: center;
+
+    .clear-btn {
+      margin-top: 1rem;
+    }
+  }
+}
+
+
+//TABLET
+@media only screen and (min-width: 760px) {
+  .changelog-container {
+    .sort-div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 2rem;
+
+      .ui.selection.dropdown {
+        min-width: 30%;
+        margin-right: 5%;
+        margin-left: 5%;
+        font-size: .90rem;
+      }
+    }
+  }
+}

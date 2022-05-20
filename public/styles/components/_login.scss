@@ -1,0 +1,178 @@
+@use '../themes/defaultTheme' as *;
+/* LOGIN & REGISTER FORM CSS */
+.form-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#login,
+#register {
+  margin: none;
+  width: 90%;
+  position: relative;
+  margin-top: 1.5rem;
+
+
+div.ui.segment {
+  margin-top: 0;
+}
+
+
+/* FORM TOP */
+.login-title{
+  margin-bottom: 1rem;
+}
+
+.upload-image {
+  margin-bottom: 2rem;
+}
+
+body {
+  background-color: #f6f7f8;
+  height: auto;
+}
+
+div.edit button {
+  width: 25px;
+  height: 25px;
+}
+
+/* FORM FIELDS */
+div.field {
+  font-size: 1.2rem;
+}
+
+div.visible.menu span {
+  font-size: 1.2rem;
+}
+
+/* FORM BOTTOM */
+#login-btn,
+#register-btn {
+  margin-bottom: 1rem;
+  margin-right: 0;
+  padding: 10px;
+  font-size: 1.8rem;
+  color: white;
+  background: $clr-orange;
+}
+
+.form-link {
+  text-align: center;
+  width: 100%;
+  background: none;
+  color: black;
+  cursor: pointer;
+  &:hover{
+    background: none;
+    color: rgba(0,0,0,.6);
+  }
+}
+
+.reset-password-link{
+  display: flex;
+  justify-content: center;
+  margin-top: .2rem;
+  padding: 0.78571429em 1.5em 0.78571429em;
+  font-size: 1rem;
+  font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+  font-weight: 700;
+}
+}
+
+@media only screen and (min-height: 750px) and (min-width: 350px) {
+  form#login,
+  form#register {
+    display: flex;
+    flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+
+/* TABLET STYLES */
+@media only screen and (min-width: 768px) {
+  form#login,
+  form#register {
+    width: 85vw;
+
+    /* form top */
+    .ui.segment h1 {
+      font-size: 1.8rem;
+    }
+
+    .upload-image {
+      margin-bottom: 2rem;
+    }
+
+    #photo-upload {
+      width: 90px;
+      height: 90px;
+
+      img {
+        width: 90px;
+        height: 90px;
+      }
+    }
+
+    div.edit button {
+      width: 35px;
+      height: 35px;
+    }
+
+    i.pencil.icon {
+      font-size: .8rem;
+    }
+
+    /* form fields */
+    div.field {
+      font-size: .85rem;
+    }
+
+    div.visible.menu span {
+      font-size: 1.1rem;
+    }
+
+    /* form bottom */
+    #login-btn,
+    #register-btn {
+      padding: 15px;
+      font-size: 1.3rem;
+    }
+  }
+}
+
+/* LARGE & DESKTOP STYLES */
+/* 1024px | 1280px */
+@media only screen and (min-width: 1024px) {
+  form#login,
+  form#register {
+    width: 70vw;
+
+    div.field {
+      font-size: 1.3rem;
+    }
+
+    #login-btn,
+    #register-btn {
+      padding: 15px;
+      font-size: 1.5rem;
+    }
+
+    .form-link{
+      font-size: 1.2rem;
+    }
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  form#login,
+  form#register {
+    width: 60vw;
+  }
+}

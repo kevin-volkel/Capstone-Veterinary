@@ -1,0 +1,281 @@
+@use "../themes/defaultTheme" as *;
+
+#admin {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+
+  h1 {
+    font-weight: bold;
+    display: inline-block;
+    position: relative;
+
+    &.ui.header,
+    &.ui.header:first-child,
+    &.ui.header:last-child {
+      margin: 0;
+      cursor: pointer;
+      font-size: 2.25rem;
+      font-family: $custom-font-2;
+
+      &:hover {
+        color: $clr-orange;
+      }
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      transform: scaleX(0);
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: $clr-orange;
+      transform-origin: bottom right;
+      transition: transform 0.25s ease-out;
+    }
+    &:hover::after,
+    &.active::after {
+      transform: scaleX(1);
+      transform-origin: bottom left;
+    }
+    &.active {
+      color: $clr-orange;
+    }
+  }
+
+  #header {
+    display: flex;
+    width: 80vw;
+    margin: 1.75rem auto;
+    flex-direction: row;
+    justify-content: space-evenly;
+    gap: 3rem;
+    .header{
+      font-size: 1.6rem;
+    }
+  }
+}
+
+#admin-animals {
+  width: 95vw;
+  margin: 0rem auto 2rem;
+  padding: 2rem 0;
+
+  .button {
+    width: 75%;
+    font-size: 1.2rem;
+    background-color: $clr-orange;
+    color: #ffffff;
+    margin: 0;
+    margin-bottom: 2rem;
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      transform: scaleX(0);
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: $clr-orange;
+      transform-origin: bottom right;
+      transition: transform 0.25s ease-out;
+    }
+  }
+
+  .sort-div {
+    //align-items: center;
+    width: 70%;
+    margin-left: 15%;
+    align-content: stretch;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+
+    .ui.selection.dropdown {
+      //width: 16em;
+      min-width: 9em;
+      margin: 0.2rem;
+    }
+  }
+
+  .animal-list {
+    display: flex;
+    justify-content: center;
+    margin: 3rem 0;
+  }
+
+  .ui.grid {
+    display: flex;
+    justify-content: center;
+
+    .ui.card {
+      font-size: 1.2rem;
+      margin: 0.5rem;
+      cursor: pointer;
+      text-align: center;
+      max-width: 250px;
+      text-transform: uppercase;
+
+      #type {
+        color: rgba(45, 45, 45, 0.933);
+      }
+
+      #age {
+        color: rgba(45, 45, 45, 0.933);
+      }
+
+      img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+    }
+  }
+
+  .no-animals {
+    margin: 1.5rem;
+    font-size: 1.5rem;
+    //font-weight: bold;
+  }
+
+  .pagination {
+    margin-top: 1rem;
+  }
+}
+
+.ui.button > .icon:not(.button) {
+  opacity: 1;
+}
+
+
+
+@media only screen and (max-width: 350px) {
+  #admin-animals {
+    min-width: 280px;
+  }
+}
+
+//TABLET
+@media only screen and (min-width: 768px) {
+  #admin {
+    #header {
+      margin: 1.25rem auto;
+    }
+    h1.ui.header,
+    h1.ui.header:first-child,
+    h1.ui.header:last-child {
+      font-size: 1.5rem;
+    }
+  }
+
+  #admin-animals {
+    width: 90vw;
+
+    .button {
+      font-size: 0.9rem;
+    }
+
+    .sort-div {
+      flex-direction: row;
+      width: 90%;
+      margin-left: 5%;
+
+      .ui.selection.dropdown {
+        min-width: 2em;
+        font-size: 0.85rem;
+      }
+    }
+
+    .ui.card {
+      #type {
+        padding-bottom: 7px;
+        font-size: 0.8rem;
+      }
+
+      #gender {
+        font-size: 0.8rem;
+      }
+
+      #age {
+        font-size: 0.8rem;
+      }
+
+      .animal-header {
+        font-size: 1.5rem;
+        margin-bottom: 0.8rem;
+      }
+    }
+
+    .ui.pagination.menu .item {
+      min-width: 2em;
+      justify-content: center;
+    }
+  }
+}
+
+//DESKTOP
+@media only screen and (min-width: 1024px) {
+  #admin {
+
+    #header {
+      margin: 2rem auto;
+      .header{
+        font-size: 2rem;
+      }
+    }
+
+    #admin-animals {
+      width: 70%;
+      align-self: center;
+
+      .ui.button {
+        font-size: 1.2rem;
+      }
+
+      .sort-div {
+        .ui.selection.dropdown {
+          width: 13em;
+          min-width: 9em;
+          font-size: 1.1rem;
+        }
+      }
+
+      .ui.pagination.menu .item {
+        min-width: 4em;
+      }
+    }
+
+    .ui.card {
+      #type {
+        padding-bottom: 0px;
+      }
+    }
+
+    #admin-events {
+      width: 70%;
+      align-self: center;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+
+      .event-info {
+        div {
+          margin-bottom: 0.5rem;
+        }
+      }
+
+      .options {
+        height: 1rem;
+      }
+
+      // .event-list{
+
+      // }
+    }
+  }
+}
