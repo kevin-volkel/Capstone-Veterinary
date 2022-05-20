@@ -616,7 +616,7 @@ body {
   grid-gap: 1.5rem;
 }
 .ui.segment.adopt-section .nf-wholeSect p {
-  margin-top: 1rem;
+  margin-top: 1.8rem;
   font-size: 1.2rem;
 }
 .ui.segment.adopt-section .nf-adopt-btn {
@@ -654,6 +654,10 @@ body {
     margin-top: 4.25rem !important;
   }
 
+  .nf-div h1 {
+    font-size: 2.5rem;
+  }
+
   .nf-sect {
     display: flex;
   }
@@ -663,11 +667,11 @@ body {
   }
   .nf-sect #home-upload .edit .ui.button {
     bottom: -12px;
-    font-size: 0.6rem;
+    font-size: 1.5rem;
   }
 
   .ui.segment.adopt-section .nf-wholeSect p {
-    font-size: 0.8rem;
+    font-size: 1.2rem;
   }
   .ui.segment.adopt-section .nf-wholeSect .ui.button {
     padding: 0.8rem;
@@ -675,17 +679,18 @@ body {
   }
 }
 @media only screen and (min-width: 780px) {
-  .nf-wholeSect p {
-    font-size: 0.7rem;
-  }
   .nf-wholeSect .ui.button {
-    font-size: 0.7rem;
-    padding: 3% 3.75%;
+    font-size: 1.1rem;
   }
 }
 @media only screen and (min-width: 766px) {
   .nf-div {
-    margin-top: 5vw;
+    margin-top: 9vw;
+  }
+}
+@media only screen and (min-width: 900px) {
+  .nf-div {
+    margin-top: 8vw;
   }
 }
 @media only screen and (min-width: 1024px) {
@@ -693,7 +698,7 @@ body {
     font-size: 1.1rem;
   }
   html .nf-div {
-    margin-top: 14vw;
+    margin-top: 1vw;
     padding-top: 25px;
   }
   html .nf-sect {
@@ -709,7 +714,6 @@ html .nf-sect #home-upload .adopt-video {
   }
   html .nf-sect #home-upload .edit .ui.button {
     bottom: -15px;
-    font-size: 1.2rem;
   }
   html .ui.segment.adopt-section .nf-wholeSect p {
     margin-right: 3rem;
@@ -718,8 +722,8 @@ html .nf-sect #home-upload .adopt-video {
     font-size: 1rem;
   }
   html .ui.segment.adopt-section .nf-wholeSect .ui.button {
-    font-size: 1rem;
-    padding: 1.75% 1.5%;
+    font-size: 1.2rem;
+    padding: 1.3% 1.1%;
     margin-bottom: 2%;
   }
 }
@@ -2020,7 +2024,7 @@ h3 {
 
   .menu-item {
     margin-right: 30px;
-    font-size: 135%;
+    font-size: 1.4rem;
     color: black;
     display: inline-block;
     position: relative;
@@ -2028,6 +2032,9 @@ h3 {
     padding-bottom: 10px;
   }
   .menu-item a {
+    color: black;
+  }
+  .menu-item a:hover {
     color: black;
   }
   .menu-item::after {
@@ -2225,7 +2232,7 @@ h3 {
     height: 18rem;
   }
   #event-slideshow .embla_dots {
-    padding-top: 10px;
+    padding-top: 20px;
   }
   #event-slideshow .embla_viewport {
     overflow: hidden;
@@ -2240,35 +2247,41 @@ h3 {
   #event-slideshow .embla_slide_inner {
     position: relative;
     overflow: hidden;
-    height: 54vw;
+    height: 25vw;
   }
   #event-slideshow .embla_viewport {
-    height: 54vw !important;
+    height: 25vw !important;
   }
   #event-slideshow .slideshow {
-    height: 20rem;
+    height: 25rem;
   }
 }
 @media only screen and (min-width: 900px) {
   #event-slideshow .embla_slide_inner {
     position: relative;
     overflow: hidden;
-    height: 50vw;
+    height: 40vw;
   }
   #event-slideshow .embla_viewport {
     height: 50vw !important;
   }
   #event-slideshow .slideshow {
-    height: 21rem;
+    height: 40rem;
+  }
+  #event-slideshow .embla_dots {
+    padding-top: 30px;
   }
 }
 @media only screen and (min-width: 1024px) {
   #event-slideshow {
-    width: 70vw;
+    width: 75vw;
     margin: auto;
   }
+  #event-slideshow .slideshow {
+    width: 70%;
+  }
   #event-slideshow .embla_viewport {
-    height: 44vw !important;
+    height: 70% !important;
   }
   #event-slideshow .embla {
     padding: 0%;
@@ -2280,7 +2293,7 @@ h3 {
     height: 65vh !important;
   }
   #event-slideshow .embla_dots {
-    padding-top: 0.8rem;
+    padding-top: 1rem;
   }
   #event-slideshow .gradient {
     height: 100%;
@@ -2289,81 +2302,14 @@ h3 {
     height: 20rem;
   }
 }
-@media only screen and (min-width: 1040px) {
-  #event-slideshow .embla_dots {
-    padding-top: 0.5rem;
-  }
-}
-@media only screen and (min-width: 1080px) {
-  #event-slideshow .embla_dots {
-    padding-top: 0.2rem;
-  }
-}
 @media only screen and (min-width: 1100px) {
-  #event-slideshow .embla_viewport {
-    height: 43vw !important;
-  }
   #event-slideshow .embla_slide_inner {
     height: 64vh !important;
-  }
-  #event-slideshow .embla_dots {
-    padding-top: 0rem;
-    padding-bottom: 4rem;
-  }
-}
-@media only screen and (min-width: 1150px) {
-  #event-slideshow .embla_viewport {
-    height: 41.25vw !important;
-  }
-  #event-slideshow .embla_dots {
-    padding-top: 0rem;
-    padding-bottom: 4rem;
   }
 }
 @media only screen and (min-width: 1200px) {
   #event-slideshow .embla {
     max-width: 95vw;
-  }
-  #event-slideshow .embla_viewport {
-    height: 40vw !important;
-  }
-}
-@media only screen and (min-width: 1284px) {
-  #event-slideshow .embla_viewport {
-    height: 37.8vw !important;
-  }
-}
-@media only screen and (min-width: 1300px) {
-  #event-slideshow .embla_viewport {
-    height: 36.25vw !important;
-  }
-}
-@media only screen and (min-width: 1320px) {
-  #event-slideshow .embla_viewport {
-    height: 35vw !important;
-  }
-}
-@media only screen and (min-width: 1340px) {
-  #event-slideshow .embla_viewport {
-    height: 33.5vw !important;
-  }
-}
-@media only screen and (min-width: 1360px) {
-  #event-slideshow .embla_viewport {
-    height: 37vw !important;
-  }
-}
-@media only screen and (min-width: 1380px) {
-  #event-slideshow .embla_viewport {
-    height: 31vw !important;
-  }
-}
-@media only screen and (min-width: 1400px) {
-  #event-slideshow .embla_slide_inner {
-    height: 34vw !important;
-  }
-  #event-slideshow .embla_viewport {
-    height: 35vw !important;
   }
 }
 #photo-upload {

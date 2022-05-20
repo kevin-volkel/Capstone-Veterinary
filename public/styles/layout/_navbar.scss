@@ -152,7 +152,7 @@
 
   .menu-item {
     margin-right: 30px;
-    font-size: 135%;
+    font-size: 1.4rem;
     color: black;
     display: inline-block;
     position: relative;
@@ -160,6 +160,9 @@
     padding-bottom: 10px;
     a{
       color: black;
+      &:hover{
+        color: black;
+      }
     }
     &::after {
       content: "";
