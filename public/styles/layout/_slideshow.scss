@@ -206,7 +206,7 @@
     .embla_slide_inner {
       position: relative;
       overflow: hidden;
-      height: 18rem;
+      height: 20rem;
     }
 
     .embla_dots {
@@ -230,15 +230,19 @@
     .embla_slide_inner {
       position: relative;
       overflow: hidden;
-      height: 25vw;
+      height: 40vw;
     }
 
     .embla_viewport {
-      height: 25vw !important;
+      height: 58vw !important;
     }
 
     .slideshow {
       height: 25rem;
+    }
+
+    .embla_dot{
+      padding-top: 25px;
     }
   }
 }
@@ -257,11 +261,11 @@
     }
 
     .slideshow {
-      height: 40rem;
+      height: 30rem;
     }
 
     .embla_dots {
-      padding-top: 30px;
+      padding-top: 0px;
     }
   }
 }
@@ -272,10 +276,11 @@
     width: 75vw;
     margin: auto;
     .slideshow{
-      width: 70%;
+      height: 30rem;
+      width: 100%;
     }
     .embla_viewport {
-      height: 70% !important;
+      height: 70vw !important;
     }
 
     .embla {
@@ -287,7 +292,7 @@
     }
 
     .embla_slide_inner {
-      height: 65vh !important;
+      height: 55vh !important;
     }
 
     .embla_dots {
@@ -297,15 +302,14 @@
     .gradient {
       height: 100%;
     }
-
-    .slideshow {
-      height: 20rem;
-    }
   }
 }
 
 @media only screen and (min-width: 1100px) {
   #event-slideshow {
+    .slideshow{
+      height: 33rem;
+    }
     .embla_slide_inner {
       height: 64vh !important;
     }

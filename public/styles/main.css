@@ -698,7 +698,7 @@ body {
     font-size: 1.1rem;
   }
   html .nf-div {
-    margin-top: 1vw;
+    margin-top: 5vw;
     padding-top: 25px;
   }
   html .nf-sect {
@@ -715,16 +715,24 @@ html .nf-sect #home-upload .adopt-video {
   html .nf-sect #home-upload .edit .ui.button {
     bottom: -15px;
   }
+  html .ui.segment.adopt-section h1 {
+    font-size: 2.5rem;
+  }
   html .ui.segment.adopt-section .nf-wholeSect p {
     margin-right: 3rem;
     margin-left: 2rem;
     width: 75%;
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
   html .ui.segment.adopt-section .nf-wholeSect .ui.button {
     font-size: 1.2rem;
     padding: 1.3% 1.1%;
     margin-bottom: 2%;
+  }
+}
+@media only screen and (min-width: 1100px) {
+  .nf-div {
+    margin-top: 2.5vw;
   }
 }
 /* LOGIN & REGISTER FORM CSS */
@@ -2229,7 +2237,7 @@ h3 {
   #event-slideshow .embla_slide_inner {
     position: relative;
     overflow: hidden;
-    height: 18rem;
+    height: 20rem;
   }
   #event-slideshow .embla_dots {
     padding-top: 20px;
@@ -2247,13 +2255,16 @@ h3 {
   #event-slideshow .embla_slide_inner {
     position: relative;
     overflow: hidden;
-    height: 25vw;
+    height: 40vw;
   }
   #event-slideshow .embla_viewport {
-    height: 25vw !important;
+    height: 58vw !important;
   }
   #event-slideshow .slideshow {
     height: 25rem;
+  }
+  #event-slideshow .embla_dot {
+    padding-top: 25px;
   }
 }
 @media only screen and (min-width: 900px) {
@@ -2266,10 +2277,10 @@ h3 {
     height: 50vw !important;
   }
   #event-slideshow .slideshow {
-    height: 40rem;
+    height: 30rem;
   }
   #event-slideshow .embla_dots {
-    padding-top: 30px;
+    padding-top: 0px;
   }
 }
 @media only screen and (min-width: 1024px) {
@@ -2278,10 +2289,11 @@ h3 {
     margin: auto;
   }
   #event-slideshow .slideshow {
-    width: 70%;
+    height: 30rem;
+    width: 100%;
   }
   #event-slideshow .embla_viewport {
-    height: 70% !important;
+    height: 70vw !important;
   }
   #event-slideshow .embla {
     padding: 0%;
@@ -2290,7 +2302,7 @@ h3 {
     width: 100%;
   }
   #event-slideshow .embla_slide_inner {
-    height: 65vh !important;
+    height: 55vh !important;
   }
   #event-slideshow .embla_dots {
     padding-top: 1rem;
@@ -2298,11 +2310,11 @@ h3 {
   #event-slideshow .gradient {
     height: 100%;
   }
-  #event-slideshow .slideshow {
-    height: 20rem;
-  }
 }
 @media only screen and (min-width: 1100px) {
+  #event-slideshow .slideshow {
+    height: 33rem;
+  }
   #event-slideshow .embla_slide_inner {
     height: 64vh !important;
   }
