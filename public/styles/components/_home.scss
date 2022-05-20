@@ -284,7 +284,7 @@
 
   .nf-adopt-btn {
     margin-bottom: 4%;
-    padding: 5% 3.75%;
+    padding: 1.3rem 1rem;
     color: white;
     box-shadow: 2px 2px 5px #aaaaaa;
     background-color: $clr-orange;
@@ -365,7 +365,7 @@
   }
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 766px) {
   .nf-div{
     margin-top: 5vw;
   }

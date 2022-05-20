@@ -1923,9 +1923,6 @@ h3 {
   line-height: 3rem;
   color: black;
 }
-.hamburger.items .menu-item a:hover {
-  color: #f06f1a;
-}
 .hamburger.items.taller {
   transform: translateY(-15rem);
 }

@@ -104,7 +104,7 @@
     list-style: none;
     justify-content: center;
     padding-top: 10px;
-    padding-bottom: 10rem;
+    // padding-bottom: 10rem;
   }
 
   .embla_dot {
@@ -199,6 +199,10 @@
 
 @media only screen and (min-width: 766px) {
   #event-slideshow {
+    .embla{
+      height: 100%;
+    }
+
     .embla_slide_inner {
       position: relative;
       overflow: hidden;
