@@ -27,7 +27,7 @@
   }
   i.icon.hamburger {
     width: 15%;
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
 }
 
@@ -96,6 +96,9 @@
       font-size: 1.26rem;
       line-height: 2.8rem;
     }
+    a:hover{
+      color: $clr-orange;
+    }
     &.hide.tall {
       transform: translateY(-16rem);
     }
@@ -157,9 +160,6 @@
     padding-bottom: 10px;
     a{
       color: black;
-    }
-    a:hover {
-      color: $clr-orange;
     }
     &::after {
       content: "";
