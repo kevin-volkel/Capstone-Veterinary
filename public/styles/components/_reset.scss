@@ -1,0 +1,26 @@
+@use "../themes/defaultTheme"as *;
+
+.form-wrap{
+  #resetPassword{
+    margin-top: 1.5rem;
+  }
+}
+
+.reset-password{
+  font-size: 1.5rem;
+  text-align: center;
+  .ui.button{
+    color: $clr-orange;
+  }
+}
+
+.back-to-email{
+  margin-top: 5px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.reset-btn{
+  margin: 0;
+  width: 100%;
+}
