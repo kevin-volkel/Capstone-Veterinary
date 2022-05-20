@@ -23,8 +23,8 @@ const Navbar = ({ user }) => {
           <Link href="/">
             <Image
               src="/media/vetSciLogo.png"
-              width={75}
-              height={75}
+              width={50}
+              height={50}
               // layout="fill"
               alt="West Mec Vertinary Sciences"
               aria-label="West-Mec Vet Logo"
