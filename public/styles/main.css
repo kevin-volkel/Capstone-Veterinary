@@ -10,7 +10,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  background: #f6f7f8;
+  background: #f6f7f8 !important;
 }
 
 a {
@@ -141,11 +141,15 @@ a {
 #admin-animals .ui.grid .ui.card img {
   width: 100%;
   height: 200px;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 #admin-animals .no-animals {
   margin: 1.5rem;
   font-size: 1.5rem;
+}
+#admin-animals .ui.pagination.menu .item {
+  font-size: 1.2rem;
 }
 #admin-animals .pagination {
   margin-top: 1rem;
@@ -311,7 +315,8 @@ body {
 #adoption .grid .ui.card img {
   width: 100%;
   height: 200px;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 #adoption .grid .ui.card .animal-header {
   font-size: 2rem;
@@ -320,24 +325,35 @@ body {
 #adoption .grid .ui.card .card-type, #adoption .grid .ui.card .card-age {
   color: rgb(66, 66, 66);
 }
+#adoption .ui.pagination.menu {
+  height: 100%;
+}
+#adoption .ui.pagination.menu .item {
+  font-size: 1.2rem;
+}
 #adoption .no-animals {
   margin: 1.5rem;
   font-size: 1.5rem;
   font-weight: bold;
 }
 
+@media only screen and (min-width: 650px) {
+  #adoption .ui.pagination.menu .item {
+    font-size: 1.3rem;
+  }
+}
 @media only screen and (min-width: 760px) {
   #adoption h1.ui.header, #adoption h1.ui.header:first-child, #adoption h1.ui.header:last-child {
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
   #adoption .grid .ui.card {
     font-size: 1rem;
   }
   #adoption .grid .ui.card .animal-header {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
   }
   #adoption .grid .ui.card .meta {
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
   #adoption .sort-div {
     flex-direction: row;
@@ -346,26 +362,32 @@ body {
     width: 22vw;
     min-width: 15vw;
     padding: 3%;
-    font-size: 0.75rem;
+    font-size: 1.2rem;
   }
   #adoption .ui.pagination.menu .item {
     min-width: 2em;
     justify-content: center;
+    font-size: 1.4rem;
   }
 }
 @media only screen and (min-width: 1024px) {
   #adoption {
     width: 70%;
   }
+  #adoption h1.ui.header, #adoption h1.ui.header:first-child, #adoption h1.ui.header:last-child {
+    font-size: 3rem;
+  }
   #adoption .animal-list {
     width: 100%;
   }
   #adoption .sort-div .ui.selection.dropdown {
     width: 20%;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
   }
   #adoption .ui.pagination.menu .item {
     min-width: 4em;
+    min-height: 3.5em;
+    font-size: 1.3rem;
   }
 }
 .container {
@@ -388,7 +410,8 @@ body {
   display: flex;
   justify-content: center;
 }
-.nf-div h1 {
+.nf-div .nf-title {
+  font-size: 2.2rem;
   font-family: "Signika", sans-serif;
 }
 
@@ -440,7 +463,8 @@ body {
 
 .img-container {
   margin: 0;
-  object-fit: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
   overflow: hidden;
   margin: auto;
   display: flex;
@@ -491,13 +515,15 @@ body {
 .img-btn-left {
   left: 0;
   margin-left: 5rem !important;
-  clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
+  -webkit-clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
+          clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
 }
 
 .img-btn-right {
   right: 0;
   margin-right: 5rem !important;
-  clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
+  -webkit-clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
+          clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
 }
 
 .arrow {
@@ -590,12 +616,12 @@ body {
   grid-gap: 1.5rem;
 }
 .ui.segment.adopt-section .nf-wholeSect p {
-  margin-top: 1rem;
-  font-size: 1.1rem;
+  margin-top: 1.8rem;
+  font-size: 1.2rem;
 }
 .ui.segment.adopt-section .nf-adopt-btn {
   margin-bottom: 4%;
-  padding: 5% 3.75%;
+  padding: 1.3rem 1rem;
   color: white;
   box-shadow: 2px 2px 5px #aaaaaa;
   background-color: #f06f1a;
@@ -628,6 +654,10 @@ body {
     margin-top: 4.25rem !important;
   }
 
+  .nf-div h1 {
+    font-size: 2.5rem;
+  }
+
   .nf-sect {
     display: flex;
   }
@@ -637,11 +667,11 @@ body {
   }
   .nf-sect #home-upload .edit .ui.button {
     bottom: -12px;
-    font-size: 0.6rem;
+    font-size: 1.5rem;
   }
 
   .ui.segment.adopt-section .nf-wholeSect p {
-    font-size: 0.8rem;
+    font-size: 1.2rem;
   }
   .ui.segment.adopt-section .nf-wholeSect .ui.button {
     padding: 0.8rem;
@@ -649,17 +679,18 @@ body {
   }
 }
 @media only screen and (min-width: 780px) {
-  .nf-wholeSect p {
-    font-size: 0.7rem;
-  }
   .nf-wholeSect .ui.button {
-    font-size: 0.7rem;
-    padding: 3% 3.75%;
+    font-size: 1.1rem;
   }
 }
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 766px) {
   .nf-div {
-    margin-top: 5vw;
+    margin-top: 9vw;
+  }
+}
+@media only screen and (min-width: 900px) {
+  .nf-div {
+    margin-top: 8vw;
   }
 }
 @media only screen and (min-width: 1024px) {
@@ -667,7 +698,7 @@ body {
     font-size: 1.1rem;
   }
   html .nf-div {
-    margin-top: 14vw;
+    margin-top: 5vw;
     padding-top: 25px;
   }
   html .nf-sect {
@@ -683,28 +714,32 @@ html .nf-sect #home-upload .adopt-video {
   }
   html .nf-sect #home-upload .edit .ui.button {
     bottom: -15px;
-    font-size: 1.2rem;
+  }
+  html .ui.segment.adopt-section h1 {
+    font-size: 2.5rem;
   }
   html .ui.segment.adopt-section .nf-wholeSect p {
     margin-right: 3rem;
     margin-left: 2rem;
     width: 75%;
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
   html .ui.segment.adopt-section .nf-wholeSect .ui.button {
-    font-size: 1rem;
-    padding: 1.75% 1.5%;
+    font-size: 1.2rem;
+    padding: 1.3% 1.1%;
     margin-bottom: 2%;
+  }
+}
+@media only screen and (min-width: 1100px) {
+  .nf-div {
+    margin-top: 2.5vw;
   }
 }
 /* LOGIN & REGISTER FORM CSS */
 .form-wrap {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
   justify-content: center;
+  margin-top: 2rem;
 }
 
 #login,
@@ -782,13 +817,15 @@ html .nf-sect #home-upload .adopt-video {
   font-weight: 700;
 }
 
+#register .form-link {
+  margin: 0.5rem 0;
+}
+
 @media only screen and (min-height: 750px) and (min-width: 350px) {
   form#login,
 form#register {
     display: flex;
     flex-direction: column;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
     justify-content: center;
   }
 }
@@ -805,9 +842,17 @@ form#register {
 form#register .ui.segment h1 {
     font-size: 1.8rem;
   }
+  form#login label,
+form#register label {
+    font-size: 1.2em;
+  }
+  form#login .ui.input,
+form#register .ui.input {
+    font-size: 1.5em;
+  }
   form#login .upload-image,
 form#register .upload-image {
-    margin-bottom: 2rem;
+    margin-bottom: 4rem;
   }
   form#login #photo-upload,
 form#register #photo-upload {
@@ -826,11 +871,7 @@ form#register div.edit button {
   }
   form#login i.pencil.icon,
 form#register i.pencil.icon {
-    font-size: 0.8rem;
-  }
-  form#login div.field,
-form#register div.field {
-    font-size: 0.85rem;
+    font-size: 1.2rem;
   }
   form#login div.visible.menu span,
 form#register div.visible.menu span {
@@ -843,6 +884,11 @@ form#register #register-btn {
     padding: 15px;
     font-size: 1.3rem;
   }
+  form#login .form-link, form#login .reset-password-link,
+form#register .form-link,
+form#register .reset-password-link {
+    font-size: 1.2rem;
+  }
 }
 /* LARGE & DESKTOP STYLES */
 /* 1024px | 1280px */
@@ -851,9 +897,10 @@ form#register #register-btn {
 form#register {
     width: 70vw;
   }
-  form#login div.field,
-form#register div.field {
-    font-size: 1.3rem;
+  form#login div.field, form#login .ui.selection.dropdown,
+form#register div.field,
+form#register .ui.selection.dropdown {
+    font-size: 1.2em;
   }
   form#login #login-btn,
 form#login #register-btn,
@@ -925,7 +972,8 @@ div.animal-wrap {
 .pet-img {
   width: 70vw;
   height: 70vw;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .para-desc {
@@ -1000,7 +1048,8 @@ h3 {
 .pet-gallery img {
   width: 65% !important;
   height: 250px !important;
-  object-fit: cover !important;
+  -o-object-fit: cover !important;
+     object-fit: cover !important;
   border-radius: 3%;
   min-width: 30vw;
 }
@@ -1191,7 +1240,8 @@ h3 {
   .pet-gallery img {
     padding: 0.5% !important;
     height: 300px !important;
-    object-fit: cover !important;
+    -o-object-fit: cover !important;
+       object-fit: cover !important;
   }
 }
 #add-animal i.close,
@@ -1435,6 +1485,7 @@ h3 {
 .changelog-container .log-container::-webkit-scrollbar {
   width: 10px;
   margin-right: 5px;
+  -webkit-transition: all 2s linear;
   transition: all 2s linear;
 }
 .changelog-container .log-container::-webkit-scrollbar-track {
@@ -1629,6 +1680,7 @@ h3 {
 .event-modal-wrap .event-modal-img {
   align-self: center;
   border-radius: 0.3rem;
+  margin: 0 auto !important;
 }
 .event-modal-wrap .event-meta {
   color: #000000;
@@ -1639,6 +1691,7 @@ h3 {
 }
 .event-modal-wrap .event-modal-featured {
   margin-top: 1rem;
+  color: #f06f1a;
 }
 .event-modal-wrap .event-modal-date {
   margin-top: 1rem;
@@ -1769,7 +1822,8 @@ h3 {
   height: 20vw;
 }
 #admin-users .campus-group .user-card .profile-pic img {
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   height: 100%;
   width: 100%;
   margin: 0 0 0 0.25em;
@@ -1855,6 +1909,7 @@ h3 {
 .navbar {
   position: relative;
   width: 100%;
+  padding: 0.5rem 0;
   z-index: 100;
   display: flex;
   flex-direction: row;
@@ -1874,7 +1929,7 @@ h3 {
 }
 .navbar i.icon.hamburger {
   width: 15%;
-  font-size: 1.9rem;
+  font-size: 2.5rem;
 }
 
 .hamburger.items {
@@ -1893,9 +1948,7 @@ h3 {
 .hamburger.items .menu-item a {
   font-size: 1.5rem;
   line-height: 3rem;
-}
-.hamburger.items .menu-item a:hover {
-  color: #f06f1a;
+  color: black;
 }
 .hamburger.items.taller {
   transform: translateY(-15rem);
@@ -1933,12 +1986,15 @@ h3 {
     width: 10%;
   }
   .navbar i.icon.hamburger {
-    font-size: 2rem;
+    font-size: 3rem;
   }
 
   .hamburger.items .menu-item a {
-    font-size: 1.2rem;
-    line-height: 2.6rem;
+    font-size: 1.26rem;
+    line-height: 2.8rem;
+  }
+  .hamburger.items a:hover {
+    color: #f06f1a;
   }
   .hamburger.items.hide.tall {
     transform: translateY(-16rem);
@@ -1991,12 +2047,15 @@ h3 {
 
   .menu-item {
     margin-right: 30px;
-    font-size: 135%;
+    font-size: 1.4rem;
     color: black;
     display: inline-block;
     position: relative;
     margin-top: 10px;
     padding-bottom: 10px;
+  }
+  .menu-item a {
+    color: black;
   }
   .menu-item a:hover {
     color: black;
@@ -2035,14 +2094,19 @@ h3 {
 }
 #event-slideshow .embla_viewport.is-draggable {
   cursor: move;
+  cursor: -webkit-grab;
   cursor: grab;
 }
 #event-slideshow .embla_viewport.is-dragging {
+  cursor: -webkit-grabbing;
   cursor: grabbing;
 }
 #event-slideshow .embla_container {
   display: flex;
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   -webkit-touch-callout: none;
   -khtml-user-select: none;
   -webkit-tap-highlight-color: transparent;
@@ -2066,7 +2130,8 @@ h3 {
   min-height: 100%;
   width: 100%;
   transform: translate(-50%, -50%);
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 #event-slideshow .embla_button {
   outline: 0;
@@ -2105,7 +2170,6 @@ h3 {
   list-style: none;
   justify-content: center;
   padding-top: 10px;
-  padding-bottom: 10rem;
 }
 #event-slideshow .embla_dot {
   background-color: transparent;
@@ -2182,13 +2246,16 @@ h3 {
   }
 }
 @media only screen and (min-width: 766px) {
+  #event-slideshow .embla {
+    height: 100%;
+  }
   #event-slideshow .embla_slide_inner {
     position: relative;
     overflow: hidden;
-    height: 18rem;
+    height: 20rem;
   }
   #event-slideshow .embla_dots {
-    padding-top: 10px;
+    padding-top: 20px;
   }
   #event-slideshow .embla_viewport {
     overflow: hidden;
@@ -2203,35 +2270,45 @@ h3 {
   #event-slideshow .embla_slide_inner {
     position: relative;
     overflow: hidden;
-    height: 54vw;
+    height: 40vw;
   }
   #event-slideshow .embla_viewport {
-    height: 54vw !important;
+    height: 58vw !important;
   }
   #event-slideshow .slideshow {
-    height: 20rem;
+    height: 25rem;
+  }
+  #event-slideshow .embla_dot {
+    padding-top: 25px;
   }
 }
 @media only screen and (min-width: 900px) {
   #event-slideshow .embla_slide_inner {
     position: relative;
     overflow: hidden;
-    height: 50vw;
+    height: 40vw;
   }
   #event-slideshow .embla_viewport {
     height: 50vw !important;
   }
   #event-slideshow .slideshow {
-    height: 21rem;
+    height: 30rem;
+  }
+  #event-slideshow .embla_dots {
+    padding-top: 0px;
   }
 }
 @media only screen and (min-width: 1024px) {
   #event-slideshow {
-    width: 70vw;
+    width: 75vw;
     margin: auto;
   }
+  #event-slideshow .slideshow {
+    height: 30rem;
+    width: 100%;
+  }
   #event-slideshow .embla_viewport {
-    height: 44vw !important;
+    height: 70vw !important;
   }
   #event-slideshow .embla {
     padding: 0%;
@@ -2240,93 +2317,26 @@ h3 {
     width: 100%;
   }
   #event-slideshow .embla_slide_inner {
-    height: 65vh !important;
+    height: 55vh !important;
   }
   #event-slideshow .embla_dots {
-    padding-top: 0.8rem;
+    padding-top: 1rem;
   }
   #event-slideshow .gradient {
     height: 100%;
   }
-  #event-slideshow .slideshow {
-    height: 20rem;
-  }
-}
-@media only screen and (min-width: 1040px) {
-  #event-slideshow .embla_dots {
-    padding-top: 0.5rem;
-  }
-}
-@media only screen and (min-width: 1080px) {
-  #event-slideshow .embla_dots {
-    padding-top: 0.2rem;
-  }
 }
 @media only screen and (min-width: 1100px) {
-  #event-slideshow .embla_viewport {
-    height: 43vw !important;
+  #event-slideshow .slideshow {
+    height: 33rem;
   }
   #event-slideshow .embla_slide_inner {
     height: 64vh !important;
-  }
-  #event-slideshow .embla_dots {
-    padding-top: 0rem;
-    padding-bottom: 4rem;
-  }
-}
-@media only screen and (min-width: 1150px) {
-  #event-slideshow .embla_viewport {
-    height: 41.25vw !important;
-  }
-  #event-slideshow .embla_dots {
-    padding-top: 0rem;
-    padding-bottom: 4rem;
   }
 }
 @media only screen and (min-width: 1200px) {
   #event-slideshow .embla {
     max-width: 95vw;
-  }
-  #event-slideshow .embla_viewport {
-    height: 40vw !important;
-  }
-}
-@media only screen and (min-width: 1284px) {
-  #event-slideshow .embla_viewport {
-    height: 37.8vw !important;
-  }
-}
-@media only screen and (min-width: 1300px) {
-  #event-slideshow .embla_viewport {
-    height: 36.25vw !important;
-  }
-}
-@media only screen and (min-width: 1320px) {
-  #event-slideshow .embla_viewport {
-    height: 35vw !important;
-  }
-}
-@media only screen and (min-width: 1340px) {
-  #event-slideshow .embla_viewport {
-    height: 33.5vw !important;
-  }
-}
-@media only screen and (min-width: 1360px) {
-  #event-slideshow .embla_viewport {
-    height: 37vw !important;
-  }
-}
-@media only screen and (min-width: 1380px) {
-  #event-slideshow .embla_viewport {
-    height: 31vw !important;
-  }
-}
-@media only screen and (min-width: 1400px) {
-  #event-slideshow .embla_slide_inner {
-    height: 34vw !important;
-  }
-  #event-slideshow .embla_viewport {
-    height: 35vw !important;
   }
 }
 #photo-upload {
@@ -2338,7 +2348,8 @@ h3 {
   height: 70px;
 }
 #photo-upload img {
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   width: 70px;
   height: 70px;
 }
@@ -2417,7 +2428,8 @@ h3 {
 #admin-events .events-list .event-card .event-content .event-pic img {
   width: 80%;
   max-height: 10rem;
-  object-fit: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 #admin-events .events-list .event-card .event-content .event-info .event-title {
   font-size: 1.1rem;
@@ -2527,13 +2539,13 @@ h3 {
 
 @media only screen and (min-width: 768px) {
   .footer {
-    font-size: 0.8rem;
-    padding: 1.75rem 0 0rem 0;
+    font-size: 1.2rem;
+    padding: 1.75rem 0;
   }
 }
 @media only screen and (min-width: 1024px) {
   .footer {
-    font-size: 0.95rem;
-    padding: 2rem 0 0rem;
+    font-size: 1.3rem;
+    padding: 2rem 0;
   }
-}/*# sourceMappingURL=main.css.map */
+}
