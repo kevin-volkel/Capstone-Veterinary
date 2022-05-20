@@ -10,7 +10,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  background: #f6f7f8;
+  background: #f6f7f8 !important;
 }
 
 a {
@@ -147,6 +147,9 @@ a {
 #admin-animals .no-animals {
   margin: 1.5rem;
   font-size: 1.5rem;
+}
+#admin-animals .ui.pagination.menu .item {
+  font-size: 1.2rem;
 }
 #admin-animals .pagination {
   margin-top: 1rem;
@@ -322,24 +325,35 @@ body {
 #adoption .grid .ui.card .card-type, #adoption .grid .ui.card .card-age {
   color: rgb(66, 66, 66);
 }
+#adoption .ui.pagination.menu {
+  height: 100%;
+}
+#adoption .ui.pagination.menu .item {
+  font-size: 1.2rem;
+}
 #adoption .no-animals {
   margin: 1.5rem;
   font-size: 1.5rem;
   font-weight: bold;
 }
 
+@media only screen and (min-width: 650px) {
+  #adoption .ui.pagination.menu .item {
+    font-size: 1.3rem;
+  }
+}
 @media only screen and (min-width: 760px) {
   #adoption h1.ui.header, #adoption h1.ui.header:first-child, #adoption h1.ui.header:last-child {
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
   #adoption .grid .ui.card {
     font-size: 1rem;
   }
   #adoption .grid .ui.card .animal-header {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
   }
   #adoption .grid .ui.card .meta {
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
   #adoption .sort-div {
     flex-direction: row;
@@ -348,16 +362,20 @@ body {
     width: 22vw;
     min-width: 15vw;
     padding: 3%;
-    font-size: 0.75rem;
+    font-size: 1.2rem;
   }
   #adoption .ui.pagination.menu .item {
     min-width: 2em;
     justify-content: center;
+    font-size: 1.4rem;
   }
 }
 @media only screen and (min-width: 1024px) {
   #adoption {
     width: 70%;
+  }
+  #adoption h1.ui.header, #adoption h1.ui.header:first-child, #adoption h1.ui.header:last-child {
+    font-size: 3rem;
   }
   #adoption .animal-list {
     width: 100%;
@@ -368,6 +386,8 @@ body {
   }
   #adoption .ui.pagination.menu .item {
     min-width: 4em;
+    min-height: 3.5em;
+    font-size: 1.3rem;
   }
 }
 .container {
@@ -390,7 +410,8 @@ body {
   display: flex;
   justify-content: center;
 }
-.nf-div h1 {
+.nf-div .nf-title {
+  font-size: 2.2rem;
   font-family: "Signika", sans-serif;
 }
 
@@ -596,7 +617,7 @@ body {
 }
 .ui.segment.adopt-section .nf-wholeSect p {
   margin-top: 1rem;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
 }
 .ui.segment.adopt-section .nf-adopt-btn {
   margin-bottom: 4%;
@@ -1632,6 +1653,7 @@ h3 {
 .event-modal-wrap .event-modal-img {
   align-self: center;
   border-radius: 0.3rem;
+  margin: 0 auto !important;
 }
 .event-modal-wrap .event-meta {
   color: #000000;
@@ -1642,6 +1664,7 @@ h3 {
 }
 .event-modal-wrap .event-modal-featured {
   margin-top: 1rem;
+  color: #f06f1a;
 }
 .event-modal-wrap .event-modal-date {
   margin-top: 1rem;
@@ -1859,6 +1882,7 @@ h3 {
 .navbar {
   position: relative;
   width: 100%;
+  padding: 0.5rem 0;
   z-index: 100;
   display: flex;
   flex-direction: row;
@@ -1897,6 +1921,7 @@ h3 {
 .hamburger.items .menu-item a {
   font-size: 1.5rem;
   line-height: 3rem;
+  color: black;
 }
 .hamburger.items .menu-item a:hover {
   color: #f06f1a;
@@ -2539,13 +2564,13 @@ h3 {
 
 @media only screen and (min-width: 768px) {
   .footer {
-    font-size: 0.8rem;
-    padding: 1.75rem 0 0rem 0;
+    font-size: 1.2rem;
+    padding: 1.75rem 0;
   }
 }
 @media only screen and (min-width: 1024px) {
   .footer {
-    font-size: 0.95rem;
-    padding: 2rem 0 0rem;
+    font-size: 1.3rem;
+    padding: 2rem 0;
   }
 }

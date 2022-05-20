@@ -28,6 +28,7 @@
   .event-modal-img{
     align-self: center;
     border-radius: .3rem;
+    margin: 0 auto !important;
   }
 
   .event-meta{
@@ -40,6 +41,7 @@
 
   .event-modal-featured{
     margin-top: 1rem;
+    color: $clr-orange;
   }
 
   .event-modal-date{

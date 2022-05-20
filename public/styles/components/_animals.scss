@@ -88,10 +88,26 @@ body {
     }
   }
 
+  .ui.pagination.menu{
+    height: 100%;
+  }
+
+  .ui.pagination.menu .item {
+    font-size: 1.2rem;
+  }
+
   .no-animals {
     margin: 1.5rem;
     font-size: 1.5rem;
     font-weight: bold;
+  }
+}
+
+@media only screen and (min-width: 650px) {
+  #adoption{
+    .ui.pagination.menu .item {
+      font-size: 1.3rem;
+    }
   }
 }
 
@@ -103,7 +119,7 @@ body {
       &.ui.header,
       &.ui.header:first-child,
       &.ui.header:last-child {
-        font-size: 2rem;
+        font-size: 2.5rem;
       }
     }
 
@@ -111,10 +127,10 @@ body {
       .ui.card{
         font-size: 1rem;
         .animal-header{
-          font-size: 1.5rem
+          font-size: 1.8rem
         }
         .meta{
-          font-size: 1rem;
+          font-size: 1.2rem;
         }
       }
     }
@@ -126,14 +142,14 @@ body {
         width: 22vw;
         min-width: 15vw;
         padding: 3%;
-        font-size: .75rem;
+        font-size: 1.2rem;
       }
     }
 
     .ui.pagination.menu .item {
       min-width: 2em;
       justify-content: center;
-      //padding: 0;
+      font-size: 1.4rem;
     }
   }
 }
@@ -142,6 +158,15 @@ body {
 @media only screen and (min-width: 1024px) {
   #adoption {
     width: 70%;
+
+    h1 {
+
+      &.ui.header,
+      &.ui.header:first-child,
+      &.ui.header:last-child {
+        font-size: 3rem;
+      }
+    }
 
     .animal-list {
       width: 100%;
@@ -156,6 +181,8 @@ body {
 
     .ui.pagination.menu .item {
       min-width: 4em;
+      min-height: 3.5em;
+      font-size: 1.3rem;
     }
   } 
 }
