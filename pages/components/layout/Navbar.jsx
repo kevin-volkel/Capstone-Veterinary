@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { Icon } from 'semantic-ui-react';
-import Link from 'next/link';
-import Image from 'next/image';
-import wmLogo from '../../../public/media/WMlogo.png';
+import React, { useState, useEffect } from "react";
+import { Icon } from "semantic-ui-react";
+import Link from "next/link";
+import Image from "next/image";
+import wmLogo from "../../../public/media/WMlogo.png";
 // import vetLogo from '../../../public/media/vetLogo.png';
-import { logoutUser } from '../../util/auth';
-import { useRouter } from 'next/router';
+import { logoutUser } from "../../util/auth";
+import { useRouter } from "next/router";
 
 const Navbar = ({ user }) => {
   const router = useRouter();
@@ -22,14 +22,15 @@ const Navbar = ({ user }) => {
     <>
       <div className="navbar">
         <div className="vet-logo" aria-label="West-mec vet logo">
-          {/* <Link href="/">
+          <Link href="/">
             <Image
-              src={vetLogo}
-              objectFit="contain"
+              src="/media/vetlogo.png"
+              width={5}
+              height={5}
               alt="West Mec Vertinary Sciences"
               aria-label="West-Mec Vet Logo"
             />
-          </Link> */}
+          </Link>
         </div>
 
         <div className="wm-logo" aria-label="West-mec logo">
@@ -50,24 +51,24 @@ const Navbar = ({ user }) => {
           size="large"
           role="button"
           tabIndex="1"
-          style={{ cursor: 'pointer' }}
+          style={{ cursor: "pointer" }}
           onClick={() => setShowNavbar((prev) => !prev)}
           aria-label="Pages menu"
         />
       </div>
 
       <div
-        className={` hamburger items ${showNavbar ? 'show' : 'hide'} ${
+        className={` hamburger items ${showNavbar ? "show" : "hide"} ${
           user !== null
-            ? user.role === 'teacher'
-              ? 'taller'
-              : 'tall'
-            : 'short'
+            ? user.role === "teacher"
+              ? "taller"
+              : "tall"
+            : "short"
         }`}
       >
         <div
-          className={`menu-item ${isActive('/') ? 'active' : ''} ${
-            showNavbar ? 'show' : ''
+          className={`menu-item ${isActive("/") ? "active" : ""} ${
+            showNavbar ? "show" : ""
           }`}
           aria-label="Home"
         >
@@ -76,7 +77,7 @@ const Navbar = ({ user }) => {
           </Link>
         </div>
         <div
-          className={`menu-item ${isActive('/animals') ? 'active' : ''}`}
+          className={`menu-item ${isActive("/animals") ? "active" : ""}`}
           aria-label="Adoption"
         >
           <Link href="/animals" tabIndex="3">
@@ -85,15 +86,15 @@ const Navbar = ({ user }) => {
         </div>
         {user !== null && (
           <>
-            <div className={`menu-item ${isActive('/admin') ? 'active' : ''}`}>
+            <div className={`menu-item ${isActive("/admin") ? "active" : ""}`}>
               <Link href="/admin" tabIndex="4">
                 Admin
               </Link>
             </div>
-            {user.role === 'teacher' && (
+            {user.role === "teacher" && (
               <div
                 className={`menu-item ${
-                  isActive('/changelog') ? 'active' : ''
+                  isActive("/changelog") ? "active" : ""
                 }`}
               >
                 <Link href="/changelog" tabIndex="5">
@@ -103,7 +104,7 @@ const Navbar = ({ user }) => {
             )}
             <div
               className={`menu-item`}
-              style={{ cursor: 'pointer' }}
+              style={{ cursor: "pointer" }}
               onClick={logoutUser}
             >
               <a href="#">Logout</a>
@@ -134,8 +135,8 @@ const Navbar = ({ user }) => {
 
         <div className="items">
           <div
-            className={`menu-item ${isActive('/') ? 'active' : ''} ${
-              showNavbar ? 'show' : ''
+            className={`menu-item ${isActive("/") ? "active" : ""} ${
+              showNavbar ? "show" : ""
             }`}
             aria-label="Home"
           >
@@ -144,7 +145,7 @@ const Navbar = ({ user }) => {
             </Link>
           </div>
           <div
-            className={`menu-item ${isActive('/animals') ? 'active' : ''}`}
+            className={`menu-item ${isActive("/animals") ? "active" : ""}`}
             aria-label="Adoption"
           >
             <Link href="/animals" tabIndex="3">
@@ -154,16 +155,16 @@ const Navbar = ({ user }) => {
           {user !== null && (
             <>
               <div
-                className={`menu-item ${isActive('/admin') ? 'active' : ''}`}
+                className={`menu-item ${isActive("/admin") ? "active" : ""}`}
               >
                 <Link href="/admin" tabIndex="4">
                   Admin
                 </Link>
               </div>
-              {user.role === 'teacher' && (
+              {user.role === "teacher" && (
                 <div
                   className={`menu-item ${
-                    isActive('/changelog') ? 'active' : ''
+                    isActive("/changelog") ? "active" : ""
                   }`}
                 >
                   <Link href="/changelog" tabIndex="5">
@@ -173,7 +174,7 @@ const Navbar = ({ user }) => {
               )}
               <div
                 className={`menu-item`}
-                style={{ cursor: 'pointer' }}
+                style={{ cursor: "pointer" }}
                 onClick={logoutUser}
               >
                 <a href="#" tabIndex="6">
