@@ -147,7 +147,7 @@ h3 {
 
 @media only screen and (min-width: 768px) {
   div.animal-wrap {
-    font-size: 0.8rem;
+    font-size: 1.5rem;
   }
 
   .top-btns {
@@ -162,17 +162,20 @@ h3 {
   }
 
   .para-desc {
-    font-size: 0.9rem;
+    font-size: 2rem;
   }
 
   .pet-title {
-    font-size: 1.3rem;
+    font-size: 2rem;
     margin-bottom: 0%;
   }
 
   .pet-description {
+    p{
+      font-size: 1.3rem;
+    }
     h3 {
-      font-size: 1.2rem;
+      font-size: 1.75rem;
     }
 
     .section-1 {
