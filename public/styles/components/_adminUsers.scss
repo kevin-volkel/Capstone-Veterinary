@@ -7,7 +7,7 @@
     margin-bottom: 1.25rem;
 
     .student-group {
-      border-left: solid #F7931D 3px;
+      border-left: solid #f7931d 3px;
       padding-left: 0.55rem;
       margin-left: 1.85rem;
     }
@@ -15,19 +15,22 @@
     .user-card {
       display: flex;
       justify-content: space-between;
-      margin: .75rem 0 0 0;
+      margin: 0.75rem 0 0 0;
       background: #dadada;
       padding: 5px;
-      border-radius: .28571429rem;
+      border-radius: 0.28571429rem;
 
       .profile-pic {
+        justify-content: center;
         width: 20vw;
         height: 20vw;
+        display: flex;
+        align-items: center;
 
         img {
           object-fit: cover;
-          height: 100%;
-          width: 100%;
+          height: 90%;
+          width: 90%;
           margin: 0 0 0 0.25em;
         }
       }
@@ -49,6 +52,7 @@
 
           .user-role {
             text-transform: capitalize;
+            font-weight: bold;
           }
 
           .user-name {
@@ -76,14 +80,39 @@
   }
 }
 
-
-
 //TABLET
 @media only screen and (min-width: 540px) {
   #admin-users {
-    width: 90vw;
+    width: 80vw;
     margin-left: auto;
     margin-right: auto;
+    .campus-group {
+      .user-card {
+        .text {
+          width: 65%;
+          flex-direction: column;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .campus-group{
+    .user-card{
+      .profile-pic img{
+        height: 80%;
+        width: 80%;
+      }
+
+      .text{
+        font-size: 1.2rem;
+        .user-card-top{
+          margin-bottom: 0.5rem;
+          font-size: 1.5rem;
+        }
+      }
+    }
   }
 }
 
@@ -92,11 +121,20 @@
     .campus-group {
       .user-card {
         .profile-pic {
+          align-items: self-start;
           img {
             margin-top: 3.5%;
             width: 65%;
             height: 65%;
             margin-left: 0%;
+          }
+        }
+
+        .text{
+          font-size: 1.4rem;
+          .user-card-top{
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
           }
         }
 
@@ -106,14 +144,13 @@
   }
 }
 
-
 @media only screen and (min-width: 1220px) {
   #admin-users {
     width: 70%;
 
     .campus-group {
       .student-group {
-        border-left: solid #F7931D 4px;
+        border-left: solid #f7931d 4px;
         padding-left: 0.4rem;
         margin-left: 2.25rem;
       }
@@ -130,9 +167,6 @@
 
         .text {
           margin-left: 2%;
-          .user-card-top{
-            font-size: 1.15rem;
-          }
           .options {
             font-size: 1.5rem;
           }

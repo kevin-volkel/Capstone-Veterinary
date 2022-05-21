@@ -171,14 +171,14 @@ a {
   #admin h1.ui.header,
 #admin h1.ui.header:first-child,
 #admin h1.ui.header:last-child {
-    font-size: 1.5rem;
+    font-size: 2.3rem;
   }
 
   #admin-animals {
     width: 90vw;
   }
   #admin-animals .button {
-    font-size: 0.9rem;
+    font-size: 1.2rem;
   }
   #admin-animals .sort-div {
     flex-direction: row;
@@ -187,25 +187,19 @@ a {
   }
   #admin-animals .sort-div .ui.selection.dropdown {
     min-width: 2em;
-    font-size: 0.85rem;
+    font-size: 1.2rem;
   }
-  #admin-animals .ui.card #type {
-    padding-bottom: 7px;
-    font-size: 0.8rem;
-  }
-  #admin-animals .ui.card #gender {
-    font-size: 0.8rem;
-  }
-  #admin-animals .ui.card #age {
-    font-size: 0.8rem;
+  #admin-animals .ui.card .meta {
+    font-size: 1.2rem;
   }
   #admin-animals .ui.card .animal-header {
-    font-size: 1.5rem;
+    font-size: 2rem;
     margin-bottom: 0.8rem;
   }
   #admin-animals .ui.pagination.menu .item {
     min-width: 2em;
     justify-content: center;
+    font-size: 1.4rem;
   }
 }
 @media only screen and (min-width: 1024px) {
@@ -225,6 +219,9 @@ a {
   #admin #admin-animals .sort-div .ui.selection.dropdown {
     width: 13em;
     min-width: 9em;
+    font-size: 1.1rem;
+  }
+  #admin #admin-animals .sort-div .ui.selection.dropdown .menu.item {
     font-size: 1.1rem;
   }
   #admin #admin-animals .ui.pagination.menu .item {
@@ -378,6 +375,9 @@ body {
   #adoption .sort-div .ui.selection.dropdown {
     width: 20%;
     font-size: 1.2rem;
+  }
+  #adoption .sort-div .ui.selection.dropdown .menu.item {
+    font-size: 1.1rem;
   }
   #adoption .ui.pagination.menu .item {
     min-width: 4em;
@@ -1832,7 +1832,7 @@ h3 {
   margin-bottom: 1.25rem;
 }
 #admin-users .campus-group .student-group {
-  border-left: solid #F7931D 3px;
+  border-left: solid #f7931d 3px;
   padding-left: 0.55rem;
   margin-left: 1.85rem;
 }
@@ -1845,14 +1845,17 @@ h3 {
   border-radius: 0.28571429rem;
 }
 #admin-users .campus-group .user-card .profile-pic {
+  justify-content: center;
   width: 20vw;
   height: 20vw;
+  display: flex;
+  align-items: center;
 }
 #admin-users .campus-group .user-card .profile-pic img {
   -o-object-fit: cover;
      object-fit: cover;
-  height: 100%;
-  width: 100%;
+  height: 90%;
+  width: 90%;
   margin: 0 0 0 0.25em;
 }
 #admin-users .campus-group .user-card .text {
@@ -1872,6 +1875,7 @@ h3 {
 }
 #admin-users .campus-group .user-card .text .user-card-top .user-role {
   text-transform: capitalize;
+  font-weight: bold;
 }
 #admin-users .campus-group .user-card .text .user-card-top .user-name {
   font-weight: bold;
@@ -1891,14 +1895,34 @@ h3 {
 
 @media only screen and (min-width: 540px) {
   #admin-users {
-    width: 90vw;
+    width: 80vw;
     margin-left: auto;
     margin-right: auto;
+  }
+  #admin-users .campus-group .user-card .text {
+    width: 65%;
+    flex-direction: column;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .campus-group .user-card .profile-pic img {
+    height: 80%;
+    width: 80%;
+  }
+  .campus-group .user-card .text {
+    font-size: 1.2rem;
+  }
+  .campus-group .user-card .text .user-card-top {
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
   }
 }
 @media only screen and (min-width: 1000px) {
   #admin-users .campus-group .user-card {
     height: 15vw;
+  }
+  #admin-users .campus-group .user-card .profile-pic {
+    align-items: self-start;
   }
   #admin-users .campus-group .user-card .profile-pic img {
     margin-top: 3.5%;
@@ -1906,13 +1930,20 @@ h3 {
     height: 65%;
     margin-left: 0%;
   }
+  #admin-users .campus-group .user-card .text {
+    font-size: 1.4rem;
+  }
+  #admin-users .campus-group .user-card .text .user-card-top {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+  }
 }
 @media only screen and (min-width: 1220px) {
   #admin-users {
     width: 70%;
   }
   #admin-users .campus-group .student-group {
-    border-left: solid #F7931D 4px;
+    border-left: solid #f7931d 4px;
     padding-left: 0.4rem;
     margin-left: 2.25rem;
   }
@@ -1925,9 +1956,6 @@ h3 {
   }
   #admin-users .campus-group .user-card .text {
     margin-left: 2%;
-  }
-  #admin-users .campus-group .user-card .text .user-card-top {
-    font-size: 1.15rem;
   }
   #admin-users .campus-group .user-card .text .options {
     font-size: 1.5rem;
