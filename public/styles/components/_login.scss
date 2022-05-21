@@ -1,14 +1,32 @@
-@use '../themes/defaultTheme' as *;
+@use "../themes/defaultTheme" as *;
 /* LOGIN & REGISTER FORM CSS */
 .form-wrap {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 
   margin-top: 2rem;
+}
+
+#resetPassword{
+  .reset-btn{
+    background-color: $clr-orange;
+    color: white;;
+    margin-bottom: 1rem;
+    margin-right: 0;
+    padding: 15px;
+    font-size: 1.3rem;
+  }
+  div.field {
+    font-size: 1.1rem;
+
+    .ui.input{
+      font-size: 1.1em;
+    }
+  }
 }
 
 #login,
@@ -18,76 +36,74 @@
   position: relative;
   margin-top: 1.5rem;
 
+  div.ui.segment {
+    margin-top: 0;
+  }
 
-div.ui.segment {
-  margin-top: 0;
-}
+  /* FORM TOP */
+  .login-title {
+    margin-bottom: 1rem;
+  }
 
+  .upload-image {
+    margin-bottom: 2rem;
+  }
 
-/* FORM TOP */
-.login-title{
-  margin-bottom: 1rem;
-}
+  body {
+    background-color: #f6f7f8;
+    height: auto;
+  }
 
-.upload-image {
-  margin-bottom: 2rem;
-}
+  div.edit button {
+    width: 25px;
+    height: 25px;
+  }
 
-body {
-  background-color: #f6f7f8;
-  height: auto;
-}
+  /* FORM FIELDS */
+  div.field {
+    font-size: 1.1rem;
+  }
 
-div.edit button {
-  width: 25px;
-  height: 25px;
-}
+  div.visible.menu span {
+    font-size: 1.2rem;
+  }
 
-/* FORM FIELDS */
-div.field {
-  font-size: 1.2rem;
-}
+  /* FORM BOTTOM */
+  #login-btn,
+  #register-btn {
+    margin-bottom: 1rem;
+    margin-right: 0;
+    padding: 10px;
+    font-size: 1.8rem;
+    color: white;
+    background: $clr-orange;
+  }
 
-div.visible.menu span {
-  font-size: 1.2rem;
-}
-
-/* FORM BOTTOM */
-#login-btn,
-#register-btn {
-  margin-bottom: 1rem;
-  margin-right: 0;
-  padding: 10px;
-  font-size: 1.8rem;
-  color: white;
-  background: $clr-orange;
-}
-
-.form-link {
-  text-align: center;
-  width: 100%;
-  background: none;
-  color: black;
-  cursor: pointer;
-  &:hover{
+  .form-link {
+    text-align: center;
+    width: 100%;
     background: none;
-    color: rgba(0,0,0,.6);
+    color: black;
+    cursor: pointer;
+    &:hover {
+      background: none;
+      color: rgba(0, 0, 0, 0.6);
+    }
+  }
+
+  .reset-password-link {
+    display: flex;
+    justify-content: center;
+    margin-top: 0.2rem;
+    padding: 0.78571429em 1.5em 0.78571429em;
+    font-size: 1rem;
+    font-family: Lato, "Helvetica Neue", Arial, Helvetica, sans-serif;
+    font-weight: 700;
   }
 }
 
-.reset-password-link{
-  display: flex;
-  justify-content: center;
-  margin-top: .2rem;
-  padding: 0.78571429em 1.5em 0.78571429em;
-  font-size: 1rem;
-  font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
-  font-weight: 700;
-}
-}
-
-#register{
-  .form-link{
+#register {
+  .form-link {
     margin: 0.5rem 0;
   }
 }
@@ -98,8 +114,8 @@ div.visible.menu span {
     display: flex;
     flex-direction: column;
     -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
   }
 }
 
@@ -114,11 +130,11 @@ div.visible.menu span {
       font-size: 1.8rem;
     }
 
-    label{
+    label {
       font-size: 1.2em;
     }
 
-    .ui.input{
+    .ui.input {
       font-size: 1.5em;
     }
 
@@ -161,8 +177,32 @@ div.visible.menu span {
       font-size: 1.3rem;
     }
 
-    .form-link, .reset-password-link{
+    .form-link,
+    .reset-password-link {
       font-size: 1.2rem;
+    }
+  }
+
+  form#register {
+    #name-group {
+      .required.field {
+        width: 50%;
+      }
+    }
+
+    #role-group {
+      .field {
+        width: 50%;
+        .ui.input{
+          height: 70%;
+        }
+      }
+
+      .ui.selection.dropdown {
+        width: 100%;
+        font-size: 1.3em;
+        height: 70%;
+      }
     }
   }
 }
@@ -174,7 +214,8 @@ div.visible.menu span {
   form#register {
     width: 70vw;
 
-    div.field, .ui.selection.dropdown {
+    div.field,
+    .ui.selection.dropdown {
       font-size: 1.2em;
     }
 
@@ -184,7 +225,7 @@ div.visible.menu span {
       font-size: 1.5rem;
     }
 
-    .form-link{
+    .form-link {
       font-size: 1.2rem;
     }
   }

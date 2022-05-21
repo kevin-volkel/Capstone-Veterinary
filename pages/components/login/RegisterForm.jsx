@@ -155,7 +155,7 @@ const RegisterForm = ({
             />
           </div>
           <Divider hidden />
-          <Form.Group widths="equal">
+          <Form.Group widths="equal" id="name-group">
             <Form.Input
               label="First Name"
               required
@@ -176,7 +176,7 @@ const RegisterForm = ({
             />
           </Form.Group>
           <Divider hidden />
-          <Form.Group widths="equal">
+          <Form.Group widths="equal" id="role-group">
             <Form.Select
               options={roleOptions}
               value={role}
