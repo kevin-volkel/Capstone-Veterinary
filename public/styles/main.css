@@ -1081,6 +1081,7 @@ h3 {
   }
   .pet-description h3 {
     font-size: 1.75rem;
+    margin-bottom: 0;
   }
   .pet-description .section-1 {
     display: flex;
