@@ -43,7 +43,7 @@ body {
     justify-content: center;
     display: flex;
     flex-direction: column;
-    grid-gap: .3rem;
+    grid-gap: 0.3rem;
 
     .ui.selection.dropdown {
       width: 15em;
@@ -82,13 +82,14 @@ body {
         margin-bottom: 0.8rem;
       }
 
-      .card-type, .card-age{
+      .card-type,
+      .card-age {
         color: rgb(66, 66, 66);
       }
     }
   }
 
-  .ui.pagination.menu{
+  .ui.pagination.menu {
     height: 100%;
   }
 
@@ -104,7 +105,7 @@ body {
 }
 
 @media only screen and (min-width: 650px) {
-  #adoption{
+  #adoption {
     .ui.pagination.menu .item {
       font-size: 1.3rem;
     }
@@ -115,7 +116,6 @@ body {
 @media only screen and (min-width: 760px) {
   #adoption {
     h1 {
-
       &.ui.header,
       &.ui.header:first-child,
       &.ui.header:last-child {
@@ -124,23 +124,24 @@ body {
     }
 
     .grid {
-      .ui.card{
+      .ui.card {
         font-size: 1rem;
-        .meta{
+        .meta {
           font-size: 1.2rem;
         }
-      .ui.selection.dropdown {
-        width: 22vw;
-        min-width: 15vw;
-        padding: 3%;
-        font-size: 1.2rem;
+        .ui.selection.dropdown {
+          width: 22vw;
+          min-width: 15vw;
+          padding: 3%;
+          font-size: 1.2rem;
+        }
       }
-    }
 
-    .ui.pagination.menu .item {
-      min-width: 2em;
-      justify-content: center;
-      font-size: 1.4rem;
+      .ui.pagination.menu .item {
+        min-width: 2em;
+        justify-content: center;
+        font-size: 1.4rem;
+      }
     }
   }
 }
@@ -151,7 +152,6 @@ body {
     width: 70%;
 
     h1 {
-
       &.ui.header,
       &.ui.header:first-child,
       &.ui.header:last-child {
@@ -175,5 +175,5 @@ body {
       min-height: 3.5em;
       font-size: 1.3rem;
     }
-  } 
+  }
 }
